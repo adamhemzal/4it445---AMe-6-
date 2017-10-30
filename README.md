@@ -1,2 +1,2 @@
 # 4it445---AMe-6-
-Semestrální práce na předmět 4IT445
+Semestrální práce na předmět 4IT445 - AMe
