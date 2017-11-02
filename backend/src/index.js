@@ -1,13 +1,22 @@
-const http = require('http');
+require('dotenv').config();
 
-const PORT=3001;
+const express = require('express')
+const app = express()
 
-function handleRequest(request, response) {
-  response.end('Dummy backend');
-}
+app.get('/', function (req, res) {
 
-const server = http.createServer(handleRequest);
+  const WebClient = require('@slack/client').WebClient;
+  const token = process.env.SLACK_API_TOKEN || '';
+  const web = new WebClient(token);
+  web.channels.history('C7693MGNS', 10, function(error, response) {
+    if (error) {
+      console.log('Error:', error);
+    } else {
+      res.send(response);
+    }
+  });
+})
 
-server.listen(PORT, function() {
-  console.log("Server listening on: http://localhost:%s", PORT);
-});
+app.listen(3000, function () {
+  console.log('Example app listening on port 3000!')
+})
