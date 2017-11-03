@@ -7,7 +7,8 @@ export class WeatherWidget extends Component {
         super(props);
         this.state = {
             cityName: "",
-            weatherInfo: []
+            weatherInfo: [],
+            weatherTemperature: ""
         };
     }
 
@@ -21,7 +22,8 @@ export class WeatherWidget extends Component {
             console.log(data.list[0].weather)
             this.setState({
                 cityName: data.city.name,
-                weatherInfo: data.list[0].weather
+                weatherInfo: data.list[0].weather,
+                weatherTemperature: data.list[0].main.temp
             });
         })
         .catch((error) => {
@@ -31,13 +33,17 @@ export class WeatherWidget extends Component {
 
     render() {
         const weatherInfoDisplay = this.state.weatherInfo.map((currentWeather, index) => {
-            return <div key={index}> <p>{ currentWeather.main }</p> </div>
+            return <div key={index}> <p>{ currentWeather.icon }</p> </div>
         });
+
+        const weatherTemperatureDisplay = Math.round(this.state.weatherTemperature-273.15)+"°C";
+        
         return(
             <div>
                 <p>Mezera</p>
                 <p>{weatherInfoDisplay}</p>
                 <p>{this.state.cityName}</p>
+                <p>{weatherTemperatureDisplay}</p>
             </div>
         )
     }
