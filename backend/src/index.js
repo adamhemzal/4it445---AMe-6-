@@ -8,7 +8,7 @@ app.get('/', function (req, res) {
   const WebClient = require('@slack/client').WebClient;
   const token = process.env.SLACK_API_TOKEN || '';
   const web = new WebClient(token);
-  web.channels.history('C7693MGNS', 10, function(error, response) {
+  web.channels.history('C7693MGNS', {"count": 10}, function(error, response) {
     if (error) {
       console.log('Error:', error);
     } else {
