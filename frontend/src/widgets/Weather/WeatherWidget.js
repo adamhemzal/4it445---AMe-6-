@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import ReactSlick from 'react-slick';
 
 export class WeatherWidget extends Component {
 
@@ -44,8 +45,8 @@ export class WeatherWidget extends Component {
         // Definování datumů
         const currentDate = new Date();
 
-        const hours = currentDate.getHours().toString().length == 1 ? '0'+currentDate.getHours() : currentDate.getHours();
-        const minutes = currentDate.getMinutes().toString().length == 1 ? '0'+currentDate.getMinutes() : currentDate.getMinutes();
+        const hours = currentDate.getHours().toString().length === 1 ? '0'+currentDate.getHours() : currentDate.getHours();
+        const minutes = currentDate.getMinutes().toString().length === 1 ? '0'+currentDate.getMinutes() : currentDate.getMinutes();
         const time = hours + ":" + minutes;
 
         // Výpis data - čísla

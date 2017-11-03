@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+//import axios from 'axios';
 import AMer from '../../img/amer.png';
 
 export class TopAmersWidget extends Component {

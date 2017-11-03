@@ -69,7 +69,7 @@ h1, h2, h3, h4, h5, h6 {
  *   General Widget
  */
  .widget {
-
+	margin-bottom: 30px;
  }
 
  .widget__inner {
@@ -330,4 +330,29 @@ h1, h2, h3, h4, h5, h6 {
 
 .weather__icon i {
 	font-size: 90px;
+}
+
+/*-----------------------------------------------------------------------------------*/
+/*	People of the day Widget
+/*-----------------------------------------------------------------------------------*/
+.people-day__name {
+	margin-top: 15px;
+	font-family: "Poppins";
+	font-weight: 400;
+	margin-bottom: 3px;
+	font-size: 20px;
+}
+
+.people-day__nickname {
+	font-family: "Poppins";
+	font-size: 14px;
+}
+
+.people-day__nickname a {
+	color: #929ba0;
+}
+
+.people-day__content {
+	margin-bottom: 0;
+	font-size: 14px;
 }
