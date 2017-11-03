@@ -9,12 +9,16 @@ export class TopAmersWidget extends Component {
     }
 
     componentDidMount() {
-
+      axios
+      .get('http://localhost:3000/top-amers')
+      .then(response => {
+        console.log('response', response);
+      });
     }
 
     render() {
         return (
-                
+
                 <div className="col-md-4 widget top_amers">
 
                             <div className="widget__inner widget__inner--dark">
@@ -29,7 +33,7 @@ export class TopAmersWidget extends Component {
                                         <li className="top_amers__list-item">
 
                                             <div className="top_amers__image">
-                                                <img src={AMer} alt=""/> 
+                                                <img src={AMer} alt=""/>
                                                 <span className="top_amers__badge">3.</span>
                                             </div>
 
@@ -81,4 +85,4 @@ export class TopAmersWidget extends Component {
                         </div>
                 )
     }
-} 
+}

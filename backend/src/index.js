@@ -1,21 +1,21 @@
+import cors from 'cors';
+import bodyParser from 'body-parser';
+import rootRoutes from './rootRoutes';
+
 require('dotenv').config();
 
 const express = require('express')
 const app = express()
 
-app.get('/', function (req, res) {
+app.use(bodyParser.json());
+app.use(cors());
 
-  const WebClient = require('@slack/client').WebClient;
-  const token = process.env.SLACK_API_TOKEN || '';
-  const web = new WebClient(token);
-  web.channels.history('C7693MGNS', {"count": 10}, function(error, response) {
-    if (error) {
-      console.log('Error:', error);
-    } else {
-      res.send(response);
-    }
-  });
-})
+app.use(rootRoutes);
+
+app.use((req, res, next) => {
+  res.status(404);
+  res.json({ error: '404: Not found' });
+});
 
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!')
