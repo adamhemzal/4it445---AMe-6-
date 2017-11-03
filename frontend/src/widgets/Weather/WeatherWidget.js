@@ -7,7 +7,7 @@ export class WeatherWidget extends Component {
         super(props);
         this.state = {
             cityName: "",
-            weatherInfo: [],
+            weatherIcon: [],
             weatherTemperature: ""
         };
     }
@@ -22,7 +22,7 @@ export class WeatherWidget extends Component {
             console.log(data.list[0].weather)
             this.setState({
                 cityName: data.city.name,
-                weatherInfo: data.list[0].weather,
+                weatherIcon: data.list[0].weather,
                 weatherTemperature: data.list[0].main.temp
             });
         })
@@ -32,18 +32,34 @@ export class WeatherWidget extends Component {
     }
 
     render() {
-        const weatherInfoDisplay = this.state.weatherInfo.map((currentWeather, index) => {
-            return <div key={index}> <p>{ currentWeather.icon }</p> </div>
+
+        // Vypiš iconu k počasí
+        const weatherIconDisplay = this.state.weatherIcon.map((currentWeather, index) => {
+            return <img key={index} src={`http://openweathermap.org/img/w/${currentWeather.icon}.png`} alt="" />
         });
 
+        // Vypiš temperature v °C
         const weatherTemperatureDisplay = Math.round(this.state.weatherTemperature-273.15)+"°C";
         
+        // Definování datumů
+        const currentDate = new Date();
+
+        const hours = currentDate.getHours().toString().length == 1 ? '0'+currentDate.getHours() : currentDate.getHours();
+        const minutes = currentDate.getMinutes().toString().length == 1 ? '0'+currentDate.getMinutes() : currentDate.getMinutes();
+        const time = hours + ":" + minutes;
+
+        const date = currentDate.getDate();
+
+        const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+        const nameMonths = months[currentDate.getMonth()];
+
         return(
             <div>
                 <p>Mezera</p>
-                <p>{weatherInfoDisplay}</p>
+                <p>{weatherIconDisplay}</p>
                 <p>{this.state.cityName}</p>
                 <p>{weatherTemperatureDisplay}</p>
+                <p>{time} {date} {nameMonths} </p>
             </div>
         )
     }
