@@ -7,8 +7,28 @@ export const topAmersController = async (req, res) => {
     if (error) {
       console.log('Error:', error);
     } else {
-      // TODO zpracování načtených zpráv a odeslání na výstup.
-      res.send(response);
+       res.send(response);
+                let ameCounts = new Array(); // [author : numberOfAmes]
+                
+                response.messages.forEach(function(message){
+                    const author = message.user;
+                    let reactions = message.reactions;
+                    
+                    if(reactions !== undefined){
+                        
+                        reactions.forEach(function(reaction){
+                            if(reaction.name === "ame"){
+                                if(ameCounts[author] !== undefined){
+                                    ameCounts[author] += reaction.count;
+                                } else {
+                                    ameCounts[author] = reaction.count;
+                                }    
+                            }
+                        });
+                    }
+                });
+                
+                return ameCounts;
     }
   });
 };
