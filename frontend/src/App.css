@@ -44,6 +44,10 @@ ul {
  margin: 0;
 }
 
+.no-padding {
+ padding: 0 !important;
+}
+
 /**
 *   Helpers
 */
@@ -143,6 +147,11 @@ h1, h2, h3, h4, h5, h6 {
 
 .widget__footer--white {
  background: white;
+}
+
+.widget__footer--dark {
+ background: #2e3335;
+ color: white;
 }
 
 /*-----------------------------------------------------------------------------------*/
@@ -274,4 +283,80 @@ h1, h2, h3, h4, h5, h6 {
 .top_amers__navigation-item img {
  max-width: 100%;
  border-radius: 100%;
+}
+
+/*-----------------------------------------------------------------------------------*/
+/*	Weather Widget
+/*-----------------------------------------------------------------------------------*/
+.weather__city {
+ font-family: "Poppins";
+ font-size: 30px;
+ font-weight: 400;
+}
+
+.weather__slide {
+ text-align: center;
+ margin-bottom: 40px;
+}
+
+.weather__temperature {
+ font-size: 45px;
+ display: inline-block;
+ font-weight: bold;
+ margin-left: 15px;
+ margin-top: 5px;
+}
+
+.weather__wind,
+.weather__humidity {
+ display: inline-block;
+ font-size: 14px;
+ text-transform: uppercase;
+ margin-left: 20px;
+ font-weight: bold;
+ position: relative;
+ top: -10px;
+}
+
+.weather__wind i,
+.weather__humidity i {
+ font-size: 18px;
+ margin-right: 5px;
+}
+
+.weather__temperature span {
+ font-weight: normal;
+ font-family: "Poppins";
+ font-size: 20px;
+ position: relative;
+ font-weight: 500;
+ top: -21px;
+ margin-left: 1px;
+}
+
+.weather__date {
+ background: #51b8ec;
+ text-align: right;
+ padding: 8px 10px;
+}
+
+.weather__day {
+ font-size: 14px;
+ font-weight: bold;
+ text-transform: uppercase;
+ margin-bottom: 5px;
+}
+
+.weather__time {
+ font-weight: bold;
+ font-size: 24px;
+}
+
+.weather__icon {
+ text-align: center;
+ padding: 30px 0 40px 0;
+}
+
+.weather__icon i {
+ font-size: 90px;
 }
