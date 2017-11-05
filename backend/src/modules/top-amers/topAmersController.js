@@ -22,7 +22,7 @@ export const topAmersController = async (req, res) => {
 
             /*Sorts the users by AMe count, result goes to global sortedUsersWithAme array*/
             getSortedAmers(usersWithAme);
-            sortedUsersWithAme.slice(topAmersMaxCount);/*just selects the top N users*/
+            sortedUsersWithAme.slice(topAmersMaxCount+1);/*just selects the top N users*/
 
             /*pairs the users (IDs) with names and pictures, outputs them*/
             getSlackUsers(sortedUsersWithAme);
@@ -66,10 +66,10 @@ const getSlackUsers = () => {
     const token = process.env.SLACK_API_TOKEN || '';
     const web = new WebClient(token);
 
-    web.users.list(getStackUsersCallback);
+    web.users.list(getSlackUsersCallback);
 };
 
-const getStackUsersCallback = (error, response) => {
+const getSlackUsersCallback = (error, response) => {
     let topAmers = [];
     let i = 0;
 
