@@ -8,7 +8,7 @@
     "start": "node ./build/main.js",
     "prestart": "run-s build",
     "build": "backpack build",
-    "build:watch": "nodemon --watch ./src --exec 'npm run build'",
+    "build:watch": "nodemon --watch ./src --exec \"npm run build\"",
     "postbuild": "nodetouch tmp/restart.txt",
     "prettier": "prettier --write 'src/**/*.js'"
   },
@@ -21,7 +21,9 @@
     "dotenv": "4.0.0",
     "express": "^4.15.2",
     "express-async-await": "1.0.1",
-    "log4js": "1.1.1"
+    "log4js": "1.1.1",
+    "moment": "^2.19.1",
+    "sort-object-properties": "^0.3.3"
   },
   "devDependencies": {
     "nodemon": "1.12.1",

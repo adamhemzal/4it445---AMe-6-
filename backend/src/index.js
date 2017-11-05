@@ -1,8 +1,8 @@
+require('dotenv').config();
+
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import rootRoutes from './rootRoutes';
-
-require('dotenv').config();
 
 const express = require('express')
 const app = express()
