@@ -9,7 +9,8 @@ export class WeatherWidget extends Component {
         this.state = {
             cityName: "",
             weatherIcon: [],
-            weatherTemperature: ""
+            weatherTemperature: "",
+            windSpeed: ""
         };
     }
 
@@ -24,7 +25,8 @@ export class WeatherWidget extends Component {
             this.setState({
                 cityName: data.city.name,
                 weatherIcon: data.list[0].weather,
-                weatherTemperature: data.list[0].main.temp
+                weatherTemperature: data.list[0].main.temp,
+                windSpeed: data.list[0].wind.speed
             });
         })
         .catch((error) => {
@@ -34,6 +36,23 @@ export class WeatherWidget extends Component {
 
     render() {
 
+        //Mapování icon na IDčka
+        const weatherIconMap = {
+            "01d" : "wi-day-sunny",
+            "01n" : "wi-night-clear",
+            "02d" : "wi-day-cloudy",
+            "02n" : "wi-night-alt-cloudy",
+            "03d" : "wi-cloud",
+            "03n" : "wi-cloud",
+            "04d" : "wi-cloudy",
+            "04n" : "",
+            "09d" : "wi-showers",
+            "09n" : "wi-showers",
+            "10d" : "wi-rain",
+            "10n" : "wi-rain",
+
+        }
+        
         // Vypiš iconu k počasí
         const weatherIconDisplay = this.state.weatherIcon.map((currentWeather, index) => {
             return <img key={index} src={`http://openweathermap.org/img/w/${currentWeather.icon}.png`} alt="" />
@@ -77,7 +96,7 @@ export class WeatherWidget extends Component {
                     <div className="widget__footer widget__footer--dark clearfix no-padding">
                         <div className="float--left">
                             <h3 className="weather__temperature">{weatherTemperatureDisplay}<span>o</span></h3>
-                            <h4 className="weather__wind"><i className="wi wi-strong-wind"></i> 24 km/h</h4>
+                            <h4 className="weather__wind"><i className="wi wi-strong-wind"></i>{this.state.windSpeed} m/s</h4>
                             {/* <h4 className="weather__humidity"><i className="wi wi-humidity"></i> 40%</h4> */}
                         </div>
 
