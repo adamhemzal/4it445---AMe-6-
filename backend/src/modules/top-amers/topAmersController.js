@@ -1,4 +1,3 @@
-import { getSlackUser } from './getSlackUser.js';
 let sortedUsersWithAme = [];
 let globalRes = null;
 const topAmersMaxCount = 5;
