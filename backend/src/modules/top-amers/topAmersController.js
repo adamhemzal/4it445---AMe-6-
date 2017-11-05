@@ -1,13 +1,14 @@
+require('dotenv').config();
+
 const moment = require('moment');
 let sortedUsersWithAme = [];
 let globalRes = null;
 const topAmersMaxCount = 5;
+const WebClient = require('@slack/client').WebClient;
+const token = process.env.SLACK_API_TOKEN || '';
+const web = new WebClient(token);
 
 export const topAmersController = async (req, res) => {
-
-  const WebClient = require('@slack/client').WebClient;
-  const token = process.env.SLACK_API_TOKEN || '';
-  const web = new WebClient(token);
   //timestamp pro Slack - aktualni cas - jeden tyden
   const oldestTimestamp = moment().subtract(1, 'week').format('X');
 
@@ -36,18 +37,20 @@ export const topAmersController = async (req, res) => {
 const getUsersWithAme = (messages) => {
   let usersWithAme = {};
   messages.forEach((message) => {
-    const userID = message.user;
+    let userID = message.user;
     let reactions = message.reactions;
 
     if (reactions !== undefined) {
-
+      console.log(userID);
+      console.log(reactions);
       reactions.forEach((reaction) => {
         if (reaction.name === "ame") {
-          usersWithAme[userID] = usersWithAme[userID] ? usersWithAme[userID] + 1 : 1;
+          usersWithAme[userID] = usersWithAme[userID] ? usersWithAme[userID] + reaction.count : reaction.count;
         }
       });
     }
   });
+  console.log(usersWithAme);
   return usersWithAme;
 };
 
@@ -65,10 +68,6 @@ const getSortedAmers = (usersWithAme) => {
 };
 
 const getSlackUsers = () => {
-  const WebClient = require('@slack/client').WebClient;
-  const token = process.env.SLACK_API_TOKEN || '';
-  const web = new WebClient(token);
-
   web.users.list(getSlackUsersCallback);
 };
 
