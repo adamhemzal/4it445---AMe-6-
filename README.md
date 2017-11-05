@@ -3,6 +3,9 @@ Semestrální práce na předmět 4IT445 - AMe
 
 ## Updates
 
+### 0.2
+- upravil jsem sekci *Zprovoznění Reactu aneb začínáme vyvíjet*
+
 ### 0.1
 - přidal jsem [axios](https://github.com/axios/axios), pomocí kterého budeme provádět AJAX cally na APIčka
 
@@ -20,21 +23,30 @@ Semestrální práce na předmět 4IT445 - AMe
 3. Stáhne se ti náš repozitář
 
 ### Zprovoznění Reactu aneb začínáme vyvíjet
-1. Vlezeš do šložky **frontend**
-2. Tady ve složce spustíš příkaz (jsi stále v CMD nebo gitBash)
-
-    ```
-    npm install
-    ```
-
-3. Počkáš než s evše nainstaluje
-4. Ve stejné složce pak spustíš příkaz
+1. Vlezeš do složky **backend**
+2. Tady vytvoříš složku **backend/tmp** a do ní nahraješ prázdný soubor **restart.txt**
+3. V /backend/ vytvoříš soubor **.env** a tam nahraješ SLACK API Token, který ti pošle jedn z nás
+4. Zadáš příkaz
 
     ```
     npm start
     ```
 
-5. Spustí se ti webpack a react ve webovém prohlížeči. Reaguje na všechny tvoje změny v kódu
+5. Vlezeš do šložky **frontend**
+6. Tady ve složce spustíš příkaz (jsi stále v CMD nebo gitBash)
+
+    ```
+    npm install
+    ```
+
+7. Počkáš než s evše nainstaluje
+8. Ve stejné složce pak spustíš příkaz
+
+    ```
+    npm start
+    ```
+
+9. Spustí se ti webpack a react ve webovém prohlížeči. Reaguje na všechny tvoje změny v kódu
 
 ### Developerský cyklus
 Pokaždé když chceš vyvíjet, tak dodržuj následující postup
