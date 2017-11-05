@@ -67,7 +67,7 @@ export class TopAmersWidget extends Component {
                     //     <a href="#"><img src={topAmer.image} alt={topAmer.realName} /></a>
                     //   </div>
                     // </li>
-                    <li className="top_amers__list-item">
+                    <li key={index} className="top_amers__list-item">
 
                       <div className="top_amers__image">
                         <img src={topAmer.image} alt={topAmer.realName}/>
