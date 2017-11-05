@@ -48,6 +48,8 @@ ul {
  padding: 0 !important;
 }
 
+img { max-width: 100%; }
+
 /**
 *   Helpers
 */
@@ -71,6 +73,22 @@ h1, h2, h3, h4, h5, h6 {
  background: white;
  padding: 30px 0;
  border-bottom: 1px solid #d7d8d9;
+ margin-bottom: 30px;
+}
+
+h1 {
+  font-family: "Knewave";
+  color: #3c5a78;
+  font-size: 30px;
+  line-height: 70px;
+  margin-top: -3px;
+}
+
+.logo-outer {
+  border-radius: 100%;
+  border: 2px solid #3c5a78;
+  width: 70px;
+  height: 70px;
 }
 
 /**
@@ -78,19 +96,22 @@ h1, h2, h3, h4, h5, h6 {
 */
 
 .intro {
- padding: 60px 0;
+ padding: 8px 0;
+ margin-left: 30px;
+ padding-left: 20px;
+ border-left: 1px solid #e0e0e0;
 }
 
 .intro__title {
   font-size: 30px;
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
 }
 
 .intro__description {
   font-size: 16px;
   font-family: "Poppins";
-  font-weight: 500;
+  font-weight: 400;
   color: #9fa1a2;
 }
 
@@ -98,11 +119,13 @@ h1, h2, h3, h4, h5, h6 {
 *   General Widget
 */
 .widget {
-
+ margin-bottom: 30px;
 }
 
 .widget__inner {
   background: white;
+ box-shadow: 0px 0px 15px 0px rgba(128, 126, 126, 0.21);
+
 }
 
 .widget__inner--dark {
@@ -285,10 +308,6 @@ h1, h2, h3, h4, h5, h6 {
  border-radius: 100%;
 }
 
-.top_amers__image img {
-  max-width: 100%;
-}
-
 /*-----------------------------------------------------------------------------------*/
 /*	Weather Widget
 /*-----------------------------------------------------------------------------------*/
@@ -363,4 +382,29 @@ h1, h2, h3, h4, h5, h6 {
 
 .weather__icon i {
  font-size: 90px;
+}
+
+/*-----------------------------------------------------------------------------------*/
+/*	People of the day Widget
+/*-----------------------------------------------------------------------------------*/
+.people-day__name {
+ margin-top: 15px;
+ font-family: "Poppins";
+ font-weight: 400;
+ margin-bottom: 3px;
+ font-size: 20px;
+}
+
+.people-day__nickname {
+ font-family: "Poppins";
+ font-size: 14px;
+}
+
+.people-day__nickname a {
+ color: #929ba0;
+}
+
+.people-day__content {
+ margin-bottom: 0;
+ font-size: 14px;
 }
