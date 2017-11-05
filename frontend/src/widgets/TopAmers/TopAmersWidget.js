@@ -10,7 +10,7 @@ export class TopAmersWidget extends Component {
 
     componentDidMount() {
       axios
-      .get('http://localhost:3000/top-amers')
+      .get('http://localhost:3001/top-amers')
       .then(response => {
         console.log('response', response);
       });

@@ -17,6 +17,6 @@ app.use((req, res, next) => {
   res.json({ error: '404: Not found' });
 });
 
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!')
+app.listen(3001, function () {
+  console.log('Example app listening on port 3001!')
 })
