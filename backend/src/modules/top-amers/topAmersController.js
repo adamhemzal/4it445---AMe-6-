@@ -41,8 +41,6 @@ const getUsersWithAme = (messages) => {
     let reactions = message.reactions;
 
     if (reactions !== undefined) {
-      console.log(userID);
-      console.log(reactions);
       reactions.forEach((reaction) => {
         if (reaction.name === "ame") {
           usersWithAme[userID] = usersWithAme[userID] ? usersWithAme[userID] + reaction.count : reaction.count;
@@ -50,7 +48,6 @@ const getUsersWithAme = (messages) => {
       });
     }
   });
-  console.log(usersWithAme);
   return usersWithAme;
 };
 
