@@ -22,7 +22,7 @@ export const topAmersController = async (req, res) => {
 
             /*Sorts the users by AMe count, result goes to global sortedUsersWithAme array*/
             getSortedAmers(usersWithAme);
-            sortedUsersWithAme.slice(topAmersMaxCount+1);/*just selects the top N users*/
+            sortedUsersWithAme.slice(0, topAmersMaxCount);/*just selects the top N users*/
 
             /*pairs the users (IDs) with names and pictures, outputs them*/
             getSlackUsers(sortedUsersWithAme);
