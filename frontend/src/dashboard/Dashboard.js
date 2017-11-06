@@ -3,6 +3,7 @@ import { WeatherWidget } from '../widgets/Weather/WeatherWidget';
 import { TopAmersWidget } from '../widgets/TopAmers/TopAmersWidget';
 import { TopAmePostsWidget } from '../widgets/TopAmePosts/TopAmePostsWidget';
 import { PeopleOfADayWidget } from '../widgets/PeopleOfADay/PeopleOfADayWidget';
+import logo from '../img/logo.png';
 
 export class Dashboard extends Component {
     render() {
@@ -13,9 +14,10 @@ export class Dashboard extends Component {
 
                     <div className="container">
                         <div className="logo-outer float--left">
-                            <h1 className="text-center">
+                            <img src={logo} alt="Logo AMe"/>
+{/*                             <h1 className="text-center">
                                 AMe
-                            </h1>
+                            </h1> */}
                         </div>
 
                         <div className="intro float--left">
