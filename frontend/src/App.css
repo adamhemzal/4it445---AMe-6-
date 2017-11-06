@@ -294,6 +294,7 @@ h1 {
   float: left;
   padding: 0 2%;
   transition: all 0.2s;
+  cursor: pointer;
 }
 
 .top_amers__navigation .slick-active .top_amers__navigation-item {

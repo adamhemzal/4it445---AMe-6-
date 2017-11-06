@@ -62,18 +62,11 @@ export class TopAmersWidget extends Component {
               <ul className="top_amers__list">
                 <Slider {...settings}>
                   {topAmers.map((topAmer, index) =>
-                    // <li key={index} className="top_amers__navigation-item col">
-                    //   <div className="top_amers__navigation-item-inner">
-                    //     <a href="#"><img src={topAmer.image} alt={topAmer.realName} /></a>
-                    //   </div>
-                    // </li>
                     <li key={index} className="top_amers__list-item">
-
                       <div className="top_amers__image">
                         <img src={topAmer.image} alt={topAmer.realName}/>
                         <span className="top_amers__badge">{index + 1}.</span>
                       </div>
-
                       <div className="top_amers__content clearfix">
                         <h3 className="top_amers__name float--left">{topAmer.realName}</h3>
                         <h5 className="top_amers__value float--right">x{topAmer.ameCount}</h5>
@@ -81,27 +74,8 @@ export class TopAmersWidget extends Component {
                     </li>
                   )}
                 </Slider>
-
               </ul>
-
             </div>
-
-            {/* <div className="widget__footer widget__footer--white text-center">
-
-              <div className="top_amers__navigation clearfix">
-                <ul>
-                  <Slider {...settings}>
-                    {topAmers.map((topAmer, index) =>
-                      <li key={index} className="top_amers__navigation-item col">
-                        <div className="top_amers__navigation-item-inner">
-                          <a href="#"><img src={topAmer.image} alt={topAmer.realName} /></a>
-                        </div>
-                      </li>
-                    )}
-                  </Slider>
-                </ul>
-              </div>
-            </div> */}
           </div>
         </div>
       )
