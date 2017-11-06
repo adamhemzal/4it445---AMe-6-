@@ -1,26 +1,26 @@
 /* .App {
-  text-align: center;
+text-align: center;
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+animation: App-logo-spin infinite 20s linear;
+height: 80px;
 }
 
 .App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+background-color: #222;
+height: 150px;
+padding: 20px;
+color: white;
 }
 
 .App-intro {
-  font-size: large;
+font-size: large;
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+from { transform: rotate(0deg); }
+to { transform: rotate(360deg); }
 } */
 
 /** TADY PSÁT VŠECHNY STYLY **/
@@ -28,10 +28,10 @@
 /******************************/
 
 /**
- *   AMe Dashboard
- */
+*   AMe Dashboard
+*/
 
- body {
+body {
   background: #eff1f2;
   color: #2e3335;
   font-family: "Poppins";
@@ -39,13 +39,13 @@
 }
 
 ul {
- list-style: none;
- padding: 0;
- margin: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .no-padding {
- padding: 0 !important;
+  padding: 0 !important;
 }
 
 img { max-width: 100%; }
@@ -61,8 +61,8 @@ img { max-width: 100%; }
 *   Typography
 */
 h1, h2, h3, h4, h5, h6 {
- font-family: "Roboto Condensed";
- margin-bottom: 0;
+  font-family: "Roboto Condensed";
+  margin-bottom: 0;
 }
 
 /**
@@ -70,10 +70,10 @@ h1, h2, h3, h4, h5, h6 {
 */
 
 .header {
- background: white;
- padding: 30px 0;
- border-bottom: 1px solid #d7d8d9;
- margin-bottom: 30px;
+  background: white;
+  padding: 30px 0;
+  border-bottom: 1px solid #d7d8d9;
+  margin-bottom: 30px;
 }
 
 h1 {
@@ -95,10 +95,10 @@ h1 {
 */
 
 .intro {
- padding: 8px 0;
- margin-left: 30px;
- padding-left: 20px;
- border-left: 1px solid #e0e0e0;
+  padding: 8px 0;
+  margin-left: 30px;
+  padding-left: 20px;
+  border-left: 1px solid #e0e0e0;
 }
 
 .intro__title {
@@ -118,12 +118,12 @@ h1 {
 *   General Widget
 */
 .widget {
- margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 
 .widget__inner {
   background: white;
- box-shadow: 0px 0px 15px 0px rgba(128, 126, 126, 0.21);
+  box-shadow: 0px 0px 15px 0px rgba(128, 126, 126, 0.21);
 
 }
 
@@ -138,20 +138,20 @@ h1 {
 }
 
 .widget__name {
- font-size: 20px;
- font-weight: bold;
- margin-bottom: 0;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 0;
 }
 
 .widget__header h3 {
- font-size: 14px;
- margin-bottom: 0;
- margin-top: 5px;
- line-height: 1;
+  font-size: 14px;
+  margin-bottom: 0;
+  margin-top: 5px;
+  line-height: 1;
 }
 
 .widget__header h3 span {
- color: #dc6161;
+  color: #dc6161;
 }
 
 .widget__content {
@@ -159,21 +159,21 @@ h1 {
 }
 
 .widget__content--padding {
- padding: 15px;
+  padding: 15px;
 }
 
 .widget__footer {
- padding: 15px;
- padding-top: 0;
+  padding: 15px;
+  padding-top: 0;
 }
 
 .widget__footer--white {
- background: white;
+  background: white;
 }
 
 .widget__footer--dark {
- background: #2e3335;
- color: white;
+  background: #2e3335;
+  color: white;
 }
 
 /*-----------------------------------------------------------------------------------*/
@@ -184,11 +184,11 @@ h1 {
 }
 
 .btn--link {
- font-size: 14px;
- color: #51b8ec;
- text-transform: uppercase;
- font-family: "Poppins";
- font-weight: bolder;
+  font-size: 14px;
+  color: #51b8ec;
+  text-transform: uppercase;
+  font-family: "Poppins";
+  font-weight: bolder;
 }
 
 /*-----------------------------------------------------------------------------------*/
@@ -196,214 +196,217 @@ h1 {
 /*-----------------------------------------------------------------------------------*/
 
 .top_posts__list {
- list-style: none;
- margin: 0;
- padding: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .top_posts__list-item {
- padding-bottom: 15px;
- margin-bottom: 15px;
- border-bottom: 1px solid #e6ecf1;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #e6ecf1;
 }
 
 .top_posts__list-item:last-child {
- margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .top_posts_post-title {
- font-size: 14px;
- font-family: "Poppins";
- font-weight: bold;
- margin-bottom: 10px;
+  font-size: 14px;
+  font-family: "Poppins";
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
 .top_posts__name,
 .top_posts__likes {
- font-size: 13px;
- font-family: "Poppins";
+  font-size: 13px;
+  font-family: "Poppins";
 }
 
 .top_posts__name {
- color: #929799;
- float: left;
- font-weight: normal;
+  color: #929799;
+  float: left;
+  font-weight: normal;
 }
 
 .top_posts__name a {
- color: #929799;
+  color: #929799;
 }
 
 .top_posts__likes {
- font-weight: 600;
- color: #2c3e50;
- float: right;
+  font-weight: 600;
+  color: #2c3e50;
+  float: right;
 }
 
 .top_posts__likes i {
- color: #56b9ea;
+  color: #56b9ea;
 }
 
 /*-----------------------------------------------------------------------------------*/
 /*	Top AMers Widget
 /*-----------------------------------------------------------------------------------*/
 .top_amers__name {
- font-family: "Poppins";
- font-size: 17px;
- font-weight: 400;
+  font-family: "Poppins";
+  font-size: 17px;
+  font-weight: 400;
 }
 
 .top_amers__value {
- font-family: "Poppins";
- font-size: 16px;
- color: #77858d;
+  font-family: "Poppins";
+  font-size: 16px;
+  color: #77858d;
 }
 
 .top_amers__content {
- padding: 30px 15px;
+  padding: 30px 15px;
 }
 
 .top_amers__image {
- position: relative;
+  position: relative;
 }
 
 .top_amers__badge {
- position: absolute;
- display: block;
- width: 45px;
- height: 45px;
- font-size: 30px;
- letter-spacing: -2px;
- background: #59c5fd;
- border-radius: 100%;
- text-align: center;
- font-weight: bold;
- font-family: "Roboto Condensed";
- bottom: -15px;
- left: 10px;
+  position: absolute;
+  display: block;
+  width: 45px;
+  height: 45px;
+  font-size: 30px;
+  letter-spacing: -2px;
+  background: #59c5fd;
+  border-radius: 100%;
+  text-align: center;
+  font-weight: bold;
+  font-family: "Roboto Condensed";
+  bottom: -15px;
+  left: 10px;
 }
 
 .top_amers__navigation {
- padding-top: 15px;
+  overflow: hidden;
+  background: white;
+  padding: 20px 10px;
 }
 
 .top_amers__navigation-item {
- width: 20%;
- float: left;
- padding: 0 2%;
+  width: 20%;
+  float: left;
+  padding: 0 2%;
+  transition: all 0.2s;
 }
 
-.top_amers__navigation-item:last-child {
-
+.top_amers__navigation .slick-active .top_amers__navigation-item {
+  transform: scale(1.15);
 }
 
 .top_amers .widget__footer {
- padding: 0 10px 15px 10px;
+  padding: 0 10px 15px 10px;
 }
 
 
 .top_amers__navigation-item img {
- max-width: 100%;
- border-radius: 100%;
+  max-width: 100%;
+  border-radius: 100%;
 }
 
 /*-----------------------------------------------------------------------------------*/
 /*	Weather Widget
 /*-----------------------------------------------------------------------------------*/
 .weather__city {
- font-family: "Poppins";
- font-size: 30px;
- font-weight: 400;
+  font-family: "Poppins";
+  font-size: 30px;
+  font-weight: 400;
 }
 
 .weather__slide {
- text-align: center;
- margin-bottom: 40px;
+  text-align: center;
+  margin-bottom: 40px;
 }
 
 .weather__temperature {
- font-size: 45px;
- display: inline-block;
- font-weight: bold;
- margin-left: 15px;
- margin-top: 5px;
+  font-size: 45px;
+  display: inline-block;
+  font-weight: bold;
+  margin-left: 15px;
+  margin-top: 5px;
 }
 
 .weather__wind,
 .weather__humidity {
- display: inline-block;
- font-size: 14px;
- text-transform: uppercase;
- margin-left: 20px;
- font-weight: bold;
- position: relative;
- top: -10px;
+  display: inline-block;
+  font-size: 14px;
+  text-transform: uppercase;
+  margin-left: 20px;
+  font-weight: bold;
+  position: relative;
+  top: -10px;
 }
 
 .weather__wind i,
 .weather__humidity i {
- font-size: 18px;
- margin-right: 5px;
+  font-size: 18px;
+  margin-right: 5px;
 }
 
 .weather__temperature span {
- font-weight: normal;
- font-family: "Poppins";
- font-size: 20px;
- position: relative;
- font-weight: 500;
- top: -21px;
- margin-left: 1px;
+  font-weight: normal;
+  font-family: "Poppins";
+  font-size: 20px;
+  position: relative;
+  font-weight: 500;
+  top: -21px;
+  margin-left: 1px;
 }
 
 .weather__date {
- background: #51b8ec;
- text-align: right;
- padding: 8px 10px;
+  background: #51b8ec;
+  text-align: right;
+  padding: 8px 10px;
 }
 
 .weather__day {
- font-size: 14px;
- font-weight: bold;
- text-transform: uppercase;
- margin-bottom: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 5px;
 }
 
 .weather__time {
- font-weight: bold;
- font-size: 24px;
+  font-weight: bold;
+  font-size: 24px;
 }
 
 .weather__icon {
- text-align: center;
- padding: 30px 0 40px 0;
+  text-align: center;
+  padding: 30px 0 40px 0;
 }
 
 .weather__icon i {
- font-size: 90px;
+  font-size: 90px;
 }
 
 /*-----------------------------------------------------------------------------------*/
 /*	People of the day Widget
 /*-----------------------------------------------------------------------------------*/
 .people-day__name {
- margin-top: 15px;
- font-family: "Poppins";
- font-weight: 400;
- margin-bottom: 3px;
- font-size: 20px;
+  margin-top: 15px;
+  font-family: "Poppins";
+  font-weight: 400;
+  margin-bottom: 3px;
+  font-size: 20px;
 }
 
 .people-day__nickname {
- font-family: "Poppins";
- font-size: 14px;
+  font-family: "Poppins";
+  font-size: 14px;
 }
 
 .people-day__nickname a {
- color: #929ba0;
+  color: #929ba0;
 }
 
 .people-day__content {
- margin-bottom: 0;
- font-size: 14px;
+  margin-bottom: 0;
+  font-size: 14px;
 }

@@ -46,7 +46,7 @@ export class TopAmersWidget extends Component {
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 5000,
-        dotsClass: "",
+        dotsClass: "top_amers__navigation",
         arrows: false
       }
       return (

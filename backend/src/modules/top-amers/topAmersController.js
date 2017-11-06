@@ -39,6 +39,7 @@ const getUsersWithAme = (messages) => {
   messages.forEach((message) => {
     let userID = message.user;
     let reactions = message.reactions;
+    let file = message.file;
 
     if (reactions !== undefined) {
       reactions.forEach((reaction) => {
@@ -46,6 +47,16 @@ const getUsersWithAme = (messages) => {
           usersWithAme[userID] = usersWithAme[userID] ? usersWithAme[userID] + reaction.count : reaction.count;
         }
       });
+    }
+    if (file !== undefined) {
+      let fileReactions = file.reactions;
+      if (fileReactions !== undefined) {
+        fileReactions.forEach((fileReactions) => {
+          if (fileReactions.name === "ame") {
+            usersWithAme[userID] = usersWithAme[userID] ? usersWithAme[userID] + fileReactions.count : fileReactions.count;
+          }
+        });
+      }
     }
   });
   return usersWithAme;
