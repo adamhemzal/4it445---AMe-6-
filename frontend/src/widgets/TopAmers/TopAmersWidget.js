@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import AMer from '../../img/amer.png';
 import Slider from 'react-slick';
+import api from '../api.js';
 
 export class TopAmersWidget extends Component {
 
@@ -13,8 +14,7 @@ export class TopAmersWidget extends Component {
   }
 
   componentDidMount() {
-    axios
-    .get('http://localhost:3001/top-amers')
+    api('top-amers')
     .then(response => {
       const { data: topAmers } = response;
       this.setState({ topAmers });

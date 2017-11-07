@@ -8,8 +8,7 @@ export class TopAmePostsWidget extends Component {
   }
 
   componentDidMount() {
-    axios
-    .get('http://localhost:3001/top-ame-posts')
+    api('top-amers')
     .then(response => {
       console.log('response', response);
     });
