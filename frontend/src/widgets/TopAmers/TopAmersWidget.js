@@ -9,7 +9,7 @@ export class TopAmersWidget extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      topAmers: [],
+      topAmers: []
     };
   }
 
@@ -21,7 +21,7 @@ export class TopAmersWidget extends Component {
     })
     .catch(error => {
       console.log(error);
-    })
+    });
   }
 
   render() {
@@ -34,11 +34,11 @@ export class TopAmersWidget extends Component {
           <div className="widget__inner widget__inner--dark">
           </div>
         </div>
-      )
+      );
     } else {
       const settings = {
         customPaging: i => {
-          return <div className="top_amers__navigation-item col"><div className="top_amers__navigation-item-inner"><img src={topAmers[i].image} /></div></div>
+          return <div className="top_amers__navigation-item col"><div className="top_amers__navigation-item-inner"><img src={topAmers[i].image} /></div></div>;
         },
         dots: true,
         speed: 500,
@@ -48,7 +48,7 @@ export class TopAmersWidget extends Component {
         autoplaySpeed: 5000,
         dotsClass: "top_amers__navigation",
         arrows: false
-      }
+      };
       return (
         <div className="col-md-4 widget top_amers">
           <div className="widget__inner widget__inner--dark">
@@ -78,7 +78,7 @@ export class TopAmersWidget extends Component {
             </div>
           </div>
         </div>
-      )
+      );
     }
   }
 }
