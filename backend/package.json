@@ -23,6 +23,7 @@
     "express-async-await": "1.0.1",
     "log4js": "1.1.1",
     "moment": "^2.19.1",
+    "object-values": "^1.0.0",
     "sort-object-properties": "^0.3.3"
   },
   "devDependencies": {

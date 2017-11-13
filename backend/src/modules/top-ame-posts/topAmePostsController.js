@@ -1,6 +1,7 @@
 let messagesWithAme = [];
 let globalRes = null;
 const topAmePostsMaxCount = 5;
+const objectValues = require('object-values');
 
 export const topAmePostsController = async (req, res) => {
     const WebClient = require('@slack/client').WebClient;
@@ -79,7 +80,7 @@ const getSlackUsersCallback = (error, response) => {
         });
 
         /*transform back to array with no keys*/
-        messagesWithAme = Object.values(messagesWithAmeObject);
+        messagesWithAme = objectValues(messagesWithAmeObject);
 
         /*sort the array by ameCount*/
         messagesWithAme = sortMessagesWithAme(messagesWithAme);
@@ -113,6 +114,6 @@ const replaceUserTagsWithRealNames = (text, userTagsAndRealNamesPairs) => {
             text = text.replace(userTag, "@"+userTagsAndRealNamesPairs[userID]);
         });
     }
-    
+
     return text;
 };
