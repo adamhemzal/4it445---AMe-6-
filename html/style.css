@@ -42,9 +42,16 @@ h1, h2, h3, h4, h5, h6 {
 
  .header {
 	background: white;
-	padding: 30px 0;
+	padding: 5px 0;
 	border-bottom: 1px solid #d7d8d9;
 	margin-bottom: 30px;
+ }
+
+ .flexbox {
+	display: flex;
+	justify-content: space-between;
+	flex-direction: row;
+	align-items: center;
  }
 
  h1 {
@@ -56,12 +63,33 @@ h1, h2, h3, h4, h5, h6 {
  }
 
  .logo-outer {
- 	border-radius: 100%;
+	 border-radius: 100%;
+	 margin-left: 2rem;
  	border: 2px solid #3c5a78;
  	width: 70px;
  	height: 70px;
  }
 
+ .menu {
+	display: block;
+    margin-right: 2rem;
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+ }
+
+ .menu span {
+	height: 3px;
+    background-color: #2e3335;
+    margin-bottom: 8px;
+    display: block;
+ }
+
+ .menu-hidden {
+	 position: absolute;
+	 display: block;
+	 right: 0;
+ }
  /**
  *   Dashboard Intro
  */
@@ -70,7 +98,7 @@ h1, h2, h3, h4, h5, h6 {
 	padding: 8px 0;
 	margin-left: 30px;
 	padding-left: 20px;
-	border-left: 1px solid #e0e0e0;
+	text-align: center;
  }
 
  .intro__title {

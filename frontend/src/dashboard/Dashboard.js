@@ -12,17 +12,29 @@ export class Dashboard extends Component {
 
                 <header className="header clearfix">
 
-                    <div className="container">
-                        <div className="logo-outer float--left">
+                    <div className="container-fluid flexbox">
+                        <div className="logo-outer">
                             <img src={logo} alt="Logo AMe"/>
 {/*                             <h1 className="text-center">
                                 AMe
                             </h1> */}
                         </div>
 
-                        <div className="intro float--left">
+                        <div className="intro">
                             <h2 className="intro__title">Workspace dashboard</h2>
                             <h3 className="intro__description">Simple description of this dashboard</h3>
+                        </div>
+
+                        <div className="menu">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+
+                        <div className="menu-hidden">
+                            <ul>
+                                <li><a href="">Hello</a></li>
+                            </ul>
                         </div>
 
                     </div>
