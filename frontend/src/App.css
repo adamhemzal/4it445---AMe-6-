@@ -183,7 +183,7 @@ h1 {
 }
 
 .widget__content {
-
+  margin-top: -1px;
 }
 
 .widget__content--padding {
@@ -312,17 +312,21 @@ h1 {
 }
 
 .top_amers__navigation {
- padding-top: 15px;
+  overflow: hidden;
+  background: white;
+  padding: 20px 10px;
 }
 
 .top_amers__navigation-item {
- width: 20%;
- float: left;
- padding: 0 2%;
+  width: 20%;
+  float: left;
+  padding: 0 2%;
+  transition: all 0.2s;
+  cursor: pointer;
 }
 
-.top_amers__navigation-item:last-child {
-
+.top_amers__navigation .slick-active .top_amers__navigation-item {
+  transform: scale(1.15);
 }
 
 .top_amers .widget__footer {
