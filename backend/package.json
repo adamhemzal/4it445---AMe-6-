@@ -16,6 +16,7 @@
     "@slack/client": "^3.14.1",
     "axios": "0.15.3",
     "backpack-core": "^0.2.0",
+    "bcrypt": "^1.0.3",
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
     "dotenv": "4.0.0",
@@ -24,6 +25,7 @@
     "log4js": "1.1.1",
     "moment": "^2.19.1",
     "object-values": "^1.0.0",
+    "passport": "^0.4.0",
     "sort-object-properties": "^0.3.3"
   },
   "devDependencies": {
