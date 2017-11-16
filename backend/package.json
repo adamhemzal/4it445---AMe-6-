@@ -31,6 +31,7 @@
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "sequelize": "^4.22.7",
+    "sequelize-cli": "^3.0.0",
     "sort-object-properties": "^0.3.3"
   },
   "devDependencies": {
