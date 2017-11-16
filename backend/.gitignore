@@ -11,3 +11,6 @@ npm-debug.log
 
 /tmp/*
 !/tmp/.gitkeep
+
+# DB Config
+/src/config/db.js
