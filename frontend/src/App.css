@@ -107,7 +107,7 @@ h1 {
 }
 
 .menu span {
- height: 3px;
+  height: 3px;
    background-color: #2e3335;
    margin-bottom: 8px;
    display: block;
@@ -117,17 +117,69 @@ h1 {
   position: absolute;
   left: 0;
   top: 0;
-  display: none;
+  display: flex;
+  visibility: hidden;
+  opacity: 0;
   height: 100vh;
   width: 100vw;
   background-color: white;
   z-index: 3;
   justify-content: center;
+  transition: visibility 0.3s linear, opacity 0.3s;
+}
+
+#visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+.menu-hamburger ul {
+  margin: 2rem 0;
 }
 
 .menu-hamburger ul li {
   padding: 2rem;
-  border-bottom: 1px solid #9fa1a2;
+}
+
+.login-button {
+  font-size: 30px;
+  color: white;
+  background-color: #51b8ec;
+  padding: 15px 25px;
+  border-radius: 5px;
+}
+
+.login-button:hover {
+  background-color: #3c89af;
+  text-decoration: none;
+  color: white;
+}
+
+.menu-hamburger__close {
+  display: block;
+  position: absolute;
+  right: 0;
+  margin-right: 2.5rem;
+  margin-top: 2.4rem;
+  width: 40px;
+  height: 25px;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.menu-hamburger__close span {
+  height: 4px;
+  background-color: #2e3335;
+  display: block;
+}
+
+.menu-hamburger__close span:nth-child(1) {
+  transform: rotate(45deg);
+}
+
+.menu-hamburger__close span:nth-child(2) {
+  transform: rotate(-43deg);
+  margin-top: -3px;
 }
 /**
 *   Dashboard Intro
@@ -436,7 +488,7 @@ h1 {
 }
 
 .weather__slide--arrow-left {
-  z-index: 3;
+  z-index: 2;
   margin: 28px 0 0 40px;
 }
 

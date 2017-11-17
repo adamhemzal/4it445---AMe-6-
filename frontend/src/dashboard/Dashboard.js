@@ -3,7 +3,7 @@ import { WeatherWidget } from '../widgets/Weather/WeatherWidget';
 import { TopAmersWidget } from '../widgets/TopAmers/TopAmersWidget';
 import { TopAmePostsWidget } from '../widgets/TopAmePosts/TopAmePostsWidget';
 import { PeopleOfADayWidget } from '../widgets/PeopleOfADay/PeopleOfADayWidget';
-import { HamburgerMenu } from '../menu/HamburgerMenu';
+import { HamburgerMenu } from './menu/HamburgerMenu';
 import logo from '../img/logo.png';
 
 export class Dashboard extends Component {
