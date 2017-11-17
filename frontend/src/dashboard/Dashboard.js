@@ -3,9 +3,13 @@ import { WeatherWidget } from '../widgets/Weather/WeatherWidget';
 import { TopAmersWidget } from '../widgets/TopAmers/TopAmersWidget';
 import { TopAmePostsWidget } from '../widgets/TopAmePosts/TopAmePostsWidget';
 import { PeopleOfADayWidget } from '../widgets/PeopleOfADay/PeopleOfADayWidget';
+import { HamburgerMenu } from '../menu/HamburgerMenu';
 import logo from '../img/logo.png';
 
 export class Dashboard extends Component {
+
+    
+
     render() {
         return (
             <div>
@@ -25,17 +29,7 @@ export class Dashboard extends Component {
                             <h3 className="intro__description">Simple description of this dashboard</h3>
                         </div>
 
-                        <div className="menu">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-
-                        <div className="menu-hidden">
-                            <ul>
-                                <li><a href="">Hello</a></li>
-                            </ul>
-                        </div>
+                        <HamburgerMenu />
 
                     </div>
 
