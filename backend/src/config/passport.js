@@ -24,7 +24,7 @@ module.exports = (passport) => {
         bcrypt.compare(password, adminPassword)
         .then(function(res) {
           if (res) {
-            return done(null, {username: "admin", password: adminPassword});
+            return done(null, {username: "admin", password: adminPassword}, "Login successful");
           }
           return done(null, false, { message: "Incorrect credentials" });
         })
