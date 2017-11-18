@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 export class LoginMenu extends Component {
 
@@ -26,7 +27,12 @@ export class LoginMenu extends Component {
     }
 
     handleSubmit(e) {
-        
+        e.preventDefault();
+        const {userInput, passInput} = this.state;
+        axios.post('/login', { userInput, passInput })
+        .then((res) => {
+            //co tu?
+        });
     }
 
     render() {
