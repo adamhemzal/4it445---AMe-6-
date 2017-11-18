@@ -10,6 +10,7 @@ export class LoginMenu extends Component {
         }
         this.handleChangeUser = this.handleChangeUser.bind(this);
         this.handleChangePasswd = this.handleChangePasswd.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleChangeUser(e) {
@@ -24,9 +25,13 @@ export class LoginMenu extends Component {
         });
     }
 
+    handleSubmit(e) {
+        
+    }
+
     render() {
         return(
-            <form method="POST" name="login-form" className="menu-form">
+            <form method="POST" name="login-form" className="menu-form" onSumbit={this.handleSubmit}>
                 <div className="menu-form--index">
                     <div className="menu-form--items">
                         <label for="user">Username</label>
