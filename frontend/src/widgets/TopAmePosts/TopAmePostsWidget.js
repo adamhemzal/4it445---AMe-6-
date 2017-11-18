@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import api from '../api.js';
+import api from '../../api.js';
 
 export class TopAmePostsWidget extends Component {
 
@@ -27,29 +27,29 @@ export class TopAmePostsWidget extends Component {
 
         return(
                 <div className="col-md-4 widget top_posts">
-                
+
                     <div className="widget__inner">
-                
+
                         <div className="widget__header clearfix">
                             <h2 className="float--left widget__name">Top AMe Posts</h2>
                             <h3 className="float--right">4IT445 <span>#general</span></h3>
                         </div>
-                
+
                         <div className="widget__content widget__content--padding">
                             <ul className="top_posts__list">
                                 {topAmePosts.map((topAmePost, index) =>
                                         <TopAmePost data={topAmePost} />
                                             )}
                             </ul>
-                
+
                         </div>
-                
+
                         <div className="widget__footer text-center">
                             <a className="btn btn--link" href="#" role="button">See All</a>
                         </div>
-                
+
                     </div>
-                
+
                 </div>
                 );
     }

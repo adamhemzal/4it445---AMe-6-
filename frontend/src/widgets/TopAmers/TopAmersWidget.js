@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import AMer from '../../img/amer.png';
 import Slider from 'react-slick';
-import api from '../api.js';
+import api from '../../api.js';
 
 export class TopAmersWidget extends Component {
 

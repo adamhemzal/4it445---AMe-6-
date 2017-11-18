@@ -1,4 +1,4 @@
-const LocalStrategy = require('passport-local').Strategy;
+const JsonStrategy = require('passport-json').Strategy;
 const adminUsername = process.env.ROOT_ADMIN_USERNAME || '';
 const adminPassword = process.env.ROOT_ADMIN_PASSWORD || '';
 const bcrypt = require('bcrypt');
@@ -13,12 +13,11 @@ module.exports = (passport) => {
     done(null, id);
   });
 
-  passport.use(new LocalStrategy(
-    function(username, password, done) {
+  passport.use(new JsonStrategy({passReqToCallback: true},
+    function(req, username, password, done) {
       bcrypt.hash(password, saltRounds).then(function(hash) {
         console.log(hash);
       });
-
       // Admin login
       if (username == adminUsername) {
         bcrypt.compare(password, adminPassword)

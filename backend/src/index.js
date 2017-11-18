@@ -15,8 +15,17 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded());
-app.use(cors());
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+
+// CORS settings
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Credentials', true);
+  res.header('Access-Control-Allow-Origin', req.headers.origin);
+  res.header('Access-Control-Allow-Headers', req.header('Access-Control-Request-Headers'));
+  next();
+});
 app.use(rootRoutes);
 
 app.use((req, res, next) => {
