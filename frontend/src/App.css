@@ -98,6 +98,8 @@ h1 {
   height: 70px;
 }
 
+/* Menu Hamburger */
+
 .menu {
  display: block;
    margin-right: 2rem;
@@ -122,9 +124,10 @@ h1 {
   opacity: 0;
   height: 100vh;
   width: 100vw;
-  background-color: white;
+  background-color: #eff1f2;
   z-index: 3;
   justify-content: center;
+  align-items: center;
   transition: visibility 0.3s linear, opacity 0.3s;
 }
 
@@ -141,23 +144,10 @@ h1 {
   padding: 2rem;
 }
 
-.login-button {
-  font-size: 30px;
-  color: white;
-  background-color: #51b8ec;
-  padding: 15px 25px;
-  border-radius: 5px;
-}
-
-.login-button:hover {
-  background-color: #3c89af;
-  text-decoration: none;
-  color: white;
-}
-
 .menu-hamburger__close {
   display: block;
   position: absolute;
+  top: 0;
   right: 0;
   margin-right: 2.5rem;
   margin-top: 2.4rem;
@@ -181,6 +171,60 @@ h1 {
   transform: rotate(-43deg);
   margin-top: -3px;
 }
+
+/**
+* Form Login
+*/
+
+.menu-form {
+  width: 350px;
+  min-width: 300px;
+  max-width: 100%;
+}
+
+.menu-form--index {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-form--items {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-form--items input {
+  display: flex;
+  margin-bottom: 1rem;
+  outline: none;
+  border: 1px solid #d7d8d9;
+  padding: 5px;
+  font-size: 1.2rem;
+  flex-direction: column;
+}
+
+.menu-form--items input:focus {
+  border: 1px solid #2e3335;
+}
+
+.login-button {
+  font-family: "Roboto Condensed";
+  font-weight: bold;
+  font-size: 1.4rem;
+  border: 0;
+  color: white;
+  background-color: #51b8ec;
+  padding: 7px 15px;
+  border-radius: 3px;
+  cursor: pointer;
+  box-shadow: 0px 0px 15px 0px rgba(128, 126, 126, 0.21);
+}
+
+.login-button:hover {
+  background-color: #3c89af;
+  text-decoration: none;
+  color: white;
+}
+
 /**
 *   Dashboard Intro
 */
@@ -520,4 +564,187 @@ h1 {
 .people-day__content {
  margin-bottom: 0;
  font-size: 14px;
+}
+
+/*-----------------------------------------------------------------------------------*/
+/*	Admin Area
+/*-----------------------------------------------------------------------------------*/
+
+.admin-sidebar {
+  height: 100vh;
+  padding: 0;
+  background-color: #2d3235;
+  /* #2d3235 */
+}
+
+.admin-sidebar__user-info {
+  padding: 20px 5px;
+  width: 90%;
+  margin: 0 auto;
+  border-bottom: 1px solid white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.admin-sidebar__user-info p {
+  margin-top: 20px;
+  margin-bottom: -5px;
+  font-family: "Roboto Condensed";
+  font-size: 1.1rem;
+  color: white;
+}
+
+.admin-sidebar__user-info--profile-pic {
+  width: 150px;
+}
+
+.admin-sidebar__user-info--profile-pic img {
+  border-radius: 50%;
+  max-width: 100%;
+}
+
+/* Admin Sidebar List */
+
+.admin-sidebar__list {
+  width: 100%;
+  margin: 0 auto;
+  padding: 25px 0;
+}
+
+.admin-sidebar__list ul li {
+  padding: 10px 0;
+  display: block;
+}
+
+#admin-sidebar__list--active {
+  width: 100%;
+  background-color: #1f2325;
+}
+
+.admin-sidebar__list ul li a {
+  display: block;
+  font-family: "Roboto Condensed";
+  font-weight: bold;
+  font-size: 1.4rem;
+  text-decoration: none;
+  color: white;
+  padding: 5px 0;
+  margin-left: 15px;
+}
+
+.admin-sidebar__other {
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 5px;
+  padding: 10px 0;
+  border-top: 1px solid white;
+}
+
+.admin-sidebar__other ul li a {
+  display: block;
+  font-family: "Roboto Condensed";
+  font-weight: bold;
+  font-size: 1.4rem;
+  text-decoration: none;
+  color: white;
+  padding: 5px 0;
+}
+
+/* Admin Header */
+.admin-header {
+  width: 100%;
+  height: 110px;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #d7d8d9;
+}
+
+.admin-header h1 {
+  font-family: "Roboto Condensed";
+  font-size: 3rem;
+  font-weight: bold;
+  color: #2d3235;
+  margin: 0 0 0 3rem;
+
+}
+
+.admin-header--button {
+  font-family: "Roboto Condensed";
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+  background-color: #51b8ec;
+  margin: 0 3rem 0 0;
+  padding: 10px 20px;
+  border: 0;
+  cursor: pointer;
+  box-shadow: 0px 0px 15px 0px rgba(128, 126, 126, 0.21);
+}
+
+.admin-header--button:hover {
+  background-color: #3982a7;
+}
+
+.zero-padding {
+  padding: 0;
+}
+
+/* Admin Main */
+
+.admin-main {
+  background-color: white;
+  margin: 3rem 5rem;
+  box-shadow: 0px 0px 15px 0px rgba(128, 126, 126, 0.21);
+}
+
+.admin-main--button {
+  font-family: "Roboto Condensed";
+  font-size: 1.2rem;
+  color: white;
+  background-color: #51b8ec;
+  padding: 10px 20px;
+  border: 0;
+  cursor: pointer;
+  box-shadow: 0px 0px 15px 0px rgba(128, 126, 126, 0.21);
+}
+
+.admin-main--button-delete {
+  background-color: #ec5151;
+}
+
+.admin-main--button-delete:hover {
+  background-color: #a73a3a;
+}
+
+.admin-main--button-edit {
+  background-color: #51b8ec;
+  margin-right: 1rem;
+}
+
+.admin-main--button-edit:hover {
+  background-color: #3982a7;
+}
+
+.admin-main__items ul {
+  width: 90%;
+  margin: 0 auto;
+  padding-bottom: 3rem;
+}
+
+.admin-main__items ul li {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  border-bottom: 1px solid #d7d8d9;
+}
+
+.admin-main__items ul li p {
+  margin: 0;
+  font-family: "Poppins";
+  font-size: 1.7rem;
 }

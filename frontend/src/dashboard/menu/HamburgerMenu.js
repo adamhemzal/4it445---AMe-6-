@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { LoginMenu } from './LoginMenu';
 
 export class HamburgerMenu extends Component {
     constructor(props) {
@@ -30,9 +31,7 @@ export class HamburgerMenu extends Component {
                         <span></span>
                         <span></span>
                     </div>
-                    <ul>
-                        <li><a href="" className="login-button">Login</a></li>
-                    </ul>
+                    <LoginMenu />
                 </div>
             </div>
         )

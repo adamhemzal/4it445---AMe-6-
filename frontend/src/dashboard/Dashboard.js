@@ -5,6 +5,7 @@ import { TopAmePostsWidget } from '../widgets/TopAmePosts/TopAmePostsWidget';
 import { PeopleOfADayWidget } from '../widgets/PeopleOfADay/PeopleOfADayWidget';
 import { HamburgerMenu } from './menu/HamburgerMenu';
 import logo from '../img/logo.png';
+//import { Admin } from '../admin/Admin';
 
 export class Dashboard extends Component {
 
@@ -19,9 +20,6 @@ export class Dashboard extends Component {
                     <div className="container-fluid flexbox">
                         <div className="logo-outer">
                             <img src={logo} alt="Logo AMe"/>
-{/*                             <h1 className="text-center">
-                                AMe
-                            </h1> */}
                         </div>
 
                         <div className="intro">

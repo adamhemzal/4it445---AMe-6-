@@ -152,7 +152,7 @@ export class WeatherWidget extends Component {
           };
 
         return(
-        <div className="col-md-4 widget weather">
+        <div className="col-lg-4 col-md-12 widget weather">
         <Slider {...weatherSettings}>
         {this.state.weatherCities.map((city, index) =>
             <div key={index} className="widget__inner">
