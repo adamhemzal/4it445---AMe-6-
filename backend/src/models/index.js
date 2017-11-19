@@ -21,18 +21,18 @@ if (config.use_env_variable) {
 }
 
 // Remember to require all model files here:
-// const modelModules = [require('./product'), require('./productcategory')];
-//
-// modelModules.forEach(function(modelModule) {
-//   const model = modelModule(sequelize, DataTypes);
-//   db[model.name] = model;
-// });
-//
-// Object.keys(db).forEach(modelName => {
-//   if (db[modelName].associate) {
-//     db[modelName].associate(db);
-//   }
-// });
+const modelModules = [require('./dashboard'), require('./user'), require('./widget')];
+
+modelModules.forEach(function(modelModule) {
+  const model = modelModule(sequelize, DataTypes);
+  db[model.name] = model;
+});
+
+Object.keys(db).forEach(modelName => {
+  if (db[modelName].associate) {
+    db[modelName].associate(db);
+  }
+});
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
