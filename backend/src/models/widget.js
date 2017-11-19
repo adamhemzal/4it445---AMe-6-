@@ -1,9 +1,11 @@
 'use strict';
 
 module.exports = (sequelize, DataTypes) => {
-  const Widget = sequelize.define('widget', {
-    id: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true },
-    name: Sequelize.STRING,
-    settings: Sequelize.JSON
+  const Widget = sequelize.define('Widget', {
+    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+    name: DataTypes.STRING,
+    settings: DataTypes.JSON
   });
+
+  return Widget;
 };
