@@ -56,7 +56,7 @@ export class LoginMenu extends Component {
     const { doRedirect } = this.state;
 
     if (doRedirect) {
-      return <Redirect to="/admin" />;
+      return <Redirect push to="/admin" />;
     }
 
     return(
