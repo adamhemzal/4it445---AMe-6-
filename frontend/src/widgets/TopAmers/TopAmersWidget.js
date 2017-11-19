@@ -51,6 +51,9 @@ export class TopAmersWidget extends Component {
       };
       return (
         <div className="col-md-4 widget top_amers">
+          {/* <div className="widget_settings__header">
+            <i className="fa fa-wrench" aria-hidden="true"></i>
+          </div> */}
           <div className="widget__inner widget__inner--dark">
 
             <div className="widget__header clearfix">
