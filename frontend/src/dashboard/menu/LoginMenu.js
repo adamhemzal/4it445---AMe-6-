@@ -31,15 +31,6 @@ export class LoginMenu extends Component {
   handleSubmit(e) {
     e.preventDefault();
     const {userInput, passInput, doRedirect} = this.state;
-    // Tohle te ted automaticky prihlasi bez validace. Můžeš pak smazat
-    this.setState({
-      doRedirect: true
-    });
-
-    // api.post('login', {username: userInput, password: passInput})
-    // .then((res) => {
-    //   console.log(res);
-    // });
 
     api({
       method: 'post',
@@ -51,12 +42,13 @@ export class LoginMenu extends Component {
         password: passInput
       }
     }).then((res) => {
+      const { success, message, user } = res.data;
       console.log(res);
-      // Správně by to asi mělo poslat data na server a nějak zhodnotit zda to odpovídá a poslat je zpátky?
-/*       this.setState({
-        doRedirect: true
-      }); */
-
+      if (success) {
+        this.setState({
+          doRedirect: true
+        });
+      }
     });
   }
 
