@@ -38,7 +38,7 @@ export class TopAmePostsWidget extends Component {
                         <div className="widget__content widget__content--padding">
                             <ul className="top_posts__list">
                                 {topAmePosts.map((topAmePost, index) =>
-                                        <TopAmePost data={topAmePost} />
+                                        <TopAmePost key={index} data={topAmePost} />
                                             )}
                             </ul>
 
