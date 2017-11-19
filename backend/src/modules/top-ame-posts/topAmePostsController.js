@@ -8,12 +8,13 @@ const objectValues = require('object-values');
 const WebClient = require('@slack/client').WebClient;
 const token = process.env.SLACK_API_TOKEN || '';
 const web = new WebClient(token);
+const channel = 'C0BUA20S0';
 
 export const topAmePostsController = async (req, res) => {
   //timestamp pro Slack - aktualni cas - jeden tyden
   const oldestTimestamp = moment().subtract(1, 'week').format('X');
 
-  web.channels.history('C0BUA20S0', {'count': 1000, 'oldest': oldestTimestamp}, (error, response) => {
+  web.channels.history(channel, {'count': 1000, 'oldest': oldestTimestamp}, (error, response) => {
     if (error) {
       console.log('Error:', error);
     } else {
@@ -29,7 +30,12 @@ export const topAmePostsController = async (req, res) => {
         if (reactions !== undefined) {
           reactions.forEach((reaction) => {
             if (reaction.name === "ame") {
-              messagesWithAme.push({ameCount: reaction.count, userID: userID, text: text});
+              messagesWithAme.push({
+                  ameCount: reaction.count, 
+                  userID: userID, 
+                  text: text,
+                  link: "https://4it445.slack.com/archives/"+channel+"/"+(message.ts.replace(".", "")),
+              });
             }
           });
         }
@@ -68,6 +74,7 @@ const getSlackUsersCallback = (error, response) => {
       message.text = replaceUserTagsWithRealNames(message.text, userTagsAndRealNamesPairs);
       message.realName = usersData[message.userID].real_name;
       message.image = usersData[message.userID].image;
+      message.userLink = "https://4it445.slack.com/threads/team/"+message.userID;
     });
 
     /*transform back to array with no keys*/
