@@ -68,11 +68,11 @@ export class TopAmersWidget extends Component {
                     <li key={index} className="top_amers__list-item">
                       <div className="top_amers__image">
                         <img src={topAmer.image} alt={topAmer.realName}/>
-                        <span className="top_amers__badge">{index + 1}.</span>
+                        <span className="top_amers__badge">x{topAmer.ameCount}</span>
                       </div>
                       <div className="top_amers__content clearfix">
                         <h3 className="top_amers__name float--left">{topAmer.realName}</h3>
-                        <h5 className="top_amers__value float--right">x{topAmer.ameCount}</h5>
+                        <h5 className="top_amers__value float--right">{index + 1}.</h5>
                       </div>
                     </li>
                   )}
