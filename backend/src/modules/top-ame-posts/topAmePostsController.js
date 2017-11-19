@@ -34,7 +34,7 @@ export const topAmePostsController = async (req, res) => {
                   ameCount: reaction.count, 
                   userID: userID, 
                   text: text,
-                  link: "https://4it445.slack.com/archives/"+channel+"/"+(message.ts.replace(".", "")),
+                  link: "https://4it445.slack.com/messages/"+channel+"/"+(message.ts.replace(".", "")),
               });
             }
           });
