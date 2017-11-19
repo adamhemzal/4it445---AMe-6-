@@ -3,6 +3,7 @@ import Input from 'react-validation/build/input';
 import React, { Component } from 'react';
 import api from '../../api.js';
 import { Route, Redirect } from 'react-router-dom';
+import Alert from 'react-s-alert';
 
 export class LoginMenu extends Component {
 
@@ -48,6 +49,14 @@ export class LoginMenu extends Component {
       if (success) {
         this.setState({
           doRedirect: true
+        });
+      } else {
+        Alert.error('<div class="alert-content"><h5>' + message + '</h5></div>', {
+          html: true,
+          position: 'top',
+          effect: 'flip',
+          beep: false,
+          timeout: 5000,
         });
       }
     });

@@ -724,3 +724,9 @@ h1 {
   font-family: "Poppins";
   font-size: 1.7rem;
 }
+
+/* Alert */
+
+.alert-content {
+  text-align: center;
+}
