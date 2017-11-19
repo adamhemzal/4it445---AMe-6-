@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = (sequelize, DataTypes) => {
-  const Dashboard = sequelize.define('Dashboard', {
+  const Dashboard = sequelize.define('dashboard', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     name: DataTypes.STRING,
     description: DataTypes.STRING,
@@ -10,8 +10,8 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Dashboard.associate = function(models) {
-    Dashboard.belongsToMany(models.User, {through: 'dashboard_user'});
-    Dashboard.hasMany(models.Widget);
+    Dashboard.belongsToMany(models.user, {through: 'dashboard_user'});
+    Dashboard.hasMany(models.widget);
   };
 
   return Dashboard;

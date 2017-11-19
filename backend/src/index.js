@@ -2,6 +2,7 @@ require('dotenv').config();
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import rootRoutes from './rootRoutes';
+import db from './models';
 const express = require('express');
 const app = express();
 const flash = require("connect-flash");
@@ -27,6 +28,8 @@ app.use((req, res, next) => {
   next();
 });
 app.use(rootRoutes);
+
+// db.sequelize.sync(function(err){});
 
 app.use((req, res, next) => {
   res.status(404);
