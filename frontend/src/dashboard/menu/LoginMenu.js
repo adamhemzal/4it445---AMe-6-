@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import api from '../../api.js';
+import { Route, Redirect } from 'react-router-dom';
 
 export class LoginMenu extends Component {
 
@@ -7,7 +8,8 @@ export class LoginMenu extends Component {
     super(props);
     this.state = {
       userInput: "",
-      passInput: ""
+      passInput: "",
+      doRedirect: false
     }
     this.handleChangeUser = this.handleChangeUser.bind(this);
     this.handleChangePasswd = this.handleChangePasswd.bind(this);
@@ -28,7 +30,9 @@ export class LoginMenu extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const {userInput, passInput} = this.state;
+    const {userInput, passInput, doRedirect} = this.state;
+
+
     // api.post('login', {username: userInput, password: passInput})
     // .then((res) => {
     //   console.log(res);
@@ -45,10 +49,19 @@ export class LoginMenu extends Component {
       }
     }).then((res) => {
       console.log(res);
+      this.setState({
+        doRedirect: true
+      });
     });
   }
 
   render() {
+    const { doRedirect } = this.state;
+
+    if (doRedirect) {
+      return <Redirect to="/admin" />;
+    }
+
     return(
       <form method="POST" name="login-form" className="menu-form" onSubmit={this.handleSubmit}>
         <div className="menu-form--index">
