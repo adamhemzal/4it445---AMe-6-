@@ -10,8 +10,8 @@ module.exports = (passport) => {
     done(null, user);
   });
 
-  passport.deserializeUser(function(id, done) {
-    done(null, id);
+  passport.deserializeUser(function(user, done) {
+    done(null, user);
   });
 
   passport.use(new JsonStrategy({passReqToCallback: true},
