@@ -336,6 +336,15 @@ h1 {
  margin-bottom: 10px;
 }
 
+.top_posts_post-link {
+    text-decoration: none;
+    color: initial;
+}
+
+.top_posts_post-link:hover {
+    text-decoration: none;
+}
+
 .top_posts__name,
 .top_posts__likes {
  font-size: 14px;

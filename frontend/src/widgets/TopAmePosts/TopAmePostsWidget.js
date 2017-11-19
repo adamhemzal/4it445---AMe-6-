@@ -64,16 +64,18 @@ class TopAmePost extends Component {
     return (
         <li className="top_posts__list-item">
           <h3 className="top_posts_post-title">
-            <ResponsiveEllipsis
-              text={this.props.data.text}
-              maxLine='3'
-              ellipsis='...'
-              trimRight
-              basedOn='letters'
-            />
+          <a className="top_posts_post-link" href={this.props.data.link}>
+              <ResponsiveEllipsis
+                  text={this.props.data.text}
+                  maxLine='3'
+                  ellipsis='...'
+                  trimRight
+                  basedOn='letters'
+                  />
+            </a>
           </h3>
           <div className="clearfix">
-            <h4 className="top_posts__name"><a href="#">{this.props.data.realName}</a></h4>
+            <h4 className="top_posts__name"><a href={this.props.data.userLink}>{this.props.data.realName}</a></h4>
             <h5 className="top_posts__likes"><i className="fa fa-thumbs-o-up"></i>x{this.props.data.ameCount}</h5>
           </div>
         </li>
