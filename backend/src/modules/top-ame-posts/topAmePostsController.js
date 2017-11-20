@@ -11,9 +11,9 @@ const web = new WebClient(token);
 const channel = 'C0BUA20S0';
 
 export const topAmePostsController = async (req, res) => {
-  messagesWithAme = [];
   //timestamp pro Slack - aktualni cas - jeden tyden
   const oldestTimestamp = moment().subtract(1, 'week').format('X');
+  messagesWithAme = [];
 
   web.channels.history(channel, {'count': 1000, 'oldest': oldestTimestamp}, (error, response) => {
     if (error) {
@@ -33,10 +33,10 @@ export const topAmePostsController = async (req, res) => {
           reactions.forEach((reaction) => {
             if (reaction.name === "ame") {
               messagesWithAme.push({
-                  ameCount: reaction.count,
-                  userID: userID,
-                  text: text,
-                  link: "https://4it445.slack.com/messages/"+channel+"/"+(message.ts.replace(".", "")),
+                ameCount: reaction.count,
+                userID: userID,
+                text: text,
+                link: "https://4it445.slack.com/messages/"+channel+"/"+(message.ts.replace(".", "")),
               });
             }
           });
