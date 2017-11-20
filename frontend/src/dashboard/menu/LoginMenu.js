@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import api from '../../api.js';
-import { Route, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 export class LoginMenu extends Component {
 

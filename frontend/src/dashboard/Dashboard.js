@@ -4,16 +4,13 @@ import { TopAmersWidget } from '../widgets/TopAmers/TopAmersWidget';
 import { TopAmePostsWidget } from '../widgets/TopAmePosts/TopAmePostsWidget';
 import { PeopleOfADayWidget } from '../widgets/PeopleOfADay/PeopleOfADayWidget';
 import { HamburgerMenu } from './menu/HamburgerMenu';
-import logo from '../img/logo.png';
-//import { Admin } from '../admin/Admin';
 
 export class Dashboard extends Component {
-
-    
+       
 
     render() {
         return (
-            <div>
+             <div>
 
                 <header className="header clearfix">
 
