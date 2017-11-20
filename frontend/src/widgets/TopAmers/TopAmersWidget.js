@@ -4,12 +4,15 @@ import AMer from '../../img/amer.png';
 import Slider from 'react-slick';
 import api from '../../api.js';
 
+import MDSpinner from "react-md-spinner";
+
 export class TopAmersWidget extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      topAmers: []
+      topAmers: [],
+      isLoading: true
     };
   }
 
@@ -17,7 +20,7 @@ export class TopAmersWidget extends Component {
     api('top-amers')
     .then(response => {
       const { data: topAmers } = response;
-      this.setState({ topAmers });
+      this.setState({ topAmers, isLoading: false });
     })
     .catch(error => {
       console.log(error);
@@ -27,15 +30,16 @@ export class TopAmersWidget extends Component {
   render() {
     const { topAmers } = this.state;
 
-    if (topAmers.length === 0) {
+    { /*if (topAmers.length === 0) {
       //TODO vyrenderovat nějakou dummy compomentu
       return (
-        <div className="col-md-4 widget top_amers">
+        <div className="widget top_amers">
           <div className="widget__inner widget__inner--dark">
           </div>
         </div>
       );
-    } else {
+    } else { */
+
       const settings = {
         customPaging: i => {
           return <div className="top_amers__navigation-item col"><div className="top_amers__navigation-item-inner"><img src={topAmers[i].image} /></div></div>;
@@ -49,8 +53,11 @@ export class TopAmersWidget extends Component {
         dotsClass: "top_amers__navigation",
         arrows: false
       };
+
+      const isLoading = this.state;
+
       return (
-        <div className="col-md-4 widget top_amers">
+        <div className="widget top_amers">
           {/* <div className="widget_settings__header">
             <i className="fa fa-wrench" aria-hidden="true"></i>
           </div> */}
@@ -61,6 +68,8 @@ export class TopAmersWidget extends Component {
             </div>
 
             <div className="widget__content">
+
+              { this.state.isLoading ? <MDSpinner className="md-spinner" /> : null }
 
               <ul className="top_amers__list">
                 <Slider {...settings}>

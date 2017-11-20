@@ -3,6 +3,8 @@ import axios from 'axios';
 import api from '../../api.js';
 import LinesEllipsis from 'react-lines-ellipsis'
 import responsiveHOC from 'react-lines-ellipsis/lib/responsiveHOC'
+import MDSpinner from "react-md-spinner";
+
 
 const ResponsiveEllipsis = responsiveHOC()(LinesEllipsis)
 
@@ -11,7 +13,8 @@ export class TopAmePostsWidget extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      topAmePosts: []
+      topAmePosts: [],
+      isLoading: true
     };
   }
 
@@ -19,7 +22,7 @@ export class TopAmePostsWidget extends Component {
     api('top-ame-posts')
     .then(response => {
       const {data: topAmePosts} = response;
-      this.setState({topAmePosts});
+      this.setState({topAmePosts, isLoading: false });
     })
     .catch(error => {
       console.log(error);
@@ -27,10 +30,10 @@ export class TopAmePostsWidget extends Component {
   }
 
   render() {
-    const {topAmePosts} = this.state;
+    const { topAmePosts, isLoading } = this.state;
 
     return(
-      <div className="col-md-4 widget top_posts">
+      <div className="widget top_posts">
 
         <div className="widget__inner">
 
@@ -40,6 +43,9 @@ export class TopAmePostsWidget extends Component {
           </div>
 
           <div className="widget__content widget__content--padding">
+
+            { this.state.isLoading ? <MDSpinner className="md-spinner" /> : null }
+
             <ul className="top_posts__list">
               {topAmePosts.map((topAmePost, index) =>
                 <TopAmePost key={index} data={topAmePost} />

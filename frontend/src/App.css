@@ -32,6 +32,15 @@ img { max-width: 100%; }
 .float--left { float: left; }
 .float--right { float: right; }
 
+.md-spinner {
+  display: block !important;
+  margin: 20px auto;
+}
+
+.row.edit-bar {
+  margin-bottom: 15px;
+}
+
 /**
 *   Typography
 */
@@ -226,10 +235,40 @@ h1 {
 }
 
 /**
+ *   Modal
+ */
+
+.modal-header,
+.modal-footer {
+    display: block;
+}
+
+.modal-title {
+  float: left;
+}
+
+.modal-footer>:not(:last-child) {
+  float: right;
+}
+
+/**
 *   General Widget
 */
+.defaultWidgetFrame {
+  padding: 0;
+  border: 0;
+  margin-bottom: 30px;
+}
+
+.defaultWidgetFrameHeader {
+  display: none;
+}
+
+.editable-column .defaultWidgetFrameHeader {
+  display: block;
+}
+
 .widget {
- margin-bottom: 30px;
 }
 
 .widget__inner {

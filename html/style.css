@@ -28,6 +28,11 @@ img { max-width: 100%; }
 .float--left { float: left; }
 .float--right { float: right; }
 
+.md-spinner {
+  display: block;
+  margin: 0 auto;
+}
+
 /**
  *   Typography
  */

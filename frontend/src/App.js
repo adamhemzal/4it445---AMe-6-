@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 //import logo from './logo.svg';
 import { BrowserRouter, Route } from 'react-router-dom';
-import { Dashboard } from './dashboard/Dashboard';
+import { AMeDashboard } from './dashboard/Dashboard';
 import { Admin } from './admin/Admin';
 import Alert from 'react-s-alert';
 
@@ -15,12 +15,14 @@ import 'react-s-alert/dist/s-alert-css-effects/flip.css';
 import './App.css';
 
 class App extends Component {
+
   render() {
     return (
+
       <BrowserRouter>
         <div>
           <Alert stack={{limit: 1}} />
-          <Route exact path="/" component={Dashboard}/>
+          <Route exact path="/" component={AMeDashboard}/>
           <Route path="/admin" component={Admin}/>
         </div>
       </BrowserRouter>
