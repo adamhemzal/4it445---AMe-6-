@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Slider from 'react-slick';
+import MDSpinner from "react-md-spinner";
 
 export class WeatherWidget extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            weatherCities: []
+            weatherCities: [],
+            isLoading: true
         };
     }
 
@@ -27,7 +29,8 @@ export class WeatherWidget extends Component {
           .then(axios.spread((firstCityData, secondCityData, thirdCityData, fourthCityData) => {
             const weatherCitiesData = [firstCityData, secondCityData, thirdCityData, fourthCityData];
             this.setState({
-                weatherCities: weatherCitiesData
+                weatherCities: weatherCitiesData,
+                isLoading: false
             });
           }));
     }
@@ -102,20 +105,20 @@ export class WeatherWidget extends Component {
 
          // Definování datumů
          const currentDate = new Date();
-         
+
         const hours = currentDate.getHours().toString().length === 1 ? '0'+currentDate.getHours() : currentDate.getHours();
         const minutes = currentDate.getMinutes().toString().length === 1 ? '0'+currentDate.getMinutes() : currentDate.getMinutes();
         const time = hours + ":" + minutes;
-         
+
         // Výpis data - čísla
         const date = currentDate.getDate();
-         
+
         //Výpis jména měsíce
         const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
         const nameMonths = months[currentDate.getMonth()];
 
         // Stateless component - NextArrow - Slider
-        const NextArrow = (props) => {  
+        const NextArrow = (props) => {
             const {className, style, onClick} = props
             return (
                 <div
@@ -125,9 +128,9 @@ export class WeatherWidget extends Component {
                 ></div>
                 );
             }
-                  
+
         // Stateless component - PrevArrow - Slider
-        const PrevArrow = (props) => {  
+        const PrevArrow = (props) => {
             const {className, style, onClick} = props
             return (
                 <div
@@ -136,7 +139,7 @@ export class WeatherWidget extends Component {
                     onClick={onClick}
                 ></div>
             );
-        } 
+        }
 
         //Slick settings
         const weatherSettings = {
@@ -151,42 +154,48 @@ export class WeatherWidget extends Component {
             prevArrow: <PrevArrow className={this.props.className}/>,
           };
 
+        const isLoading = this.state;
+
         return(
-        <div className="col-lg-4 col-md-12 widget weather">
+        <div className="widget weather">
+
+        { this.state.isLoading ? <MDSpinner className="md-spinner" /> : null }
+
+
         <Slider {...weatherSettings}>
-        {this.state.weatherCities.map((city, index) =>
-            <div key={index} className="widget__inner">
+          {this.state.weatherCities.map((city, index) =>
+              <div key={index} className="widget__inner">
 
-                <div className="widget__content">
-                
-                    <div className="weather__slide">
+                  <div className="widget__content">
 
-                        <div className="weather__icon">
-                            {
-                                displayWeatherIcon(city.data.list[0].weather[0].icon)
-                            }
-                        </div>
-                        
-                        <h3 className="weather__city">{city.data.city.name}</h3>
-                    </div>
-                </div>
+                      <div className="weather__slide">
 
-                <div className="widget__footer widget__footer--dark clearfix no-padding">
-                    <div className="float--left">
-                        <h3 className="weather__temperature">{Math.round(city.data.list[0].main.temp-273.15)}<span>o</span></h3>
-                        <h4 className="weather__wind"><i className="wi wi-strong-wind"></i>{city.data.list[0].wind.speed} m/s</h4>
-                    </div>
+                          <div className="weather__icon">
+                              {
+                                  displayWeatherIcon(city.data.list[0].weather[0].icon)
+                              }
+                          </div>
 
-                    <div className="float--right">
-                        <div className="weather__date">
-                            <h4 className="weather__day">{nameMonths} {date}</h4>
-                            <h4 className="weather__time">{time}</h4>
-                        </div>
-                    </div>
+                          <h3 className="weather__city">{city.data.city.name}</h3>
+                      </div>
+                  </div>
 
-                </div>
-            </div>
-        )}
+                  <div className="widget__footer widget__footer--dark clearfix no-padding">
+                      <div className="float--left">
+                          <h3 className="weather__temperature">{Math.round(city.data.list[0].main.temp-273.15)}<span>o</span></h3>
+                          <h4 className="weather__wind"><i className="wi wi-strong-wind"></i>{city.data.list[0].wind.speed} m/s</h4>
+                      </div>
+
+                      <div className="float--right">
+                          <div className="weather__date">
+                              <h4 className="weather__day">{nameMonths} {date}</h4>
+                              <h4 className="weather__time">{time}</h4>
+                          </div>
+                      </div>
+
+                  </div>
+              </div>
+          )}
         </Slider>
         </div>
         )

@@ -25,13 +25,13 @@ module.exports = (passport) => {
           if (res) {
             return done(null, {username: "admin", password: adminPassword}, "Login successful");
           }
-          return done(null, false, { message: "Incorrect credentials" });
+          return done(null, false, { message: "Invalid username or password" });
         })
         // User login
       } else {
         db.user.findOne({where: {username: username}}).then(user => {
           if (!user) {
-            return done(null, false, { message: 'Incorrect credentials.' });
+            return done(null, false, { message: 'Invalid username or password' });
           }
           bcrypt.compare(password, user.password)
           .then(function(res) {

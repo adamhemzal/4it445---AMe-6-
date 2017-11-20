@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 const moment = require('moment');
-let sortedUsersWithAme = [];
+let sortedUsersWithAme;
 let globalRes = null;
 const topAmersMaxCount = 5;
 const WebClient = require('@slack/client').WebClient;
@@ -12,7 +12,8 @@ export const topAmersController = async (req, res) => {
   //timestamp pro Slack - aktualni cas - jeden tyden
   const oldestTimestamp = moment().subtract(1, 'week').format('X');
 
-  web.channels.history('C0BUA20S0', {'count': 1000, 'oldest': oldestTimestamp}, (error, response) => {
+  web.channels.history('C0BUA20S0', {'count': 1000}, (error, response) => {
+    sortedUsersWithAme = [];
     if (error) {
       console.log('Error:', error);
     } else {
@@ -26,7 +27,6 @@ export const topAmersController = async (req, res) => {
 
       /*Sorts the users by AMe count, result goes to global sortedUsersWithAme array*/
       getSortedAmers(usersWithAme);
-      sortedUsersWithAme.slice(0, topAmersMaxCount);/*just selects the top N users*/
 
       /*pairs the users (IDs) with names and pictures, outputs them*/
       getSlackUsers(sortedUsersWithAme);
@@ -68,6 +68,9 @@ const getSortedAmers = (usersWithAme) => {
   tempSortedUsersWithAme = Object.keys(usersWithAme).sort((a, b) => {
     return usersWithAme[b] - usersWithAme[a];
   });
+
+  /*just selects the top N users*/
+  tempSortedUsersWithAme = tempSortedUsersWithAme.slice(0, topAmersMaxCount);
 
   /*assign ame counts to the keys (were lost in during the sorting)*/
   tempSortedUsersWithAme.forEach((userID) => {

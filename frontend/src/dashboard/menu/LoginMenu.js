@@ -1,6 +1,9 @@
+import Form from 'react-validation/build/form';
+import Input from 'react-validation/build/input';
 import React, { Component } from 'react';
 import api from '../../api.js';
-import { Redirect } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
+import Alert from 'react-s-alert';
 
 export class LoginMenu extends Component {
 
@@ -31,7 +34,6 @@ export class LoginMenu extends Component {
   handleSubmit(e) {
     e.preventDefault();
     const {userInput, passInput, doRedirect} = this.state;
-
     api({
       method: 'post',
       url: 'login',
@@ -48,6 +50,14 @@ export class LoginMenu extends Component {
         this.setState({
           doRedirect: true
         });
+      } else {
+        Alert.error('<div class="alert-content"><h5>' + message + '</h5></div>', {
+          html: true,
+          position: 'top',
+          effect: 'flip',
+          beep: false,
+          timeout: 5000,
+        });
       }
     });
   }
@@ -60,17 +70,17 @@ export class LoginMenu extends Component {
     }
 
     return(
-      <form method="POST" name="login-form" className="menu-form" onSubmit={this.handleSubmit}>
+      <Form ref={c => { this.form = c }} method="POST" name="login-form" className="menu-form" onSubmit={this.handleSubmit}>
         <div className="menu-form--index">
           <div className="menu-form--items">
             <label htmlFor="user">Username</label>
-            <input type="text" id="user" onChange={this.handleChangeUser} value={this.state.userInput} tabIndex="1" required />
+            <Input type="text" id="user" name="username" onChange={this.handleChangeUser} value={this.state.userInput} tabIndex="1" required/>
             <label htmlFor="pass">Password</label>
-            <input type="password" id="pass" onChange={this.handleChangePasswd} value={this.state.passInput} tabIndex="2" required />
+            <Input type="password" id="pass" name="password" onChange={this.handleChangePasswd} value={this.state.passInput} tabIndex="2" required/>
           </div>
           <button className="login-button" type="submit" tabIndex="3">Login</button>
         </div>
-      </form>
+      </Form>
     )
   }
 }

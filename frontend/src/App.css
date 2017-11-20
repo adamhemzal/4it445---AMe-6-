@@ -32,6 +32,15 @@ img { max-width: 100%; }
 .float--left { float: left; }
 .float--right { float: right; }
 
+.md-spinner {
+  display: block !important;
+  margin: 20px auto;
+}
+
+.row.edit-bar {
+  margin-bottom: 15px;
+}
+
 /**
 *   Typography
 */
@@ -97,10 +106,10 @@ h1 {
   display: flex;
   visibility: hidden;
   opacity: 0;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   background-color: #eff1f2;
-  z-index: 3;
+  z-index: 100;
   justify-content: center;
   align-items: center;
   transition: visibility 0.3s linear, opacity 0.3s;
@@ -175,6 +184,7 @@ h1 {
   padding: 5px;
   font-size: 1.2rem;
   flex-direction: column;
+  width: 100%;
 }
 
 .menu-form--items input:focus {
@@ -225,10 +235,40 @@ h1 {
 }
 
 /**
+ *   Modal
+ */
+
+.modal-header,
+.modal-footer {
+    display: block;
+}
+
+.modal-title {
+  float: left;
+}
+
+.modal-footer>:not(:last-child) {
+  float: right;
+}
+
+/**
 *   General Widget
 */
+.defaultWidgetFrame {
+  padding: 0;
+  border: 0;
+  margin-bottom: 30px;
+}
+
+.defaultWidgetFrameHeader {
+  display: none;
+}
+
+.editable-column .defaultWidgetFrameHeader {
+  display: block;
+}
+
 .widget {
- margin-bottom: 30px;
 }
 
 .widget__inner {
@@ -286,6 +326,14 @@ h1 {
  color: white;
 }
 
+.widget_settings__header {
+  color: #666;
+  background: #fff;
+  padding: 10px 15px;
+  text-align: right;
+  font-size: 24px;
+}
+
 /*-----------------------------------------------------------------------------------*/
 /*	Buttons
 /*-----------------------------------------------------------------------------------*/
@@ -324,13 +372,21 @@ h1 {
 .top_posts_post-title {
  font-size: 14px;
  font-family: "Poppins";
- font-weight: bold;
  margin-bottom: 10px;
+}
+
+.top_posts_post-link {
+    text-decoration: none;
+    color: initial;
+}
+
+.top_posts_post-link:hover {
+    text-decoration: none;
 }
 
 .top_posts__name,
 .top_posts__likes {
- font-size: 13px;
+ font-size: 14px;
  font-family: "Poppins";
 }
 
@@ -722,4 +778,10 @@ h1 {
   margin: 0;
   font-family: "Poppins";
   font-size: 1.7rem;
+}
+
+/* Alert */
+
+.alert-content {
+  text-align: center;
 }

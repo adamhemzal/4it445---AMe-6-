@@ -1,12 +1,115 @@
 import React, { Component } from 'react';
+import Dashboard, { addWidget } from 'react-dazzle';
+
 import { WeatherWidget } from '../widgets/Weather/WeatherWidget';
 import { TopAmersWidget } from '../widgets/TopAmers/TopAmersWidget';
 import { TopAmePostsWidget } from '../widgets/TopAmePosts/TopAmePostsWidget';
 import { PeopleOfADayWidget } from '../widgets/PeopleOfADay/PeopleOfADayWidget';
 import { HamburgerMenu } from './menu/HamburgerMenu';
+import EditBar from './EditBar';
+import AddWidgetDialog from './AddWidgetDialog';
+import MDSpinner from "react-md-spinner";
 
-export class Dashboard extends Component {
-       
+import logo from '../img/logo.png';
+
+import 'react-dazzle/lib/style/style.css';
+
+//import { Admin } from '../admin/Admin';
+
+export class AMeDashboard extends Component {
+
+    constructor(props) {
+      super(props);
+
+      this.state = {
+        isLoading: true,
+
+        widgets: {
+          TopAmePosts: {
+            type: TopAmePostsWidget,
+            title: 'Top Ame Posts'
+          },
+          TopAmers: {
+            type: TopAmersWidget,
+            title: 'Top Amers'
+          },
+          Weather: {
+            type: WeatherWidget,
+            title: 'Weather'
+          }
+        },
+        layout: {
+          rows: [{
+              columns: [{
+                    className: 'col-md-4',
+                    widgets: [{ key: 'TopAmePosts' }],
+                  },{
+                    className: 'col-md-4',
+                    widgets: [{ key: 'TopAmers' }],
+                  },{
+                    className: 'col-md-4',
+                    widgets: [{ key: 'Weather' }],
+                  }],
+          }, {
+              columns: [{
+                    className: 'col-md-4',
+                    widgets: [{ key: 'Weather' }],
+              }],
+          }],
+        },
+
+        editMode: false,
+        isModalOpen: false,
+        addWidgetOptions: null
+
+      };
+
+    }
+
+    onRemove = (layout) => {
+      this.setState({
+        layout,
+      });
+    }
+
+    onAdd = (layout, rowIndex, columnIndex) => {
+      this.setState({
+        isModalOpen: true,
+        addWidgetOptions: {
+          layout,
+          rowIndex,
+          columnIndex,
+        },
+      });
+    }
+
+    onMove = (layout) => {
+      this.setState({
+        layout,
+      });
+    }
+
+    onRequestClose = () => {
+      this.setState({
+        isModalOpen: false,
+      });
+    }
+
+    toggleEdit = () => {
+      this.setState({
+        editMode: !this.state.editMode,
+      });
+    };
+
+    widgetSelected = (widgetName) => {
+      const { layout, rowIndex, columnIndex } = this.state.addWidgetOptions;
+      this.setState({
+        layout: addWidget(layout, rowIndex, columnIndex, widgetName),
+      });
+      this.onRequestClose();
+    }
+
+
 
     render() {
         return (
@@ -32,11 +135,29 @@ export class Dashboard extends Component {
 
                 <div className="container">
 
-                    <div className="row">
-                        
-                        <TopAmePostsWidget />
+                    <div className="">
+
+                        <EditBar onEdit={this.toggleEdit} />
+                        <Dashboard
+                          onRemove={this.onRemove}
+                          layout={this.state.layout}
+                          widgets={this.state.widgets}
+                          editable={this.state.editMode}
+                          addWidgetComponentText="Add"
+                          onAdd={this.onAdd}
+                          onMove={this.onMove}
+                        />
+
+                        { /*  <TopAmePostsWidget />
                         <TopAmersWidget />
-                        <WeatherWidget />
+                        <WeatherWidget /> */ }
+
+                        <AddWidgetDialog
+                          widgets={this.state.widgets}
+                          isModalOpen={this.state.isModalOpen}
+                          onRequestClose={this.onRequestClose}
+                          onWidgetSelect={this.widgetSelected}
+                        />
 
                     </div>
 
