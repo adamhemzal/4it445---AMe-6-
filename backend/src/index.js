@@ -11,7 +11,11 @@ const session = require('express-session');
 const passport = require('passport');
 require('./config/passport')(passport);
 
-app.use(session({ secret: process.env.SESSION_SECRET }));
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: true,
+  saveUninitialized: false
+}));
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());

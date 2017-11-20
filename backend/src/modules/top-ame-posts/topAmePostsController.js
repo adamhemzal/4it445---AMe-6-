@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-let messagesWithAme = [];
+let messagesWithAme;
 let globalRes = null;
 const moment = require('moment');
 const topAmePostsMaxCount = 5;
@@ -11,6 +11,7 @@ const web = new WebClient(token);
 const channel = 'C0BUA20S0';
 
 export const topAmePostsController = async (req, res) => {
+  messagesWithAme = [];
   //timestamp pro Slack - aktualni cas - jeden tyden
   const oldestTimestamp = moment().subtract(1, 'week').format('X');
 
@@ -20,6 +21,7 @@ export const topAmePostsController = async (req, res) => {
     } else {
       /*make res global so it is accessible from callback functions*/
       globalRes = res;
+
 
       /*get messages with AMe, and store only relevant info*/
       response.messages.forEach((message) => {
@@ -31,8 +33,8 @@ export const topAmePostsController = async (req, res) => {
           reactions.forEach((reaction) => {
             if (reaction.name === "ame") {
               messagesWithAme.push({
-                  ameCount: reaction.count, 
-                  userID: userID, 
+                  ameCount: reaction.count,
+                  userID: userID,
                   text: text,
                   link: "https://4it445.slack.com/messages/"+channel+"/"+(message.ts.replace(".", "")),
               });
@@ -40,12 +42,6 @@ export const topAmePostsController = async (req, res) => {
           });
         }
       });
-
-      /*sort array by ameCount*/
-      messagesWithAme = messagesWithAme.sort((a, b) => {
-        return a.ameCount - b.ameCount;
-      }).reverse(); /*sort is ascending, so reverse it then, so it is descending*/
-
 
       /*trim array so only top *topAmePostsMaxCount* is displayed*/
       messagesWithAme = messagesWithAme.slice(0, topAmePostsMaxCount);
@@ -123,6 +119,5 @@ const replaceUserTagsWithRealNames = (text, userTagsAndRealNamesPairs) => {
       text = text.replace(userTag, "@"+userTagsAndRealNamesPairs[userID]);
     });
   }
-
   return text;
 };

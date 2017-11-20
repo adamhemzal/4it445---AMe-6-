@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 const moment = require('moment');
-let sortedUsersWithAme = [];
+let sortedUsersWithAme;
 let globalRes = null;
 const topAmersMaxCount = 5;
 const WebClient = require('@slack/client').WebClient;
@@ -13,6 +13,7 @@ export const topAmersController = async (req, res) => {
   const oldestTimestamp = moment().subtract(1, 'week').format('X');
 
   web.channels.history('C0BUA20S0', {'count': 1000, 'oldest': oldestTimestamp}, (error, response) => {
+    sortedUsersWithAme = [];
     if (error) {
       console.log('Error:', error);
     } else {

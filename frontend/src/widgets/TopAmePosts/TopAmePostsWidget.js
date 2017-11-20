@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import api from '../../api.js';
 import LinesEllipsis from 'react-lines-ellipsis'
 import responsiveHOC from 'react-lines-ellipsis/lib/responsiveHOC'
@@ -68,24 +67,23 @@ export class TopAmePostsWidget extends Component {
 class TopAmePost extends Component {
   render() {
     return (
-        <li className="top_posts__list-item">
-          <h3 className="top_posts_post-title">
+      <li className="top_posts__list-item">
+        <h3 className="top_posts_post-title">
           <a target="_" className="top_posts_post-link" href={this.props.data.link}>
-              <ResponsiveEllipsis
-                  text={this.props.data.text}
-                  maxLine='3'
-                  ellipsis='...'
-                  trimRight
-                  basedOn='letters'
-                  />
-            </a>
-          </h3>
-          <div className="clearfix">
-            <h4 className="top_posts__name"><a target="_" href={this.props.data.userLink}>{this.props.data.realName}</a></h4>
-            <h5 className="top_posts__likes"><i className="fa fa-thumbs-o-up"></i>x{this.props.data.ameCount}</h5>
-          </div>
-        </li>
+            <ResponsiveEllipsis
+              text={this.props.data.text}
+              maxLine='3'
+              ellipsis='...'
+              trimRight
+              basedOn='letters'
+            />
+          </a>
+        </h3>
+        <div className="clearfix">
+          <h4 className="top_posts__name"><a target="_" href={this.props.data.userLink}>{this.props.data.realName}</a></h4>
+          <h5 className="top_posts__likes"><i className="fa fa-thumbs-o-up"></i>x{this.props.data.ameCount}</h5>
+        </div>
+      </li>
     );
   }
 }
-;
