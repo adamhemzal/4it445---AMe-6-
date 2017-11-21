@@ -9,6 +9,7 @@ import { HamburgerMenu } from './menu/HamburgerMenu';
 import EditBar from './EditBar';
 import AddWidgetDialog from './AddWidgetDialog';
 import MDSpinner from "react-md-spinner";
+import api from '../api.js';
 
 import logo from '../img/logo.png';
 
@@ -18,158 +19,187 @@ import 'react-dazzle/lib/style/style.css';
 
 export class AMeDashboard extends Component {
 
-    constructor(props) {
-      super(props);
+  constructor(props) {
+    super(props);
 
-      this.state = {
-        isLoading: true,
+    this.state = {
+      isLoading: true,
 
-        widgets: {
-          TopAmePosts: {
-            type: TopAmePostsWidget,
-            title: 'Top Ame Posts'
-          },
-          TopAmers: {
-            type: TopAmersWidget,
-            title: 'Top Amers'
-          },
-          Weather: {
-            type: WeatherWidget,
-            title: 'Weather'
-          }
+      widgets: {
+        TopAmePosts: {
+          type: TopAmePostsWidget,
+          title: 'Top Ame Posts'
         },
-        layout: {
-          rows: [{
-              columns: [{
-                    className: 'col-md-4',
-                    widgets: [{ key: 'TopAmePosts' }],
-                  },{
-                    className: 'col-md-4',
-                    widgets: [{ key: 'TopAmers' }],
-                  },{
-                    className: 'col-md-4',
-                    widgets: [{ key: 'Weather' }],
-                  }],
-          }, {
-              columns: [{
-                    className: 'col-md-4',
-                    widgets: [{ key: 'Weather' }],
-              }],
+        TopAmers: {
+          type: TopAmersWidget,
+          title: 'Top Amers'
+        },
+        Weather: {
+          type: WeatherWidget,
+          title: 'Weather'
+        }
+      },
+
+      layout: {
+        rows: [{
+          columns: [{
+            className: 'col-md-4',
+            widgets: [{ key: 'TopAmePosts' }],
+          },{
+            className: 'col-md-4',
+            widgets: [{ key: 'TopAmers' }],
+          },{
+            className: 'col-md-4',
+            widgets: [{ key: 'Weather' }],
           }],
-        },
+        }, {
+          columns: [{
+            className: 'col-md-4',
+            widgets: [{ key: 'Weather' }],
+          }],
+        }],
+      },
 
-        editMode: false,
-        isModalOpen: false,
-        addWidgetOptions: null
-
-      };
-
-    }
-
-    onRemove = (layout) => {
-      this.setState({
-        layout,
-      });
-    }
-
-    onAdd = (layout, rowIndex, columnIndex) => {
-      this.setState({
-        isModalOpen: true,
-        addWidgetOptions: {
-          layout,
-          rowIndex,
-          columnIndex,
-        },
-      });
-    }
-
-    onMove = (layout) => {
-      this.setState({
-        layout,
-      });
-    }
-
-    onRequestClose = () => {
-      this.setState({
-        isModalOpen: false,
-      });
-    }
-
-    toggleEdit = () => {
-      this.setState({
-        editMode: !this.state.editMode,
-      });
+      editMode: false,
+      isModalOpen: false,
+      addWidgetOptions: null
     };
 
-    widgetSelected = (widgetName) => {
-      const { layout, rowIndex, columnIndex } = this.state.addWidgetOptions;
-      this.setState({
-        layout: addWidget(layout, rowIndex, columnIndex, widgetName),
-      });
-      this.onRequestClose();
+  }
+
+  componentDidMount() {
+    api.get(`dashboard/layout/1`).then(response => {
+      const { success, layout } = response.data;
+      if (success) {
+        this.setState({layout: layout, isLoading: false });
+      }
+    }).catch(error => {
+      console.log(error);
+    });
+  }
+
+  onRemove = (layout) => {
+    this.setState({
+      layout,
+    }, () => {
+      this.saveLayout();
+    });
+  }
+
+  onAdd = (layout, rowIndex, columnIndex) => {
+    this.setState({
+      isModalOpen: true,
+      addWidgetOptions: {
+        layout,
+        rowIndex,
+        columnIndex,
+      },
+    });
+  }
+
+  onMove = (layout) => {
+    this.setState({
+      layout,
+    }, () => {
+      this.saveLayout();
+    });
+  }
+
+  onRequestClose = () => {
+    this.setState({
+      isModalOpen: false,
+    });
+  }
+
+  toggleEdit = () => {
+    this.setState({
+      editMode: !this.state.editMode,
+    });
+  };
+
+  widgetSelected = (widgetName) => {
+    const { layout, rowIndex, columnIndex } = this.state.addWidgetOptions;
+    this.setState({
+      layout: addWidget(layout, rowIndex, columnIndex, widgetName),
+    }, () => {
+      this.saveLayout();
+    });
+    this.onRequestClose();
+    ;
+  }
+
+  saveLayout = () => {
+    api.post('dashboard/layout',
+    {
+      dashboardId: 1,
+      layout: this.state.layout
     }
+  ).then(response => {
+    console.log(response);
+  })
+}
 
 
 
-    render() {
-        return (
-             <div>
+render() {
+  return (
+    <div>
 
-                <header className="header clearfix">
+      <header className="header clearfix">
 
-                    <div className="container-fluid flexbox">
-                        <div className="logo-outer">
-                            <img src={logo} alt="Logo AMe"/>
-                        </div>
+        <div className="container-fluid flexbox">
+          <div className="logo-outer">
+            <img src={logo} alt="Logo AMe"/>
+          </div>
 
-                        <div className="intro">
-                            <h2 className="intro__title">Workspace dashboard</h2>
-                            <h3 className="intro__description">Simple description of this dashboard</h3>
-                        </div>
+          <div className="intro">
+            <h2 className="intro__title">Workspace dashboard</h2>
+            <h3 className="intro__description">Simple description of this dashboard</h3>
+          </div>
 
-                        <HamburgerMenu />
-
-                    </div>
-
-                </header>
-
-                <div className="container">
-
-                    <div className="">
-
-                        <EditBar onEdit={this.toggleEdit} />
-                        <Dashboard
-                          onRemove={this.onRemove}
-                          layout={this.state.layout}
-                          widgets={this.state.widgets}
-                          editable={this.state.editMode}
-                          addWidgetComponentText="Add"
-                          onAdd={this.onAdd}
-                          onMove={this.onMove}
-                        />
-
-                        { /*  <TopAmePostsWidget />
-                        <TopAmersWidget />
-                        <WeatherWidget /> */ }
-
-                        <AddWidgetDialog
-                          widgets={this.state.widgets}
-                          isModalOpen={this.state.isModalOpen}
-                          onRequestClose={this.onRequestClose}
-                          onWidgetSelect={this.widgetSelected}
-                        />
-
-                    </div>
-
-                    <hr/>
-
-                    <footer>
-                        <p>&copy; AMe 2017</p>
-                    </footer>
-
-                </div>
+          <HamburgerMenu />
 
         </div>
-        )
-    }
+
+      </header>
+
+      <div className="container">
+
+        <div className="">
+
+          <EditBar onEdit={this.toggleEdit} />
+          <Dashboard
+            onRemove={this.onRemove}
+            layout={this.state.layout}
+            widgets={this.state.widgets}
+            editable={this.state.editMode}
+            addWidgetComponentText="Add"
+            onAdd={this.onAdd}
+            onMove={this.onMove}
+          />
+
+          { /*  <TopAmePostsWidget />
+            <TopAmersWidget />
+            <WeatherWidget /> */ }
+
+            <AddWidgetDialog
+              widgets={this.state.widgets}
+              isModalOpen={this.state.isModalOpen}
+              onRequestClose={this.onRequestClose}
+              onWidgetSelect={this.widgetSelected}
+            />
+
+          </div>
+
+          <hr/>
+
+          <footer>
+            <p>&copy; AMe 2017</p>
+          </footer>
+
+        </div>
+
+      </div>
+    )
+  }
 }
