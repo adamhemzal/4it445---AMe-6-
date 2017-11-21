@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Dashboard, { addWidget } from 'react-dazzle';
+import CustomFrame from './CustomFrame';
 
 import { WeatherWidget } from '../widgets/Weather/WeatherWidget';
 import { TopAmersWidget } from '../widgets/TopAmers/TopAmersWidget';
@@ -174,6 +175,7 @@ render() {
             addWidgetComponentText="Add"
             onAdd={this.onAdd}
             onMove={this.onMove}
+            frameComponent={CustomFrame}
           />
 
           { /*  <TopAmePostsWidget />
