@@ -40,26 +40,6 @@ export class AMeDashboard extends Component {
         }
       },
 
-      layout: {
-        rows: [{
-          columns: [{
-            className: 'col-md-4',
-            widgets: [{ key: 'TopAmePosts' }],
-          },{
-            className: 'col-md-4',
-            widgets: [{ key: 'TopAmers' }],
-          },{
-            className: 'col-md-4',
-            widgets: [{ key: 'Weather' }],
-          }],
-        }, {
-          columns: [{
-            className: 'col-md-4',
-            widgets: [{ key: 'Weather' }],
-          }],
-        }],
-      },
-
       editMode: false,
       isModalOpen: false,
       addWidgetOptions: null
@@ -72,6 +52,24 @@ export class AMeDashboard extends Component {
       const { success, layout } = response.data;
       if (success) {
         this.setState({layout: layout, isLoading: false });
+        // Pokud se nepovede ziskat layout z DB, pouzije se defaultni.
+      } else {
+        this.setState({
+          layout: {
+            rows: [{
+              columns: [{
+                className: 'col-md-4',
+                widgets: [{ key: 'TopAmePosts' }],
+              },{
+                className: 'col-md-4',
+                widgets: [{ key: 'TopAmers' }],
+              },{
+                className: 'col-md-4',
+                widgets: [{ key: 'Weather' }],
+              }],
+            }]
+          }
+        })
       }
     }).catch(error => {
       console.log(error);
