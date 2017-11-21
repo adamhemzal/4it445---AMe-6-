@@ -12,7 +12,7 @@ export const topAmersController = async (req, res) => {
   //timestamp pro Slack - aktualni cas - jeden tyden
   const oldestTimestamp = moment().subtract(1, 'week').format('X');
 
-  web.channels.history('C0BUA20S0', {'count': 1000}, (error, response) => {
+  web.channels.history('C0BUA20S0', {'count': 1000, 'oldest': oldestTimestamp}, (error, response) => {
     sortedUsersWithAme = [];
     if (error) {
       console.log('Error:', error);
