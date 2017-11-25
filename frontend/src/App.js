@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 //import logo from './logo.svg';
 import { BrowserRouter, Route } from 'react-router-dom';
-import { AMeDashboard } from './dashboard/Dashboard';
+import { AMeDashboard } from './dashboard/AMeDashboard';
 import { Admin } from './admin/Admin';
 import Alert from 'react-s-alert';
 

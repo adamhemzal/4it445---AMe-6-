@@ -6,7 +6,10 @@ import { WeatherWidget } from '../widgets/Weather/WeatherWidget';
 import { TopAmersWidget } from '../widgets/TopAmers/TopAmersWidget';
 import { TopAmePostsWidget } from '../widgets/TopAmePosts/TopAmePostsWidget';
 import { PeopleOfADayWidget } from '../widgets/PeopleOfADay/PeopleOfADayWidget';
-import { HamburgerMenu } from './menu/HamburgerMenu';
+//import { HamburgerMenu } from './menu/HamburgerMenu';
+import { JustLogin } from './menu/JustLogin';
+
+// Dazzle
 import EditBar from './EditBar';
 import AddWidgetDialog from './AddWidgetDialog';
 import MDSpinner from "react-md-spinner";
@@ -156,7 +159,8 @@ render() {
             <h3 className="intro__description">Simple description of this dashboard</h3>
           </div>
 
-          <HamburgerMenu />
+          {/* <HamburgerMenu /> */}
+          <JustLogin />
 
         </div>
 
@@ -166,7 +170,7 @@ render() {
 
         <div className="">
 
-          <EditBar onEdit={this.toggleEdit} />
+          {/* <EditBar onEdit={this.toggleEdit} /> */}
           <Dashboard
             onRemove={this.onRemove}
             layout={this.state.layout}
@@ -182,12 +186,12 @@ render() {
             <TopAmersWidget />
             <WeatherWidget /> */ }
 
-            <AddWidgetDialog
+{/*             <AddWidgetDialog
               widgets={this.state.widgets}
               isModalOpen={this.state.isModalOpen}
               onRequestClose={this.onRequestClose}
               onWidgetSelect={this.widgetSelected}
-            />
+            /> */}
 
           </div>
 

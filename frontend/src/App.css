@@ -156,6 +156,31 @@ h1 {
   margin-top: -3px;
 }
 
+/* Menu Login button */
+
+.login-button {
+  font-family: "Roboto Condensed";
+  font-weight: bold;
+  font-size: 1.1rem;
+  border: 0;
+  color: white;
+  background-color: #51b8ec;
+  padding: 7px 15px;
+  border-radius: 3px;
+  cursor: pointer;
+  /*box-shadow: 0px 0px 15px 0px rgba(128, 126, 126, 0.21); */
+}
+
+.login-button:hover {
+  background-color: #3c89af;
+  text-decoration: none;
+  color: white;
+}
+
+.just-login {
+  margin-right: 1rem;
+}
+
 /**
 * Form Login
 */
@@ -191,24 +216,6 @@ h1 {
   border: 1px solid #2e3335;
 }
 
-.login-button {
-  font-family: "Roboto Condensed";
-  font-weight: bold;
-  font-size: 1.4rem;
-  border: 0;
-  color: white;
-  background-color: #51b8ec;
-  padding: 7px 15px;
-  border-radius: 3px;
-  cursor: pointer;
-  box-shadow: 0px 0px 15px 0px rgba(128, 126, 126, 0.21);
-}
-
-.login-button:hover {
-  background-color: #3c89af;
-  text-decoration: none;
-  color: white;
-}
 
 /**
 *   Dashboard Intro
@@ -217,7 +224,6 @@ h1 {
 .intro {
  padding: 8px 0;
  margin-left: 30px;
- padding-left: 20px;
  text-align: center;
 }
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { AfterLoginMenu } from './AfterLoginMenu';
+import { LoginMenu } from './LoginMenu';
 
-export class HamburgerMenu extends Component {
+export class JustLogin extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -16,14 +16,12 @@ export class HamburgerMenu extends Component {
             active: !currentState
         });
     }
-    
+
     render() {
         return(
             <div>
-                <div className="menu" onClick={this.toggleId}>
-                    <span></span>
-                    <span></span>   
-                    <span></span>
+                <div className="just-login">
+                    <button className="login-button" onClick={this.toggleId} >Log in</button>
                 </div>
 
                 <div className="menu-hamburger" id={this.state.active ? 'visible' : null} >
@@ -31,7 +29,7 @@ export class HamburgerMenu extends Component {
                         <span></span>
                         <span></span>
                     </div>
-                    <AfterLoginMenu />
+                    <LoginMenu />
                 </div>
             </div>
         )
