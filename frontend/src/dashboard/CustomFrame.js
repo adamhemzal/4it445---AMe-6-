@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 
 const CustomFrame = ({title, editable, children, onRemove }) => {
   return (
-      <div className="widget__inner custom-frame-container">
-        <div className="title">
-            {editable && 
+      <div className="widget__outer custom-frame-container">
+        <div className="title widget__edit">
+            {editable &&
                     <div>
                         <a className="btn" onClick={() => {editWidget();}} >Edit</a>
                         <a className="btn" onClick={() => {onRemove();}} >Remove</a>
