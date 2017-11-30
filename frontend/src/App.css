@@ -25,6 +25,10 @@ ul {
 
 img { max-width: 100%; }
 
+.btn {
+  cursor: pointer;
+}
+
 /**
 *   Helpers
 */
@@ -240,6 +244,11 @@ h1 {
 .intro {
   display: flex;
   flex-direction: row;
+  align-items: center;
+}
+
+.intro__button {
+  margin-left: 1rem;
 }
 
 .intro__div {

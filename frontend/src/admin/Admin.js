@@ -173,7 +173,7 @@ render() {
             <h2 className="intro__title">Admin Workspace Dashboard</h2>
             <h3 className="intro__description">Simple description of this dashboard</h3>
           </div>
-          <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
+          <button className="btn btn-default btn-xs intro__button"><i className="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button>
         </div>
 
           <HamburgerMenu />
