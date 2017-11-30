@@ -154,7 +154,7 @@ render() {
             <img src={logo} alt="Logo AMe"/>
           </div>
 
-          <div className="intro">
+          <div className="intro__div">
             <h2 className="intro__title">Workspace dashboard</h2>
             <h3 className="intro__description">Simple description of this dashboard</h3>
           </div>

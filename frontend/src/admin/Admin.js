@@ -166,12 +166,15 @@ render() {
         <div className="container-fluid flexbox">
           <div className="logo-outer">
             <img src={logo} alt="Logo AMe"/>
-          </div>
+        </div>
 
-          <div className="intro">
+        <div className="intro">
+          <div className="intro__div">
             <h2 className="intro__title">Admin Workspace Dashboard</h2>
             <h3 className="intro__description">Simple description of this dashboard</h3>
           </div>
+          <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
+        </div>
 
           <HamburgerMenu />
           {/* <JustLogin /> */}
