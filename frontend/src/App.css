@@ -448,7 +448,16 @@ h1 {
 .top_amers__value {
  font-family: "Poppins";
  font-size: 16px;
- color: #77858d;
+ color: white;
+ letter-spacing: 1px;
+}
+
+.top_amers__value span {
+  text-transform: uppercase;
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: #77858d;
 }
 
 .top_amers__content {
@@ -462,17 +471,21 @@ h1 {
 .top_amers__badge {
  position: absolute;
  display: block;
- width: 45px;
- height: 45px;
- font-size: 30px;
- letter-spacing: -2px;
- background: #59c5fd;
- border-radius: 100%;
- text-align: center;
- font-weight: bold;
- font-family: "Roboto Condensed";
- bottom: -15px;
- left: 10px;
+ min-width: 90px;
+ height: 42px;
+ padding: 10px 15px;
+ font-size: 18px;
+ font-family: "Poppins";
+ background: #3c4143;
+ font-weight: 500;
+ bottom: 0px;
+ left: 0px;
+ box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.35);
+ background: #3c4143;
+}
+
+.top_amers__badge img {
+  float: right;
 }
 
 .top_amers__navigation {
