@@ -199,10 +199,6 @@ render() {
             frameComponent={CustomFrame}
           />
 
-          { /*  <TopAmePostsWidget />
-            <TopAmersWidget />
-            <WeatherWidget /> */ }
-
             <AddWidgetDialog
               widgets={this.state.widgets}
               isModalOpen={this.state.isModalOpen}

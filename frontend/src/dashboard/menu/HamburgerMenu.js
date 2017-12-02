@@ -39,8 +39,11 @@ export class HamburgerMenu extends Component {
 
                 <div className="menu-hamburger" id={isActive()} >
                 <div className="menu-hamburger__header">
+                    <div className="menu-hamburger__add">
+                        <button className="login-button"><i className="fa fa-plus-circle" aria-hidden="true"></i> Add new dashboard</button>
+                    </div>
                     <div className="menu-hamburger__logout">
-                        <button className="login-button">Log out</button>
+                        <button className="logout-button">Log out</button>
                     </div>
                     <div className="menu-hamburger__close" onClick={this.toggleId}>
                         <span></span>

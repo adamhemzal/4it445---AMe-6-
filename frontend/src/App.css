@@ -170,7 +170,7 @@ h1 {
   margin-top: -3px;
 }
 
-/* Menu Login button */
+/* Menu Login & Logout button */
 
 .login-button {
   font-family: "Roboto Condensed";
@@ -186,6 +186,25 @@ h1 {
   /*box-shadow: 0px 0px 15px 0px rgba(128, 126, 126, 0.21); */
 }
 
+.logout-button {
+  font-family: "Roboto Condensed";
+  font-weight: bold;
+  font-size: 1.1rem;
+  border: 0;
+  color: white;
+  background-color: #b3b3b3;
+  padding: 7px 15px;
+  border: 1px solid #777777;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background-color: #757575;
+  text-decoration: none;
+  color: white;
+}
+
 .login-button:hover {
   background-color: #3c89af;
   text-decoration: none;
@@ -199,6 +218,12 @@ h1 {
 .menu-hamburger__logout {
   position: absolute;
   right: 7.5rem;
+  top: 1.2rem;
+}
+
+.menu-hamburger__add {
+  position: absolute;
+  left: 2rem;
   top: 1.2rem;
 }
 /**
