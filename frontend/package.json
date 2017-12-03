@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "axios": "^0.17.0",
+    "moment": "^2.19.3",
     "prop-types": "^15.6.0",
     "react": "^15.3.2",
     "react-dazzle": "^1.2.7",
