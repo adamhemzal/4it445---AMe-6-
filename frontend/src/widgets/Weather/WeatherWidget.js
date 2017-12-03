@@ -3,6 +3,7 @@ import api from '../../api.js';
 import axios from 'axios';
 import Slider from 'react-slick';
 import MDSpinner from "react-md-spinner";
+import moment from 'moment';
 
 export class WeatherWidget extends React.PureComponent {
     constructor(props) {
@@ -10,7 +11,8 @@ export class WeatherWidget extends React.PureComponent {
         this.state = {
             weatherCities: [],
             isLoading: true,
-            currentDate: new Date(),
+            time: moment().format('LT'),
+            date: moment().format('MMM D'),
         };
     }
 
@@ -58,29 +60,13 @@ export class WeatherWidget extends React.PureComponent {
     }
 
     setTime() {
-        // Definování datumů
-        const currentDate = new Date();
-
-        const hours = currentDate.getHours().toString().length === 1 ? '0' + currentDate.getHours() : currentDate.getHours();
-        const minutes = currentDate.getMinutes().toString().length === 1 ? '0' + currentDate.getMinutes() : currentDate.getMinutes();
-        const time = hours + ":" + minutes;
-
         this.setState({
-          time: time,
-          currentDate: currentDate,
+          time: moment().format('LT'),
+          date: moment().format('MMM D'),
         });
     }
 
     render() {
-
-        //Výpis jména měsíce
-        const currentDate = this.state.currentDate;
-        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-        const nameMonths = months[currentDate.getMonth()];
-
-        // Výpis data - čísla
-        const date = currentDate.getDate();
-
         //Slick settings
         const weatherSettings = {
             speed: 500,
@@ -130,7 +116,7 @@ export class WeatherWidget extends React.PureComponent {
 
                                       <div className="float--right">
                                           <div className="weather__date">
-                                              <h4 className="weather__day">{nameMonths} {date}</h4>
+                                              <h4 className="weather__day">{this.state.date}</h4>
                                               <h4 className="weather__time">{this.state.time}</h4>
                                           </div>
                                       </div>
