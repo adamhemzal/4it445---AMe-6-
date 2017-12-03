@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
+import { TopAmersEditForm } from '../widgets/TopAmers/TopAmersEditForm';
 
 class CustomFrame extends Component {
 
@@ -12,7 +13,6 @@ class CustomFrame extends Component {
     };
 
     this.openModal = this.openModal.bind(this);
-    this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
 
@@ -29,16 +29,24 @@ class CustomFrame extends Component {
     this.setState({modalIsOpen: true});
   }
 
-  afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    this.subtitle.style.color = '#f00';
-  }
-
   closeModal() {
     this.setState({modalIsOpen: false});
   }
 
   render() {
+    const widgetName = this.props.children.type.name;
+    let editForm = null;
+    switch (widgetName) {
+      case 'TopAmePostsWidget':
+      break;
+      case 'TopAmersWidget':
+      editForm = <TopAmersEditForm/>;
+      break;
+      case 'WeatherWidget':
+      break;
+      default:
+
+    }
     return (
       <div>
         <div className="widget__outer custom-frame-container">
@@ -57,14 +65,16 @@ class CustomFrame extends Component {
         <div>
           <Modal
             isOpen={this.state.modalIsOpen}
-            onAfterOpen={this.afterOpenModal}
+            className='container'
+            overlayClassName='edit_modal__overlay'
             onRequestClose={this.closeModal}
-            contentLabel="Example Modal"
+            contentLabel='Widget Editation'
             >
-
-              <h2 ref={subtitle => this.subtitle = subtitle}>Hello</h2>
-              <button onClick={this.closeModal}>close</button>
-              <div>I am a modal</div>
+              <div className='edit_modal col-md-6'>
+                <h3 ref={subtitle => this.subtitle = subtitle}>Widget Editation</h3>
+                <div>{editForm}</div>
+                <button onClick={this.closeModal}>Close</button>
+              </div>
             </Modal>
           </div>
         </div>

@@ -3,10 +3,10 @@
 /******************************/
 
 /**
- *   AMe Dashboard
- */
+*   AMe Dashboard
+*/
 
- body {
+body {
   background: #eff1f2;
   color: #2e3335;
   font-family: "Poppins";
@@ -14,13 +14,13 @@
 }
 
 ul {
- list-style: none;
- padding: 0;
- margin: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .no-padding {
- padding: 0 !important;
+  padding: 0 !important;
 }
 
 img { max-width: 100%; }
@@ -49,8 +49,8 @@ img { max-width: 100%; }
 *   Typography
 */
 h1, h2, h3, h4, h5, h6 {
- font-family: "Roboto Condensed";
- margin-bottom: 0;
+  font-family: "Roboto Condensed";
+  margin-bottom: 0;
 }
 
 /**
@@ -58,17 +58,17 @@ h1, h2, h3, h4, h5, h6 {
 */
 
 .header {
- background: white;
- padding: 5px 0;
- border-bottom: 1px solid #d7d8d9;
- margin-bottom: 30px;
+  background: white;
+  padding: 5px 0;
+  border-bottom: 1px solid #d7d8d9;
+  margin-bottom: 30px;
 }
 
 .flexbox {
- display: flex;
- justify-content: space-between;
- flex-direction: row;
- align-items: center;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
 }
 
 h1 {
@@ -89,18 +89,18 @@ h1 {
 /* Menu Hamburger */
 
 .menu {
- display: block;
-   margin-right: 2rem;
-   width: 30px;
-   height: 25px;
-   cursor: pointer;
+  display: block;
+  margin-right: 2rem;
+  width: 30px;
+  height: 25px;
+  cursor: pointer;
 }
 
 .menu span {
   height: 3px;
-   background-color: #2e3335;
-   margin-bottom: 8px;
-   display: block;
+  background-color: #2e3335;
+  margin-bottom: 8px;
+  display: block;
 }
 
 .menu-hamburger {
@@ -277,8 +277,8 @@ h1 {
 }
 
 .intro__div {
- padding: 8px 0;
- text-align: center;
+  padding: 8px 0;
+  text-align: center;
 }
 
 .intro__title {
@@ -295,12 +295,12 @@ h1 {
 }
 
 /**
- *   Modal
- */
+*   Modal
+*/
 
 .modal-header,
 .modal-footer {
-    display: block;
+  display: block;
 }
 
 .modal-title {
@@ -368,20 +368,20 @@ h1 {
 }
 
 .widget__name {
- font-size: 20px;
- font-weight: bold;
- margin-bottom: 0;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 0;
 }
 
 .widget__header h3 {
- font-size: 14px;
- margin-bottom: 0;
- margin-top: 5px;
- line-height: 1;
+  font-size: 14px;
+  margin-bottom: 0;
+  margin-top: 5px;
+  line-height: 1;
 }
 
 .widget__header h3 span {
- color: #dc6161;
+  color: #dc6161;
 }
 
 .widget__content {
@@ -389,21 +389,21 @@ h1 {
 }
 
 .widget__content--padding {
- padding: 15px;
+  padding: 15px;
 }
 
 .widget__footer {
- padding: 15px;
- padding-top: 0;
+  padding: 15px;
+  padding-top: 0;
 }
 
 .widget__footer--white {
- background: white;
+  background: white;
 }
 
 .widget__footer--dark {
- background: #2e3335;
- color: white;
+  background: #2e3335;
+  color: white;
 }
 
 .widget_settings__header {
@@ -422,11 +422,11 @@ h1 {
 }
 
 .btn--link {
- font-size: 14px;
- color: #51b8ec;
- text-transform: uppercase;
- font-family: "Poppins";
- font-weight: bolder;
+  font-size: 14px;
+  color: #51b8ec;
+  text-transform: uppercase;
+  font-family: "Poppins";
+  font-weight: bolder;
 }
 
 /*-----------------------------------------------------------------------------------*/
@@ -434,76 +434,76 @@ h1 {
 /*-----------------------------------------------------------------------------------*/
 
 .top_posts__list {
- list-style: none;
- margin: 0;
- padding: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .top_posts__list-item {
- padding-bottom: 15px;
- margin-bottom: 15px;
- border-bottom: 1px solid #e6ecf1;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #e6ecf1;
 }
 
 .top_posts__list-item:last-child {
- margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .top_posts_post-title {
- font-size: 14px;
- font-family: "Poppins";
- margin-bottom: 10px;
+  font-size: 14px;
+  font-family: "Poppins";
+  margin-bottom: 10px;
 }
 
 .top_posts_post-link {
-    text-decoration: none;
-    color: initial;
+  text-decoration: none;
+  color: initial;
 }
 
 .top_posts_post-link:hover {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .top_posts__name,
 .top_posts__likes {
- font-size: 14px;
- font-family: "Poppins";
+  font-size: 14px;
+  font-family: "Poppins";
 }
 
 .top_posts__name {
- color: #929799;
- float: left;
- font-weight: normal;
+  color: #929799;
+  float: left;
+  font-weight: normal;
 }
 
 .top_posts__name a {
- color: #929799;
+  color: #929799;
 }
 
 .top_posts__likes {
- font-weight: 600;
- color: #2c3e50;
- float: right;
+  font-weight: 600;
+  color: #2c3e50;
+  float: right;
 }
 
 .top_posts__likes i {
- color: #56b9ea;
+  color: #56b9ea;
 }
 
 /*-----------------------------------------------------------------------------------*/
 /*	Top AMers Widget
 /*-----------------------------------------------------------------------------------*/
 .top_amers__name {
- font-family: "Poppins";
- font-size: 17px;
- font-weight: 400;
+  font-family: "Poppins";
+  font-size: 17px;
+  font-weight: 400;
 }
 
 .top_amers__value {
- font-family: "Poppins";
- font-size: 16px;
- color: white;
- letter-spacing: 1px;
+  font-family: "Poppins";
+  font-size: 16px;
+  color: white;
+  letter-spacing: 1px;
 }
 
 .top_amers__value span {
@@ -515,27 +515,27 @@ h1 {
 }
 
 .top_amers__content {
- padding: 30px 15px;
+  padding: 30px 15px;
 }
 
 .top_amers__image {
- position: relative;
+  position: relative;
 }
 
 .top_amers__badge {
- position: absolute;
- display: block;
- min-width: 90px;
- height: 42px;
- padding: 10px 15px;
- font-size: 18px;
- font-family: "Poppins";
- background: #3c4143;
- font-weight: 500;
- bottom: 0px;
- left: 0px;
- box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.35);
- background: #3c4143;
+  position: absolute;
+  display: block;
+  min-width: 90px;
+  height: 42px;
+  padding: 10px 15px;
+  font-size: 18px;
+  font-family: "Poppins";
+  background: #3c4143;
+  font-weight: 500;
+  bottom: 0px;
+  left: 0px;
+  box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.35);
+  background: #3c4143;
 }
 
 .top_amers__badge img {
@@ -561,12 +561,12 @@ h1 {
 }
 
 .top_amers .widget__footer {
- padding: 0 10px 15px 10px;
+  padding: 0 10px 15px 10px;
 }
 
 .top_amers__navigation-item img {
- max-width: 100%;
- border-radius: 100%;
+  max-width: 100%;
+  border-radius: 100%;
 }
 
 .top_amers__navigation-item-inner {
@@ -595,76 +595,76 @@ h1 {
 /*	Weather Widget
 /*-----------------------------------------------------------------------------------*/
 .weather__city {
- font-family: "Poppins";
- font-size: 30px;
- font-weight: 400;
+  font-family: "Poppins";
+  font-size: 30px;
+  font-weight: 400;
 }
 
 .weather__slide {
- text-align: center;
- margin-bottom: 40px;
+  text-align: center;
+  margin-bottom: 40px;
 }
 
 .weather__temperature {
- font-size: 45px;
- display: inline-block;
- font-weight: bold;
- margin-left: 15px;
- margin-top: 5px;
+  font-size: 45px;
+  display: inline-block;
+  font-weight: bold;
+  margin-left: 15px;
+  margin-top: 5px;
 }
 
 .weather__wind,
 .weather__humidity {
- display: inline-block;
- font-size: 14px;
- text-transform: uppercase;
- margin-left: 20px;
- font-weight: bold;
- position: relative;
- top: -10px;
+  display: inline-block;
+  font-size: 14px;
+  text-transform: uppercase;
+  margin-left: 20px;
+  font-weight: bold;
+  position: relative;
+  top: -10px;
 }
 
 .weather__wind i,
 .weather__humidity i {
- font-size: 18px;
- margin-right: 5px;
+  font-size: 18px;
+  margin-right: 5px;
 }
 
 .weather__temperature span {
- font-weight: normal;
- font-family: "Poppins";
- font-size: 20px;
- position: relative;
- font-weight: 500;
- top: -21px;
- margin-left: 1px;
+  font-weight: normal;
+  font-family: "Poppins";
+  font-size: 20px;
+  position: relative;
+  font-weight: 500;
+  top: -21px;
+  margin-left: 1px;
 }
 
 .weather__date {
- background: #51b8ec;
- text-align: right;
- padding: 8px 10px;
+  background: #51b8ec;
+  text-align: right;
+  padding: 8px 10px;
 }
 
 .weather__day {
- font-size: 14px;
- font-weight: bold;
- text-transform: uppercase;
- margin-bottom: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 5px;
 }
 
 .weather__time {
- font-weight: bold;
- font-size: 24px;
+  font-weight: bold;
+  font-size: 24px;
 }
 
 .weather__icon {
- text-align: center;
- padding: 30px 0 40px 0;
+  text-align: center;
+  padding: 30px 0 40px 0;
 }
 
 .weather__icon i {
- font-size: 90px;
+  font-size: 90px;
 }
 
 .weather__slide--arrow-right {
@@ -690,25 +690,25 @@ h1 {
 /*	People of the day Widget
 /*-----------------------------------------------------------------------------------*/
 .people-day__name {
- margin-top: 15px;
- font-family: "Poppins";
- font-weight: 400;
- margin-bottom: 3px;
- font-size: 20px;
+  margin-top: 15px;
+  font-family: "Poppins";
+  font-weight: 400;
+  margin-bottom: 3px;
+  font-size: 20px;
 }
 
 .people-day__nickname {
- font-family: "Poppins";
- font-size: 14px;
+  font-family: "Poppins";
+  font-size: 14px;
 }
 
 .people-day__nickname a {
- color: #929ba0;
+  color: #929ba0;
 }
 
 .people-day__content {
- margin-bottom: 0;
- font-size: 14px;
+  margin-bottom: 0;
+  font-size: 14px;
 }
 
 /*-----------------------------------------------------------------------------------*/
@@ -898,4 +898,28 @@ h1 {
 
 .alert-content {
   text-align: center;
+}
+
+/* Edit Modal */
+
+.edit_modal {
+  position: absolute;
+  top: 10vh;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background: white;
+  -webkit-box-shadow: 0px 0px 15px 0px rgba(128, 126, 126, 0.21);
+  box-shadow: 0px 0px 15px 0px rgba(128, 126, 126, 0.21);
+  min-height: 70vh;
+}
+
+.edit_modal__overlay {
+  position: fixed;
+  z-index: 9999;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background-color: rgba(255, 255, 255, 0.75);
 }
