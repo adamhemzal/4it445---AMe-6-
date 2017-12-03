@@ -193,29 +193,33 @@ export class AdminEditForm extends React.PureComponent {
 
 
           <label for="">Dashboard Layout</label>
-          <RadioGroup
-            onChange = { this.handleChange.bind(this) }
-            value = {this.state.selectedLayout}>
 
-            <RadioButton value="layout1" padding="10">
-              <i className="fa fa-cog"></i> 6 / 4 / 2
-            </RadioButton>
-            <RadioButton value="layout2" padding="10">
-              4 / 4 / 2
-            </RadioButton>
-            <RadioButton value="layout3" padding="10">
-              3 / 2
-            </RadioButton>
+          <div className="layout-options">
+            <RadioGroup
+              onChange = { this.handleChange.bind(this) }
+              value = {this.state.selectedLayout}
+              horizontal>
 
-            <RadioButton value="layout4" padding="10">
-              4 / 3 / 2
-            </RadioButton>
+              <RadioButton value="layout1" padding="10" className="radio-button">
+                <img src={require("../../img/layout1.png")} alt="" /> 6 / 4 / 2
+              </RadioButton>
+              <RadioButton value="layout2" padding="10">
+                <img src={require("../../img/layout2.png")} alt="" /> 4 / 4 / 2
+              </RadioButton>
+              <RadioButton value="layout3" padding="10">
+                <img src={require("../../img/layout3.png")} alt="" />3 / 2
+              </RadioButton>
 
-            <RadioButton value="layout5" padding="10">
-              6 / 3 / 2
-            </RadioButton>
+              <RadioButton value="layout4" padding="10">
+                <img src={require("../../img/layout4.png")} alt="" /> 4 / 3 / 2
+              </RadioButton>
 
-          </RadioGroup>
+              <RadioButton value="layout5" padding="10">
+                <img src={require("../../img/layout5.png")} alt="" /> 6 / 3 / 2
+              </RadioButton>
+
+            </RadioGroup>
+          </div>
 
         </div>
     </form>

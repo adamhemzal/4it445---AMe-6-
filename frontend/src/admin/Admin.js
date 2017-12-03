@@ -109,14 +109,9 @@ export class Admin extends Component {
     this.setState({modalIsOpen: true});
   }
 
-  closeModal() {
-    this.setState({modalIsOpen: false});
-  }
+  saveDashboard = () => {
 
-
-  deleteDashboard = () => {
-
-    Alert.info('Dashboard was deleted', {
+    Alert.success('Options were saved.', {
         position: 'top-right',
         effect: 'slide',
         onShow: function () {
@@ -129,6 +124,26 @@ export class Admin extends Component {
 
     this.closeModal();
 
+  }
+
+  closeModal() {
+    this.setState({modalIsOpen: false});
+  }
+
+  deleteDashboard = () => {
+
+    Alert.error('Dashboard was deleted', {
+        position: 'top-right',
+        effect: 'slide',
+        onShow: function () {
+            console.log('aye!')
+        },
+        beep: false,
+        timeout: 2500,
+        offset: 100
+    });
+
+    this.closeModal();
   }
 
   onRemove = (layout) => {
@@ -265,7 +280,7 @@ render() {
 
                   <div className="modal-footer">
                     <button type="button" className="btn btn-default btn-delete float--left" onClick={this.deleteDashboard}>Delete Dashboard</button>
-                    <button type="button" className="btn btn-default btn-save float--right" onClick={this.closeModal}>Save</button>
+                    <button type="button" className="btn btn-default btn-save float--right" onClick={this.saveDashboard}>Save</button>
                   </div>
 
                 </div>

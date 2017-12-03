@@ -989,3 +989,27 @@ h6.list-group-item-heading {
   color: white;
   font-size: 14px;
 }
+
+.layout-options div div div img {
+  margin-bottom: 5px;
+}
+
+.layout-options div div div {
+  text-align: center;
+  color: #2f3335;
+  font-size: 11px;
+  color: #868e95;
+  font-weight: normal;
+  font-family: "Poppins";
+}
+
+.layout-options div div div > div:last-child {
+  padding: 0 !important;
+  margin: 0 !important;
+  position: relative;
+}
+
+.layout-options div div div div div > div:last-child {
+    margin-top: -2px !important;
+    margin-left: -2px !important;
+}
