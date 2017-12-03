@@ -295,23 +295,6 @@ h1 {
 }
 
 /**
-*   Modal
-*/
-
-.modal-header,
-.modal-footer {
-  display: block;
-}
-
-.modal-title {
-  float: left;
-}
-
-.modal-footer>:not(:last-child) {
-  float: right;
-}
-
-/**
 *   General Widget
 */
 .defaultWidgetFrame {
@@ -902,7 +885,7 @@ h1 {
 
 /* Edit Modal */
 
-.edit_modal {
+/* .edit_modal {
   position: absolute;
   top: 10vh;
   left: 0;
@@ -922,4 +905,22 @@ h1 {
   right: 0px;
   bottom: 0px;
   background-color: rgba(255, 255, 255, 0.75);
+} */
+
+/**
+*   Edit Modal
+*/
+
+.modal-content {
+  -webkit-box-shadow: 0px 0px 15px 0px rgba(128, 126, 126, 0.21);
+  box-shadow: 0px 0px 15px 0px rgba(128, 126, 126, 0.21);
+}
+
+.modal-header,
+.modal-footer {
+  display: block;
+}
+
+.modal-title {
+  float: left;
 }

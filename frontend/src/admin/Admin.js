@@ -23,7 +23,6 @@ import { TopAmersWidget } from '../widgets/TopAmers/TopAmersWidget';
 import { TopAmePostsWidget } from '../widgets/TopAmePosts/TopAmePostsWidget';
 import { PeopleOfADayWidget } from '../widgets/PeopleOfADay/PeopleOfADayWidget';
 import { HamburgerMenu } from '../dashboard/menu/HamburgerMenu';
-//import { JustLogin } from '../dashboard/menu/JustLogin';
 
 // Dazzle
 import EditBar from '../dashboard/EditBar';
@@ -173,11 +172,10 @@ render() {
             <h2 className="intro__title">Admin Workspace Dashboard</h2>
             <h3 className="intro__description">Simple description of this dashboard</h3>
           </div>
-          <button className="btn btn-default btn-xs intro__button"><i className="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button>
+          <button className="btn btn-default intro__button"><i className="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button>
         </div>
 
           <HamburgerMenu />
-          {/* <JustLogin /> */}
 
         </div>
 

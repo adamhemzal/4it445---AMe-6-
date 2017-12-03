@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
+
+//edit forms
 import { TopAmersEditForm } from '../widgets/TopAmers/TopAmersEditForm';
+import { WeatherEditForm } from '../widgets/Weather/WeatherEditForm';
+import { TopAmePostsEditForm } from '../widgets/TopAmePosts/TopAmePostsEditForm';
+import { PeopleOfADayEditForm } from '../widgets/PeopleOfADay/PeopleOfADayEditForm';
 
 class CustomFrame extends Component {
 
@@ -38,12 +43,17 @@ class CustomFrame extends Component {
     let editForm = null;
     switch (widgetName) {
       case 'TopAmePostsWidget':
-      break;
+        editForm = <TopAmePostsEditForm/>;
+        break;
       case 'TopAmersWidget':
-      editForm = <TopAmersEditForm/>;
-      break;
+        editForm = <TopAmersEditForm/>;
+        break;
       case 'WeatherWidget':
-      break;
+        editForm = <WeatherEditForm/>;
+        break;
+      case 'PeopleOfADayWidget':
+        editForm = <PeopleOfADayEditForm/>;
+        break;
       default:
 
     }
@@ -65,15 +75,27 @@ class CustomFrame extends Component {
         <div>
           <Modal
             isOpen={this.state.modalIsOpen}
-            className='container'
-            overlayClassName='edit_modal__overlay'
+            className='modal-dialog'
+            //overlayClassName='edit_modal__overlay'
             onRequestClose={this.closeModal}
             contentLabel='Widget Editation'
             >
-              <div className='edit_modal col-md-6'>
-                <h3 ref={subtitle => this.subtitle = subtitle}>Widget Editation</h3>
-                <div>{editForm}</div>
-                <button onClick={this.closeModal}>Close</button>
+              <div className='modal-content'>
+
+                <div className="modal-header">
+                  <button type="button" className="close" onClick={this.closeModal}>
+                    <span aria-hidden="true">&times;</span>
+                    <span className="sr-only">Close</span>
+                  </button>
+                  <h3 className="modal-title" ref={subtitle => this.subtitle = subtitle}>Widget Editation</h3>
+                </div>
+
+                <div className="modal-body">{editForm}</div>
+
+                <div className="modal-footer">
+                  <button type="button" className="btn btn-default" onClick={this.closeModal}>Close</button>
+                </div>
+
               </div>
             </Modal>
           </div>
