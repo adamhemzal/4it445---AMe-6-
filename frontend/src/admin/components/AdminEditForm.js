@@ -1,6 +1,168 @@
 import React, { Component } from 'react';
 import { RadioGroup, RadioButton, ReversedRadioButton } from 'react-radio-buttons';
 
+
+/*
+
+- 6 / 4 / 2 (6 widgetů na jedné řádce, 4 na druhé, 2 na třetí)
+
+rows: [
+  {
+      columns: [{
+        className: 'col-md-2 col-sm-4 col-xs-4',
+        widgets: [{ key: 'RocketWidget' }, { key: 'AlienWidget' }, { key: 'RocketWidget' }],
+      }, {
+        className: 'col-md-2 col-sm-4 col-xs-4',
+        widgets: [{ key: 'RocketWidget' }],
+      }, {
+        className: 'col-md-2 col-sm-4 col-xs-4',
+        widgets: [{ key: 'RocketWidget' }],
+      }, {
+        className: 'col-md-2 col-sm-4 col-xs-4',
+        widgets: [{ key: 'RocketWidget' }],
+      }, {
+        className: 'col-md-2 col-sm-4 col-xs-4',
+        widgets: [{ key: 'RocketWidget' }],
+      }, {
+        className: 'col-md-2 col-sm-4 col-xs-4',
+        widgets: [{ key: 'RocketWidget' }],
+      }],
+  }, {
+      columns: [{
+        className: 'col-md-3 col-sm-6 col-xs-6',
+        widgets: [{ key: 'RocketWidget' }],
+      }, {
+        className: 'col-md-3 col-sm-6 col-xs-6',
+        widgets: [{ key: 'RocketWidget' }],
+      }, {
+        className: 'col-md-3 col-sm-6 col-xs-6',
+        widgets: [{ key: 'RocketWidget' }],
+      }],
+    }, {
+        columns: [{
+          className: 'col-md-6 col-sm-6 col-xs-6',
+          widgets: [{ key: 'RocketWidget' }],
+        }, {
+          className: 'col-md-6 col-sm-6 col-xs-6',
+          widgets: [{ key: 'RocketWidget' }],
+        }],
+  }
+],
+
+- 4 / 4 / 2
+
+rows: [
+  {
+      columns: [{
+        className: 'col-md-3 col-sm-4 col-xs-4',
+        widgets: [{ key: 'RocketWidget' }, { key: 'AlienWidget' }, { key: 'RocketWidget' }],
+      }, {
+        className: 'col-md-3 col-sm-4 col-xs-4',
+        widgets: [{ key: 'RocketWidget' }],
+      }, {
+        className: 'col-md-3 col-sm-4 col-xs-4',
+        widgets: [{ key: 'RocketWidget' }],
+      }, {
+        className: 'col-md-3 col-sm-4 col-xs-4',
+        widgets: [{ key: 'RocketWidget' }],
+      }],
+  }, {
+      columns: [{
+        className: 'col-md-3 col-sm-4 col-xs-4',
+        widgets: [{ key: 'RocketWidget' }, { key: 'AlienWidget' }, { key: 'RocketWidget' }],
+      }, {
+        className: 'col-md-3 col-sm-4 col-xs-4',
+        widgets: [{ key: 'RocketWidget' }],
+      }, {
+        className: 'col-md-3 col-sm-4 col-xs-4',
+        widgets: [{ key: 'RocketWidget' }],
+      }, {
+        className: 'col-md-3 col-sm-4 col-xs-4',
+        widgets: [{ key: 'RocketWidget' }],
+      }],
+  }, {
+      columns: [{
+        className: 'col-md-6 col-sm-6 col-xs-6',
+        widgets: [{ key: 'RocketWidget' }],
+      }, {
+        className: 'col-md-6 col-sm-6 col-xs-6',
+        widgets: [{ key: 'RocketWidget' }],
+      }],
+  }
+],
+
+- 3 / 2
+
+rows: [
+  {
+      columns: [{
+        className: 'col-md-4 col-sm-6 col-xs-12',
+        widgets: [{ key: 'RocketWidget' }, { key: 'AlienWidget' }, { key: 'RocketWidget' }],
+      }, {
+        className: 'col-md-4 col-sm-6 col-xs-12',
+        widgets: [{ key: 'RocketWidget' }],
+      }, {
+        className: 'col-md-4 col-sm-6 col-xs-12',
+        widgets: [{ key: 'RocketWidget' }],
+      }, {
+        className: 'col-md-4 col-sm-6 col-xs-12',
+        widgets: [{ key: 'RocketWidget' }],
+      }],
+  }, {
+      columns: [{
+        className: 'col-md-6 col-sm-6 col-xs-12',
+        widgets: [{ key: 'RocketWidget' }],
+      }, {
+        className: 'col-md-6 col-sm-6 col-xs-12',
+        widgets: [{ key: 'RocketWidget' }],
+      }],
+  }
+],
+
+- 4 / 3 / 2
+
+rows: [
+  {
+      columns: [{
+        className: 'col-md-3 col-sm-6 col-xs-12',
+        widgets: [{ key: 'RocketWidget' }, { key: 'AlienWidget' }, { key: 'RocketWidget' }],
+      }, {
+        className: 'col-md-3 col-sm-6 col-xs-12',
+        widgets: [{ key: 'RocketWidget' }],
+      }, {
+        className: 'col-md-3 col-sm-6 col-xs-12',
+        widgets: [{ key: 'RocketWidget' }],
+      }, {
+        className: 'col-md-3 col-sm-6 col-xs-12',
+        widgets: [{ key: 'RocketWidget' }],
+      }],
+  }, {
+        columns: [{
+          className: 'col-md-3 col-sm-4 col-xs-4',
+          widgets: [{ key: 'RocketWidget' }, { key: 'AlienWidget' }, { key: 'RocketWidget' }],
+        }, {
+          className: 'col-md-3 col-sm-4 col-xs-4',
+          widgets: [{ key: 'RocketWidget' }],
+        }, {
+          className: 'col-md-3 col-sm-4 col-xs-4',
+          widgets: [{ key: 'RocketWidget' }],
+        }],
+  }, {
+      columns: [{
+        className: 'col-md-6 col-sm-6 col-xs-12',
+        widgets: [{ key: 'RocketWidget' }],
+      }, {
+        className: 'col-md-6 col-sm-6 col-xs-12',
+        widgets: [{ key: 'RocketWidget' }],
+      }],
+  }
+],
+
+
+- 6 / 3 / 2
+
+*/
+
 export class AdminEditForm extends React.PureComponent {
 
   constructor(props) {

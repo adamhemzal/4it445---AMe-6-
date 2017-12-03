@@ -18,6 +18,13 @@ export class WeatherWidget extends React.PureComponent {
 
   componentWillMount() {
     this.setTime();
+
+    const script = document.createElement("script");
+
+    script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyDDXOEh-jzoS5www_Yg5GpIa5ahA1VuKKg&libraries=places";
+    script.async = true;
+
+    document.body.appendChild(script);
   }
 
   componentDidMount() {

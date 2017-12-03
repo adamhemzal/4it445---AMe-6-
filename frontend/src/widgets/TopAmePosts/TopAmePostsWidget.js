@@ -81,7 +81,7 @@ class TopAmePost extends Component {
         </h3>
         <div className="clearfix">
           <h4 className="top_posts__name"><a target="_" href={this.props.data.userLink}>{this.props.data.realName}</a></h4>
-          <h5 className="top_posts__likes"><i className="fa fa-thumbs-o-up"></i>x{this.props.data.ameCount}</h5>
+          <h5 className="top_posts__likes">{this.props.data.ameCount}x <img src={require("../../img/ame-small.png")} alt="" /></h5>
         </div>
       </li>
     );

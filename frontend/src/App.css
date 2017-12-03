@@ -263,6 +263,35 @@ h1 {
 
 
 /**
+ *   Add Widget
+ */
+
+.list-group {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.list-group-item {
+  display: inline-block;
+  background: #f96d76;
+  color: white;
+}
+
+.list-group-item:hover {
+  background: #fb2c34;
+  color: white;
+}
+
+h6.list-group-item-heading {
+  font-family: "Poppins";
+  font-size: 13px;
+}
+
+.modal-body h5 {
+  margin-bottom: 15px;
+}
+
+/**
 *   Dashboard Intro
 */
 
@@ -451,6 +480,12 @@ h1 {
 .top_posts__likes {
   font-size: 14px;
   font-family: "Poppins";
+}
+
+.top_posts__likes img {
+  width: 16px;
+  position: relative;
+  top: -1px;
 }
 
 .top_posts__name {
@@ -947,4 +982,10 @@ h1 {
   color: white;
   font-size: 14px;
   float: left;
+}
+
+.modal-footer .btn-save {
+  background: #59b8e9;
+  color: white;
+  font-size: 14px;
 }

@@ -265,7 +265,7 @@ render() {
 
                   <div className="modal-footer">
                     <button type="button" className="btn btn-default btn-delete float--left" onClick={this.deleteDashboard}>Delete Dashboard</button>
-                    <button type="button" className="btn btn-default float--right" onClick={this.closeModal}>Close</button>
+                    <button type="button" className="btn btn-default btn-save float--right" onClick={this.closeModal}>Save</button>
                   </div>
 
                 </div>
