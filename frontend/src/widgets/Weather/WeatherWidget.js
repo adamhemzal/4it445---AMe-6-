@@ -89,48 +89,45 @@ export class WeatherWidget extends React.PureComponent {
 
     return (
       <div className="widget weather">
+        <div className="widget__inner">
+          <div className="widget__content">
+            { this.state.isLoading ? <MDSpinner className="md-spinner" /> : null }
+            <ul className="weather__list">
+              <Slider {...weatherSettings}>
+                {this.state.weatherCities.map((city, index) =>
+                  <li key={index} className="weather__list-item">
 
-        { this.state.isLoading ? <MDSpinner className="md-spinner" /> : null }
+                    <div className="weather__slide">
+                      <div className="weather__icon">
+                        {
+                          displayWeatherIcon(city.data.list[0].weather[0].icon)
+                        }
+                      </div>
+
+                      <h3 className="weather__city">{city.data.city.name}</h3>
+                    </div>
 
 
-        <Slider {...weatherSettings}>
+                    <div className="widget__footer widget__footer--dark clearfix no-padding">
+                      <div className="float--left">
+                        <h3 className="weather__temperature">{Math.round(city.data.list[0].main.temp)}<span>o</span></h3>
+                        <h4 className="weather__wind"><i className="wi wi-strong-wind"></i>{city.data.list[0].wind.speed} m/s</h4>
+                      </div>
 
-          {this.state.weatherCities.map((city, index) =>
+                      <div className="float--right">
+                        <div className="weather__date">
+                          <h4 className="weather__day">{this.state.date}</h4>
+                          <h4 className="weather__time">{this.state.time}</h4>
+                        </div>
+                      </div>
 
-            <div key={index} className="widget__inner">
-
-              <div className="widget__content">
-
-                <div className="weather__slide">
-
-                  <div className="weather__icon">
-                    {
-                      displayWeatherIcon(city.data.list[0].weather[0].icon)
-                    }
-                  </div>
-
-                  <h3 className="weather__city">{city.data.city.name}</h3>
-                </div>
-              </div>
-
-              <div className="widget__footer widget__footer--dark clearfix no-padding">
-                <div className="float--left">
-                  <h3 className="weather__temperature">{Math.round(city.data.list[0].main.temp)}<span>o</span></h3>
-                  <h4 className="weather__wind"><i className="wi wi-strong-wind"></i>{city.data.list[0].wind.speed} m/s</h4>
-                </div>
-
-                <div className="float--right">
-                  <div className="weather__date">
-                    <h4 className="weather__day">{this.state.date}</h4>
-                    <h4 className="weather__time">{this.state.time}</h4>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          )}
-
-        </Slider>
+                    </div>
+                  </li>
+                )}
+              </Slider>
+            </ul>
+          </div>
+        </div>
 
       </div>
     )
