@@ -14,15 +14,20 @@ export class Admin extends Component {
         )
     }
 } */
-import React, { Component } from 'react';
+import React, { Component, } from 'react';
 import Dashboard, { addWidget } from 'react-dazzle';
 import CustomFrame from '../dashboard/CustomFrame';
+import Modal from 'react-modal';
+import Alert from 'react-s-alert';
+
 
 import { WeatherWidget } from '../widgets/Weather/WeatherWidget';
 import { TopAmersWidget } from '../widgets/TopAmers/TopAmersWidget';
 import { TopAmePostsWidget } from '../widgets/TopAmePosts/TopAmePostsWidget';
 import { PeopleOfADayWidget } from '../widgets/PeopleOfADay/PeopleOfADayWidget';
 import { HamburgerMenu } from '../dashboard/menu/HamburgerMenu';
+import { AdminEditForm } from '../admin/components/AdminEditForm';
+
 
 // Dazzle
 import EditBar from '../dashboard/EditBar';
@@ -33,6 +38,9 @@ import api from '../api.js';
 import logo from '../img/logo.png';
 
 import 'react-dazzle/lib/style/style.css';
+import 'react-s-alert/dist/s-alert-default.css';
+import 'react-s-alert/dist/s-alert-css-effects/slide.css';
+
 
 export class Admin extends Component {
 
@@ -41,6 +49,7 @@ export class Admin extends Component {
 
     this.state = {
       isLoading: true,
+      modalIsOpen: false,
 
       widgets: {
         TopAmePosts: {
@@ -61,6 +70,9 @@ export class Admin extends Component {
       isModalOpen: false,
       addWidgetOptions: null
     };
+
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
 
   }
 
@@ -91,6 +103,32 @@ export class Admin extends Component {
     }).catch(error => {
       console.log(error);
     });
+  }
+
+  openModal() {
+    this.setState({modalIsOpen: true});
+  }
+
+  closeModal() {
+    this.setState({modalIsOpen: false});
+  }
+
+
+  deleteDashboard = () => {
+
+    Alert.info('Dashboard was deleted', {
+        position: 'top-right',
+        effect: 'slide',
+        onShow: function () {
+            console.log('aye!')
+        },
+        beep: false,
+        timeout: 2500,
+        offset: 100
+    });
+
+    this.closeModal();
+
   }
 
   onRemove = (layout) => {
@@ -155,7 +193,6 @@ export class Admin extends Component {
 }
 
 
-
 render() {
   return (
     <div>
@@ -172,7 +209,8 @@ render() {
             <h2 className="intro__title">Admin Workspace Dashboard</h2>
             <h3 className="intro__description">Simple description of this dashboard</h3>
           </div>
-          <button className="btn btn-default intro__button"><i className="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button>
+
+          <button className="btn btn-default intro__button" onClick={() => {this.openModal();}}><i className="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button>
         </div>
 
           <HamburgerMenu />
@@ -203,6 +241,35 @@ render() {
               onRequestClose={this.onRequestClose}
               onWidgetSelect={this.widgetSelected}
             />
+
+            <Alert stack={{limit: 3}} />
+
+            <Modal
+              isOpen={this.state.modalIsOpen}
+              className='modal-dialog'
+              //overlayClassName='edit_modal__overlay'
+              onRequestClose={this.closeModal}
+              contentLabel='Widget Editation'
+              >
+                <div className='modal-content'>
+
+                  <div className="modal-header">
+                    <button type="button" className="close" onClick={this.closeModal}>
+                      <span aria-hidden="true">&times;</span>
+                      <span className="sr-only">Close</span>
+                    </button>
+                    <h3 className="modal-title" ref={subtitle => this.subtitle = subtitle}>Dashboard Options</h3>
+                  </div>
+
+                  <div className="modal-body"><AdminEditForm /></div>
+
+                  <div className="modal-footer">
+                    <button type="button" className="btn btn-default btn-delete float--left" onClick={this.deleteDashboard}>Delete Dashboard</button>
+                    <button type="button" className="btn btn-default float--right" onClick={this.closeModal}>Close</button>
+                  </div>
+
+                </div>
+              </Modal>
 
           </div>
 

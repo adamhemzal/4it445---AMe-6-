@@ -523,6 +523,7 @@ h1 {
 
 .top_amers__badge img {
   float: right;
+  width: 25px;
 }
 
 .top_amers__navigation {
@@ -911,9 +912,17 @@ h1 {
 *   Edit Modal
 */
 
+.ReactModal__Overlay {
+  z-index: 99;
+}
+
 .modal-content {
   -webkit-box-shadow: 0px 0px 15px 0px rgba(128, 126, 126, 0.21);
   box-shadow: 0px 0px 15px 0px rgba(128, 126, 126, 0.21);
+}
+
+.modal-body label:not(:first-child) {
+  margin-top: 20px;
 }
 
 .modal-header,
@@ -927,4 +936,15 @@ h1 {
 
 .modal-footer>:not(:last-child) {
   float: right;
+}
+
+.modal-footer .btn.float--left {
+  float: left !important;
+}
+
+.modal-footer .btn-delete {
+  background: #d65453;
+  color: white;
+  font-size: 14px;
+  float: left;
 }
