@@ -924,3 +924,7 @@ h1 {
 .modal-title {
   float: left;
 }
+
+.modal-footer>:not(:last-child) {
+  float: right;
+}
