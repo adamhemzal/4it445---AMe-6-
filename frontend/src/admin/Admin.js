@@ -110,11 +110,7 @@ export class Admin extends Component {
                 widgets: [{ key: 'TopAmers' }],
               },{
                 className: 'col-md-4',
-<<<<<<< HEAD
-                widgets: [{ key: 'PeopleOfADay' }],
-=======
                 widgets: [{ key: 'Weather' }],
->>>>>>> 07ac62e349f9ef125518734ee2befcaf8ef768c5
               }],
             }]
           }
