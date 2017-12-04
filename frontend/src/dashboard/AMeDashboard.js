@@ -41,6 +41,10 @@ export class AMeDashboard extends Component {
         Weather: {
           type: WeatherWidget,
           title: 'Weather'
+        },
+        PeopleOfADay: {
+          type: PeopleOfADayWidget,
+          title: 'People of the Day'
         }
       },
 
