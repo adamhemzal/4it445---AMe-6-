@@ -43,16 +43,16 @@ class CustomFrame extends Component {
     let editForm = null;
     switch (widgetName) {
       case 'TopAmePostsWidget':
-        editForm = <TopAmePostsEditForm/>;
+        editForm = <TopAmePostsEditForm channelIdValue="C0BUA20S0"/>;
         break;
       case 'TopAmersWidget':
-        editForm = <TopAmersEditForm/>;
+        editForm = <TopAmersEditForm channelIdValue="C0BUA20S0"/>;
         break;
       case 'WeatherWidget':
         editForm = <WeatherEditForm/>;
         break;
       case 'PeopleOfADayWidget':
-        editForm = <PeopleOfADayEditForm/>;
+        editForm = <PeopleOfADayEditForm channelIdValue="C0BUA20S0"/>;
         break;
       default:
 

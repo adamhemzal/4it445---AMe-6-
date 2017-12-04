@@ -105,15 +105,16 @@ export class Admin extends Component {
               columns: [{
                 className: 'col-md-4',
                 widgets: [{ key: 'TopAmePosts' }],
-              }, {
-                className: 'col-md-4',
-                widgets: [{ key: 'TopAmers' }],
-              }, {
-                className: 'col-md-4',
-                widgets: [{ key: 'Weather' }],
               },{
                 className: 'col-md-4',
+                widgets: [{ key: 'TopAmers' }],
+              },{
+                className: 'col-md-4',
+<<<<<<< HEAD
                 widgets: [{ key: 'PeopleOfADay' }],
+=======
+                widgets: [{ key: 'Weather' }],
+>>>>>>> 07ac62e349f9ef125518734ee2befcaf8ef768c5
               }],
             }]
           }
