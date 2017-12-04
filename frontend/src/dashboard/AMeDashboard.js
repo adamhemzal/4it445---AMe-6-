@@ -28,6 +28,8 @@ export class AMeDashboard extends Component {
 
     this.state = {
       isLoading: true,
+      name: '',
+      description: '',
 
       widgets: {
         TopAmePosts: {
@@ -56,10 +58,16 @@ export class AMeDashboard extends Component {
   }
 
   componentDidMount() {
-    api.get(`dashboard/layout/1`).then(response => {
-      const { success, layout } = response.data;
+    api.get(`dashboard/info/1`).then(response => {
+      const { success, name, description, url, layout } = response.data;
       if (success) {
-        this.setState({layout: layout, isLoading: false });
+        this.setState({
+            name: name,
+            description: description,
+            url: url,
+            layout: layout,
+            isLoading: false
+          });
         // Pokud se nepovede ziskat layout z DB, pouzije se defaultni.
       } else {
         this.setState({
@@ -159,8 +167,8 @@ render() {
           </div>
 
           <div className="intro__div">
-            <h2 className="intro__title">Workspace dashboard</h2>
-            <h3 className="intro__description">Simple description of this dashboard</h3>
+            <h2 className="intro__title">{this.state.name}</h2>
+            <h3 className="intro__description">{this.state.description}</h3>
           </div>
 
           {/* <HamburgerMenu /> */}
