@@ -985,7 +985,8 @@ h6.list-group-item-heading {
   float: left;
 }
 
-.modal-footer .btn-save {
+.modal-footer .btn-save,
+.btn-save {
   background: #59b8e9;
   color: white;
   font-size: 14px;

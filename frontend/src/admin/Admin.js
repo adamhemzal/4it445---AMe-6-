@@ -50,6 +50,8 @@ export class Admin extends Component {
     this.state = {
       isLoading: true,
       modalIsOpen: false,
+      name: 'Admin Workspace Dashboard',
+      description: 'Simple description of this dashboard',
 
       widgets: {
         TopAmePosts: {
@@ -81,10 +83,20 @@ export class Admin extends Component {
   }
 
   componentDidMount() {
-    api.get(`dashboard/layout/1`).then(response => {
-      const { success, layout } = response.data;
+    this.getData();
+  }
+
+  getData() {
+    api.get(`dashboard/info/1`).then(response => {
+      const { success, name, description, url, layout } = response.data;
       if (success) {
-        this.setState({ layout: layout, isLoading: false });
+        this.setState({
+            name: name,
+            description: description,
+            url: url,
+            layout: layout,
+            isLoading: false
+          });
         // Pokud se nepovede ziskat layout z DB, pouzije se defaultni.
       } else {
         this.setState({
@@ -101,7 +113,7 @@ export class Admin extends Component {
                 widgets: [{ key: 'Weather' }],
               },{
                 className: 'col-md-4',
-                widgets: [{ key: 'PeopleDay' }],
+                widgets: [{ key: 'PeopleOfADay' }],
               }],
             }]
           }
@@ -117,20 +129,8 @@ export class Admin extends Component {
   }
 
   saveDashboard = () => {
-
-    Alert.success('Options were saved.', {
-      position: 'top-right',
-      effect: 'slide',
-      onShow: function () {
-        console.log('aye!')
-      },
-      beep: false,
-      timeout: 2500,
-      offset: 100
-    });
-
     this.closeModal();
-
+    this.getData();
   }
 
   closeModal() {
@@ -184,6 +184,8 @@ export class Admin extends Component {
     this.setState({
       isModalOpen: false,
     });
+
+    this.closeModal();
   }
 
   toggleEdit = () => {
@@ -228,8 +230,8 @@ export class Admin extends Component {
 
             <div className="intro">
               <div className="intro__div">
-                <h2 className="intro__title">Admin Workspace Dashboard</h2>
-                <h3 className="intro__description">Simple description of this dashboard</h3>
+                <h2 className="intro__title">{this.state.name}</h2>
+                <h3 className="intro__description">{this.state.description}</h3>
               </div>
 
               <button className="btn btn-default intro__button" onClick={() => { this.openModal(); }}><i className="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button>
@@ -276,7 +278,7 @@ export class Admin extends Component {
               <div className='modal-content'>
 
                 <div className="modal-header">
-                  <button type="button" className="close" onClick={this.closeModal}>
+                  <button type="button" className="close" onClick={this.saveDashboard}>
                     <span aria-hidden="true">&times;</span>
                     <span className="sr-only">Close</span>
                   </button>
@@ -287,7 +289,7 @@ export class Admin extends Component {
 
                 <div className="modal-footer">
                   <button type="button" className="btn btn-default btn-delete float--left" onClick={this.deleteDashboard}>Delete Dashboard</button>
-                  <button type="button" className="btn btn-default btn-save float--right" onClick={this.saveDashboard}>Save</button>
+                  <button type="button" className="btn btn-default btn-close float--right" onClick={this.saveDashboard}>Close</button>
                 </div>
 
               </div>

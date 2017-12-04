@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { RadioGroup, RadioButton, ReversedRadioButton } from 'react-radio-buttons';
-
+import api from '../../api.js';
+import Alert from 'react-s-alert';
 
 /*
 
@@ -169,10 +170,88 @@ export class AdminEditForm extends React.PureComponent {
     super(props);
 
     this.state = {
-      name: 'My awesome dashboard title',
+      name: '',
+      description: '',
       url: '',
-      selectedLayout: 'layout3',
+      selectedLayout: 'layout1',
     };
+
+    this.handleInputChange = this.handleInputChange.bind(this);
+  }
+
+  handleInputChange(event) {
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
+
+    this.setState({
+      [name]: value
+    });
+
+    console.log(this.state.name)
+  }
+
+  componentDidMount() {
+    api.get(`dashboard/info/1`).then(response => {
+      const { success, name, description, url, layout } = response.data;
+      if (success) {
+        this.setState({
+            name: name,
+            description: description,
+            url: url,
+            layout: layout,
+          });
+        // Pokud se nepovede ziskat layout z DB, pouzije se defaultni.
+      } else {
+        this.setState({
+          layout: {
+            rows: [{
+              columns: [{
+                className: 'col-md-4',
+                widgets: [{ key: 'TopAmePosts' }],
+              }, {
+                className: 'col-md-4',
+                widgets: [{ key: 'TopAmers' }],
+              }, {
+                className: 'col-md-4',
+                widgets: [{ key: 'Weather' }],
+              },{
+                className: 'col-md-4',
+                widgets: [{ key: 'PeopleOfADay' }],
+              }],
+            }]
+          }
+        })
+      }
+    }).catch(error => {
+      console.log(error);
+    });
+  }
+
+  saveDashboard = () => {
+    api.post('dashboard/info',
+      {
+        dashboardId: 1,
+        name: this.state.name,
+        description: this.state.description,
+        url: this.state.url,
+        layout: this.state.layout
+      }
+    ).then(response => {
+      console.log(response);
+
+      Alert.success('Options were saved.', {
+        position: 'top-right',
+        effect: 'slide',
+        onShow: function () {
+          console.log('aye!')
+        },
+        beep: false,
+        timeout: 2500,
+        offset: 100
+      });
+
+    })
   }
 
   handleChange(value) {
@@ -184,19 +263,23 @@ export class AdminEditForm extends React.PureComponent {
 
     return(
       <form>
-        <div class="form-group">
-          <label for="dashboardName">Dashboard Title</label>
-          <input type="email" className="form-control" id="dashboardName" value={this.state.name} aria-describedby="dashboardName" placeholder="Enter Dashboard Title"></input>
+        <div className="form-group">
+          <label htmlFor="dashboardName">Dashboard Title</label>
+          <input onChange={this.handleInputChange} type="email" name="name" className="form-control" id="dashboardName" value={this.state.name} aria-describedby="dashboardName" placeholder="Enter Dashboard Title"></input>
 
-          <label for="dashboardUrl">Dashboard URL</label>
-          <input type="text" className="form-control" id="dashboardUrl" value={this.state.url} aria-describedby="dashboardUrl" placeholder="Enter Dashboard URL"></input>
+          <label htmlFor="dashboardUrl">Dashboard Description</label>
+          <input onChange={this.handleInputChange} type="text" name="description" className="form-control" id="dashboardUrl" value={this.state.description} aria-describedby="dashboardUrl" placeholder="Enter Dashboard URL"></input>
 
 
-          <label for="">Dashboard Layout</label>
+          <label htmlFor="dashboardUrl">Dashboard URL</label>
+          <input onChange={this.handleInputChange} type="text" name="url" className="form-control" id="dashboardUrl" value={this.state.url} aria-describedby="dashboardUrl" placeholder="Enter Dashboard URL"></input>
+
+
+          <label htmlFor="">Dashboard Layout</label>
 
           <div className="layout-options">
             <RadioGroup
-              onChange = { this.handleChange.bind(this) }
+              //onChange = { this.handleChange.bind(this) }
               value = {this.state.selectedLayout}
               horizontal>
 
@@ -220,6 +303,9 @@ export class AdminEditForm extends React.PureComponent {
 
             </RadioGroup>
           </div>
+
+
+          <button type="button" className="btn btn-default btn-save float--left" onClick={this.saveDashboard}>Save</button>
 
         </div>
     </form>
