@@ -63,6 +63,10 @@ export class Admin extends Component {
         Weather: {
           type: WeatherWidget,
           title: 'Weather'
+        },
+        PeopleOfADay: {
+          type: PeopleOfADayWidget,
+          title: 'People of the Day'
         }
       },
 
@@ -80,7 +84,7 @@ export class Admin extends Component {
     api.get(`dashboard/layout/1`).then(response => {
       const { success, layout } = response.data;
       if (success) {
-        this.setState({layout: layout, isLoading: false });
+        this.setState({ layout: layout, isLoading: false });
         // Pokud se nepovede ziskat layout z DB, pouzije se defaultni.
       } else {
         this.setState({
@@ -89,12 +93,15 @@ export class Admin extends Component {
               columns: [{
                 className: 'col-md-4',
                 widgets: [{ key: 'TopAmePosts' }],
-              },{
+              }, {
                 className: 'col-md-4',
                 widgets: [{ key: 'TopAmers' }],
-              },{
+              }, {
                 className: 'col-md-4',
                 widgets: [{ key: 'Weather' }],
+              },{
+                className: 'col-md-4',
+                widgets: [{ key: 'PeopleDay' }],
               }],
             }]
           }
@@ -106,20 +113,20 @@ export class Admin extends Component {
   }
 
   openModal() {
-    this.setState({modalIsOpen: true});
+    this.setState({ modalIsOpen: true });
   }
 
   saveDashboard = () => {
 
     Alert.success('Options were saved.', {
-        position: 'top-right',
-        effect: 'slide',
-        onShow: function () {
-            console.log('aye!')
-        },
-        beep: false,
-        timeout: 2500,
-        offset: 100
+      position: 'top-right',
+      effect: 'slide',
+      onShow: function () {
+        console.log('aye!')
+      },
+      beep: false,
+      timeout: 2500,
+      offset: 100
     });
 
     this.closeModal();
@@ -127,20 +134,20 @@ export class Admin extends Component {
   }
 
   closeModal() {
-    this.setState({modalIsOpen: false});
+    this.setState({ modalIsOpen: false });
   }
 
   deleteDashboard = () => {
 
     Alert.error('Dashboard was deleted', {
-        position: 'top-right',
-        effect: 'slide',
-        onShow: function () {
-            console.log('aye!')
-        },
-        beep: false,
-        timeout: 2500,
-        offset: 100
+      position: 'top-right',
+      effect: 'slide',
+      onShow: function () {
+        console.log('aye!')
+      },
+      beep: false,
+      timeout: 2500,
+      offset: 100
     });
 
     this.closeModal();
@@ -198,57 +205,57 @@ export class Admin extends Component {
 
   saveLayout = () => {
     api.post('dashboard/layout',
-    {
-      dashboardId: 1,
-      layout: this.state.layout
-    }
-  ).then(response => {
-    console.log(response);
-  })
-}
+      {
+        dashboardId: 1,
+        layout: this.state.layout
+      }
+    ).then(response => {
+      console.log(response);
+    })
+  }
 
 
-render() {
-  return (
-    <div>
+  render() {
+    return (
+      <div>
 
-      <header className="header clearfix">
+        <header className="header clearfix">
 
-        <div className="container-fluid flexbox">
-          <div className="logo-outer">
-            <img src={logo} alt="Logo AMe"/>
-        </div>
+          <div className="container-fluid flexbox">
+            <div className="logo-outer">
+              <img src={logo} alt="Logo AMe" />
+            </div>
 
-        <div className="intro">
-          <div className="intro__div">
-            <h2 className="intro__title">Admin Workspace Dashboard</h2>
-            <h3 className="intro__description">Simple description of this dashboard</h3>
+            <div className="intro">
+              <div className="intro__div">
+                <h2 className="intro__title">Admin Workspace Dashboard</h2>
+                <h3 className="intro__description">Simple description of this dashboard</h3>
+              </div>
+
+              <button className="btn btn-default intro__button" onClick={() => { this.openModal(); }}><i className="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button>
+            </div>
+
+            <HamburgerMenu />
+
           </div>
 
-          <button className="btn btn-default intro__button" onClick={() => {this.openModal();}}><i className="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button>
-        </div>
+        </header>
 
-          <HamburgerMenu />
+        <div className="container">
 
-        </div>
+          <div className="">
 
-      </header>
-
-      <div className="container">
-
-        <div className="">
-
-          <EditBar onEdit={this.toggleEdit} />
-          <Dashboard
-            onRemove={this.onRemove}
-            layout={this.state.layout}
-            widgets={this.state.widgets}
-            editable={this.state.editMode}
-            addWidgetComponentText="Add"
-            onAdd={this.onAdd}
-            onMove={this.onMove}
-            frameComponent={CustomFrame}
-          />
+            <EditBar onEdit={this.toggleEdit} />
+            <Dashboard
+              onRemove={this.onRemove}
+              layout={this.state.layout}
+              widgets={this.state.widgets}
+              editable={this.state.editMode}
+              addWidgetComponentText="Add"
+              onAdd={this.onAdd}
+              onMove={this.onMove}
+              frameComponent={CustomFrame}
+            />
 
             <AddWidgetDialog
               widgets={this.state.widgets}
@@ -257,7 +264,7 @@ render() {
               onWidgetSelect={this.widgetSelected}
             />
 
-            <Alert stack={{limit: 3}} />
+            <Alert stack={{ limit: 3 }} />
 
             <Modal
               isOpen={this.state.modalIsOpen}
@@ -265,30 +272,30 @@ render() {
               //overlayClassName='edit_modal__overlay'
               onRequestClose={this.closeModal}
               contentLabel='Widget Editation'
-              >
-                <div className='modal-content'>
+            >
+              <div className='modal-content'>
 
-                  <div className="modal-header">
-                    <button type="button" className="close" onClick={this.closeModal}>
-                      <span aria-hidden="true">&times;</span>
-                      <span className="sr-only">Close</span>
-                    </button>
-                    <h3 className="modal-title" ref={subtitle => this.subtitle = subtitle}>Dashboard Options</h3>
-                  </div>
-
-                  <div className="modal-body"><AdminEditForm /></div>
-
-                  <div className="modal-footer">
-                    <button type="button" className="btn btn-default btn-delete float--left" onClick={this.deleteDashboard}>Delete Dashboard</button>
-                    <button type="button" className="btn btn-default btn-save float--right" onClick={this.saveDashboard}>Save</button>
-                  </div>
-
+                <div className="modal-header">
+                  <button type="button" className="close" onClick={this.closeModal}>
+                    <span aria-hidden="true">&times;</span>
+                    <span className="sr-only">Close</span>
+                  </button>
+                  <h3 className="modal-title" ref={subtitle => this.subtitle = subtitle}>Dashboard Options</h3>
                 </div>
-              </Modal>
+
+                <div className="modal-body"><AdminEditForm /></div>
+
+                <div className="modal-footer">
+                  <button type="button" className="btn btn-default btn-delete float--left" onClick={this.deleteDashboard}>Delete Dashboard</button>
+                  <button type="button" className="btn btn-default btn-save float--right" onClick={this.saveDashboard}>Save</button>
+                </div>
+
+              </div>
+            </Modal>
 
           </div>
 
-          <hr/>
+          <hr />
 
           <footer>
             <p>&copy; AMe 2017</p>

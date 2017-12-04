@@ -60,3 +60,5 @@ typings/
 /AMe/nbproject/private/
 /nbproject/private/
 /nbproject
+
+backend/src/config/config.js
