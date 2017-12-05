@@ -81,8 +81,9 @@ h1 {
 
 .logo-outer {
   border-radius: 100%;
-  margin-left: 2rem;
-  width: 70px;
+  /* margin-left: 2rem; */
+  /* padding-top: 0.4rem; */
+  width: 220px;
   height: 70px;
 }
 
@@ -984,7 +985,8 @@ h6.list-group-item-heading {
   float: left;
 }
 
-.modal-footer .btn-save {
+.modal-footer .btn-save,
+.btn-save {
   background: #59b8e9;
   color: white;
   font-size: 14px;

@@ -1,9 +1,9 @@
 import expressAsyncAwait from 'express-async-await';
 import { Router } from 'express';
 
-import { topAmersController, saveWidgetSettingsToDB } from './topAmersController.js';
+import { weatherController } from './weatherController.js';
 
 const router = expressAsyncAwait(Router());
-router.get('/', topAmersController).post('/', saveWidgetSettingsToDB);
+router.get('/', weatherController);
 
 export default router;

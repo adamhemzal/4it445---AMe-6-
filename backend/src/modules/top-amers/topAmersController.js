@@ -13,6 +13,33 @@ const widgetName = "TopAmers";
 const dashboardId = 1; //TODO take current dashboard ID
 //const channel = 'C0BUA20S0'; //unused, now fetched from DB
 
+export const saveWidgetSettingsToDB = async (req, res) => {
+    
+    let postData = req.body;
+    let widgetType = postData.widgetType || "";
+    let widgetId = postData.widgetId || "";
+    let dashboardId = postData.dashboardId || "";
+    let settings = postData.settings || "";
+    
+    globalRes = res;
+    
+    //console.log("Updating widget "+widgetType+" with ID="+widgetId+" and belonging to dashboard with ID="+dashboardId+" to have settings="+JSON.stringify(settings)+"///");
+    
+    db.widget.update(
+            {settings:settings},
+            {where: {
+                dashboardId: dashboardId,
+                name: widgetName,
+                /*id: widgetId*/}
+            })
+            .then(result => {
+                res.send(result);
+            }).catch(err => {
+        console.log(err);
+    });
+    
+};
+
 const getWidgetSettingsFromDB = () => {
 
     db.widget.findOne({where: {
