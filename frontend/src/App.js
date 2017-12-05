@@ -24,7 +24,7 @@ class App extends Component {
           <Alert stack={{limit: 1}} />
           <Route exact path="/" component={AMeDashboard}/>
           <Route path="/admin" component={Admin}/>
-          <Route path="*" component={NotFound}/>
+          {/*<Route path="*" component={NotFound}/>*/}
         </div>
       </BrowserRouter>
     );
