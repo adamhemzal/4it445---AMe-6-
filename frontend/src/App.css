@@ -81,10 +81,7 @@ h1 {
 
 .logo-outer {
   border-radius: 100%;
-  /* margin-left: 2rem; */
-  /* padding-top: 0.4rem; */
-  width: 220px;
-  height: 70px;
+  width: 200px;
 }
 
 /* Menu Hamburger */
