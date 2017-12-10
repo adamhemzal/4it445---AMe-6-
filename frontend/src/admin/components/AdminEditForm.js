@@ -265,7 +265,7 @@ export class AdminEditForm extends React.PureComponent {
       <form>
         <div className="form-group">
           <label htmlFor="dashboardName">Dashboard Title</label>
-          <input onChange={this.handleInputChange} type="email" name="name" className="form-control" id="dashboardName" value={this.state.name} aria-describedby="dashboardName" placeholder="Enter Dashboard Title"></input>
+          <input onChange={this.handleInputChange} type="text" name="name" className="form-control" id="dashboardName" value={this.state.name} aria-describedby="dashboardName" placeholder="Enter Dashboard Title"></input>
 
           <label htmlFor="dashboardUrl">Dashboard Description</label>
           <input onChange={this.handleInputChange} type="text" name="description" className="form-control" id="dashboardUrl" value={this.state.description} aria-describedby="dashboardUrl" placeholder="Enter Dashboard URL"></input>
