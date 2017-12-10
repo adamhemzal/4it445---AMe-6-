@@ -12,9 +12,36 @@ export class GifOfADayWidget extends Component {
         };
       }
 
+      componentDidMount() {
+          this.getGifs();
+      }
+
+      getGifs() {
+        const apiKeyGif = 'IJIIICknvqTbL8pdk93Kq0WeYOv9HHa6';
+
+        axios.get('http://api.giphy.com/v1/gifs/trending?&api_key='+apiKeyGif+'&limit=2')
+        .then(res => {
+            const data = res.data.data[0].images.downsized_large;
+            console.log(data);
+            this.setState({
+                gifs: data,
+                isLoading: false,
+            });
+        });
+      }
+
     render() {
         return(
-            <h1>Gif of a Day</h1>
+            <div className="widget gif">
+                <div className="widget__inner">
+                    <div className="widget__header clearfix">
+                        <h2 className="widget__name">Gif of a Day</h2>
+                    </div>
+                    <div className="widget__content">
+                        <img src={`${this.state.gifs.url}`} alt="Gif of a Day"/>             
+                    </div>
+                </div>
+            </div>
         )
     }
 }

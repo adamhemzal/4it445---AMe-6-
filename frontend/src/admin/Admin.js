@@ -25,6 +25,8 @@ import { WeatherWidget } from '../widgets/Weather/WeatherWidget';
 import { TopAmersWidget } from '../widgets/TopAmers/TopAmersWidget';
 import { TopAmePostsWidget } from '../widgets/TopAmePosts/TopAmePostsWidget';
 import { PeopleOfADayWidget } from '../widgets/PeopleOfADay/PeopleOfADayWidget';
+import { GifOfADayWidget } from '../widgets/GifOfADay/GifOfADayWidget';
+
 import { HamburgerMenu } from '../dashboard/menu/HamburgerMenu';
 import { AdminEditForm } from '../admin/components/AdminEditForm';
 
@@ -69,7 +71,11 @@ export class Admin extends Component {
         PeopleOfADay: {
           type: PeopleOfADayWidget,
           title: 'People of the Day'
-        }
+        },
+        GifOfADay: {
+          type: GifOfADayWidget,
+          title: 'Gif of a Day',
+        },
       },
 
       editMode: false,

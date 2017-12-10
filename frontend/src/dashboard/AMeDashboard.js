@@ -6,6 +6,8 @@ import { WeatherWidget } from '../widgets/Weather/WeatherWidget';
 import { TopAmersWidget } from '../widgets/TopAmers/TopAmersWidget';
 import { TopAmePostsWidget } from '../widgets/TopAmePosts/TopAmePostsWidget';
 import { PeopleOfADayWidget } from '../widgets/PeopleOfADay/PeopleOfADayWidget';
+import { GifOfADayWidget } from '../widgets/GifOfADay/GifOfADayWidget';
+
 //import { HamburgerMenu } from './menu/HamburgerMenu';
 import { JustLogin } from './menu/JustLogin';
 
@@ -46,8 +48,12 @@ export class AMeDashboard extends Component {
         },
         PeopleOfADay: {
           type: PeopleOfADayWidget,
-          title: 'People of the Day'
-        }
+          title: 'People of a Day'
+        },
+        GifOfADay: {
+          type: GifOfADayWidget,
+          title: 'Gif of a Day',
+        },
       },
 
       editMode: false,
