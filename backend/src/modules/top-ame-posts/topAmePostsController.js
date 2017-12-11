@@ -12,7 +12,7 @@ const web = new WebClient(token);
 const ameEmoticonIdentifier = "ame";
 const widgetName = "TopAmePosts";
 const dashboardId = 1; //TODO take current dashboard ID
-//const channel = 'C0BUA20S0'; //unused, now fetched from DB
+let channel = '';
 
 export const saveWidgetSettingsToDB = async (req, res) => {
     
@@ -23,8 +23,6 @@ export const saveWidgetSettingsToDB = async (req, res) => {
     let settings = postData.settings || "";
     
     globalRes = res;
-    
-    //console.log("Updating widget "+widgetType+" with ID="+widgetId+" and belonging to dashboard with ID="+dashboardId+" to have settings="+JSON.stringify(settings)+"///");
     
     db.widget.update(
             {settings:settings},
@@ -69,7 +67,7 @@ const getChannelHistory = (widget) => {
     const oldestTimestamp = moment().subtract(1, 'week').format('X');
     messagesWithAme = [];
 
-    const channel = widget.settings.channel;
+    channel = widget.settings.channel;
 
     web.channels.history(channel, {'count': 1000, 'oldest': oldestTimestamp}, (error, response) => {
         if (error) {
@@ -131,9 +129,11 @@ const getSlackUsersCallback = (error, response) => {
 
         /*sort the array by ameCount*/
         messagesWithAme = sortMessagesWithAme(messagesWithAme);
+        
+        let responseObject = {topAmePosts:messagesWithAme, channel:channel};
 
         /*output the topAmers, now into the console*/
-        globalRes.send(messagesWithAme);
+        globalRes.send(responseObject);
     }
 };
 
