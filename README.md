@@ -1,14 +1,6 @@
 # 4it445---AMe-6-
 Semestrální práce na předmět 4IT445 - AMe
 
-## Updates
-
-### 0.2
-- upravil jsem sekci *Zprovoznění Reactu aneb začínáme vyvíjet*
-
-### 0.1
-- přidal jsem [axios](https://github.com/axios/axios), pomocí kterého budeme provádět AJAX cally na APIčka
-
 ## Setup
 
 ### Nahrání repozitáře k sobě na harddisk
@@ -25,28 +17,65 @@ Semestrální práce na předmět 4IT445 - AMe
 ### Zprovoznění Reactu aneb začínáme vyvíjet
 1. Vlezeš do složky **backend**
 2. Tady vytvoříš složku **backend/tmp** a do ní nahraješ prázdný soubor **restart.txt**
-3. V /backend/ vytvoříš soubor **.env** a tam nahraješ SLACK API Token, který ti pošle jedn z nás
-4. Zadáš příkaz
+3. V /backend/ vytvoříš soubor **.env** a poprosíš jednoho z nás, abychom ti poslali API Token na Slack a hesla k rootu
+4. ve složce **backend** jdi do složky **backend/src/config** a tady vytvoř soubor config.js a vlož do něj následující kód (Heslo ti na vyžádání pošleme)
 
     ```
-    npm start
+    module.exports = {
+        "development": {
+        "username": "team6",
+        "password": "HESLO TI POŠLEME",
+        "database": "user_team6",
+        "host": "localhost",
+        "port": 6000,
+        "dialect": "mysql"
+        },
+        "production": {
+        "username": "team6",
+        "password": "HESLO TI POŠLEME",
+        "database": "user_team6",
+        "host": "localhost",
+        "port": 6000,
+        "dialect": "mysql"
+        }
+    };
     ```
 
-5. Vlezeš do šložky **frontend**
-6. Tady ve složce spustíš příkaz (jsi stále v CMD nebo gitBash)
+5. Zadáš příkaz
 
     ```
     npm install
     ```
 
-7. Počkáš než s evše nainstaluje
-8. Ve stejné složce pak spustíš příkaz
+6. Tímto se ti nainstalovaly všechny potřebné balíčky pro vývoj
+7. Stále jsi v backendu a zadáš příkaz:
+
+    ```
+    npm run dev
+    ```
+
+8. Takhle spustíš backend server
+9. Vlezeš do šložky **frontend**
+10. Tady ve složce vytvoříš soubor **.env** a zadáš do něj: 
+
+    ```
+    REACT_APP_API_URL=http://localhost:3001
+    ```
+
+11. Dále pak ve složce spustíš příkaz (jsi stále v CMD nebo gitBash)
+
+    ```
+    npm install
+    ```
+
+12. Počkáš než se vše nainstaluje
+13. Ve stejné složce pak spustíš příkaz
 
     ```
     npm start
     ```
 
-9. Spustí se ti webpack a react ve webovém prohlížeči. Reaguje na všechny tvoje změny v kódu
+14. Spustí se ti webpack a react ve webovém prohlížeči. React pak reaguje na všechny tvoje změny v kódu
 
 ### Developerský cyklus
 Pokaždé když chceš vyvíjet, tak dodržuj následující postup

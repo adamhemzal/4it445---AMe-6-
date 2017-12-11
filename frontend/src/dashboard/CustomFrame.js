@@ -7,6 +7,7 @@ import { TopAmersEditForm } from '../widgets/TopAmers/TopAmersEditForm';
 import { WeatherEditForm } from '../widgets/Weather/WeatherEditForm';
 import { TopAmePostsEditForm } from '../widgets/TopAmePosts/TopAmePostsEditForm';
 import { PeopleOfADayEditForm } from '../widgets/PeopleOfADay/PeopleOfADayEditForm';
+import { GifOfADayEditForm } from '../widgets/GifOfADay/GifOfADayEditForm';
 
 class CustomFrame extends Component {
 
@@ -53,6 +54,9 @@ class CustomFrame extends Component {
         break;
       case 'PeopleOfADayWidget':
         editForm = <PeopleOfADayEditForm channelIdValue="C0BUA20S0"/>;
+        break;
+      case 'GifOfADayWidget':
+        editForm = <GifOfADayEditForm/>
         break;
       default:
 
