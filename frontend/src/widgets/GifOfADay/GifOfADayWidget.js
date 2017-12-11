@@ -38,7 +38,7 @@ export class GifOfADayWidget extends Component {
                         <h2 className="widget__name">Gif of a Day</h2>
                     </div>
                     <div className="widget__content">
-                        <img src={`${this.state.gifs.url}`} alt="Gif of a Day"/>             
+                        <img src={`${this.state.gifs.url}`} alt="Gif of a Day" className="gif__image"/>             
                     </div>
                 </div>
             </div>
