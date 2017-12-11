@@ -11,34 +11,46 @@ export class TopAmePostsEditForm extends Component {
         this.submit = this.submit.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.setChannel = this.setChannel.bind(this);
+        this.selectChange = this.selectChange.bind(this);
 
         this.state = {
             //channelIdValue: this.props.channelIdValue,
             channelIdValue: "",
-            resultText: ""
+            resultText: "",
+            slackChannels: [],
         };
+    }
+
+    componentDidMount() {
+        const availableChannels = this.getAvailableChannels();
+    }
+
+    getAvailableChannels() {
+        api.get('slack-channels')
+                .then(response => {
+                    console.log(response);
+                    this.setState({slackChannels: response.data});
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+    }
+    
+    selectChange(event){
+        this.setState({channelIdValue: event.target.value});
     }
 
     render() {
         return(
                 <form onSubmit={this.submit}>
                     <div className="form-group">
-                        <label for="channelId">Enter channel ID</label>
-                        <input 
-                            type="text" 
-                            className="form-control" 
-                            id="channelId" 
-                            onChange={this.handleChange} 
-                            value={this.state.channelIdValue} 
-                            placeholder="Enter channel ID">
-                        </input>
-                        <label>or choose from the most favorie ones:</label>
-                        <div className="predefined-channels">
-                            <button type="button" className="btn btn-sm" onClick={() => this.setChannel("C0BUA20S0") } >#general</button>
-                            <button type="button" className="btn btn-sm" onClick={() => this.setChannel("C7693MGNS") } >#tym6-ame</button>
-                            <button type="button" className="btn btn-sm" onClick={() => this.setChannel("C0BUA262F") } >#random</button>
-                        </div>
-                        <hr/>
+                        <select onChange={this.selectChange}>
+                            <option value="" disabled="disabled" selected="selected">Please select a channel</option>
+                            {this.state.slackChannels.map((channel, index) =>
+                                        <option value={channel.id}>{channel.name}</option>
+                                        )}      
+                                
+                        </select>
                         <button className="btn" onClick={this.submit}>Save</button>
                         <h2>{this.state.resultText}</h2>
                     </div>
