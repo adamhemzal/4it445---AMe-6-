@@ -20,8 +20,10 @@ export class TopAmePostsWidget extends Component {
   componentDidMount() {
     api('top-ame-posts')
     .then(response => {
-      const {data: topAmePosts} = response;
-      this.setState({topAmePosts, isLoading: false });
+        console.log(response);
+      const topAmePosts = response.data.topAmePosts;
+      const channel = response.data.channel;
+      this.setState({topAmePosts:topAmePosts, channel:channel, isLoading: false });
     })
     .catch(error => {
       console.log(error);
@@ -38,7 +40,7 @@ export class TopAmePostsWidget extends Component {
 
           <div className="widget__header clearfix">
             <h2 className="float--left widget__name">Top AMe Posts</h2>
-            <h3 className="float--right">4IT445 <span>#general</span></h3>
+            <h3 className="float--right">4IT445 <span>#{this.state.channel}</span></h3>
           </div>
 
           <div className="widget__content widget__content--padding">
@@ -54,7 +56,7 @@ export class TopAmePostsWidget extends Component {
           </div>
 
           <div className="widget__footer text-center">
-            <a className="btn btn--link" href="#" role="button">See All</a>
+          <a className="btn btn--link" target="_" href={"https://4it445.slack.com/messages/"+this.state.channel} role="button">See All</a>
           </div>
 
         </div>

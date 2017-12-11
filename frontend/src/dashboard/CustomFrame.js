@@ -16,11 +16,12 @@ class CustomFrame extends Component {
     this.state = {
       modalIsOpen: false
     };
-
+    
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    
   }
-
+  
   componentWillMount() {
     Modal.setAppElement('#root');
   }
@@ -35,6 +36,7 @@ class CustomFrame extends Component {
   }
 
   closeModal() {
+    this.setState({...this.state});
     this.setState({modalIsOpen: false});
   }
 
@@ -43,16 +45,16 @@ class CustomFrame extends Component {
     let editForm = null;
     switch (widgetName) {
       case 'TopAmePostsWidget':
-        editForm = <TopAmePostsEditForm channelIdValue="C0BUA20S0"/>;
+        editForm = <TopAmePostsEditForm />;
         break;
       case 'TopAmersWidget':
-        editForm = <TopAmersEditForm channelIdValue="C0BUA20S0"/>;
+        editForm = <TopAmersEditForm />;
         break;
       case 'WeatherWidget':
-        editForm = <WeatherEditForm/>;
+        editForm = <WeatherEditForm />;
         break;
       case 'PeopleOfADayWidget':
-        editForm = <PeopleOfADayEditForm channelIdValue="C0BUA20S0"/>;
+        editForm = <PeopleOfADayEditForm />;
         break;
       default:
 
