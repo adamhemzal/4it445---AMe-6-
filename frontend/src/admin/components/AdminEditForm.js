@@ -265,14 +265,14 @@ export class AdminEditForm extends React.PureComponent {
       <form>
         <div className="form-group">
           <label htmlFor="dashboardName">Dashboard Title</label>
-          <input onChange={this.handleInputChange} type="text" name="name" className="form-control" id="dashboardName" value={this.state.name} aria-describedby="dashboardName" placeholder="Enter Dashboard Title"></input>
+          <input onChange={this.handleInputChange} type="text" name="name" className="form-control" id="dashboardName" value={this.state.name} aria-describedby="dashboardName" placeholder="Enter Dashboard Title" required />
 
-          <label htmlFor="dashboardUrl">Dashboard Description</label>
-          <input onChange={this.handleInputChange} type="text" name="description" className="form-control" id="dashboardUrl" value={this.state.description} aria-describedby="dashboardUrl" placeholder="Enter Dashboard URL"></input>
+          <label htmlFor="dashboardDescription">Dashboard Description</label>
+          <input onChange={this.handleInputChange} type="text" name="description" className="form-control" id="dashboardDescription" value={this.state.description} aria-describedby="dashboardDescription" placeholder="Enter Dashboard Description" required />
 
 
           <label htmlFor="dashboardUrl">Dashboard URL</label>
-          <input onChange={this.handleInputChange} type="text" name="url" className="form-control" id="dashboardUrl" value={this.state.url} aria-describedby="dashboardUrl" placeholder="Enter Dashboard URL"></input>
+          <input onChange={this.handleInputChange} type="text" name="url" className="form-control" id="dashboardUrl" value={this.state.url} aria-describedby="dashboardUrl" placeholder="Enter Dashboard URL" required />
 
 
           <label htmlFor="">Dashboard Layout</label>

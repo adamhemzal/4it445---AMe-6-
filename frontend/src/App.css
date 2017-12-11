@@ -461,6 +461,7 @@ h6.list-group-item-heading {
 }
 
 .top_posts_post-title {
+  overflow: hidden;
   font-size: 14px;
   font-family: "Poppins";
   margin-bottom: 10px;
@@ -608,6 +609,14 @@ h6.list-group-item-heading {
 .top_amers__navigation-item-inner:hover:before {
   opacity: 0.5;
 }
+
+/*-----------------------------------------------------------------------------------*/
+/*	GIF Widget
+/*-----------------------------------------------------------------------------------*/
+.gif__image {
+  width: 100%;
+}
+
 
 /*-----------------------------------------------------------------------------------*/
 /*	Weather Widget
