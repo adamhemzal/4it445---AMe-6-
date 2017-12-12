@@ -2,14 +2,14 @@ import db from '../../models/';
 
 export const saveDashboardController = async (req, res) => {
 
-  const { dashboardId, name, description, url, layout } = req.body;
+  const { dashboardId, name, description, url, layoutID, layout } = req.body;
 
   db.dashboard.update(
     {
       name: name,
       description: description,
       url: url,
-      //layout: layout
+      layout: layout
     },
     {where: {id: dashboardId}})
     .then(result => {

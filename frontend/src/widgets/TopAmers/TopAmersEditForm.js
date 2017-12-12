@@ -65,7 +65,7 @@ export class TopAmersEditForm extends Component {
 
                         </select> */}
 
-                        <button className="btn" onClick={this.submit}>Save</button>
+                        <button className="btn btn-default btn-save float--left" onClick={this.submit}>Save</button>
                         <h2>{this.state.resultText}</h2>
                     </div>
                 </form>

@@ -95,12 +95,13 @@ export class Admin extends Component {
   getData() {
     api.get(`dashboard/info/1`).then(response => {
       const { success, name, description, url, layout } = response.data;
+
       if (success) {
         this.setState({
             name: name,
             description: description,
             url: url,
-            layout: layout,
+            layout: layout.layout,
             isLoading: false
           });
         // Pokud se nepovede ziskat layout z DB, pouzije se defaultni.
@@ -210,14 +211,14 @@ export class Admin extends Component {
   }
 
   saveLayout = () => {
-    api.post('dashboard/layout',
-      {
-        dashboardId: 1,
-        layout: this.state.layout
-      }
-    ).then(response => {
-      console.log(response);
-    })
+    // api.post('dashboard/layout',
+    //   {
+    //     dashboardId: 1,
+    //     layout: this.state.layout
+    //   }
+    // ).then(response => {
+    //   console.log(response);
+    // })
   }
 
 
