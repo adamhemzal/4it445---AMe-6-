@@ -12,7 +12,8 @@ export class LoginMenu extends Component {
     this.state = {
       userInput: "",
       passInput: "",
-      doRedirect: false
+      doRedirect: false,
+      dashboardId: this.props.dashboardId,
     }
     this.handleChangeUser = this.handleChangeUser.bind(this);
     this.handleChangePasswd = this.handleChangePasswd.bind(this);
@@ -63,10 +64,10 @@ export class LoginMenu extends Component {
   }
 
   render() {
-    const { doRedirect } = this.state;
+    const { dashboardId, doRedirect } = this.state;
 
     if (doRedirect) {
-      return <Redirect push to="/admin" />;
+      return <Redirect to={"/dashboard/" + dashboardId + "/admin"} />;
     }
 
     return(

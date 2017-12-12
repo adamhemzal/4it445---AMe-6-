@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import { LoginMenu } from './LoginMenu';
 
 export class JustLogin extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
-            active: false
+            active: false,
+            dashboardId: this.props.dashboardId,
         };
         this.toggleId = this.toggleId.bind(this);
     }
@@ -16,7 +18,7 @@ export class JustLogin extends Component {
             active: !currentState
         });
     }
-    
+
 
     render() {
 
@@ -43,7 +45,7 @@ export class JustLogin extends Component {
                             <span></span>
                         </div>
                     </div>
-                    <LoginMenu />
+                    <LoginMenu dashboardId={this.state.dashboardId} />
                 </div>
             </div>
         )

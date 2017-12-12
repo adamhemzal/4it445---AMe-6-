@@ -141,6 +141,7 @@ export class Admin extends Component {
   }
 
   deleteDashboard = () => {
+    console.log(this.state);
 
     Alert.error('Dashboard was deleted', {
       position: 'top-right',

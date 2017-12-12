@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { AMeDashboard } from './dashboard/AMeDashboard';
 import { Admin } from './admin/Admin';
+import { HomePage } from './homepage/HomePage';
 import Alert from 'react-s-alert';
 
 //import './bootstrap/bootstrap-reboot.min.css';
@@ -22,8 +23,9 @@ class App extends Component {
       <BrowserRouter>
         <div>
           <Alert stack={{limit: 1}} />
-          <Route exact path="/" component={AMeDashboard}/>
-          <Route path="/admin" component={Admin}/>
+          <Route exact path="/" component={HomePage}/>
+          <Route exact path="/dashboard/:dashboardId/" component={AMeDashboard}/>
+          <Route exact path="/dashboard/:dashboardId/admin" component={Admin}/>
           {/*<Route path="*" component={NotFound}/>*/}
         </div>
       </BrowserRouter>

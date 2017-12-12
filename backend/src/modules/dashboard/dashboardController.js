@@ -29,10 +29,11 @@ export const saveDashboardController = async (req, res) => {
         res.json(
           {
             success: true,
+            id: dashboard.id,
             name: dashboard.name,
             description: dashboard.description,
             url: dashboard.url,
-            layout: dashboard.layout
+            layout: dashboard.layout,
           }
         )
       } else {

@@ -178,7 +178,7 @@ render() {
           </div>
 
           {/* <HamburgerMenu /> */}
-          <JustLogin />
+          <JustLogin dashboardId={this.props.match.params.dashboardId} />
 
         </div>
 
