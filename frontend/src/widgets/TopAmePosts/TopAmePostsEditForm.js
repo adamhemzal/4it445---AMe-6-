@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import Select from 'react-select';
+import 'react-select/dist/react-select.css';
+
 import api from '../../api.js';
 let widgetType = "TopAmePosts";
 let widgetId = 3;
@@ -15,7 +18,7 @@ export class TopAmePostsEditForm extends Component {
 
         this.state = {
             //channelIdValue: this.props.channelIdValue,
-            channelIdValue: "",
+            channelIdValue: "C0BUA20S0",
             resultText: "",
             slackChannels: [],
         };
@@ -35,7 +38,7 @@ export class TopAmePostsEditForm extends Component {
                     console.log(error);
                 });
     }
-    
+
     selectChange(event){
         this.setState({channelIdValue: event.target.value});
     }
@@ -44,13 +47,23 @@ export class TopAmePostsEditForm extends Component {
         return(
                 <form onSubmit={this.submit}>
                     <div className="form-group">
-                        <select onChange={this.selectChange}>
+
+                      <Select
+                        name="form-field-name"
+                        value={this.state.channelIdValue}
+                        onChange={this.handleChange}
+                        options={this.state.slackChannels}
+                        valueKey="id"
+                        labelKey="name"
+                      />
+
+                        {/* <select onChange={this.selectChange}>
                             <option value="" disabled="disabled" selected="selected">Please select a channel</option>
                             {this.state.slackChannels.map((channel, index) =>
                                         <option value={channel.id}>{channel.name}</option>
-                                        )}      
-                                
-                        </select>
+                                        )}
+
+                        </select> */}
                         <button className="btn" onClick={this.submit}>Save</button>
                         <h2>{this.state.resultText}</h2>
                     </div>
@@ -58,8 +71,9 @@ export class TopAmePostsEditForm extends Component {
                 );
     }
 
-    handleChange(event) {
-        this.setState({channelIdValue: event.target.value});
+    handleChange(newValue) {
+        this.setState({ channelIdValue: newValue });
+        console.log(newValue);
     }
 
     setChannel(id) {
@@ -69,7 +83,7 @@ export class TopAmePostsEditForm extends Component {
     submit(event) {
         event.preventDefault();
 
-        let settings = {channel: this.state.channelIdValue};
+        let settings = {channel: this.state.channelIdValue.id};
         let data = {
             "widgetType": widgetType,
             "widgetId": widgetId,
