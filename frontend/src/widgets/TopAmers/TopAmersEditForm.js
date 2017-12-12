@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import Select from 'react-select';
+import 'react-select/dist/react-select.css';
 import api from '../../api.js';
 let widgetType = "TopAmers";
 let widgetId = 2;
 let dashboardId = 1;
 
 export class TopAmersEditForm extends Component {
-    
+
     constructor(props) {
         super(props);
         this.submit = this.submit.bind(this);
@@ -15,7 +17,7 @@ export class TopAmersEditForm extends Component {
 
         this.state = {
             //channelIdValue: this.props.channelIdValue,
-            channelIdValue: "",
+            channelIdValue: "C0BUA20S0",
             resultText: "",
             slackChannels: [],
         };
@@ -24,6 +26,7 @@ export class TopAmersEditForm extends Component {
     componentDidMount() {
         const availableChannels = this.getAvailableChannels();
     }
+
 
     getAvailableChannels() {
         api.get('slack-channels')
@@ -44,13 +47,24 @@ export class TopAmersEditForm extends Component {
         return(
                 <form onSubmit={this.submit}>
                     <div className="form-group">
-                        <select onChange={this.selectChange}>
+
+                      <Select
+                        name="form-field-name"
+                        value={this.state.channelIdValue}
+                        onChange={this.handleChange}
+                        options={this.state.slackChannels}
+                        valueKey="id"
+                        labelKey="name"
+                      />
+
+                        {/* <select onChange={this.selectChange}>
                             <option value="" disabled="disabled" selected="selected">Please select a channel</option>
                             {this.state.slackChannels.map((channel, index) =>
-                                        <option value={channel.id}>{channel.name}</option>
-                                        )}      
-                                
-                        </select>
+                                  <option value={channel.id}>{channel.name}</option>
+                            )}
+
+                        </select> */}
+
                         <button className="btn" onClick={this.submit}>Save</button>
                         <h2>{this.state.resultText}</h2>
                     </div>
@@ -58,8 +72,13 @@ export class TopAmersEditForm extends Component {
                 );
     }
 
-    handleChange(event) {
-        this.setState({channelIdValue: event.target.value});
+    // handleChange(event) {
+    //     this.setState({channelIdValue: event.target.value});
+    // }
+
+    handleChange(newValue) {
+        this.setState({ channelIdValue: newValue });
+        console.log(newValue);
     }
 
     setChannel(id) {
@@ -69,13 +88,15 @@ export class TopAmersEditForm extends Component {
     submit(event) {
         event.preventDefault();
 
-        let settings = {channel: this.state.channelIdValue};
+        let settings = {channel: this.state.channelIdValue.id};
         let data = {
             "widgetType": widgetType,
             "widgetId": widgetId,
             "dashboardId": dashboardId,
             "settings": settings
         };
+
+        console.log(settings);
 
 
         api.post('top-amers', data)
