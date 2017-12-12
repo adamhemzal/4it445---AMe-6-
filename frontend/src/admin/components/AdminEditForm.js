@@ -176,7 +176,7 @@ export class AdminEditForm extends React.PureComponent {
       name: '',
       description: '',
       url: '',
-      selectedLayout: '0',
+      selectedLayout: '',
       layout: layoutTypes[0].layout
     };
 
