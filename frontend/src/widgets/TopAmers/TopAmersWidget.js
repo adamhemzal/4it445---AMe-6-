@@ -67,7 +67,7 @@ export class TopAmersWidget extends Component {
               {topAmers.map((topAmer, index) =>
                 <li key={index} className="top_amers__list-item">
                   <div className="top_amers__image">
-                    <img src={topAmer.image} alt={topAmer.realName}/>
+                    <img src={topAmer.image} alt={topAmer.realName} className="gif__image"/>
                     <span className="top_amers__badge">{topAmer.ameCount}x <img src={require("../../img/ame-small.png")} alt="" /></span>
                   </div>
                   <div className="top_amers__content clearfix">

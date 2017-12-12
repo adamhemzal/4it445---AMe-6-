@@ -122,13 +122,13 @@ export class WeatherWidget extends React.PureComponent {
                     </div>
 
 
-                    <div className="widget__footer widget__footer--dark clearfix no-padding">
-                      <div className="float--left">
+                    <div className="row widget__footer widget__footer--dark clearfix no-padding">
+                      <div className="col-md-7 col-sm-6 col-xs-12">
                         <h3 className="weather__temperature">{Math.round(city.data.list[0].main.temp)}<span>o</span></h3>
                         <h4 className="weather__wind"><i className="wi wi-strong-wind"></i>{city.data.list[0].wind.speed} m/s</h4>
                       </div>
 
-                      <div className="float--right">
+                      <div className="col-md-5 col-sm-6 col-xs-12">
                         <div className="weather__date">
                           <h4 className="weather__day">{this.state.date}</h4>
                           <h4 className="weather__time">{this.state.time}</h4>

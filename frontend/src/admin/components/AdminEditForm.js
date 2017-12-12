@@ -198,6 +198,7 @@ export class AdminEditForm extends React.PureComponent {
   componentDidMount() {
     api.get(`dashboard/info/1`).then(response => {
       const { success, name, description, url, layout } = response.data;
+      console.log('=====>',response);
       if (success) {
         this.setState({
             name: name,

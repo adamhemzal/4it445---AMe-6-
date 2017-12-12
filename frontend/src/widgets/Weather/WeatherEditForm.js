@@ -124,19 +124,26 @@ export class WeatherEditForm extends Component {
       onChange: this.onChange,
       placeholder : "Search for a city!",
     };
+    
+    const placesCss = {
+        input: 'form-control',
+      }
 
     return(
 
       <div>
         <form onSubmit={this.handleFormSubmit}>
-            <PlacesAutocomplete inputProps={inputProps} />
-            <button className="btn btn-default btn-md" type="submit">Add a city</button>
+            <div className="form-group">
+                <PlacesAutocomplete inputProps={inputProps} classNames={placesCss} />
+                <button className="btn btn-default weather__margin-top_btn" type="submit">Add a city</button>
+            </div>
+
             
-            <div class="form-group">
+            <div className="form-group">
                 <input type="text" className="form-control" id="cityListInput" aria-describedby="cityListInput" onChange={this.handleInputChange} value={this.state.cityListInputValues} placeholder=""></input>
+                <button className="btn btn-default btn-save float--left" onClick={this.submit}>Save</button>
             </div>
             
-            <button className="btn btn-default btn-save float--left" onClick={this.submit}>Save</button>
         </form>
       </div>
     );
