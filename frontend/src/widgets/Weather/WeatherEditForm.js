@@ -39,6 +39,25 @@ export class WeatherEditForm extends Component {
   }
 
 
+  componentDidMount() {
+    api('weather')
+    .then(response => {
+      const cities = response.data;
+      for (var i = 0; i < cities.length - 1; i++) {
+        this.setState({
+            cityListInputValues: this.state.cityListInputValues + cities[i] + ", ",
+            address : "",
+            });
+
+          console.log(this.state.cityListInputValues);
+      }
+    })
+    .catch(error => {
+      console.log(error);
+    });
+  }
+
+
   handleFormSubmit = (event) => {
     event.preventDefault();
 
@@ -46,7 +65,7 @@ export class WeatherEditForm extends Component {
       .then(results => getLatLng(results[0]))
       .then( ({ lat, lng }) => {
             this.setState({ lat: lat, lng: lng});
-    
+
             let resultCount = 1;
             let apiKey = 'AIzaSyDDXOEh-jzoS5www_Yg5GpIa5ahA1VuKKg';
             lat = parseFloat(lat).toFixed(4);
@@ -63,13 +82,14 @@ export class WeatherEditForm extends Component {
                     );
           } )
       .catch(error => console.error('Error', error));
-  }
+
+    }
 
     getLocation = (results) => {
         let storableLocation = {};
         for (var ac = 0; ac < results[0].address_components.length; ac++) {
             var component = results[0].address_components[ac];
-            
+
             switch(component.types[0]) {
                 case 'locality':
                 storableLocation.city = component.long_name;
@@ -83,17 +103,17 @@ export class WeatherEditForm extends Component {
             break;
             }
         };
-        
+
         return storableLocation;
   }
-  
+
   handleInputChange = (event) => {
       this.setState({cityListInputValues:event.target.value});
   }
-  
+
   submit(event) {
         event.preventDefault();
-        
+
         const citiesArray = this.state.cityListInputValues.replace(" ", "").split(",");
 
         let settings = {cities: citiesArray};
@@ -124,7 +144,7 @@ export class WeatherEditForm extends Component {
       onChange: this.onChange,
       placeholder : "Search for a city!",
     };
-    
+
     const placesCss = {
         input: 'form-control',
       }
@@ -133,17 +153,24 @@ export class WeatherEditForm extends Component {
 
       <div>
         <form onSubmit={this.handleFormSubmit}>
+
             <div className="form-group">
-                <PlacesAutocomplete inputProps={inputProps} classNames={placesCss} />
-                <button className="btn btn-default weather__margin-top_btn" type="submit">Add a city</button>
+                <label>Selected Cities</label>
+                <input type="text" className="form-control" id="cityListInput" aria-describedby="cityListInput" onChange={this.handleInputChange} value={this.state.cityListInputValues} placeholder=""></input>
             </div>
 
-            
+            <hr />
+
             <div className="form-group">
-                <input type="text" className="form-control" id="cityListInput" aria-describedby="cityListInput" onChange={this.handleInputChange} value={this.state.cityListInputValues} placeholder=""></input>
-                <button className="btn btn-default btn-save float--left" onClick={this.submit}>Save</button>
+                <PlacesAutocomplete inputProps={inputProps} classNames={placesCss} />
+                <button className="btn btn-default btn--green weather__margin-top_btn" type="submit">Add a city</button>
             </div>
-            
+
+            <div className="buttons">
+              <button className="btn btn-default btn-save float--left" onClick={this.submit}>Save</button>
+            </div>
+
+
         </form>
       </div>
     );

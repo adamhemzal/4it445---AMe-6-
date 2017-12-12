@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export class HomePage extends Component {
   render() {
     return (
-      <Link className="login-button" to="/dashboard/1">Open dashboard</Link>
-    );
+      <Link className="login-button first-button" to="/dashboard/1">Open dashboard</Link>
+    ); 
   }
 }
