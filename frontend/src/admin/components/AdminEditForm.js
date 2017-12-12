@@ -203,8 +203,8 @@ export class AdminEditForm extends React.PureComponent {
             name: name,
             description: description,
             url: url,
-            selectedLayout: layout.id,
-            layout: layout.layout,
+            //selectedLayout: layoutID,
+            layout: layoutTypes[0].layout,
           });
 
           console.log(this.state.selectedLayout);
@@ -245,7 +245,8 @@ export class AdminEditForm extends React.PureComponent {
         name: this.state.name,
         description: this.state.description,
         url: this.state.url,
-        layout: layoutTypes[this.state.selectedLayout]
+        //layoutID: this.state.selectedLayout,
+        layout: this.state.layout,
       }
     ).then(response => {
       console.log(response);

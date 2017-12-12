@@ -34,7 +34,7 @@ app.use((req, res, next) => {
 app.use(rootRoutes);
 
 // db.sequelize.dropAllSchemas(function(err){});
-// db.sequelize.sync(function(err){});
+//db.sequelize.sync(function(err){});
 
 app.use((req, res, next) => {
   res.status(404);

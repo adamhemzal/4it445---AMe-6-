@@ -71,7 +71,7 @@ export class AMeDashboard extends Component {
             name: name,
             description: description,
             url: url,
-            layout: layout.layout,
+            layout: layout,
             isLoading: false
           });
         // Pokud se nepovede ziskat layout z DB, pouzije se defaultni.
