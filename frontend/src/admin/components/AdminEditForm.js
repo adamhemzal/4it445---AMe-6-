@@ -176,7 +176,7 @@ export class AdminEditForm extends React.PureComponent {
       name: '',
       description: '',
       url: '',
-      selectedLayout: '',
+      selectedLayout: '1',
       layout: layoutTypes[0].layout
     };
 
@@ -203,8 +203,8 @@ export class AdminEditForm extends React.PureComponent {
             name: name,
             description: description,
             url: url,
-            //selectedLayout: layoutID,
-            layout: layoutTypes[0].layout,
+            selectedLayout: '2',
+            layout: layout,
           });
 
           console.log(this.state.selectedLayout);
@@ -463,13 +463,13 @@ const layoutTypes = [
             }],
         }, {
               columns: [{
-                className: 'col-md-3 col-sm-4 col-xs-4',
+                className: 'col-md-4 col-sm-4 col-xs-4',
                 widgets: [{ key: 'GifOfADay' }],
               }, {
-                className: 'col-md-3 col-sm-4 col-xs-4',
+                className: 'col-md-4 col-sm-4 col-xs-4',
                 widgets: [{ key: 'TopAmePosts' }],
               }, {
-                className: 'col-md-3 col-sm-4 col-xs-4',
+                className: 'col-md-4 col-sm-4 col-xs-4',
                 widgets: [{ key: 'Weather' }],
               }],
         }, {
@@ -482,6 +482,51 @@ const layoutTypes = [
             }],
         }
       ],
+    }
+  }, {
+    id: 4,
+    layout: {
+      rows: [
+        {
+          columns: [{
+            className: 'col-md-2 col-sm-4 col-xs-4',
+            widgets: [{ key: 'TopAmePosts' }],
+          }, {
+            className: 'col-md-2 col-sm-4 col-xs-4',
+            widgets: [{ key: 'TopAmers' }],
+          }, {
+            className: 'col-md-2 col-sm-4 col-xs-4',
+            widgets: [{ key: 'Weather' }],
+          }, {
+            className: 'col-md-2 col-sm-4 col-xs-4',
+            widgets: [{ key: 'PeopleOfADay' }],
+          }, {
+            className: 'col-md-2 col-sm-4 col-xs-4',
+            widgets: [{ key: 'GifOfADay' }],
+          }, {
+            className: 'col-md-2 col-sm-4 col-xs-4',
+            widgets: [{ key: 'Weather' }],
+          }],
+        }, {
+          columns: [{
+            className: 'col-md-4 col-sm-6 col-xs-12',
+            widgets: [{ key: 'GifOfADay' }],
+          }, {
+            className: 'col-md-4 col-sm-6 col-xs-12',
+            widgets: [{ key: 'TopAmers' }],
+          }, {
+            className: 'col-md-4 col-sm-6 col-xs-12',
+            widgets: [{ key: 'TopAmePosts' }],
+          }],
+      }, {
+          columns: [{
+            className: 'col-md-6 col-sm-6 col-xs-12',
+            widgets: [{ key: 'TopAmePosts' }],
+          }, {
+            className: 'col-md-6 col-sm-6 col-xs-12',
+            widgets: [{ key: 'Weather' }],
+          }],
+      }]
     }
   }
 ];
