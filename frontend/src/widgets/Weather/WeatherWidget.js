@@ -56,12 +56,19 @@ export class WeatherWidget extends React.PureComponent {
     let weatherCitiesData = [];
 
     cities.forEach((city) => {
-      promises.push(axios.get('http://api.openweathermap.org/data/2.5/forecast', { params: {q: city, appid: apiKey, units: units, cnt: resultCount} }));
+      city = city.trim();
+      if(!city){
+          return false;
+      }
+      promises.push( axios.get('http://api.openweathermap.org/data/2.5/forecast', { params: {q: city, appid: apiKey, units: units, cnt: resultCount} }) );
     });
 
     axios.all(promises)
     .then(axios.spread((...results) => {
       for (let i = 0; i < results.length; i++) {
+        if(results[i].cod === "404"){
+            continue;
+        }
         weatherCitiesData.push(results[i]);
       }
       this.setState({
