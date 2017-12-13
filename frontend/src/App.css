@@ -732,10 +732,29 @@ h6.list-group-item-heading {
 
 #PlacesAutocomplete__root {
   width: 80%;
+  float: left;
 }
 
+.weather__margin-top_btn {
+  float: right;
+  width: 19%;
+  margin-top: 1px;
+  font-size: 15px;
+}
 
+.buttons {
+  clear: both;
+}
 
+.weather__label {
+  display: block;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.weather__label--smaller {
+  font-size: 14px;
+}
 /*-----------------------------------------------------------------------------------*/
 /*	People of the day Widget
 /*-----------------------------------------------------------------------------------*/

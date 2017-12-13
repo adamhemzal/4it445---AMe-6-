@@ -155,13 +155,14 @@ export class WeatherEditForm extends Component {
         <form onSubmit={this.handleFormSubmit}>
 
             <div className="form-group">
-                <label>Selected Cities</label>
+                <label className="weather__label">Selected Cities</label>
                 <input type="text" className="form-control" id="cityListInput" aria-describedby="cityListInput" onChange={this.handleInputChange} value={this.state.cityListInputValues} placeholder=""></input>
             </div>
 
             <hr />
 
             <div className="form-group">
+                <label className="weather__label weather__label--smaller">Add another city</label>
                 <PlacesAutocomplete inputProps={inputProps} classNames={placesCss} />
                 <button className="btn btn-default btn--green weather__margin-top_btn" type="submit">Add a city</button>
             </div>
