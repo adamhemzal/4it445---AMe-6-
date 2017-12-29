@@ -637,7 +637,7 @@ h6.list-group-item-heading {
 
 .timer__block {
   display: block;
-  padding: 15px;
+  padding: 10px 0;
   font-family: "Poppins";
   box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.35);
 }
@@ -665,7 +665,7 @@ h6.list-group-item-heading {
 }
 
 .timer__padding-both {
-  padding: 2em 0 1em 0;
+  padding: 1em 0 1em 0;
 }
 
 .timer__padding-both p {
