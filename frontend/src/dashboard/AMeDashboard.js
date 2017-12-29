@@ -7,6 +7,7 @@ import { TopAmersWidget } from '../widgets/TopAmers/TopAmersWidget';
 import { TopAmePostsWidget } from '../widgets/TopAmePosts/TopAmePostsWidget';
 import { PeopleOfADayWidget } from '../widgets/PeopleOfADay/PeopleOfADayWidget';
 import { GifOfADayWidget } from '../widgets/GifOfADay/GifOfADayWidget';
+import { CountDownTimerWidget } from '../widgets/CountDownTimer/CountDownTimerWidget';
 
 //import { HamburgerMenu } from './menu/HamburgerMenu';
 import { JustLogin } from './menu/JustLogin';
@@ -53,6 +54,10 @@ export class AMeDashboard extends Component {
         GifOfADay: {
           type: GifOfADayWidget,
           title: 'Gif of a Day',
+        },
+        CountDownTimer: {
+          type: CountDownTimerWidget,
+          title: 'Count Down Timer',
         },
       },
 

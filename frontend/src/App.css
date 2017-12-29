@@ -632,6 +632,68 @@ h6.list-group-item-heading {
 
 
 /*-----------------------------------------------------------------------------------*/
+/*	CountDown Timer
+/*-----------------------------------------------------------------------------------*/
+
+.timer__block {
+  display: block;
+  padding: 15px;
+  font-family: "Poppins";
+  box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.35);
+}
+
+.timer__block p {
+  font-family: "Poppins";
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.timer__flex-center {
+  justify-content: center;
+  margin: 3em 0 1em 0;
+}
+
+.timer__flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.timer__center p {
+  text-align: center;
+  margin: 0;
+}
+
+.timer__padding-both {
+  padding: 2em 0 1em 0;
+}
+
+.timer__padding-both p {
+  margin: 0;
+}
+
+.timer__padding-bottom {
+  padding-bottom: 3em;
+}
+
+.timer__event-name {
+  font-family: "Poppins";
+  font-size: 25px;
+}
+
+.timer__center .timer__block-date {
+  font-size: 14px;
+  color: #929799;
+  margin: 5px 0 0 0;
+
+}
+
+.timer__to {
+  font-family: "Poppins";
+  font-size: 20px; 
+}
+
+/*-----------------------------------------------------------------------------------*/
 /*	Weather Widget
 /*-----------------------------------------------------------------------------------*/
 .weather__city {
