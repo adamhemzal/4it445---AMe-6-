@@ -677,6 +677,7 @@ h6.list-group-item-heading {
 }
 
 .timer__event-name {
+  text-align: center;
   font-family: "Poppins";
   font-size: 25px;
 }

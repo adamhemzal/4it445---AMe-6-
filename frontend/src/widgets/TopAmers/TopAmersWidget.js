@@ -55,7 +55,7 @@ export class TopAmersWidget extends Component {
       <div className="widget__inner widget__inner--dark">
 
         <div className="widget__header clearfix">
-          <h2 className="widget__name">Top AMers</h2>
+          <h2 className="widget__name">Top AMers (last week)</h2>
         </div>
 
         <div className="widget__content">
