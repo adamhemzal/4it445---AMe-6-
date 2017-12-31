@@ -11,12 +11,14 @@ export class CountDownTimerWidget extends React.PureComponent {
         };
         this.countDownTime = 0;
       }
-
-// INFO: https://stackoverflow.com/questions/40885923/countdown-timer-in-react
     
       componentDidMount() {
+        //Tohle příjde nahradit za API
+        const eventDate = new Date("April 5, 2018 18:25:00").getTime();
+        ///
+
         this.countDownTime = setInterval(
-            () => this.countingTime(),
+            () => this.countingTime(eventDate),
             1000
           );
       }
@@ -25,42 +27,33 @@ export class CountDownTimerWidget extends React.PureComponent {
         clearInterval(this.countDownTime);
       }
 
-/*       componentDidMount() {
-        this.timerID = setInterval(
-            () => this.setCountingTime(),
-            1000
-          );
-      }
 
-      componentWillUnmount() {
-        clearInterval(this.timerID);
-      }
 
-      setCountingTime() {
+    countingTime(date) {
+        const currentTime = new Date().getTime();
+        const distance = date - currentTime;
+
+        const countDays = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const countHours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const countMinutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        //const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        //pro testování sekund
+        //console.log("SEKUNDY", seconds);
+
+        let timeObject = {
+            day : countDays,
+            hours : countHours,
+            minutes : countMinutes,
+            //seconds : seconds,
+        }
+
         this.setState({
-            timerDays: "",
-            timerHours: "",
-            timerMinutes: "",
-          });
-      } */
+            timer: timeObject,
+        });
+    }
 
     render() {
-        //60000 ms = 1 minuta
-/*         const eventDate = new Date("April 5, 2018 18:25:00").getTime();
-        const currentTime = new Date().getTime();
-        const countingDown = setInterval(function() {
-            const distance = eventDate - currentTime;
-
-            const countDays = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const countHours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const countMinutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            if (distance <= 0) {
-                clearInterval(countingDown);
-                document.getElementById("demo").innerHTML = "EXPIRED";
-              }
-        }, 1000); */
         return(
             <div className="widget">
                 <div className="widget__inner">
@@ -75,21 +68,21 @@ export class CountDownTimerWidget extends React.PureComponent {
 
                             <div className="col-md-3 timer__center">
                                 <div className="timer__block">
-                                    <p>{this.state.timer.d === "" ? "0" : this.state.timer.d}</p>
+                                    <p>{this.state.timer.day === "" ? "0" : this.state.timer.day}</p>
                                 </div>
                                 <p className="timer__block-date">days</p>
                             </div>
 
                             <div className="col-md-3 timer__center">
                                 <div className="timer__block">
-                                    <p>{this.state.timerHours === "" ? "0" : this.state.timerHours}</p>
+                                    <p>{this.state.timer.hours === "" ? "0" : this.state.timer.hours}</p>
                                 </div>
                                 <p className="timer__block-date">hours</p>
                             </div>
 
                             <div className="col-md-3 timer__center">
                                 <div className="timer__block">
-                                    <p>{this.state.timerMinutes === "" ? "0" : this.state.timerMinutes}</p>
+                                    <p>{this.state.timer.minutes === "" ? "0" : this.state.timer.minutes}</p>
                                 </div>
                                 <p className="timer__block-date">minutes</p>
                             </div>
