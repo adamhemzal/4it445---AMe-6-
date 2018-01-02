@@ -31,7 +31,7 @@ export class WeatherEditForm extends Component {
       address: '',
       lat: '',
       lng: '',
-      cityListInputValues : '',
+      cityListInputValues: '',
     };
     this.onChange = (address) => this.setState({ address });
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -43,9 +43,15 @@ export class WeatherEditForm extends Component {
     api('weather')
     .then(response => {
       const cities = response.data;
-      for (var i = 0; i < cities.length - 1; i++) {
+      for (var i = 0; i < cities.length; i++) {
+        let inputCities = '';
+        if (!this.state.cityListInputValues) {
+          inputCities = cities[i];
+        } else {
+          inputCities = this.state.cityListInputValues + "," + cities[i];
+        }
         this.setState({
-            cityListInputValues: this.state.cityListInputValues + cities[i] + ", ",
+            cityListInputValues: inputCities,
             address : "",
             });
 
@@ -74,9 +80,15 @@ export class WeatherEditForm extends Component {
                     .then( (result) => {
                         const results = result.data.results;
                         const location = this.getLocation(results);
+                        let inputCities = "";
+                        if (!this.state.cityListInputValues) {
+                          inputCities = location.city;
+                        } else {
+                          inputCities = this.state.cityListInputValues + "," + location.city;
+                        }
                         this.setState({
-                            cityListInputValues:this.state.cityListInputValues + location.city + ", ",
-                            address : "",
+                            cityListInputValues: inputCities,
+                            address: "",
                             });
                     }
                     );
@@ -114,7 +126,7 @@ export class WeatherEditForm extends Component {
   submit(event) {
         event.preventDefault();
 
-        const citiesArray = this.state.cityListInputValues.replace(" ", "").split(",");
+        const citiesArray = this.state.cityListInputValues.split(",");
 
         let settings = {cities: citiesArray};
         let data = {
