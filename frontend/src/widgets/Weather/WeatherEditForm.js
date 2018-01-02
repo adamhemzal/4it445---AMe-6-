@@ -49,7 +49,7 @@ export class WeatherEditForm extends Component {
             address : "",
             });
 
-          console.log(this.state.cityListInputValues);
+          console.log("Weather Edit form",this.state.cityListInputValues);
       }
     })
     .catch(error => {

@@ -20,7 +20,7 @@ export class TopAmePostsWidget extends Component {
   componentDidMount() {
     api('top-ame-posts')
     .then(response => {
-        console.log(response);
+        console.log("Top Ame Posts",response);
       const topAmePosts = response.data.topAmePosts;
       const channel = response.data.channel;
       this.setState({topAmePosts:topAmePosts, channel:channel, isLoading: false });
@@ -47,11 +47,13 @@ export class TopAmePostsWidget extends Component {
 
             { this.state.isLoading ? <MDSpinner className="md-spinner" /> : null }
 
+            {topAmePosts.length === 0 ? <p>No AMe posts to display</p> :
             <ul className="top_posts__list">
               {topAmePosts.map((topAmePost, index) =>
                 <TopAmePost key={index} data={topAmePost} />
               )}
             </ul>
+            }
 
           </div>
 

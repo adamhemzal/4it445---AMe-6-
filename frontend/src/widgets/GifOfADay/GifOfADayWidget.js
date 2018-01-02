@@ -22,7 +22,7 @@ export class GifOfADayWidget extends Component {
         axios.get('http://api.giphy.com/v1/gifs/trending?&api_key='+apiKeyGif+'&limit=1')
         .then(res => {
             const data = res.data.data[0].images.downsized_large;
-            console.log(data);
+            console.log("GIF", data);
             this.setState({
                 gifs: data,
                 isLoading: false,

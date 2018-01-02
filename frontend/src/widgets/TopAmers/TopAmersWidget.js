@@ -20,6 +20,7 @@ export class TopAmersWidget extends Component {
     .then(response => {
       const { data: topAmers } = response;
       this.setState({ topAmers, isLoading: false });
+      console.log("AMERS",topAmers);
     })
     .catch(error => {
       console.log(error);
@@ -63,6 +64,7 @@ export class TopAmersWidget extends Component {
           { this.state.isLoading ? <MDSpinner className="md-spinner" /> : null }
 
           <ul className="top_amers__list">
+          {topAmers.length === 0 ? <p>No AMers to display</p> : 
             <Slider {...settings}>
               {topAmers.map((topAmer, index) =>
                 <li key={index} className="top_amers__list-item">
@@ -77,6 +79,7 @@ export class TopAmersWidget extends Component {
                 </li>
               )}
             </Slider>
+          }
           </ul>
         </div>
       </div>

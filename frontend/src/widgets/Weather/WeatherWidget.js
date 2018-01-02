@@ -30,6 +30,7 @@ export class WeatherWidget extends React.PureComponent {
   componentDidMount() {
     api('weather')
     .then(response => {
+      console.log("WETAHER", response);
       const cities = response.data;
       this.getWeatherFromCities(cities);
     })
@@ -75,6 +76,7 @@ export class WeatherWidget extends React.PureComponent {
         weatherCities: weatherCitiesData,
         isLoading: false
       });
+      console.log("Weather Cities Data",weatherCitiesData);
     }));
   }
 
