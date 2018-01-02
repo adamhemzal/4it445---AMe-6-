@@ -44,14 +44,9 @@ export class WeatherEditForm extends Component {
     .then(response => {
       const cities = response.data;
       for (var i = 0; i < cities.length; i++) {
-        let inputCities = '';
-        if (!this.state.cityListInputValues) {
-          inputCities = cities[i];
-        } else {
-          inputCities = this.state.cityListInputValues + "," + cities[i];
-        }
+        let citiesInput = this.formatCitiesInput(cities[i]);
         this.setState({
-            cityListInputValues: inputCities,
+            cityListInputValues: citiesInput,
             address : "",
             });
 
@@ -80,14 +75,9 @@ export class WeatherEditForm extends Component {
                     .then( (result) => {
                         const results = result.data.results;
                         const location = this.getLocation(results);
-                        let inputCities = "";
-                        if (!this.state.cityListInputValues) {
-                          inputCities = location.city;
-                        } else {
-                          inputCities = this.state.cityListInputValues + "," + location.city;
-                        }
+                        let citiesInput = this.formatCitiesInput(location.city);
                         this.setState({
-                            cityListInputValues: inputCities,
+                            cityListInputValues: citiesInput,
                             address: "",
                             });
                     }
@@ -126,7 +116,7 @@ export class WeatherEditForm extends Component {
   submit(event) {
         event.preventDefault();
 
-        const citiesArray = this.state.cityListInputValues.split(",");
+        const citiesArray = this.state.cityListInputValues.split(", ");
 
         let settings = {cities: citiesArray};
         let data = {
@@ -147,6 +137,16 @@ export class WeatherEditForm extends Component {
                 .catch(error => {
                     console.log(error);
                 });
+    }
+
+    formatCitiesInput(city) {
+      let citiesInput = '';
+      if (!this.state.cityListInputValues) {
+        citiesInput = city;
+      } else {
+        citiesInput = this.state.cityListInputValues + ", " + city;
+      }
+      return citiesInput;
     }
 
   render() {
