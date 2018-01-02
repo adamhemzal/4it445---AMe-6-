@@ -8,6 +8,7 @@ import { WeatherEditForm } from '../widgets/Weather/WeatherEditForm';
 import { TopAmePostsEditForm } from '../widgets/TopAmePosts/TopAmePostsEditForm';
 import { PeopleOfADayEditForm } from '../widgets/PeopleOfADay/PeopleOfADayEditForm';
 import { GifOfADayEditForm } from '../widgets/GifOfADay/GifOfADayEditForm';
+import { UpcomingEventsEditForm } from '../widgets/UpcomingEvents/UpcomingEventsEditForm';
 
 class CustomFrame extends Component {
 
@@ -59,6 +60,9 @@ class CustomFrame extends Component {
         break;
       case 'GifOfADayWidget':
         editForm = <GifOfADayEditForm/>
+        break;
+      case 'UpcomingEventsWidget':
+        editForm = <UpcomingEventsEditForm/>
         break;
       default:
 

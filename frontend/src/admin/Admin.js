@@ -27,6 +27,7 @@ import { TopAmePostsWidget } from '../widgets/TopAmePosts/TopAmePostsWidget';
 import { PeopleOfADayWidget } from '../widgets/PeopleOfADay/PeopleOfADayWidget';
 import { GifOfADayWidget } from '../widgets/GifOfADay/GifOfADayWidget';
 import { CountDownTimerWidget } from '../widgets/CountDownTimer/CountDownTimerWidget';
+import { UpcomingEventsWidget } from '../widgets/UpcomingEvents/UpcomingEventsWidget';
 
 import { HamburgerMenu } from '../dashboard/menu/HamburgerMenu';
 import { AdminEditForm } from '../admin/components/AdminEditForm';
@@ -80,6 +81,10 @@ export class Admin extends Component {
         CountDownTimer: {
           type: CountDownTimerWidget,
           title: 'Count Down Timer',
+        },
+        UpcomingEvents: {
+          type: UpcomingEventsWidget,
+          title: 'Upcoming Events',
         },
       },
 
