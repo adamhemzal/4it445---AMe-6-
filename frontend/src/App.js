@@ -26,6 +26,7 @@ class App extends Component {
           <Route exact path="/" component={HomePage}/>
           <Route exact path="/dashboard/:dashboardId/" component={AMeDashboard}/>
           <Route exact path="/dashboard/:dashboardId/admin" component={Admin}/>
+          {/* <Route exact path="/authorize" component={Outlook}/> */}
           {/*<Route path="*" component={NotFound}/>*/}
         </div>
       </BrowserRouter>
