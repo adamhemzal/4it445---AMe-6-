@@ -32,16 +32,49 @@ export class UpcomingEventsWidget extends Component {
 
     render() {
         return(
-            <div className="widget gif">
+            <div className="widget">
                 <div className="widget__inner">
                     <div className="widget__header clearfix">
                         <h2 className="widget__name">Upcoming Events</h2>
                     </div>
-                    <div className="widget__content">
-                    <div className="top_posts__list" className="timer__to"><p>Tommorow | 14:30 - 16:00</p>
-                        <p className="timer__event-name">Company Meeting</p>
-                        <p className="timer__to">Kozlovna</p>
+                    <div className="widget__content event__padding-bottom container">
+
+                        <div className="event">
+
+                            <div className="row">
+                                <div className="col-md-12">
+                                    <p className="event__info"><i className="fa fa-clock-o" aria-hidden="true"></i>Tommorow | 14:30 - 16:00</p>
+                                </div>
+
+                                <div className="col-md-12">
+                                    <p className="event__name">Company Meeting</p>
+                                </div>
+
+                                <div className="col-md-12">
+                                    <p className="event__info"><i className="fa fa-map-marker" aria-hidden="true"></i>Kozlovna</p>
+                                </div>
+                            </div>
+                                                    
                         </div>
+
+                        <div className="event">
+
+                            <div className="row">
+                                <div className="col-md-12">
+                                    <p className="event__info"><i className="fa fa-clock-o" aria-hidden="true"></i>Tommorow | 14:30 - 16:00</p>
+                                </div>
+
+                                <div className="col-md-12">
+                                    <p className="event__name">Company Meeting</p>
+                                </div>
+
+                                <div className="col-md-12">
+                                    <p className="event__info"><i className="fa fa-map-marker" aria-hidden="true"></i>Kozlovna</p>
+                                </div>
+                            </div>    
+
+                        </div>
+
                     </div>
                 </div>
             </div>

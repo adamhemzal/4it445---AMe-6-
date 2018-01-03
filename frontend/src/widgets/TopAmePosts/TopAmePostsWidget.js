@@ -47,7 +47,7 @@ export class TopAmePostsWidget extends Component {
 
             { this.state.isLoading ? <MDSpinner className="md-spinner" /> : null }
 
-            {topAmePosts.length === 0 ? <p>No AMe posts to display</p> :
+            {topAmePosts.length === 0 ? <p className="no_data">No AMe posts to display</p> :
             <ul className="top_posts__list">
               {topAmePosts.map((topAmePost, index) =>
                 <TopAmePost key={index} data={topAmePost} />
