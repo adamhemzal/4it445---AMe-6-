@@ -22,10 +22,10 @@ class App extends Component {
 
       <BrowserRouter>
         <div>
-          <Alert stack={{limit: 1}} />
-          <Route exact path="/" component={HomePage}/>
-          <Route exact path="/dashboard/:dashboardId/" component={AMeDashboard}/>
-          <Route exact path="/dashboard/:dashboardId/admin" component={Admin}/>
+          <Alert stack={{ limit: 1 }} />
+          <Route exact path="/" component={HomePage} />
+          <Route exact path="/dashboard/:dashboardId/" component={AMeDashboard} />
+          <Route exact path="/dashboard/:dashboardId/admin" component={Admin} />
           {/* <Route exact path="/authorize" component={Outlook}/> */}
           {/*<Route path="*" component={NotFound}/>*/}
         </div>
