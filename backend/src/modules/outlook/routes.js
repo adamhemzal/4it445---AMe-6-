@@ -1,9 +1,9 @@
 import expressAsyncAwait from 'express-async-await';
 import { Router } from 'express';
 
-import { OutlookController, saveWidgetSettingsToDB } from './OutlookController.js';
+import { getMsCalendarController } from "./outlookController.js";
 
 const router = expressAsyncAwait(Router());
-router.get('/', OutlookController).post('/', saveWidgetSettingsToDB);
+router.post("/:calendarId/:timespanFrom/:timespanTo", getOutlookController);
 
 export default router;
