@@ -5,9 +5,21 @@ import api from '../../api.js';
 import { Route, Redirect } from 'react-router-dom';
 import Alert from 'react-s-alert';
 
-export class LoginMenu extends Component {
+import { connect } from 'react-redux';
+import { login } from './actions';
+import {
+  getLoginState,
+  getUser,
+  getLoginMessage,
+  isAuthenticated,
+  isAuthenticating,
+} from './reducer';
+
+export class LoginMenuRaw extends Component {
+
 
   constructor(props) {
+    console.log("PROPS", props);
     super(props);
     this.state = {
       userInput: "",
@@ -85,3 +97,23 @@ export class LoginMenu extends Component {
     )
   }
 }
+
+const mapStateToProps = (storeState) => {
+  const loginState = getLoginState(storeState);
+
+  return {
+    user: getUser(loginState),
+    loginMessage: getLoginMessage(loginState),
+    isAuthenticated: isAuthenticated(loginState),
+    isAuthenticating: isAuthenticating(loginState),
+  };
+};
+
+const mapDispatchToProps = {
+  login,
+};
+
+export const LoginMenu = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(LoginMenuRaw);

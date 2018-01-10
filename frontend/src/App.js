@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import { Provider } from 'react-redux';
 //import logo from './logo.svg';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { AMeDashboard } from './dashboard/AMeDashboard';
 import { Admin } from './admin/Admin';
 import { HomePage } from './homepage/HomePage';
 import Alert from 'react-s-alert';
+import { configureStore } from './store/configureStore.js';
 
 //import './bootstrap/bootstrap-reboot.min.css';
 //import './bootstrap/bootstrap-grid.min.css';
@@ -18,18 +20,21 @@ import './App.css';
 class App extends Component {
 
   render() {
-    return (
+    const store = configureStore();
 
-      <BrowserRouter>
-        <div>
-          <Alert stack={{ limit: 1 }} />
-          <Route exact path="/" component={HomePage} />
-          <Route exact path="/dashboard/:dashboardId/" component={AMeDashboard} />
-          <Route exact path="/dashboard/:dashboardId/admin" component={Admin} />
-          {/* <Route exact path="/authorize" component={Outlook}/> */}
-          {/*<Route path="*" component={NotFound}/>*/}
-        </div>
-      </BrowserRouter>
+    return (
+      <Provider store={store}>
+        <BrowserRouter>
+          <div>
+            <Alert stack={{ limit: 1 }} />
+            <Route exact path="/" component={HomePage} />
+            <Route exact path="/dashboard/:dashboardId/" component={AMeDashboard} />
+            <Route exact path="/dashboard/:dashboardId/admin" component={Admin} />
+            {/* <Route exact path="/authorize" component={Outlook}/> */}
+            {/*<Route path="*" component={NotFound}/>*/}
+          </div>
+        </BrowserRouter>
+      </Provider>
     );
   }
 }

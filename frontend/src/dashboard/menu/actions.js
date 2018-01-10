@@ -23,8 +23,7 @@ export const logout = () => ({
   type: actions.LOGOUT,
 });
 
-export const login = (username, password, { api }) => {
-
+export const login = (username, password, dispatch, { api }) => {
   api({
     method: 'post',
     url: 'login',
