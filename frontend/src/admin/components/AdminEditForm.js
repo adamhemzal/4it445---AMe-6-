@@ -197,14 +197,14 @@ export class AdminEditForm extends React.PureComponent {
 
   componentDidMount() {
     api.get(`dashboard/info/1`).then(response => {
-      const { success, name, description, url, layout } = response.data;
+      const { success, name, description, url, layout, layoutId } = response.data;
       console.log('=====>',response);
       if (success) {
         this.setState({
             name: name,
             description: description,
             url: url,
-            selectedLayout: '2',
+            selectedLayout: layoutId,
             layout: layout,
           });
 
@@ -246,7 +246,7 @@ export class AdminEditForm extends React.PureComponent {
         name: this.state.name,
         description: this.state.description,
         url: this.state.url,
-        //layoutID: this.state.selectedLayout,
+        layoutId: this.state.selectedLayout,
         layout: this.state.layout,
       }
     ).then(response => {

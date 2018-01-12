@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     description: DataTypes.STRING,
     url: DataTypes.STRING,
-    //layoutID: DataTypes.STRING,
+    layoutId: DataTypes.STRING,
     layout: DataTypes.JSON
   });
 
