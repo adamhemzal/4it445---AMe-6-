@@ -24,6 +24,15 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
+// app.all('*',function(req, res, next){
+//   if (req.isAuthenticated()) {
+//     res.isAuthenticated = true;
+//   } else {
+//     res.isAuthenticated = false;
+//   }
+//   next();
+// });
+
 // CORS settings
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Credentials', true);

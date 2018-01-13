@@ -31,7 +31,6 @@ export const login = (username, password) => (dispatch) => {
   api({
     method: 'post',
     url: 'login',
-    withCredentials: true,
     headers: {'Content-Type': 'application/json'},
     data: {
       username: username,
