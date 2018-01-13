@@ -125,6 +125,7 @@ h1 {
   opacity: 0;
   height: 100%;
   width: 32em;
+  max-width: 100%;
   background-color: #eff1f2;
   z-index: 100;
   justify-content: center;
