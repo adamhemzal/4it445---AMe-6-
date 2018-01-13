@@ -118,18 +118,19 @@ h1 {
 
 .menu-hamburger {
   position: absolute;
-  left: 0;
+  right: 0;
   top: 0;
   display: flex;
   visibility: hidden;
   opacity: 0;
   height: 100%;
-  width: 100%;
+  width: 32em;
   background-color: #eff1f2;
   z-index: 100;
   justify-content: center;
   align-items: center;
   transition: visibility 0.3s linear, opacity 0.3s;
+  border-left: 2px solid #2e3335;
 }
 
 .menu-hamburger__header {
@@ -1008,7 +1009,7 @@ h6.list-group-item-heading {
 
 .admin-main {
   background-color: white;
-  margin: 3rem 5rem;
+  margin: 0;
   box-shadow: 0px 0px 15px 0px rgba(128, 126, 126, 0.21);
 }
 
@@ -1041,8 +1042,6 @@ h6.list-group-item-heading {
 }
 
 .admin-main__items ul {
-  width: 90%;
-  margin: 0 auto;
   padding-bottom: 3rem;
 }
 
@@ -1051,7 +1050,7 @@ h6.list-group-item-heading {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem;
+  padding: 2em 1em;
   border-bottom: 1px solid #d7d8d9;
 }
 
