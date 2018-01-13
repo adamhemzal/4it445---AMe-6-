@@ -239,10 +239,15 @@ export class AdminEditForm extends React.PureComponent {
 
     console.log(this.state.selectedLayout);
     console.log(this.state.layout);
+    
+    let dashboardId = 1;
+    if(this.state.blank){
+        dashboardId = "";
+    } 
 
     api.post('dashboard/info',
       {
-        dashboardId: "1",
+        dashboardId: dashboardId,
         name: this.state.name,
         description: this.state.description,
         url: this.state.url,
