@@ -81,11 +81,13 @@ class AMeDashboard extends Component {
 
       editMode: false,
       isModalOpen: false,
-      addWidgetOptions: null
+      addWidgetOptions: null,
+      isHamburgerMenuOpen: false,
     };
 
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.setHamburgerMenuOpen = this.setHamburgerMenuOpen.bind(this);
 
   }
 
@@ -97,7 +99,7 @@ class AMeDashboard extends Component {
     api.get(`dashboard/info/1`).then(response => {
       const { success, name, description, url, layout } = response.data;
 
-      if (success) {
+      if (success && !this.state.isHamburgerMenuOpen) {
         this.setState({
           name: name,
           description: description,
@@ -222,6 +224,12 @@ class AMeDashboard extends Component {
   })
 }
 
+    setHamburgerMenuOpen = (isOpen) => {
+        this.setState({
+            isHamburgerMenuOpen:isOpen,
+        });
+    }
+
 
 
 render() {
@@ -247,7 +255,7 @@ render() {
           </div>
 
           {isAuthenticated ? (
-            <HamburgerMenu />
+            <HamburgerMenu setHamburgerMenuOpen={this.setHamburgerMenuOpen} openModal={() => {this.openModal();}} />
           ) : (
             <JustLogin dashboardId={this.props.match.params.dashboardId} />
           )}
@@ -305,7 +313,7 @@ render() {
                     <h3 className="modal-title" ref={subtitle => this.subtitle = subtitle}>Dashboard Options</h3>
                   </div>
 
-                  <div className="modal-body"><AdminEditForm /></div>
+                  <div className="modal-body"><AdminEditForm blank={this.state.isHamburgerMenuOpen} /></div>
 
                   <div className="modal-footer">
                     <button type="button" className="btn btn-default btn-delete float--left" onClick={this.deleteDashboard}>Delete Dashboard</button>

@@ -177,7 +177,8 @@ export class AdminEditForm extends React.PureComponent {
       description: '',
       url: '',
       selectedLayout: '1',
-      layout: layoutTypes[0].layout
+      layout: layoutTypes[0].layout,
+      blank: this.props.blank
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -192,14 +193,13 @@ export class AdminEditForm extends React.PureComponent {
       [name]: value
     });
 
-    console.log(this.state.name)
   }
 
   componentDidMount() {
     api.get(`dashboard/info/1`).then(response => {
       const { success, name, description, url, layout, layoutId } = response.data;
       console.log('=====>',response);
-      if (success) {
+      if (success && !this.state.blank) {
         this.setState({
             name: name,
             description: description,
@@ -242,7 +242,7 @@ export class AdminEditForm extends React.PureComponent {
 
     api.post('dashboard/info',
       {
-        dashboardId: 1,
+        dashboardId: "1",
         name: this.state.name,
         description: this.state.description,
         url: this.state.url,
