@@ -18,12 +18,13 @@ import React, { Component } from 'react';
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 import axios from 'axios';
 import api from '../../api.js';
+import { connectDashboardId } from '../../dashboardIdProvider';
 let widgetType = "Weather";
 let widgetId = 1;
 let dashboardId = 1;
 
 
-export class WeatherEditForm extends Component {
+class WeatherEditForm extends Component {
 
   constructor(props) {
     super(props);
@@ -189,3 +190,5 @@ export class WeatherEditForm extends Component {
     );
   }
 }
+
+export default connectDashboardId(WeatherEditForm);

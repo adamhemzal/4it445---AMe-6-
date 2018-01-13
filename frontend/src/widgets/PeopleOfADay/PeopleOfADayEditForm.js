@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import { connectDashboardId } from '../../dashboardIdProvider';
 
-export class PeopleOfADayEditForm extends Component {
+class PeopleOfADayEditForm extends Component {
   render() {
     return (
       <form>
@@ -52,3 +53,5 @@ export class PeopleOfADayEditForm extends Component {
     );
   }
 }
+
+export default connectDashboardId(PeopleOfADayEditForm);

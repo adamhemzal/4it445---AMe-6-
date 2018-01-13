@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 
 //edit forms
-import { TopAmersEditForm } from '../widgets/TopAmers/TopAmersEditForm';
-import { WeatherEditForm } from '../widgets/Weather/WeatherEditForm';
-import { TopAmePostsEditForm } from '../widgets/TopAmePosts/TopAmePostsEditForm';
-import { PeopleOfADayEditForm } from '../widgets/PeopleOfADay/PeopleOfADayEditForm';
-import { GifOfADayEditForm } from '../widgets/GifOfADay/GifOfADayEditForm';
-import { UpcomingEventsEditForm } from '../widgets/UpcomingEvents/UpcomingEventsEditForm';
+import TopAmersEditForm from '../widgets/TopAmers/TopAmersEditForm';
+import WeatherEditForm from '../widgets/Weather/WeatherEditForm';
+import TopAmePostsEditForm from '../widgets/TopAmePosts/TopAmePostsEditForm';
+import PeopleOfADayEditForm from '../widgets/PeopleOfADay/PeopleOfADayEditForm';
+import GifOfADayEditForm from '../widgets/GifOfADay/GifOfADayEditForm';
+import UpcomingEventsEditForm from '../widgets/UpcomingEvents/UpcomingEventsEditForm';
 
 class CustomFrame extends Component {
 
@@ -18,12 +18,12 @@ class CustomFrame extends Component {
     this.state = {
       modalIsOpen: false
     };
-    
+
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
-    
+
   }
-  
+
   componentWillMount() {
     Modal.setAppElement('#root');
   }
@@ -43,25 +43,25 @@ class CustomFrame extends Component {
   }
 
   render() {
-    const widgetName = this.props.children.type.name;
+    const widgetTitle = this.props.title;
     let editForm = null;
-    switch (widgetName) {
-      case 'TopAmePostsWidget':
+    switch (widgetTitle) {
+      case 'Top Ame Posts':
         editForm = <TopAmePostsEditForm />;
         break;
-      case 'TopAmersWidget':
+      case 'Top Amers':
         editForm = <TopAmersEditForm />;
         break;
-      case 'WeatherWidget':
+      case 'Weather':
         editForm = <WeatherEditForm />;
         break;
-      case 'PeopleOfADayWidget':
+      case 'People of the Day':
         editForm = <PeopleOfADayEditForm />;
         break;
-      case 'GifOfADayWidget':
+      case 'Gif of a Day':
         editForm = <GifOfADayEditForm/>
         break;
-      case 'UpcomingEventsWidget':
+      case 'Upcoming Events':
         editForm = <UpcomingEventsEditForm/>
         break;
       default:

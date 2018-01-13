@@ -4,8 +4,9 @@ import axios from 'axios';
 import Slider from 'react-slick';
 import MDSpinner from "react-md-spinner";
 import moment from 'moment';
+import { connectDashboardId } from '../../dashboardIdProvider';
 
-export class WeatherWidget extends React.PureComponent {
+class WeatherWidget extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -59,7 +60,7 @@ export class WeatherWidget extends React.PureComponent {
     cities.forEach((city) => {
       city = city.trim();
       if(!city){
-          return false;
+        return false;
       }
       promises.push( axios.get('http://api.openweathermap.org/data/2.5/forecast', { params: {q: city, appid: apiKey, units: units, cnt: resultCount} }) );
     });
@@ -68,7 +69,7 @@ export class WeatherWidget extends React.PureComponent {
     .then(axios.spread((...results) => {
       for (let i = 0; i < results.length; i++) {
         if(results[i].cod === "404"){
-            continue;
+          continue;
         }
         weatherCitiesData.push(results[i]);
       }
@@ -241,3 +242,5 @@ const NextArrow = (props) => {
       }
       return <i className={`wi ${weatherIcon}`}></i>
     }
+
+    export default connectDashboardId(WeatherWidget);

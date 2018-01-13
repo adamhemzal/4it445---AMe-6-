@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import AMer from '../../img/person.jpg';
 import Slider from 'react-slick';
 import api from '../../api.js';
+import { connectDashboardId } from '../../dashboardIdProvider';
 
 import MDSpinner from "react-md-spinner";
 
-export class PeopleOfADayWidget extends Component {
+class PeopleOfADayWidget extends Component {
 
     constructor(props) {
         super(props);
@@ -110,3 +111,5 @@ export class PeopleOfADayWidget extends Component {
         );
     }
 }
+
+export default connectDashboardId(PeopleOfADayWidget);

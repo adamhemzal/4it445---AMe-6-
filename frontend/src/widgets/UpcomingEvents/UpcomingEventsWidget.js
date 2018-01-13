@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import api from '../../api.js';
 import axios from 'axios';
+import { connectDashboardId } from '../../dashboardIdProvider';
 
-export class UpcomingEventsWidget extends Component {
+class UpcomingEventsWidget extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-          
+
           isLoading: false,
         };
       }
@@ -54,7 +55,7 @@ export class UpcomingEventsWidget extends Component {
                                     <p className="event__info"><i className="fa fa-map-marker" aria-hidden="true"></i>Kozlovna</p>
                                 </div>
                             </div>
-                                                    
+
                         </div>
 
                         <div className="event">
@@ -71,7 +72,7 @@ export class UpcomingEventsWidget extends Component {
                                 <div className="col-md-12">
                                     <p className="event__info"><i className="fa fa-map-marker" aria-hidden="true"></i>Kozlovna</p>
                                 </div>
-                            </div>    
+                            </div>
 
                         </div>
 
@@ -81,3 +82,5 @@ export class UpcomingEventsWidget extends Component {
         )
     }
 }
+
+export default connectDashboardId(UpcomingEventsWidget);

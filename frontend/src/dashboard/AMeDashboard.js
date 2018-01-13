@@ -4,18 +4,19 @@ import CustomFrame from './CustomFrame';
 import Modal from 'react-modal';
 import Alert from 'react-s-alert';
 
-import { WeatherWidget } from '../widgets/Weather/WeatherWidget';
-import { TopAmersWidget } from '../widgets/TopAmers/TopAmersWidget';
-import { TopAmePostsWidget } from '../widgets/TopAmePosts/TopAmePostsWidget';
-import { PeopleOfADayWidget } from '../widgets/PeopleOfADay/PeopleOfADayWidget';
-import { GifOfADayWidget } from '../widgets/GifOfADay/GifOfADayWidget';
-import { CountDownTimerWidget } from '../widgets/CountDownTimer/CountDownTimerWidget';
-import { UpcomingEventsWidget } from '../widgets/UpcomingEvents/UpcomingEventsWidget';
+import WeatherWidget from '../widgets/Weather/WeatherWidget';
+import TopAmersWidget from '../widgets/TopAmers/TopAmersWidget';
+import TopAmePostsWidget from '../widgets/TopAmePosts/TopAmePostsWidget';
+import PeopleOfADayWidget from '../widgets/PeopleOfADay/PeopleOfADayWidget';
+import GifOfADayWidget from '../widgets/GifOfADay/GifOfADayWidget';
+import CountDownTimerWidget from '../widgets/CountDownTimer/CountDownTimerWidget';
+import UpcomingEventsWidget from '../widgets/UpcomingEvents/UpcomingEventsWidget';
 import { connect } from 'react-redux';
 
 import { HamburgerMenu } from './menu/HamburgerMenu';
 import { AdminEditForm } from './adminComponents/AdminEditForm';
 import { JustLogin } from './menu/JustLogin';
+import { DashboardIdProvider } from '../dashboardIdProvider';
 
 import {
   getLoginState,
@@ -83,6 +84,7 @@ class AMeDashboard extends Component {
       isModalOpen: false,
       addWidgetOptions: null,
       isHamburgerMenuOpen: false,
+      dashboardId: props.match.params.dashboardId,
     };
 
     this.openModal = this.openModal.bind(this);
@@ -96,7 +98,7 @@ class AMeDashboard extends Component {
   }
 
   getData() {
-    api.get(`dashboard/info/1`).then(response => {
+    api.get(`dashboard/info/${this.state.dashboardId}`).then(response => {
       const { success, name, description, url, layout } = response.data;
 
       if (success && !this.state.isHamburgerMenuOpen) {
@@ -216,7 +218,7 @@ class AMeDashboard extends Component {
   saveLayout = () => {
     api.post('dashboard/layout',
     {
-      dashboardId: 1,
+      dashboardId: this.state.dashboardId,
       layout: this.state.layout
     }
   ).then(response => {
@@ -224,11 +226,11 @@ class AMeDashboard extends Component {
   })
 }
 
-    setHamburgerMenuOpen = (isOpen) => {
-        this.setState({
-            isHamburgerMenuOpen:isOpen,
-        });
-    }
+setHamburgerMenuOpen = (isOpen) => {
+  this.setState({
+    isHamburgerMenuOpen:isOpen,
+  });
+}
 
 
 
@@ -271,16 +273,18 @@ render() {
           {isAuthenticated &&
             <EditBar onEdit={this.toggleEdit} />
           }
-          <Dashboard
-            onRemove={this.onRemove}
-            layout={this.state.layout}
-            widgets={this.state.widgets}
-            editable={this.state.editMode}
-            addWidgetComponentText="Add"
-            onAdd={this.onAdd}
-            onMove={this.onMove}
-            frameComponent={CustomFrame}
-          />
+          <DashboardIdProvider dashboardId={this.props.match.params.dashboardId}>
+            <Dashboard
+              onRemove={this.onRemove}
+              layout={this.state.layout}
+              widgets={this.state.widgets}
+              editable={this.state.editMode}
+              addWidgetComponentText="Add"
+              onAdd={this.onAdd}
+              onMove={this.onMove}
+              frameComponent={CustomFrame}
+            />
+          </DashboardIdProvider>
 
           {isAuthenticated &&
             <AddWidgetDialog
