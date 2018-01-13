@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 //import logo from './logo.svg';
 import { BrowserRouter, Route } from 'react-router-dom';
-import { AMeDashboard } from './dashboard/AMeDashboard';
-import { Admin } from './admin/Admin';
+import AMeDashboard from './dashboard/AMeDashboard';
 import { HomePage } from './homepage/HomePage';
 import Alert from 'react-s-alert';
 import { configureStore } from './store/configureStore.js';
@@ -29,7 +28,6 @@ class App extends Component {
             <Alert stack={{ limit: 1 }} />
             <Route exact path="/" component={HomePage} />
             <Route exact path="/dashboard/:dashboardId/" component={AMeDashboard} />
-            <Route exact path="/dashboard/:dashboardId/admin" component={Admin} />
             {/* <Route exact path="/authorize" component={Outlook}/> */}
             {/*<Route path="*" component={NotFound}/>*/}
           </div>

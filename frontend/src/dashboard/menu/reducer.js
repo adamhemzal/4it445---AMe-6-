@@ -19,6 +19,7 @@ const reducer = (state = initialState, action) => {
     const { user } = action;
     return {
       ...state,
+      user,
       isAuthenticating: false,
       isAuthenticated: true,
     }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { LoginMenu } from './LoginMenu';
+import LoginMenu from './LoginMenu';
 
 export class JustLogin extends Component {
 

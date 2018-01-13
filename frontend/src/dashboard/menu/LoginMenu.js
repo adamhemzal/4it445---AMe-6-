@@ -1,7 +1,7 @@
 import Form from 'react-validation/build/form';
 import Input from 'react-validation/build/input';
 import React, { Component } from 'react';
-import api from '../../api.js';
+// import api from '../../api.js';
 import { Route, Redirect } from 'react-router-dom';
 import Alert from 'react-s-alert';
 
@@ -15,11 +15,9 @@ import {
   isAuthenticating,
 } from './reducer';
 
-export class LoginMenuRaw extends Component {
-
+class LoginMenu extends Component {
 
   constructor(props) {
-    console.log("PROPS", props);
     super(props);
     this.state = {
       userInput: "",
@@ -46,37 +44,26 @@ export class LoginMenuRaw extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const {userInput, passInput, doRedirect} = this.state;
-    api({
-      method: 'post',
-      url: 'login',
-      withCredentials: true,
-      headers: {'Content-Type': 'application/json'},
-      data: {
-        username: userInput,
-        password: passInput
-      }
-    }).then((res) => {
-      const { success, message, user } = res.data;
-      console.log(res);
-      if (success) {
-        this.setState({
-          doRedirect: true
-        });
-      } else {
-        Alert.error('<div class="alert-content"><h5>' + message + '</h5></div>', {
-          html: true,
-          position: 'top',
-          effect: 'flip',
-          beep: false,
-          timeout: 5000,
-        });
-      }
-    });
+    const { userInput, passInput, doRedirect } = this.state;
+    const { login } = this.props;
+
+    login(userInput, passInput);
+
   }
 
   render() {
     const { dashboardId, doRedirect } = this.state;
+    const { user, loginMessage, isAuthenticated, isAuthenticating } = this.props;
+
+    if (loginMessage) {
+          Alert.error('<div class="alert-content"><h5>' + loginMessage + '</h5></div>', {
+            html: true,
+            position: 'top',
+            effect: 'flip',
+            beep: false,
+            timeout: 5000,
+          });
+    }
 
     if (doRedirect) {
       return <Redirect to={"/dashboard/" + dashboardId + "/admin"} />;
@@ -113,7 +100,9 @@ const mapDispatchToProps = {
   login,
 };
 
-export const LoginMenu = connect(
+const LoginMenuContainer = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(LoginMenuRaw);
+)(LoginMenu);
+
+export default LoginMenuContainer;

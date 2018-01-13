@@ -1,3 +1,5 @@
+import api from '../../api.js';
+
 export const actions = {
   LOGIN: 'LOGIN',
   LOGIN_SUCCESS: 'LOGIN_SUCCESS',
@@ -5,9 +7,9 @@ export const actions = {
   LOGOUT: 'LOGOUT',
 }
 
-// export const login = (username, password) => ({
-//   type: actions.LOGIN_REQUEST,
-// });
+export const loginRequest = () => ({
+  type: actions.LOGIN,
+});
 
 export const loginSuccess = (user) => ({
   type: actions.LOGIN_SUCCESS,
@@ -23,7 +25,9 @@ export const logout = () => ({
   type: actions.LOGOUT,
 });
 
-export const login = (username, password, dispatch, { api }) => {
+export const login = (username, password) => (dispatch) => {
+  dispatch(loginRequest());
+
   api({
     method: 'post',
     url: 'login',
@@ -31,7 +35,7 @@ export const login = (username, password, dispatch, { api }) => {
     headers: {'Content-Type': 'application/json'},
     data: {
       username: username,
-      password: password
+      password: password,
     }
   }).then((res) => {
     const { success, message, user } = res.data;

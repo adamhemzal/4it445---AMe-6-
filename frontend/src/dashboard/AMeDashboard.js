@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Dashboard, { addWidget } from 'react-dazzle';
 import CustomFrame from './CustomFrame';
+import Modal from 'react-modal';
+import Alert from 'react-s-alert';
 
 import { WeatherWidget } from '../widgets/Weather/WeatherWidget';
 import { TopAmersWidget } from '../widgets/TopAmers/TopAmersWidget';
@@ -9,9 +11,17 @@ import { PeopleOfADayWidget } from '../widgets/PeopleOfADay/PeopleOfADayWidget';
 import { GifOfADayWidget } from '../widgets/GifOfADay/GifOfADayWidget';
 import { CountDownTimerWidget } from '../widgets/CountDownTimer/CountDownTimerWidget';
 import { UpcomingEventsWidget } from '../widgets/UpcomingEvents/UpcomingEventsWidget';
+import { connect } from 'react-redux';
 
-//import { HamburgerMenu } from './menu/HamburgerMenu';
+import { HamburgerMenu } from './menu/HamburgerMenu';
+import { AdminEditForm } from './adminComponents/AdminEditForm';
 import { JustLogin } from './menu/JustLogin';
+
+import {
+  getLoginState,
+  getUser,
+  isAuthenticated,
+} from './menu/reducer';
 
 // Dazzle
 import EditBar from './EditBar';
@@ -22,18 +32,21 @@ import api from '../api.js';
 import logo from '../img/logo.png';
 
 import 'react-dazzle/lib/style/style.css';
+import 'react-s-alert/dist/s-alert-default.css';
+import 'react-s-alert/dist/s-alert-css-effects/slide.css';
 
 //import { Admin } from '../admin/Admin';
 
-export class AMeDashboard extends Component {
+class AMeDashboard extends Component {
 
   constructor(props) {
     super(props);
 
     this.state = {
       isLoading: true,
-      name: '',
-      description: '',
+      modalIsOpen: false,
+      name: 'Admin Workspace Dashboard',
+      description: 'Simple description of this dashboard',
 
       widgets: {
         TopAmePosts: {
@@ -50,7 +63,7 @@ export class AMeDashboard extends Component {
         },
         PeopleOfADay: {
           type: PeopleOfADayWidget,
-          title: 'People of a Day'
+          title: 'People of the Day'
         },
         GifOfADay: {
           type: GifOfADayWidget,
@@ -62,7 +75,7 @@ export class AMeDashboard extends Component {
         },
         UpcomingEvents: {
           type: UpcomingEventsWidget,
-          title: 'Count Down Timer',
+          title: 'Upcoming Events',
         },
       },
 
@@ -71,19 +84,27 @@ export class AMeDashboard extends Component {
       addWidgetOptions: null
     };
 
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+
   }
 
   componentDidMount() {
+    this.getData();
+  }
+
+  getData() {
     api.get(`dashboard/info/1`).then(response => {
       const { success, name, description, url, layout } = response.data;
+
       if (success) {
         this.setState({
-            name: name,
-            description: description,
-            url: url,
-            layout: layout,
-            isLoading: false
-          });
+          name: name,
+          description: description,
+          url: url,
+          layout: layout,
+          isLoading: false
+        });
         // Pokud se nepovede ziskat layout z DB, pouzije se defaultni.
       } else {
         this.setState({
@@ -106,6 +127,36 @@ export class AMeDashboard extends Component {
     }).catch(error => {
       console.log(error);
     });
+  }
+
+  openModal() {
+    this.setState({ modalIsOpen: true });
+  }
+
+  saveDashboard = () => {
+    this.closeModal();
+    this.getData();
+  }
+
+  closeModal() {
+    this.setState({ modalIsOpen: false });
+  }
+
+  deleteDashboard = () => {
+    console.log(this.state);
+
+    Alert.error('Dashboard was deleted', {
+      position: 'top-right',
+      effect: 'slide',
+      onShow: function () {
+        console.log('aye!')
+      },
+      beep: false,
+      timeout: 2500,
+      offset: 100
+    });
+
+    this.closeModal();
   }
 
   onRemove = (layout) => {
@@ -139,6 +190,8 @@ export class AMeDashboard extends Component {
     this.setState({
       isModalOpen: false,
     });
+
+    this.closeModal();
   }
 
   toggleEdit = () => {
@@ -172,9 +225,10 @@ export class AMeDashboard extends Component {
 
 
 render() {
+  const { user, isAuthenticated } = this.props;
+
   return (
     <div>
-
       <header className="header clearfix">
 
         <div className="container-fluid flexbox">
@@ -182,13 +236,21 @@ render() {
             <img src={logo} alt="Logo AMe"/>
           </div>
 
-          <div className="intro__div">
-            <h2 className="intro__title">{this.state.name}</h2>
-            <h3 className="intro__description">{this.state.description}</h3>
+          <div className="intro">
+            <div className="intro__div">
+              <h2 className="intro__title">{this.state.name}</h2>
+              <h3 className="intro__description">{this.state.description}</h3>
+            </div>
+            {isAuthenticated &&
+              <button className="btn btn-default intro__button" onClick={() => { this.openModal(); }}><i className="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button>
+            }
           </div>
 
-          {/* <HamburgerMenu /> */}
-          <JustLogin dashboardId={this.props.match.params.dashboardId} />
+          {isAuthenticated ? (
+            <HamburgerMenu />
+          ) : (
+            <JustLogin dashboardId={this.props.match.params.dashboardId} />
+          )}
 
         </div>
 
@@ -198,7 +260,9 @@ render() {
 
         <div className="">
 
-          {/* <EditBar onEdit={this.toggleEdit} /> */}
+          {isAuthenticated &&
+            <EditBar onEdit={this.toggleEdit} />
+          }
           <Dashboard
             onRemove={this.onRemove}
             layout={this.state.layout}
@@ -210,19 +274,50 @@ render() {
             frameComponent={CustomFrame}
           />
 
-          { /*  <TopAmePostsWidget />
-            <TopAmersWidget />
-            <WeatherWidget /> */ }
-
-{/*             <AddWidgetDialog
+          {isAuthenticated &&
+            <AddWidgetDialog
               widgets={this.state.widgets}
               isModalOpen={this.state.isModalOpen}
               onRequestClose={this.onRequestClose}
               onWidgetSelect={this.widgetSelected}
-            /> */}
+            />
+          }
+
+          {isAuthenticated &&
+            <Alert stack={{ limit: 3 }} />
+          }
+
+          {isAuthenticated &&
+            <Modal
+              isOpen={this.state.modalIsOpen}
+              className='modal-dialog'
+              //overlayClassName='edit_modal__overlay'
+              onRequestClose={this.closeModal}
+              contentLabel='Widget Editation'
+              >
+                <div className='modal-content'>
+
+                  <div className="modal-header">
+                    <button type="button" className="close" onClick={this.saveDashboard}>
+                      <span aria-hidden="true">&times;</span>
+                      <span className="sr-only">Close</span>
+                    </button>
+                    <h3 className="modal-title" ref={subtitle => this.subtitle = subtitle}>Dashboard Options</h3>
+                  </div>
+
+                  <div className="modal-body"><AdminEditForm /></div>
+
+                  <div className="modal-footer">
+                    <button type="button" className="btn btn-default btn-delete float--left" onClick={this.deleteDashboard}>Delete Dashboard</button>
+                    <button type="button" className="btn btn-default btn-close float--right" onClick={this.saveDashboard}>Close</button>
+                  </div>
+
+                </div>
+              </Modal>
+            }
+
 
           </div>
-
           <hr/>
 
           <footer>
@@ -235,3 +330,18 @@ render() {
     )
   }
 }
+
+const mapStateToProps = (storeState) => {
+  const loginState = getLoginState(storeState);
+
+  return {
+    user: getUser(loginState),
+    isAuthenticated: isAuthenticated(loginState),
+  };
+};
+
+const AMeDashboardContainer = connect(
+  mapStateToProps,
+)(AMeDashboard);
+
+export default AMeDashboardContainer;
