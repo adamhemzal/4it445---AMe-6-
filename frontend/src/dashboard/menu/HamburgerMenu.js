@@ -17,7 +17,7 @@ export class HamburgerMenu extends Component {
         });
     }
     
-    render() {
+    render(props) {
 
         const isActive = () => {
             if (this.state.active === true) {
@@ -40,7 +40,7 @@ export class HamburgerMenu extends Component {
                 <div className="menu-hamburger" id={isActive()} >
                 <div className="menu-hamburger__header">
                     <div className="menu-hamburger__add">
-                        <button className="login-button"><i className="fa fa-plus-circle" aria-hidden="true"></i> Add new dashboard</button>
+                        <button onClick={this.props.addNewDashboard} className="login-button"><i className="fa fa-plus-circle" aria-hidden="true"></i> Add new dashboard</button>
                     </div>
                     <div className="menu-hamburger__logout">
                         <button className="logout-button">Log out</button>
