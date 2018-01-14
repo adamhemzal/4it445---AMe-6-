@@ -87,14 +87,14 @@ class WeatherEditForm extends Component {
                         const location = this.getLocation(results);
                         let citiesInput = this.formatCitiesInput(location.city);
 
-                        axios.get('https://maps.googleapis.com/maps/api/timezone/json?language=en', {params: {location: orgLat+","+orgLng, timestamp: Math.floor(Date.now() / 1000), key: "AIzaSyBcWERvVwgoH27ILfRURoJTxOKhW7oKvIc"} })
-                          .then( (result) => {
-                              console.log(result.data.rawOffset);
-
-                              this.setState((prevState) => ({
-                                offsets: [...prevState.offsets, result.data.rawOffset]
-                              }));
-                        });
+                        // axios.get('https://maps.googleapis.com/maps/api/timezone/json?language=en', {params: {location: orgLat+","+orgLng, timestamp: Math.floor(Date.now() / 1000), key: "AIzaSyBcWERvVwgoH27ILfRURoJTxOKhW7oKvIc"} })
+                        //   .then( (result) => {
+                        //       console.log(result.data.rawOffset);
+                        //
+                        //       this.setState((prevState) => ({
+                        //         offsets: [...prevState.offsets, result.data.rawOffset]
+                        //       }));
+                        // });
 
                         this.setState((prevState) => ({
                             cityListInputValues: citiesInput,
