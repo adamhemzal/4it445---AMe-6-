@@ -8,9 +8,12 @@ import {
 
  import {
     saveDashboardController,
-    getDashboardController
+    getDashboardController,
+    removeDashboardController
+
   } from './dashboardController.js';
-  
+
+
   import {
     getDashboardList
   } from './getDashboardList.js';
@@ -21,6 +24,8 @@ router.post('/layout', saveDashboardLayoutController);
 
 router.get('/info/:dashboardId', getDashboardController);
 router.post('/info', saveDashboardController);
+
+router.delete('/delete', removeDashboardController);
 
 router.get('/list', getDashboardList);
 

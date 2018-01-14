@@ -154,20 +154,32 @@ class AMeDashboard extends Component {
   }
 
   deleteDashboard = () => {
-    console.log(this.state);
+    console.log(this.state.dashboardId);
 
-    Alert.error('Dashboard was deleted', {
-      position: 'top-right',
-      effect: 'slide',
-      onShow: function () {
-        console.log('aye!')
-      },
-      beep: false,
-      timeout: 2500,
-      offset: 100
-    });
+    let id = this.state.dashboardId;
 
-    this.closeModal();
+    api.delete('dashboard/delete',
+      { params: {id: id }})
+
+      .then(response => {
+
+        console.log(this.state.dashboardId);
+
+        Alert.error('Dashboard was deleted', {
+          position: 'top-right',
+          effect: 'slide',
+          onShow: function () {
+            console.log('aye!')
+          },
+          beep: false,
+          timeout: 2500,
+          offset: 100
+        });
+
+        this.closeModal();
+
+      })
+
   }
 
   onRemove = (layout) => {

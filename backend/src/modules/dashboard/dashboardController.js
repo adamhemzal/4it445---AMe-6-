@@ -3,11 +3,11 @@ import db from '../../models/';
 export const saveDashboardController = async (req, res) => {
 
     const {dashboardId, name, description, url, layoutId, layout} = req.body;
-    
+
     if (!dashboardId || dashboardId === "") {
-        
+
         let newDashboardId = generateNewId();
-        
+
         db.dashboard.create({
             id: newDashboardId,
             name: name,
@@ -21,7 +21,7 @@ export const saveDashboardController = async (req, res) => {
             res.json({success: false});
         });
     } else {
-        
+
         db.dashboard.update(
                 {
                     name: name,
@@ -64,6 +64,18 @@ export const getDashboardController = async (req, res) => {
         console.log(err);
         res.json({success: false});
     });
+}
+
+export const removeDashboardController = async (req, res) => {
+    const {id} = req.params;
+
+    db.dashboard.destroy(
+        { where: {id: id} })
+        .then(result => {
+            res.json({success: true, id: id});
+        }).catch(err => {
+            res.json({success: false});
+        });
 }
 
 
