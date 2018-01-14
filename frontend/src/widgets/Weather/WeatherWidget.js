@@ -12,9 +12,9 @@ class WeatherWidget extends React.PureComponent {
     this.state = {
       weatherCities: [],
       isLoading: true,
-      offsets: [],
-      times: [],
-      dates: [],
+      // offsets: [],
+      // times: [],
+      // dates: [],
       time: moment().format('LT'),
       date: moment().format('MMM D'),
     };
@@ -38,20 +38,20 @@ class WeatherWidget extends React.PureComponent {
       const { cities, offsets } = response.data;
 
       this.getWeatherFromCities(cities);
-      this.setState({ offsets: offsets });
 
-
-      this.setTime();
-
-      this.timerID = setInterval(
-        () => this.setTime(),
-        20000
-      );
+      // this.setState({ offsets: offsets });
+      // this.setTime();
 
     })
     .catch(error => {
       console.log(error);
     });
+
+    this.timerID = setInterval(
+      () => this.setTime(),
+      20000
+    );
+
   }
 
   componentWillUnmount() {
@@ -95,17 +95,22 @@ class WeatherWidget extends React.PureComponent {
   setTime() {
     let times = []
     let dates = []
-    let time = moment();
+    // let time = moment();
 
-    for (let i = 0; i < this.state.offsets.length; i++) {
-      times.push(time.utcOffset(this.state.offsets[i] / 60).format('HH:MM'));
-      dates.push(time.utcOffset(this.state.offsets[i] / 60).format('MMM D'));
-    };
+    // for (let i = 0; i < this.state.offsets.length; i++) {
+    //   times.push(time.utcOffset(this.state.offsets[i] / 60).format('HH:MM'));
+    //   dates.push(time.utcOffset(this.state.offsets[i] / 60).format('MMM D'));
+    // };
+    //
+    // this.setState({
+    //   times: times,
+    //   dates: dates
+    // });
 
     this.setState({
-      times: times,
-      dates: dates
-    });
+      time: moment().format('LT'),
+      date: moment().format('MMM D'),
+    })
   }
 
   render() {
@@ -154,8 +159,11 @@ class WeatherWidget extends React.PureComponent {
 
                       <div className="col-md-5 col-sm-6 col-xs-12">
                         <div className="weather__date">
-                          <h4 className="weather__day">{ this.state.dates[index] }</h4>
-                          <h4 className="weather__time">{ this.state.times[index] }</h4>
+                          <h4 className="weather__day">{this.state.date}</h4>
+                          <h4 className="weather__time">{this.state.time}</h4>
+
+                          {/* <h4 className="weather__day">{ this.state.dates[index] }</h4>
+                          <h4 className="weather__time">{ this.state.times[index] }</h4> */}
                         </div>
                       </div>
 

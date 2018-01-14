@@ -64,25 +64,30 @@ class WeatherEditForm extends Component {
   }
 
 
-  handleFormSubmit = async (event) => {
+  handleFormSubmit = (event) => {
     event.preventDefault();
 
-    await geocodeByAddress(this.state.address)
+    geocodeByAddress(this.state.address)
       .then(results => getLatLng(results[0]))
       .then( ({ lat, lng }) => {
             this.setState({ lat: lat, lng: lng});
 
             let resultCount = 1;
             let apiKey = 'AIzaSyDDXOEh-jzoS5www_Yg5GpIa5ahA1VuKKg';
+
+            let orgLat = lat;
+            let orgLng = lng;
+
             lat = parseFloat(lat).toFixed(4);
             lng = parseFloat(lng).toFixed(4);
+
             axios.get('https://maps.googleapis.com/maps/api/geocode/json?language=en', { params: {latlng: lat+","+lng, key : apiKey} })
                     .then( (result) => {
                         const results = result.data.results;
                         const location = this.getLocation(results);
                         let citiesInput = this.formatCitiesInput(location.city);
 
-                        axios.get('https://maps.googleapis.com/maps/api/timezone/json?language=en', {params: {location: lat+","+lng, timestamp: Math.floor(Date.now() / 1000), key: "AIzaSyBcWERvVwgoH27ILfRURoJTxOKhW7oKvIc"} })
+                        axios.get('https://maps.googleapis.com/maps/api/timezone/json?language=en', {params: {location: orgLat+","+orgLng, timestamp: Math.floor(Date.now() / 1000), key: "AIzaSyBcWERvVwgoH27ILfRURoJTxOKhW7oKvIc"} })
                           .then( (result) => {
                               console.log(result.data.rawOffset);
 
