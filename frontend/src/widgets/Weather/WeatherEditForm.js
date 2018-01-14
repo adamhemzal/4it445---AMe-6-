@@ -1,18 +1,3 @@
-/**
- *   TODO
-
-Editovatelny list mest,
-pridani mesta [jmeno, ""] -> geoCodeaddress -> [jmeno, latlng] -> pridani do pole ve state -> ulozeni lat / lng do DB -> nacteni z Weather api pomoci lat / lng
-
-// Append an array
-const newArr = [1,2,3,4]
-this.setState({ arr: [...this.state.arr, ...newArr] });
-
-// Append a single item
-this.setState({ arr: [...this.state.arr, 'new item'] });
-
- */
-
 import React, { Component } from 'react';
 import PlacesAutocomplete, {
 	geocodeByAddress,

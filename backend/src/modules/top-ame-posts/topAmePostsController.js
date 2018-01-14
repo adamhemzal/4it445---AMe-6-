@@ -11,7 +11,6 @@ const token = process.env.SLACK_API_TOKEN || '';
 const web = new WebClient(token);
 const ameEmoticonIdentifier = 'ame';
 const widgetName = 'TopAmePosts';
-// const dashboardId = 1; //TODO take current dashboard ID
 let channel = '';
 
 export const saveWidgetSettingsToDB = async (req, res) => {

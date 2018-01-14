@@ -57,13 +57,6 @@ class TopAmePostsEditForm extends Component {
 						labelKey="name"
 					/>
 
-					{/* <select onChange={this.selectChange}>
-          <option value="" disabled="disabled" selected="selected">Please select a channel</option>
-          {this.state.slackChannels.map((channel, index) =>
-          <option value={channel.id}>{channel.name}</option>
-        )}
-        
-      </select> */}
 					<button
 						className="btn btn-default btn-save float--left"
 						onClick={this.submit}

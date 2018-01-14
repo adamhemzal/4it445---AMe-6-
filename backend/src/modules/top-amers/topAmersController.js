@@ -10,8 +10,6 @@ const token = process.env.SLACK_API_TOKEN || '';
 const web = new WebClient(token);
 const ameEmoticonIdentifier = 'ame';
 const widgetName = 'TopAmers';
-// const dashboardId = 1; //TODO take current dashboard ID
-//const channel = 'C0BUA20S0'; //unused, now fetched from DB
 
 export const saveWidgetSettingsToDB = async (req, res) => {
 	let postData = req.body;
@@ -45,8 +43,6 @@ export const saveWidgetSettingsToDB = async (req, res) => {
 
 const getWidgetSettingsFromDB = req => {
 	const { dashboardId } = req.query;
-	// const { dashboardIdd } = req.params;
-	//   console.log(dashboardIdd);
 	db.widget
 		.findOne({
 			where: {

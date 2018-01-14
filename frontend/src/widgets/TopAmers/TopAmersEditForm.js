@@ -58,14 +58,6 @@ class TopAmersEditForm extends Component {
 						labelKey="name"
 					/>
 
-					{/* <select onChange={this.selectChange}>
-          <option value="" disabled="disabled" selected="selected">Please select a channel</option>
-          {this.state.slackChannels.map((channel, index) =>
-          <option value={channel.id}>{channel.name}</option>
-        )}
-
-      </select> */}
-
 					<button
 						className="btn btn-default btn-save float--left"
 						onClick={this.submit}
@@ -77,10 +69,6 @@ class TopAmersEditForm extends Component {
 			</form>
 		);
 	}
-
-	// handleChange(event) {
-	//     this.setState({channelIdValue: event.target.value});
-	// }
 
 	handleChange(newValue) {
 		this.setState({ channelIdValue: newValue });

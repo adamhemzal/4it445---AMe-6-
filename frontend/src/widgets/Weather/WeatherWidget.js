@@ -163,9 +163,6 @@ class WeatherWidget extends React.PureComponent {
 												<div className="weather__date">
 													<h4 className="weather__day">{this.state.date}</h4>
 													<h4 className="weather__time">{this.state.time}</h4>
-
-													{/* <h4 className="weather__day">{ this.state.dates[index] }</h4>
-                          <h4 className="weather__time">{ this.state.times[index] }</h4> */}
 												</div>
 											</div>
 										</div>

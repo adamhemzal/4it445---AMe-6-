@@ -56,9 +56,6 @@ class TopAmersWidget extends Component {
 
 		return (
 			<div className="widget top_amers">
-				{/* <div className="widget_settings__header">
-        <i className="fa fa-wrench" aria-hidden="true"></i>
-      </div> */}
 				<div className="widget__inner widget__inner--dark">
 					<div className="widget__header clearfix">
 						<h2 className="widget__name">Top AMers (last week)</h2>
@@ -84,7 +81,7 @@ class TopAmersWidget extends Component {
 													{topAmer.ameCount}x{' '}
 													<img
 														src={require('../../img/ame-small.png')}
-														alt=""
+														alt={topAmer.realName}
 													/>
 												</span>
 											</div>
