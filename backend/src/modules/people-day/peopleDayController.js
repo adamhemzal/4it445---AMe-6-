@@ -6,11 +6,11 @@ let sortedUsers;
 let globalRes = null;
 const peopleDayMaxCount = 5;
 
-const WebClient = require("@slack/client").WebClient;
-const token = process.env.SLACK_API_TOKEN || "";
+const WebClient = require('@slack/client').WebClient;
+const token = process.env.SLACK_API_TOKEN || '';
 const web = new WebClient(token);
 
-const widgetName = "PeopleDay";
+const widgetName = 'PeopleDay';
 const dashboardId = 1; //TODO take current dashboard ID
 
 /*
@@ -37,7 +37,7 @@ const dashboardId = 1; //TODO take current dashboard ID
 //         }).catch(err => {
 //             console.log(err);
 //     });
-    
+
 // };
 
 // const getWidgetSettingsFromDB = () => {

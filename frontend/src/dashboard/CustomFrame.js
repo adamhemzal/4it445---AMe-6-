@@ -11,109 +11,129 @@ import GifOfADayEditForm from '../widgets/GifOfADay/GifOfADayEditForm';
 import UpcomingEventsEditForm from '../widgets/UpcomingEvents/UpcomingEventsEditForm';
 
 class CustomFrame extends Component {
+	constructor(props) {
+		super(props);
 
-  constructor(props) {
-    super(props);
+		this.state = {
+			modalIsOpen: false,
+		};
 
-    this.state = {
-      modalIsOpen: false
-    };
+		this.openModal = this.openModal.bind(this);
+		this.closeModal = this.closeModal.bind(this);
+	}
 
-    this.openModal = this.openModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
+	componentWillMount() {
+		Modal.setAppElement('#root');
+	}
 
-  }
+	editWidget = children => {
+		console.log(children.type.name);
+		return;
+	};
 
-  componentWillMount() {
-    Modal.setAppElement('#root');
-  }
+	openModal() {
+		this.setState({ modalIsOpen: true });
+	}
 
-  editWidget = (children) => {
-    console.log(children.type.name);
-    return;
-  };
+	closeModal() {
+		this.setState({ ...this.state });
+		this.setState({ modalIsOpen: false });
+	}
 
-  openModal() {
-    this.setState({modalIsOpen: true});
-  }
+	render() {
+		const widgetTitle = this.props.title;
+		let editForm = null;
+		switch (widgetTitle) {
+			case 'Top Ame Posts':
+				editForm = <TopAmePostsEditForm />;
+				break;
+			case 'Top Amers':
+				editForm = <TopAmersEditForm />;
+				break;
+			case 'Weather':
+				editForm = <WeatherEditForm />;
+				break;
+			case 'People of the Day':
+				editForm = <PeopleOfADayEditForm />;
+				break;
+			case 'Gif of a Day':
+				editForm = <GifOfADayEditForm />;
+				break;
+			case 'Upcoming Events':
+				editForm = <UpcomingEventsEditForm />;
+				break;
+			default:
+		}
+		return (
+			<div>
+				<div className="widget__outer custom-frame-container">
+					<div className="title widget__edit">
+						{this.props.editable && (
+							<div>
+								<a
+									className="btn"
+									onClick={() => {
+										this.openModal();
+									}}
+								>
+									Edit
+								</a>
+								<a
+									className="btn"
+									onClick={() => {
+										this.props.onRemove();
+									}}
+								>
+									Remove
+								</a>
+							</div>
+						)}
+					</div>
+					<div className="custom-frame-content">{this.props.children}</div>
+				</div>
+				<div>
+					<Modal
+						isOpen={this.state.modalIsOpen}
+						className="modal-dialog"
+						//overlayClassName='edit_modal__overlay'
+						onRequestClose={this.closeModal}
+						contentLabel="Widget Editation"
+					>
+						<div className="modal-content">
+							<div className="modal-header">
+								<button
+									type="button"
+									className="close"
+									onClick={this.closeModal}
+								>
+									<span aria-hidden="true">&times;</span>
+									<span className="sr-only">Close</span>
+								</button>
+								<h3
+									className="modal-title"
+									ref={subtitle => (this.subtitle = subtitle)}
+								>
+									Widget Editation
+								</h3>
+							</div>
 
-  closeModal() {
-    this.setState({...this.state});
-    this.setState({modalIsOpen: false});
-  }
+							<div className="modal-body">{editForm}</div>
 
-  render() {
-    const widgetTitle = this.props.title;
-    let editForm = null;
-    switch (widgetTitle) {
-      case 'Top Ame Posts':
-        editForm = <TopAmePostsEditForm />;
-        break;
-      case 'Top Amers':
-        editForm = <TopAmersEditForm />;
-        break;
-      case 'Weather':
-        editForm = <WeatherEditForm />;
-        break;
-      case 'People of the Day':
-        editForm = <PeopleOfADayEditForm />;
-        break;
-      case 'Gif of a Day':
-        editForm = <GifOfADayEditForm/>
-        break;
-      case 'Upcoming Events':
-        editForm = <UpcomingEventsEditForm/>
-        break;
-      default:
+							<div className="modal-footer">
+								<button
+									type="button"
+									className="btn btn-default"
+									onClick={this.closeModal}
+								>
+									Close
+								</button>
+							</div>
+						</div>
+					</Modal>
+				</div>
+			</div>
+		);
+	}
+}
 
-    }
-    return (
-      <div>
-        <div className="widget__outer custom-frame-container">
-          <div className="title widget__edit">
-            {this.props.editable &&
-              <div>
-                <a className="btn" onClick={() => {this.openModal();}} >Edit</a>
-                <a className="btn" onClick={() => {this.props.onRemove();}} >Remove</a>
-              </div>
-            }
-          </div>
-          <div className="custom-frame-content">
-            {this.props.children}
-          </div>
-        </div>
-        <div>
-          <Modal
-            isOpen={this.state.modalIsOpen}
-            className='modal-dialog'
-            //overlayClassName='edit_modal__overlay'
-            onRequestClose={this.closeModal}
-            contentLabel='Widget Editation'
-            >
-              <div className='modal-content'>
-
-                <div className="modal-header">
-                  <button type="button" className="close" onClick={this.closeModal}>
-                    <span aria-hidden="true">&times;</span>
-                    <span className="sr-only">Close</span>
-                  </button>
-                  <h3 className="modal-title" ref={subtitle => this.subtitle = subtitle}>Widget Editation</h3>
-                </div>
-
-                <div className="modal-body">{editForm}</div>
-
-                <div className="modal-footer">
-                  <button type="button" className="btn btn-default" onClick={this.closeModal}>Close</button>
-                </div>
-
-              </div>
-            </Modal>
-          </div>
-        </div>
-      )
-    }
-  };
-
-
-
-  export default CustomFrame;
+export default CustomFrame;

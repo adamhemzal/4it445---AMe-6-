@@ -18,26 +18,29 @@ import 'react-s-alert/dist/s-alert-css-effects/flip.css';
 import './App.css';
 
 class App extends Component {
+	render() {
+		const store = configureStore();
 
-  render() {
-    const store = configureStore();
-
-    return (
-      <Provider store={store}>
-        <CookiesProvider>
-          <BrowserRouter>
-            <div>
-              <Alert stack={{ limit: 1 }} />
-              <Route exact path="/" component={HomePage} />
-              <Route exact path="/dashboard/:dashboardId/" component={AMeDashboard} />
-              {/* <Route exact path="/authorize" component={Outlook}/> */}
-              {/*<Route path="*" component={NotFound}/>*/}
-            </div>
-          </BrowserRouter>
-        </CookiesProvider>
-      </Provider>
-    );
-  }
+		return (
+			<Provider store={store}>
+				<CookiesProvider>
+					<BrowserRouter>
+						<div>
+							<Alert stack={{ limit: 1 }} />
+							<Route exact path="/" component={HomePage} />
+							<Route
+								exact
+								path="/dashboard/:dashboardId/"
+								component={AMeDashboard}
+							/>
+							{/* <Route exact path="/authorize" component={Outlook}/> */}
+							{/*<Route path="*" component={NotFound}/>*/}
+						</div>
+					</BrowserRouter>
+				</CookiesProvider>
+			</Provider>
+		);
+	}
 }
 
 export default App;

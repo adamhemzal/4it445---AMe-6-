@@ -2,21 +2,17 @@ import expressAsyncAwait from 'express-async-await';
 import { Router } from 'express';
 
 import {
-   saveDashboardLayoutController,
-   getDashboardLayoutController,
- } from './dashboardLayoutController.js';
+	saveDashboardLayoutController,
+	getDashboardLayoutController,
+} from './dashboardLayoutController.js';
 
- import {
-    saveDashboardController,
-    getDashboardController,
-    removeDashboardController
+import {
+	saveDashboardController,
+	getDashboardController,
+	removeDashboardController,
+} from './dashboardController.js';
 
-  } from './dashboardController.js';
-
-
-  import {
-    getDashboardList
-  } from './getDashboardList.js';
+import { getDashboardList } from './getDashboardList.js';
 
 const router = expressAsyncAwait(Router());
 router.get('/layout/:dashboardId', getDashboardLayoutController);

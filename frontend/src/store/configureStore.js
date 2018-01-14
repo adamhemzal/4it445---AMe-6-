@@ -8,9 +8,7 @@ import { rootReducer } from '../reducers';
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 export const configureStore = () =>
-createStore(
-  rootReducer,
-  composeEnhancers(
-    applyMiddleware(thunk.withExtraArgument({ api }))
-  )
-);
+	createStore(
+		rootReducer,
+		composeEnhancers(applyMiddleware(thunk.withExtraArgument({ api }))),
+	);

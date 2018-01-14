@@ -10,28 +10,32 @@ var DataTypes = require('sequelize/lib/data-types');
 var db = {};
 
 if (config.use_env_variable) {
-  var sequelize = new Sequelize(process.env[config.use_env_variable]);
+	var sequelize = new Sequelize(process.env[config.use_env_variable]);
 } else {
-  var sequelize = new Sequelize(
-    config.database,
-    config.username,
-    config.password,
-    config
-  );
+	var sequelize = new Sequelize(
+		config.database,
+		config.username,
+		config.password,
+		config,
+	);
 }
 
 // Remember to require all model files here:
-const modelModules = [require('./dashboard'), require('./user'), require('./widget')];
+const modelModules = [
+	require('./dashboard'),
+	require('./user'),
+	require('./widget'),
+];
 
 modelModules.forEach(function(modelModule) {
-  const model = modelModule(sequelize, DataTypes);
-  db[model.name] = model;
+	const model = modelModule(sequelize, DataTypes);
+	db[model.name] = model;
 });
 
 Object.keys(db).forEach(modelName => {
-  if (db[modelName].associate) {
-    db[modelName].associate(db);
-  }
+	if (db[modelName].associate) {
+		db[modelName].associate(db);
+	}
 });
 
 db.sequelize = sequelize;
