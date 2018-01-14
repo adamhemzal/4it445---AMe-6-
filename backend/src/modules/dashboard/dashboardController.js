@@ -16,7 +16,7 @@ export const saveDashboardController = async (req, res) => {
             layout: layout,
             layoutId: layoutId
         }).then(result => {
-            res.json({success: true});
+            res.json({success: true, id: newDashboardId});
         }).catch(err => {
             res.json({success: false});
         });
@@ -32,7 +32,7 @@ export const saveDashboardController = async (req, res) => {
                 },
                 {where: {id: dashboardId}})
                 .then(result => {
-                    res.json({success: true});
+                    res.json({success: true, id: false});
                 }).catch(err => {
             res.json({success: false});
         });

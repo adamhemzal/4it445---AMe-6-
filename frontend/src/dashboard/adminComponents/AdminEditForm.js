@@ -5,7 +5,7 @@ import Alert from 'react-s-alert';
 
 import { connectDashboardId } from '../../dashboardIdProvider';
 
-export class AdminEditForm extends React.PureComponent {
+export class AdminEditForm extends React.Component {
 
   constructor(props) {
     super(props);
@@ -39,6 +39,7 @@ export class AdminEditForm extends React.PureComponent {
     api.get(`dashboard/info/${this.state.dashboardId}`).then(response => {
       const { success, name, description, url, layout, layoutId } = response.data;
       console.log('=====>',response);
+
       if (success && !this.state.blank) {
         this.setState({
             name: name,
@@ -91,6 +92,13 @@ export class AdminEditForm extends React.PureComponent {
         timeout: 2500,
         offset: 100
       });
+
+      //console.log(response.data.id);
+
+      if(response.data.id != false) {
+        //this.props.children.history.push('/dashboard/' + response.data.id);
+        window.location.replace('/dashboard/' + response.data.id);
+      }
 
     })
   }
