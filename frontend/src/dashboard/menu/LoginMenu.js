@@ -46,9 +46,7 @@ class LoginMenu extends Component {
     e.preventDefault();
     const { userInput, passInput, doRedirect } = this.state;
     const { login } = this.props;
-
     login(userInput, passInput);
-
   }
 
   render() {

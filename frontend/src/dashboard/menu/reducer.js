@@ -9,7 +9,7 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case actions.LOGIN:
+    case actions.LOGIN_REQUEST:
     return {
       ...state,
       isAuthenticating: true,
@@ -32,9 +32,10 @@ const reducer = (state = initialState, action) => {
       loginMessage: message,
     }
 
-    case actions.LOGOUT:
+    case actions.LOGOUT_SUCCESS:
     return {
       ...state,
+      username: null,
       isAuthenticated: false,
     }
 

@@ -14,7 +14,7 @@ import GifOfADayWidget from '../widgets/GifOfADay/GifOfADayWidget';
 import CountDownTimerWidget from '../widgets/CountDownTimer/CountDownTimerWidget';
 import UpcomingEventsWidget from '../widgets/UpcomingEvents/UpcomingEventsWidget';
 
-import { HamburgerMenu } from './menu/HamburgerMenu';
+import HamburgerMenu from './menu/HamburgerMenu';
 import { AdminEditForm } from './adminComponents/AdminEditForm';
 import { JustLogin } from './menu/JustLogin';
 import { DashboardIdProvider } from '../dashboardIdProvider';
@@ -254,16 +254,18 @@ setHamburgerMenuOpen = (isOpen) => {
 }
 
 
-
 render() {
-  const { user, cookies } = this.props;
+
+  const { user, cookies, autoLogin } = this.props;
   let { isAuthenticated } = this.props;
 
-  if (user) {
-    cookies.set("user", user);
+  const userCookie = cookies.get('user');
+
+  if (isAuthenticated) {
+    cookies.set('user', user);
   }
 
-  if (cookies.get("user")) {
+  if (userCookie) {
     isAuthenticated = true;
   }
 
@@ -389,5 +391,4 @@ const AMeDashboardContainer = connect(
   mapStateToProps,
 )(AMeDashboard);
 
-// export default AMeDashboardContainer;
 export default withCookies(AMeDashboardContainer);

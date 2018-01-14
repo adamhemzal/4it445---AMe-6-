@@ -26,7 +26,7 @@ export const saveWidgetSettingsToDB = async (req, res) => {
     //console.log("Updating widget "+widgetType+" with ID="+widgetId+" and belonging to dashboard with ID="+dashboardId+" to have settings="+JSON.stringify(settings)+"///");
 
     db.widget.update(
-            {settings:settings},
+            {settings: settings},
             {where: {
                 dashboardId: dashboardId,
                 name: widgetName,
