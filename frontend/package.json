@@ -19,6 +19,7 @@
     "react-lines-ellipsis": "^0.8.1",
     "react-md-spinner": "^0.2.5",
     "react-modal": "^3.1.6",
+    "react-moment-datetimepicker": "^0.6.0",
     "react-ms-login": "^0.1.2",
     "react-places-autocomplete": "^5.4.3",
     "react-radio-buttons": "^1.2.0",

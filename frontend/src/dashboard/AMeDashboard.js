@@ -4,6 +4,8 @@ import CustomFrame from './CustomFrame';
 import Modal from 'react-modal';
 import Alert from 'react-s-alert';
 
+import { connect } from 'react-redux';
+
 import WeatherWidget from '../widgets/Weather/WeatherWidget';
 import TopAmersWidget from '../widgets/TopAmers/TopAmersWidget';
 import TopAmePostsWidget from '../widgets/TopAmePosts/TopAmePostsWidget';
@@ -11,7 +13,6 @@ import PeopleOfADayWidget from '../widgets/PeopleOfADay/PeopleOfADayWidget';
 import GifOfADayWidget from '../widgets/GifOfADay/GifOfADayWidget';
 import CountDownTimerWidget from '../widgets/CountDownTimer/CountDownTimerWidget';
 import UpcomingEventsWidget from '../widgets/UpcomingEvents/UpcomingEventsWidget';
-import { connect } from 'react-redux';
 
 import { HamburgerMenu } from './menu/HamburgerMenu';
 import { AdminEditForm } from './adminComponents/AdminEditForm';
@@ -332,10 +333,13 @@ render() {
                     <h3 className="modal-title" ref={subtitle => this.subtitle = subtitle}>Dashboard Options</h3>
                   </div>
 
-                  <div className="modal-body"><AdminEditForm blank={this.state.isHamburgerMenuOpen} /></div>
+                  <div className="modal-body"><AdminEditForm blank={this.state.isHamburgerMenuOpen} dashboardId={this.props.match.params.dashboardId} /></div>
 
                   <div className="modal-footer">
-                    <button type="button" className="btn btn-default btn-delete float--left" onClick={this.deleteDashboard}>Delete Dashboard</button>
+
+                    {!this.state.isHamburgerMenuOpen &&
+                      <button type="button" className="btn btn-default btn-delete float--left" onClick={this.deleteDashboard}>Delete Dashboard</button>
+                    }
                     <button type="button" className="btn btn-default btn-close float--right" onClick={this.saveDashboard}>Close</button>
                   </div>
 

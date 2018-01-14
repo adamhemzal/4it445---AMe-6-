@@ -9,6 +9,7 @@ class CountDownTimerWidget extends React.PureComponent {
             timer: {},
             stateEventDate: 0,
             stateCurrentTime: 0,
+            dashboardId: this.props.dashboardId,
         };
         this.countDownTime = 0;
       }
@@ -16,8 +17,7 @@ class CountDownTimerWidget extends React.PureComponent {
       componentDidMount() {
         //Tohle příjde nahradit za API
         const eventDate = new Date("April 5, 2018 18:25:00").getTime();
-        ///
-
+        
         this.countDownTime = setInterval(
             () => this.countingTime(eventDate),
             1000

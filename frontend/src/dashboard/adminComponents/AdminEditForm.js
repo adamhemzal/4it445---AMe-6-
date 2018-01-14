@@ -3,169 +3,7 @@ import { RadioGroup, RadioButton, ReversedRadioButton } from 'react-radio-button
 import api from '../../api.js';
 import Alert from 'react-s-alert';
 
-/*
-
-- 6 / 4 / 2 (6 widgetů na jedné řádce, 4 na druhé, 2 na třetí)
-
-rows: [
-  {
-    columns: [{
-      className: 'col-md-2 col-sm-4 col-xs-4',
-      widgets: [{ key: 'TopAmePosts' }],
-    }, {
-      className: 'col-md-2 col-sm-4 col-xs-4',
-      widgets: [{ key: 'TopAmers' }],
-    }, {
-      className: 'col-md-2 col-sm-4 col-xs-4',
-      widgets: [{ key: 'Weather' }],
-    }, {
-      className: 'col-md-2 col-sm-4 col-xs-4',
-      widgets: [{ key: 'PeopleOfADay' }],
-    }, {
-      className: 'col-md-2 col-sm-4 col-xs-4',
-      widgets: [{ key: 'GifOfADay' }],
-    }, {
-      className: 'col-md-2 col-sm-4 col-xs-4',
-      widgets: [{ key: 'Weather' }],
-    }],
-  }, {
-      columns: [{
-        className: 'col-md-3 col-sm-6 col-xs-6',
-        widgets: [{ key: 'PeopleOfADay' }],
-      }, {
-        className: 'col-md-3 col-sm-6 col-xs-6',
-        widgets: [{ key: 'Weather' }],
-      }, {
-        className: 'col-md-3 col-sm-6 col-xs-6',
-        widgets: [{ key: 'Weather' }],
-      }, {
-        className: 'col-md-3 col-sm-6 col-xs-6',
-        widgets: [{ key: 'TopAmers' }],
-      }],
-    }, {
-        columns: [{
-          className: 'col-md-6 col-sm-6 col-xs-6',
-          widgets: [{ key: 'GifOfADay' }],
-        }, {
-          className: 'col-md-6 col-sm-6 col-xs-6',
-          widgets: [{ key: 'TopAmers' }],
-        }],
-  }
-]
-
-- 4 / 4 / 2
-
-rows: [
-  {
-      columns: [{
-        className: 'col-md-3 col-sm-4 col-xs-4',
-        widgets: [{ key: 'PeopleOfADay' }],
-      }, {
-        className: 'col-md-3 col-sm-4 col-xs-4',
-        widgets: [{ key: 'TopAmers' }],
-      }, {
-        className: 'col-md-3 col-sm-4 col-xs-4',
-        widgets: [{ key: 'Weather' }],
-      }, {
-        className: 'col-md-3 col-sm-4 col-xs-4',
-        widgets: [{ key: 'GifOfADay' }],
-      }],
-  }, {
-      columns: [{
-        className: 'col-md-3 col-sm-4 col-xs-4',
-        widgets: [{ key: 'TopAmePosts' }],
-      }, {
-        className: 'col-md-3 col-sm-4 col-xs-4',
-        widgets: [{ key: 'Weather' }],
-      }, {
-        className: 'col-md-3 col-sm-4 col-xs-4',
-        widgets: [{ key: 'PeopleOfADay' }],
-      }, {
-        className: 'col-md-3 col-sm-4 col-xs-4',
-        widgets: [{ key: 'GifOfADay' }],
-      }],
-  }, {
-      columns: [{
-        className: 'col-md-6 col-sm-6 col-xs-6',
-        widgets: [{ key: 'GifOfADay' }],
-      }, {
-        className: 'col-md-6 col-sm-6 col-xs-6',
-        widgets: [{ key: 'TopAmers' }],
-      }],
-  }
-],
-
-- 3 / 2
-
-rows: [
-  {
-      columns: [{
-        className: 'col-md-4 col-sm-6 col-xs-12',
-        widgets: [{ key: 'RocketWidget' }, { key: 'AlienWidget' }, { key: 'RocketWidget' }],
-      }, {
-        className: 'col-md-4 col-sm-6 col-xs-12',
-        widgets: [{ key: 'RocketWidget' }],
-      }, {
-        className: 'col-md-4 col-sm-6 col-xs-12',
-        widgets: [{ key: 'RocketWidget' }],
-      }, {
-        className: 'col-md-4 col-sm-6 col-xs-12',
-        widgets: [{ key: 'RocketWidget' }],
-      }],
-  }, {
-      columns: [{
-        className: 'col-md-6 col-sm-6 col-xs-12',
-        widgets: [{ key: 'RocketWidget' }],
-      }, {
-        className: 'col-md-6 col-sm-6 col-xs-12',
-        widgets: [{ key: 'RocketWidget' }],
-      }],
-  }
-],
-
-- 4 / 3 / 2
-
-rows: [
-  {
-      columns: [{
-        className: 'col-md-3 col-sm-6 col-xs-12',
-        widgets: [{ key: 'RocketWidget' }, { key: 'AlienWidget' }, { key: 'RocketWidget' }],
-      }, {
-        className: 'col-md-3 col-sm-6 col-xs-12',
-        widgets: [{ key: 'RocketWidget' }],
-      }, {
-        className: 'col-md-3 col-sm-6 col-xs-12',
-        widgets: [{ key: 'RocketWidget' }],
-      }, {
-        className: 'col-md-3 col-sm-6 col-xs-12',
-        widgets: [{ key: 'RocketWidget' }],
-      }],
-  }, {
-        columns: [{
-          className: 'col-md-3 col-sm-4 col-xs-4',
-          widgets: [{ key: 'RocketWidget' }, { key: 'AlienWidget' }, { key: 'RocketWidget' }],
-        }, {
-          className: 'col-md-3 col-sm-4 col-xs-4',
-          widgets: [{ key: 'RocketWidget' }],
-        }, {
-          className: 'col-md-3 col-sm-4 col-xs-4',
-          widgets: [{ key: 'RocketWidget' }],
-        }],
-  }, {
-      columns: [{
-        className: 'col-md-6 col-sm-6 col-xs-12',
-        widgets: [{ key: 'RocketWidget' }],
-      }, {
-        className: 'col-md-6 col-sm-6 col-xs-12',
-        widgets: [{ key: 'RocketWidget' }],
-      }],
-  }
-],
-
-
-- 6 / 3 / 2
-
-*/
+import { connectDashboardId } from '../../dashboardIdProvider';
 
 export class AdminEditForm extends React.PureComponent {
 
@@ -176,12 +14,14 @@ export class AdminEditForm extends React.PureComponent {
       name: '',
       description: '',
       url: '',
-      selectedLayout: '1',
+      selectedLayout: '0',
       layout: layoutTypes[0].layout,
-      blank: this.props.blank
+      blank: this.props.blank,
+      dashboardId: this.props.dashboardId,
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
+
   }
 
   handleInputChange(event) {
@@ -196,7 +36,7 @@ export class AdminEditForm extends React.PureComponent {
   }
 
   componentDidMount() {
-    api.get(`dashboard/info/1`).then(response => {
+    api.get(`dashboard/info/${this.state.dashboardId}`).then(response => {
       const { success, name, description, url, layout, layoutId } = response.data;
       console.log('=====>',response);
       if (success && !this.state.blank) {
@@ -209,25 +49,10 @@ export class AdminEditForm extends React.PureComponent {
           });
 
           console.log(this.state.selectedLayout);
-        // Pokud se nepovede ziskat layout z DB, pouzije se defaultni.
+
       } else {
         this.setState({
           layout: layoutTypes[0].layout
-            // rows: [{
-            //   columns: [{
-            //     className: 'col-md-4',
-            //     widgets: [{ key: 'TopAmePosts' }],
-            //   }, {
-            //     className: 'col-md-4',
-            //     widgets: [{ key: 'TopAmers' }],
-            //   }, {
-            //     className: 'col-md-4',
-            //     widgets: [{ key: 'Weather' }],
-            //   },{
-            //     className: 'col-md-4',
-            //     widgets: [{ key: 'PeopleOfADay' }],
-            //   }],
-            // }]
         })
       }
     }).catch(error => {
@@ -237,13 +62,13 @@ export class AdminEditForm extends React.PureComponent {
 
   saveDashboard = () => {
 
-    console.log(this.state.selectedLayout);
-    console.log(this.state.layout);
-    
-    let dashboardId = 1;
+    let dashboardId = this.state.dashboardId;
+    let msg = "Options were saved";
+
     if(this.state.blank){
         dashboardId = "";
-    }  
+        msg = "Dashboard was created successfully";
+    }
 
     api.post('dashboard/info',
       {
@@ -255,10 +80,8 @@ export class AdminEditForm extends React.PureComponent {
         layout: this.state.layout,
       }
     ).then(response => {
-      console.log(response);
-      console.log(this.state.selectedLayout)
 
-      Alert.success('Options were saved.', {
+      Alert.success(msg, {
         position: 'top-right',
         effect: 'slide',
         onShow: function () {
@@ -321,14 +144,19 @@ export class AdminEditForm extends React.PureComponent {
             </RadioGroup>
           </div>
 
-
-          <button type="button" className="btn btn-default btn-save float--left" onClick={this.saveDashboard}>Save</button>
+          {this.state.blank ? (
+            <button type="button" className="btn btn-default btn-save btn-green float--left" onClick={this.saveDashboard}>Create dashboard</button>
+          ) : (
+            <button type="button" className="btn btn-default btn-save float--left" onClick={this.saveDashboard}>Save</button>
+          )}
 
         </div>
     </form>
     )
   }
 }
+
+export default connectDashboardId(AdminEditForm);
 
 const layoutTypes = [
   {

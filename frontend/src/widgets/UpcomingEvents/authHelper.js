@@ -30,8 +30,6 @@ function getAuthUrl() {
 exports.getAuthUrl = getAuthUrl;
 
 
-
-
 function getTokenFromCode(auth_code, callback, response) {
   var token;
   oauth2.authorizationCode.getToken({
@@ -60,5 +58,3 @@ function refreshAccessToken(refreshToken, callback) {
 }
 
 exports.refreshAccessToken = refreshAccessToken;
-
-

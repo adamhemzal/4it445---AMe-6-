@@ -9,6 +9,7 @@ import TopAmePostsEditForm from '../widgets/TopAmePosts/TopAmePostsEditForm';
 import PeopleOfADayEditForm from '../widgets/PeopleOfADay/PeopleOfADayEditForm';
 import GifOfADayEditForm from '../widgets/GifOfADay/GifOfADayEditForm';
 import UpcomingEventsEditForm from '../widgets/UpcomingEvents/UpcomingEventsEditForm';
+import CountDownTimerEditForm from '../widgets/CountDownTimer/CountDownTimerEditForm';
 
 class CustomFrame extends Component {
 
@@ -63,6 +64,9 @@ class CustomFrame extends Component {
         break;
       case 'Upcoming Events':
         editForm = <UpcomingEventsEditForm/>
+        break;
+      case 'Count Down Timer':
+        editForm = <CountDownTimerEditForm/>
         break;
       default:
 

@@ -12,6 +12,21 @@ let dashboardId = 1;
 
 class UpcomingEventsEditForm extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            //channelIdValue: this.props.channelIdValue,
+            email: "",
+            password: "",
+        };
+    }
+
+    componentDidMount() {
+        
+    }
+
+
     render() {
         return(
             <form>

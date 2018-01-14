@@ -3,6 +3,9 @@ import api from '../../api.js';
 import MDSpinner from "react-md-spinner";
 import { connectDashboardId } from '../../dashboardIdProvider';
 
+let widgetType = "UpcomingEvents";
+let widgetId = 6;
+
 class UpcomingEventsWidget extends Component {
 
     constructor(props) {

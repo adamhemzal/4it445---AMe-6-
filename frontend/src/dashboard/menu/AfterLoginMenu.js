@@ -14,9 +14,9 @@ export class AfterLoginMenu extends Component {
             console.log(response);
             this.setState({dashboardList: response.data.list});
         })
-                .catch(error => {
-                    console.log(error);
-                });
+        .catch(error => {
+            console.log(error);
+        });
     }
 
     render() {
@@ -25,9 +25,9 @@ export class AfterLoginMenu extends Component {
                     <div className="admin-main">
                         <div className="admin-main__items">
                             <ul>
-                                {this.state.dashboardList.map((dashboard) =>
-                                        <a href={"/dashboard/" + dashboard.id}><li><p>{dashboard.name}</p></li></a>
-                                            )}
+                                {this.state.dashboardList.map((dashboard, index) =>
+                                    <li key={dashboard.id}><a href={"/dashboard/" + dashboard.id}><p>{dashboard.name}</p></a></li>
+                                )}
                             </ul>
                         </div>
                     </div>

@@ -728,7 +728,7 @@ h6.list-group-item-heading {
 
 .timer__to {
   font-family: "Poppins";
-  font-size: 20px; 
+  font-size: 20px;
 }
 
 /*-----------------------------------------------------------------------------------*/
@@ -1138,6 +1138,10 @@ h6.list-group-item-heading {
   color: white;
   font-size: 14px;
   margin-top: 10px;
+}
+
+.btn-save.btn-green {
+  background: #32ae65;
 }
 
 .layout-options div div div img {
