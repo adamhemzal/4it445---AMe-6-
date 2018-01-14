@@ -68,14 +68,20 @@ export const getDashboardController = async (req, res) => {
 
 export const removeDashboardController = async (req, res) => {
     const {id} = req.params;
+    var newId = 2;
 
     db.dashboard.destroy(
         { where: {id: id} })
         .then(result => {
-            res.json({success: true, id: id});
+            db.dashboard.min('id').then(result1 => {
+              newId = result1;
+              res.json({success: true, id: id, newId: newId});
+            });
+
         }).catch(err => {
             res.json({success: false});
         });
+
 }
 
 

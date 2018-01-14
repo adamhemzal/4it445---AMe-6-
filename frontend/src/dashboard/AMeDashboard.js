@@ -156,14 +156,12 @@ class AMeDashboard extends Component {
   deleteDashboard = () => {
     console.log(this.state.dashboardId);
 
-    let id = this.state.dashboardId;
+    let dashboardId = this.state.dashboardId;
 
-    api.delete('dashboard/delete',
-      { params: {id: id }})
-
+    api.delete(`dashboard/delete/${this.state.dashboardId}`)
       .then(response => {
 
-        console.log(this.state.dashboardId);
+        console.log(response);
 
         Alert.error('Dashboard was deleted', {
           position: 'top-right',
@@ -178,7 +176,11 @@ class AMeDashboard extends Component {
 
         this.closeModal();
 
-      })
+        this.props.history.push('/dashboard/' + response.data.newId);
+        window.location.reload();
+
+
+      });
 
   }
 

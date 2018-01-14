@@ -25,7 +25,7 @@ router.post('/layout', saveDashboardLayoutController);
 router.get('/info/:dashboardId', getDashboardController);
 router.post('/info', saveDashboardController);
 
-router.delete('/delete', removeDashboardController);
+router.delete('/delete/:id', removeDashboardController);
 
 router.get('/list', getDashboardList);
 
