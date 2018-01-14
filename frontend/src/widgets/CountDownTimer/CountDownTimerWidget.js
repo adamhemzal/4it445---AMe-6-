@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import api from '../../api.js';
+import MDSpinner from "react-md-spinner";
+
 import { connectDashboardId } from '../../dashboardIdProvider';
 
 class CountDownTimerWidget extends React.PureComponent {
@@ -7,6 +10,7 @@ class CountDownTimerWidget extends React.PureComponent {
         super(props);
         this.state = {
             timer: {},
+            event: [],
             stateEventDate: 0,
             stateCurrentTime: 0,
             dashboardId: this.props.dashboardId,
@@ -16,10 +20,28 @@ class CountDownTimerWidget extends React.PureComponent {
 
       componentDidMount() {
         //Tohle příjde nahradit za API
-        const eventDate = new Date("April 5, 2018 18:25:00").getTime();
-        
+
+          api.get('outlook')
+              .then(response => {
+
+                  this.setState({event: response.data[0], isLoading: false });
+
+                  const eventDate = Date.parse(this.state.event.date);
+                  this.setState({stateEventDate: eventDate })
+              })
+              .catch(error => {
+                  console.log(error);
+                  this.setState({isLoading: false });
+              });
+
+
+
+        //const eventDate = new Date(this.state.events[0].start);
+        //const eventDate = new Date("April 5, 2018 18:25:00").getTime();
+
+
         this.countDownTime = setInterval(
-            () => this.countingTime(eventDate),
+            () => this.countingTime(this.state.stateEventDate),
             1000
           );
       }
@@ -27,7 +49,6 @@ class CountDownTimerWidget extends React.PureComponent {
       componentWillUnmount() {
         clearInterval(this.countDownTime);
       }
-
 
 
     countingTime(date) {
@@ -65,42 +86,51 @@ class CountDownTimerWidget extends React.PureComponent {
 
                     <div className="container widget__content">
 
-                        <div className="row timer__flex-center">
+                      { this.state.isLoading ? <MDSpinner className="md-spinner" /> : null }
 
-                            <div className="col-md-3 timer__center">
-                                <div className="timer__block">
-                                    <p>{this.state.timer.day === "" ? "0" : this.state.timer.day}</p>
-                                </div>
-                                <p className="timer__block-date">days</p>
-                            </div>
+                        {this.state.event.length === 0 && !this.state.isLoading ? <p className="no_data">No events are planned</p> :
 
-                            <div className="col-md-3 timer__center">
-                                <div className="timer__block">
-                                    <p>{this.state.timer.hours === "" ? "0" : this.state.timer.hours}</p>
-                                </div>
-                                <p className="timer__block-date">hours</p>
-                            </div>
+                        <div>
+                          <div className="row timer__flex-center">
 
-                            <div className="col-md-3 timer__center">
-                                <div className="timer__block">
-                                    <p>{this.state.timer.minutes === "" ? "0" : this.state.timer.minutes}</p>
-                                </div>
-                                <p className="timer__block-date">minutes</p>
-                            </div>
+                              <div className="col-md-3 timer__center">
+                                  <div className="timer__block">
+                                      <p>{this.state.timer.day === "" ? "0" : this.state.timer.day}</p>
+                                  </div>
+                                  <p className="timer__block-date">days</p>
+                              </div>
+
+                              <div className="col-md-3 timer__center">
+                                  <div className="timer__block">
+                                      <p>{this.state.timer.hours === "" ? "0" : this.state.timer.hours}</p>
+                                  </div>
+                                  <p className="timer__block-date">hours</p>
+                              </div>
+
+                              <div className="col-md-3 timer__center">
+                                  <div className="timer__block">
+                                      <p>{this.state.timer.minutes === "" ? "0" : this.state.timer.minutes}</p>
+                                  </div>
+                                  <p className="timer__block-date">minutes</p>
+                              </div>
+
+                          </div>
+
+                          <div className="row timer__padding-both">
+                              <div className="col-md-12 timer__flex">
+                                  <p className="timer__to">to</p>
+                              </div>
+                          </div>
+
+                          <div className="row timer__padding-both timer__padding-bottom">
+                              <div className="col-md-12 timer__flex">
+                                  <p className="timer__event-name">{this.state.event.summary}</p>
+                              </div>
+                          </div>
 
                         </div>
 
-                        <div className="row timer__padding-both">
-                            <div className="col-md-12 timer__flex">
-                                <p className="timer__to">to</p>
-                            </div>
-                        </div>
-
-                        <div className="row timer__padding-both timer__padding-bottom">
-                            <div className="col-md-12 timer__flex">
-                                <p className="timer__event-name">Company meeting</p>
-                            </div>
-                        </div>
+                      }
 
                     </div>
                 </div>

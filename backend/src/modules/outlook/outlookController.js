@@ -14,7 +14,8 @@ export const getOutlookController = async (req, res) => {
   const toYear = timespanTo.substring(4, 8);
 
   //exch.Credentials = new ews.ExchangeCredentials(calendarId, req.body.pass);
-  exch.Credentials = new ews.ExchangeCredentials('agileame@outlook.com', "4ef0deb28aef6b1a641");
+  //exch.Credentials = new ews.ExchangeCredentials('agileame@outlook.com', "4ef0deb28aef6b1a641");
+  exch.Credentials = new ews.ExchangeCredentials('team6ame@outlook.com', "team6karkulka");
 
   exch.Url = new ews.Uri("https://outlook.office365.com/Ews/Exchange.asmx");
 
@@ -28,7 +29,7 @@ export const getOutlookController = async (req, res) => {
   //   new ews.DateTime(Number(toYear), Number(toMonth), Number(toDay))
   // );
 
-  var cv = new ews.CalendarView(ews.DateTime.Now.AddDays(-40), ews.DateTime.Now.AddDays(20));
+  var cv = new ews.CalendarView(ews.DateTime.Now, ews.DateTime.Now.AddDays(40));
 
   ews.EwsLogging.DebugLogEnabled = true;
   var events = [];
@@ -38,7 +39,8 @@ export const getOutlookController = async (req, res) => {
       FindItemsResults.Items.forEach(function (item) {
         events.push({
           summary: item.Subject.toString(),
-          start: item.Start.Format('DD. MM. Y HH:MM'),
+          start: item.Start.Format('DD.MM.Y HH:MM'),
+          date: item.Start.toString()
         });
       });
       res.json(events);

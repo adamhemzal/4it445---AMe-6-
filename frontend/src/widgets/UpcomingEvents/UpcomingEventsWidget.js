@@ -13,9 +13,9 @@ class UpcomingEventsWidget extends Component {
         this.state = {
           events: [],
           isLoading: true,
+          numberOfEvents: 3,
         };
       }
-
 
       componentDidMount() {
         api.get('outlook')
@@ -47,7 +47,7 @@ class UpcomingEventsWidget extends Component {
 
                         <div className="events">
 
-                          {events.map((event, index) =>
+                          {events.slice(0, this.state.numberOfEvents).map((event, index) =>
 
                           <div className="event" key={index}>
 
