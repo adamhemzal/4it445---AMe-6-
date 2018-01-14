@@ -17,7 +17,7 @@ Semestrální práce na předmět 4IT445 - AMe
 ### Zprovoznění Reactu aneb začínáme vyvíjet
 1. Vlezeš do složky **backend**
 2. Tady vytvoříš složku **backend/tmp** a do ní nahraješ prázdný soubor **restart.txt**
-3. V /backend/ vytvoříš soubor **.env** a poprosíš jednoho z nás, abychom ti poslali API Token na Slack a hesla k rootu
+3. V /backend/ vytvoříš soubor **.env** a poprosíš jednoho z nás, abychom ti poslali API Token na Slack a hesla k rootu (prostě obsah souboru .env)
 4. ve složce **backend** jdi do složky **backend/src/config** a tady vytvoř soubor config.js a vlož do něj následující kód (Heslo ti na vyžádání pošleme)
 
     ```
@@ -48,13 +48,6 @@ Semestrální práce na předmět 4IT445 - AMe
     ```
 
 6. Tímto se ti nainstalovaly všechny potřebné balíčky pro vývoj
-7. Stále jsi v backendu a zadáš příkaz:
-
-    ```
-    npm run dev
-    ```
-
-8. Takhle spustíš backend server
 9. Vlezeš do šložky **frontend**
 10. Tady ve složce vytvoříš soubor **.env** a zadáš do něj: 
 
@@ -69,7 +62,24 @@ Semestrální práce na předmět 4IT445 - AMe
     ```
 
 12. Počkáš než se vše nainstaluje
-13. Ve stejné složce pak spustíš příkaz
+12. Ted máš nainstalované balíčky jak pro backend tak i frontend. Zbývá vytvořit si SSH tunel pro přístup k databázi
+12. Otevřeš PUTTYho nebo jakýkoliv jiný program a zadáš:
+
+    ```
+    Host Name: team6@vse.handson.pro
+    Port: 22
+    Connection Type: SSH
+    ```
+
+12. Po spuštění tě bude žádat o HESLO - pošleme ti do chatu
+12. Jakmile si připojený k databázi stačí už jen spustit **backend** a **frontend**
+12. Vejdeš do složky **backend** a zadáš příkaz
+
+    ```
+    npm run dev
+    ```
+
+12. Backend se ti za chvíli rozběhne. Pak otevřeš nové okno termínálu a vlezeš do složky **frontend.** Zde spustíš příkaz
 
     ```
     npm start
