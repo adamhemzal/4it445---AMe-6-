@@ -7,6 +7,7 @@ import securityRoutes from './modules/security/routes';
 import adminRoutes from './modules/admin/routes';
 import dashboardRoutes from './modules/dashboard/routes';
 import slackChannelsController from './modules/slack-channels/routes';
+import outlookRoutes from './modules/outlook/routes';
 
 const router = Router();
 
@@ -16,6 +17,7 @@ router.use('/weather', weatherRoutes);
 router.use('/', securityRoutes);
 router.use('/admin', adminRoutes);
 router.use('/dashboard', dashboardRoutes);
+router.use('/outlook', outlookRoutes);
 router.use('/slack-channels', slackChannelsController);
 
 export default router;

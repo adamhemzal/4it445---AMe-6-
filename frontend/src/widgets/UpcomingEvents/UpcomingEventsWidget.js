@@ -1,36 +1,34 @@
 import React, { Component } from 'react';
 import api from '../../api.js';
-import axios from 'axios';
+import MDSpinner from "react-md-spinner";
 
 export class UpcomingEventsWidget extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-          
-          isLoading: false,
+          events: [],
+          isLoading: true,
         };
       }
 
+
       componentDidMount() {
-//          this.getGifs();
+        api.get('outlook')
+              .then(response => {
+                  console.log(response);
+                  this.setState({events: response.data, isLoading: false });
+              })
+              .catch(error => {
+                  console.log(error);
+                  this.setState({isLoading: false });
+              });
       }
 
-    //   getGifs() {
-    //     const apiKeyGif = 'IJIIICknvqTbL8pdk93Kq0WeYOv9HHa6';
-
-    //     axios.get('http://api.giphy.com/v1/gifs/trending?&api_key='+apiKeyGif+'&limit=1')
-    //     .then(res => {
-    //         const data = res.data.data[0].images.downsized_large;
-    //         console.log(data);
-    //         this.setState({
-    //             gifs: data,
-    //             isLoading: false,
-    //         });
-    //     });
-    //   }
-
     render() {
+
+      const { events, isLoading } = this.state;
+
         return(
             <div className="widget">
                 <div className="widget__inner">
@@ -39,41 +37,37 @@ export class UpcomingEventsWidget extends Component {
                     </div>
                     <div className="widget__content event__padding-bottom container">
 
-                        <div className="event">
+                      { this.state.isLoading ? <MDSpinner className="md-spinner" /> : null }
 
-                            <div className="row">
-                                <div className="col-md-12">
-                                    <p className="event__info"><i className="fa fa-clock-o" aria-hidden="true"></i>Tommorow | 14:30 - 16:00</p>
-                                </div>
+                        {events.length === 0 && !this.state.isLoading ? <p className="no_data">No events are planned</p> :
 
-                                <div className="col-md-12">
-                                    <p className="event__name">Company Meeting</p>
-                                </div>
+                        <div className="events">
 
-                                <div className="col-md-12">
-                                    <p className="event__info"><i className="fa fa-map-marker" aria-hidden="true"></i>Kozlovna</p>
-                                </div>
-                            </div>
-                                                    
-                        </div>
+                          {events.map((event, index) =>
 
-                        <div className="event">
+                          <div className="event" key={index}>
 
-                            <div className="row">
-                                <div className="col-md-12">
-                                    <p className="event__info"><i className="fa fa-clock-o" aria-hidden="true"></i>Tommorow | 14:30 - 16:00</p>
-                                </div>
+                              <div className="row">
+                                  <div className="col-md-12">
+                                      <p className="event__info"><i className="fa fa-clock-o" aria-hidden="true"></i>{event.start}</p>
+                                  </div>
 
-                                <div className="col-md-12">
-                                    <p className="event__name">Company Meeting</p>
-                                </div>
+                                  <div className="col-md-12">
+                                      <p className="event__name">{event.summary}</p>
+                                  </div>
+{/*
+                                  <div className="col-md-12">
+                                      <p className="event__info"><i className="fa fa-map-marker" aria-hidden="true"></i>Kozlovna</p>
+                                  </div> */}
+                              </div>
 
-                                <div className="col-md-12">
-                                    <p className="event__info"><i className="fa fa-map-marker" aria-hidden="true"></i>Kozlovna</p>
-                                </div>
-                            </div>    
+                          </div>
+
+                          )}
 
                         </div>
+
+                        }
 
                     </div>
                 </div>
