@@ -6,6 +6,7 @@ import AMeDashboard from './dashboard/AMeDashboard';
 import { HomePage } from './homepage/HomePage';
 import Alert from 'react-s-alert';
 import { configureStore } from './store/configureStore.js';
+import { CookiesProvider } from 'react-cookie';
 
 //import './bootstrap/bootstrap-reboot.min.css';
 //import './bootstrap/bootstrap-grid.min.css';
@@ -23,15 +24,17 @@ class App extends Component {
 
     return (
       <Provider store={store}>
-        <BrowserRouter>
-          <div>
-            <Alert stack={{ limit: 1 }} />
-            <Route exact path="/" component={HomePage} />
-            <Route exact path="/dashboard/:dashboardId/" component={AMeDashboard} />
-            {/* <Route exact path="/authorize" component={Outlook}/> */}
-            {/*<Route path="*" component={NotFound}/>*/}
-          </div>
-        </BrowserRouter>
+        <CookiesProvider>
+          <BrowserRouter>
+            <div>
+              <Alert stack={{ limit: 1 }} />
+              <Route exact path="/" component={HomePage} />
+              <Route exact path="/dashboard/:dashboardId/" component={AMeDashboard} />
+              {/* <Route exact path="/authorize" component={Outlook}/> */}
+              {/*<Route path="*" component={NotFound}/>*/}
+            </div>
+          </BrowserRouter>
+        </CookiesProvider>
       </Provider>
     );
   }

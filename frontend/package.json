@@ -13,6 +13,7 @@
     "moment": "^2.19.3",
     "prop-types": "^15.6.0",
     "react": "^15.3.2",
+    "react-cookie": "^2.1.2",
     "react-dazzle": "^1.2.7",
     "react-dom": "^15.3.2",
     "react-lines-ellipsis": "^0.8.1",

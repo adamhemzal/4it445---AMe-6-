@@ -17,6 +17,8 @@ import { HamburgerMenu } from './menu/HamburgerMenu';
 import { AdminEditForm } from './adminComponents/AdminEditForm';
 import { JustLogin } from './menu/JustLogin';
 import { DashboardIdProvider } from '../dashboardIdProvider';
+import { withCookies, Cookies } from 'react-cookie';
+import { instanceOf } from 'prop-types';
 
 import {
   getLoginState,
@@ -39,6 +41,10 @@ import 'react-s-alert/dist/s-alert-css-effects/slide.css';
 //import { Admin } from '../admin/Admin';
 
 class AMeDashboard extends Component {
+
+  static propTypes = {
+    cookies: instanceOf(Cookies).isRequired
+  };
 
   constructor(props) {
     super(props);
@@ -235,7 +241,16 @@ setHamburgerMenuOpen = (isOpen) => {
 
 
 render() {
-  const { user, isAuthenticated } = this.props;
+  const { user, cookies } = this.props;
+  let { isAuthenticated } = this.props;
+
+  if (user) {
+    cookies.set("user", user);
+  }
+
+  if (cookies.get("user")) {
+    isAuthenticated = true;
+  }
 
   return (
     <div>
@@ -356,4 +371,5 @@ const AMeDashboardContainer = connect(
   mapStateToProps,
 )(AMeDashboard);
 
-export default AMeDashboardContainer;
+// export default AMeDashboardContainer;
+export default withCookies(AMeDashboardContainer);

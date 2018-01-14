@@ -1,7 +1,7 @@
 import { actions } from './actions';
 
 const initialState = {
-  user: null,
+  username: null,
   loginMessage: null,
   isAuthenticated: false,
   isAuthenticating: false,
@@ -16,10 +16,10 @@ const reducer = (state = initialState, action) => {
     }
 
     case actions.LOGIN_SUCCESS:
-    const { user } = action;
+    const { username } = action;
     return {
       ...state,
-      user,
+      username,
       isAuthenticating: false,
       isAuthenticated: true,
     }
@@ -48,5 +48,5 @@ export default reducer;
 export const getLoginState = (storeState) => storeState.login;
 export const isAuthenticated = (state) => state.isAuthenticated;
 export const isAuthenticating = (state) => state.isAuthenticating;
-export const getUser = (state) => state.user;
+export const getUser = (state) => state.username;
 export const getLoginMessage = (state) => state.loginMessage;
