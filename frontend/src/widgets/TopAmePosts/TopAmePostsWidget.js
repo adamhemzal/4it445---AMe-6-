@@ -20,7 +20,7 @@ class TopAmePostsWidget extends Component {
   }
 
   componentDidMount() {
-    api('top-ame-posts', {dashboardId: this.state.dashboardId})
+    api('top-ame-posts', {params: {dashboardId: this.state.dashboardId}})
     .then(response => {
         console.log("Top Ame Posts",response);
       const topAmePosts = response.data.topAmePosts;

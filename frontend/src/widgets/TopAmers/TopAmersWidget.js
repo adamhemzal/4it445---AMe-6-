@@ -19,7 +19,7 @@ class TopAmersWidget extends Component {
   }
 
   componentDidMount() {
-    api('top-amers', {dashboardId: this.state.dashboardId})
+    api('top-amers', {params: {dashboardId: this.state.dashboardId}})
     .then(response => {
       const { data: topAmers } = response;
       this.setState({ topAmers, isLoading: false });

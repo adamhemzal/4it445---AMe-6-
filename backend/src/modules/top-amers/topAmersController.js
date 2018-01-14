@@ -10,21 +10,21 @@ const token = process.env.SLACK_API_TOKEN || '';
 const web = new WebClient(token);
 const ameEmoticonIdentifier = "ame";
 const widgetName = "TopAmers";
-const dashboardId = 1; //TODO take current dashboard ID
+// const dashboardId = 1; //TODO take current dashboard ID
 //const channel = 'C0BUA20S0'; //unused, now fetched from DB
 
 export const saveWidgetSettingsToDB = async (req, res) => {
-    
+
     let postData = req.body;
     let widgetType = postData.widgetType || "";
     let widgetId = postData.widgetId || "";
     let dashboardId = postData.dashboardId || "";
     let settings = postData.settings || "";
-    
+
     globalRes = res;
-    
+
     //console.log("Updating widget "+widgetType+" with ID="+widgetId+" and belonging to dashboard with ID="+dashboardId+" to have settings="+JSON.stringify(settings)+"///");
-    
+
     db.widget.update(
             {settings:settings},
             {where: {
@@ -37,11 +37,14 @@ export const saveWidgetSettingsToDB = async (req, res) => {
             }).catch(err => {
         console.log(err);
     });
-    
+
 };
 
-const getWidgetSettingsFromDB = () => {
+const getWidgetSettingsFromDB = (req) => {
 
+  const { dashboardId } = req.query;
+  // const { dashboardIdd } = req.params;
+  //   console.log(dashboardIdd);
     db.widget.findOne({where: {
             dashboardId: dashboardId,
             name: widgetName}})
@@ -60,7 +63,7 @@ export const topAmersController = async (req, res) => {
     /*make res global so it is accessible from callback functions*/
     globalRes = res;
 
-    getWidgetSettingsFromDB();
+    getWidgetSettingsFromDB(req);
 
 };
 

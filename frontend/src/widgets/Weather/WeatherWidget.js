@@ -29,7 +29,7 @@ class WeatherWidget extends React.PureComponent {
   }
 
   componentDidMount() {
-    api('weather')
+    api('weather', {params: {dashboardId: this.state.dashboardId}})
     .then(response => {
       console.log("WETAHER", response);
       const cities = response.data;

@@ -17,7 +17,7 @@ class PeopleOfADayWidget extends Component {
     }
 
     componentDidMount() {
-        api('people-day')
+        api('people-day', {params: {dashboardId: this.state.dashboardId}})
             .then(response => {
                 const { data: peopleDay } = response;
                 this.setState({ peopleDay, isLoading: false });
