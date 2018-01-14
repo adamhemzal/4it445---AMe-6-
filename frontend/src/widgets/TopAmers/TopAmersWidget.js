@@ -65,7 +65,7 @@ class TopAmersWidget extends Component {
           { this.state.isLoading ? <MDSpinner className="md-spinner" /> : null }
 
           <ul className="top_amers__list">
-          {topAmers.length === 0 ? <p className="no_data">No AMers to display</p> :
+          {topAmers.length === 0 && !this.state.isLoading ? <p className="no_data">No AMers to display</p> :
             <Slider {...settings}>
               {topAmers.map((topAmer, index) =>
                 <li key={index} className="top_amers__list-item">
