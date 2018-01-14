@@ -7,19 +7,19 @@ export const loginController = async (req, res) => {
   if (successMessage.length > 0) {
     responseData = {
       success: true,
-      user: req.user.username,
+      username: req.user.username,
       message: successMessage[0]
     }
   } else if (errorMessage.length > 0) {
     responseData = {
       success: false,
-      user: "",
+      username: "",
       message: errorMessage[0]
     }
   } else {
     responseData = {
       success: false,
-      user: "",
+      username: "",
       message: "Access denied, please log in"
     }
   }

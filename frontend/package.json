@@ -13,6 +13,7 @@
     "moment": "^2.19.3",
     "prop-types": "^15.6.0",
     "react": "^15.3.2",
+    "react-cookie": "^2.1.2",
     "react-dazzle": "^1.2.7",
     "react-dom": "^15.3.2",
     "react-lines-ellipsis": "^0.8.1",
@@ -28,6 +29,7 @@
     "react-select": "^1.1.0",
     "react-slick": "^0.15.4",
     "react-validation": "^3.0.7",
+    "recompose": "^0.26.0",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
     "simple-oauth2": "^1.5.0"

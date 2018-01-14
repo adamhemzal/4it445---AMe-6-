@@ -11,9 +11,9 @@ export const loginRequest = () => ({
   type: actions.LOGIN,
 });
 
-export const loginSuccess = (user) => ({
+export const loginSuccess = (username) => ({
   type: actions.LOGIN_SUCCESS,
-  user,
+  username,
 });
 
 export const loginFailure = (message) => ({
@@ -31,17 +31,15 @@ export const login = (username, password) => (dispatch) => {
   api({
     method: 'post',
     url: 'login',
-    withCredentials: true,
     headers: {'Content-Type': 'application/json'},
     data: {
       username: username,
       password: password,
     }
   }).then((res) => {
-    const { success, message, user } = res.data;
-    console.log(res);
+    const { success, message, username } = res.data;
     if (success) {
-      dispatch(loginSuccess(user));
+      dispatch(loginSuccess(username));
     } else {
       dispatch(loginFailure(message))
     }

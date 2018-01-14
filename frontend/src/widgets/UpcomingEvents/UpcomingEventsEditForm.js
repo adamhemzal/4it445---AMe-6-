@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from "react-dom";
 import api from '../../api.js';
 import ReactLoginMS from "react-ms-login";
+import { connectDashboardId } from '../../dashboardIdProvider';
 
 var authHelper = require('./authHelper');
 // var microsoftGraph = require("@microsoft/microsoft-graph-client");
@@ -9,8 +10,8 @@ let widgetType = "UpcomingEvents";
 let widgetId = 5;
 let dashboardId = 1;
 
-export class UpcomingEventsEditForm extends Component {
-    
+class UpcomingEventsEditForm extends Component {
+
     render() {
         return(
             <form>
@@ -21,3 +22,5 @@ export class UpcomingEventsEditForm extends Component {
         )
     }
 }
+
+export default connectDashboardId(UpcomingEventsEditForm);

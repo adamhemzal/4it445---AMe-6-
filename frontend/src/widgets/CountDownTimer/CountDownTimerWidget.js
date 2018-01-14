@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import { connectDashboardId } from '../../dashboardIdProvider';
 
-export class CountDownTimerWidget extends React.PureComponent {
+class CountDownTimerWidget extends React.PureComponent {
 
     constructor(props) {
         super(props);
@@ -11,7 +12,7 @@ export class CountDownTimerWidget extends React.PureComponent {
         };
         this.countDownTime = 0;
       }
-    
+
       componentDidMount() {
         //Tohle příjde nahradit za API
         const eventDate = new Date("April 5, 2018 18:25:00").getTime();
@@ -57,13 +58,13 @@ export class CountDownTimerWidget extends React.PureComponent {
         return(
             <div className="widget">
                 <div className="widget__inner">
-                
+
                     <div className="widget__header widget__inner--dark clearfix">
                         <h2 className="widget__name">Count Down Timer to the nearest event</h2>
                     </div>
 
                     <div className="container widget__content">
-                        
+
                         <div className="row timer__flex-center">
 
                             <div className="col-md-3 timer__center">
@@ -107,3 +108,5 @@ export class CountDownTimerWidget extends React.PureComponent {
         )
     }
 }
+
+export default connectDashboardId(CountDownTimerWidget);

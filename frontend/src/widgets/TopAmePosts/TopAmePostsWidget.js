@@ -3,27 +3,29 @@ import api from '../../api.js';
 import LinesEllipsis from 'react-lines-ellipsis'
 import responsiveHOC from 'react-lines-ellipsis/lib/responsiveHOC'
 import MDSpinner from "react-md-spinner";
+import { connectDashboardId } from '../../dashboardIdProvider';
 
 
 const ResponsiveEllipsis = responsiveHOC()(LinesEllipsis)
 
-export class TopAmePostsWidget extends Component {
+class TopAmePostsWidget extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
       topAmePosts: [],
-      isLoading: true
+      isLoading: true,
+      dashboardId: this.props.dashboardId,
     };
   }
 
   componentDidMount() {
-    api('top-ame-posts')
+    api('top-ame-posts', {params: {dashboardId: this.state.dashboardId}})
     .then(response => {
         console.log("Top Ame Posts",response);
       const topAmePosts = response.data.topAmePosts;
       const channel = response.data.channel;
-      this.setState({topAmePosts:topAmePosts, channel:channel, isLoading: false });
+      this.setState({topAmePosts:topAmePosts, channel: channel, isLoading: false });
     })
     .catch(error => {
       console.log(error);
@@ -67,6 +69,8 @@ export class TopAmePostsWidget extends Component {
     );
   }
 }
+
+export default connectDashboardId(TopAmePostsWidget);
 
 class TopAmePost extends Component {
   render() {

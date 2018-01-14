@@ -3,20 +3,23 @@ import AMer from '../../img/amer.png';
 import Slider from 'react-slick';
 import api from '../../api.js';
 
+import { connectDashboardId } from '../../dashboardIdProvider';
+
 import MDSpinner from "react-md-spinner";
 
-export class TopAmersWidget extends Component {
+class TopAmersWidget extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
       topAmers: [],
-      isLoading: true
+      isLoading: true,
+      dashboardId: this.props.dashboardId,
     };
   }
 
   componentDidMount() {
-    api('top-amers')
+    api('top-amers', {params: {dashboardId: this.state.dashboardId}})
     .then(response => {
       const { data: topAmers } = response;
       this.setState({ topAmers, isLoading: false });
@@ -29,8 +32,6 @@ export class TopAmersWidget extends Component {
 
   render() {
     const { topAmers } = this.state;
-
-
 
     const settings = {
       customPaging: i => {
@@ -64,7 +65,7 @@ export class TopAmersWidget extends Component {
           { this.state.isLoading ? <MDSpinner className="md-spinner" /> : null }
 
           <ul className="top_amers__list">
-          {topAmers.length === 0 ? <p className="no_data">No AMers to display</p> : 
+          {topAmers.length === 0 ? <p className="no_data">No AMers to display</p> :
             <Slider {...settings}>
               {topAmers.map((topAmer, index) =>
                 <li key={index} className="top_amers__list-item">
@@ -87,3 +88,5 @@ export class TopAmersWidget extends Component {
   );
 }
 }
+
+export default connectDashboardId(TopAmersWidget);

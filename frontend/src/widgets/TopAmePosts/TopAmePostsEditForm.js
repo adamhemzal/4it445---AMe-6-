@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
+import { connectDashboardId } from '../../dashboardIdProvider';
 
 import api from '../../api.js';
 let widgetType = "TopAmePosts";
 let widgetId = 3;
 let dashboardId = 1;
 
-export class TopAmePostsEditForm extends Component {
+class TopAmePostsEditForm extends Component {
 
     constructor(props) {
         super(props);
@@ -103,4 +104,5 @@ export class TopAmePostsEditForm extends Component {
                 });
     }
 }
-;
+
+export default connectDashboardId(TopAmePostsEditForm);

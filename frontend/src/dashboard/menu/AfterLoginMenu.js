@@ -26,7 +26,7 @@ export class AfterLoginMenu extends Component {
                         <div className="admin-main__items">
                             <ul>
                                 {this.state.dashboardList.map((dashboard) =>
-                                        <a href={"/dashboard/" + dashboard.id + "/admin"}><li><p>{dashboard.name}</p></li></a>
+                                        <a href={"/dashboard/" + dashboard.id}><li><p>{dashboard.name}</p></li></a>
                                             )}
                             </ul>
                         </div>

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import api from '../../api.js';
 import MDSpinner from "react-md-spinner";
+import { connectDashboardId } from '../../dashboardIdProvider';
 
-export class UpcomingEventsWidget extends Component {
+class UpcomingEventsWidget extends Component {
 
     constructor(props) {
         super(props);
@@ -75,3 +76,5 @@ export class UpcomingEventsWidget extends Component {
         )
     }
 }
+
+export default connectDashboardId(UpcomingEventsWidget);

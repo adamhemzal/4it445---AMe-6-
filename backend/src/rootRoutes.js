@@ -11,6 +11,25 @@ import outlookRoutes from './modules/outlook/routes';
 
 const router = Router();
 
+// router.use(function(req, res, next){
+//   // if (req.isAuthenticated()) {
+//   //   res.isAuthenticated = true;
+//   // } else {
+//   //   res.isAuthenticated = false;
+//   // }
+//   res.write("test");
+//   console.log("test");
+//   next();
+//   // console.log(req.user);
+//   // next();
+//   // if (req){
+//   //   next();
+//   // } else{
+//   //   next();
+//   //   // next(new Error(401)); // 401 Not Authorized
+//   // }
+// });
+
 router.use('/top-amers', topAmersRoutes);
 router.use('/top-ame-posts', topAmePostsRoutes);
 router.use('/weather', weatherRoutes);

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import api from '../../api.js';
 import axios from 'axios';
+import { connectDashboardId } from '../../dashboardIdProvider';
 
-export class GifOfADayWidget extends Component {
+class GifOfADayWidget extends Component {
 
     constructor(props) {
         super(props);
@@ -38,10 +39,12 @@ export class GifOfADayWidget extends Component {
                         <h2 className="widget__name">Gif of a Day</h2>
                     </div>
                     <div className="widget__content">
-                        <img src={`${this.state.gifs.url}`} alt="Gif of a Day" className="gif__image"/>             
+                        <img src={`${this.state.gifs.url}`} alt="Gif of a Day" className="gif__image"/>
                     </div>
                 </div>
             </div>
         )
     }
 }
+
+export default connectDashboardId(GifOfADayWidget);

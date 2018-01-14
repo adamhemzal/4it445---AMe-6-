@@ -8,13 +8,16 @@ export class HamburgerMenu extends Component {
             active: false
         };
         this.toggleId = this.toggleId.bind(this);
+        this.setHamburgerMenuOpen = this.props.setHamburgerMenuOpen;
+
     }
 
     toggleId() {
-        const currentState = this.state.active;
+        const newState = !this.state.active;
         this.setState({
-            active: !currentState
+            active: newState
         });
+        this.setHamburgerMenuOpen(newState);
     }
     
     render(props) {
@@ -40,7 +43,7 @@ export class HamburgerMenu extends Component {
                 <div className="menu-hamburger" id={isActive()} >
                 <div className="menu-hamburger__header">
                     <div className="menu-hamburger__add">
-                        <button onClick={this.props.addNewDashboard} className="login-button"><i className="fa fa-plus-circle" aria-hidden="true"></i> Add new dashboard</button>
+                        <button onClick={this.props.openModal} className="login-button"><i className="fa fa-plus-circle" aria-hidden="true"></i> Add new dashboard</button>
                     </div>
                     <div className="menu-hamburger__logout">
                         <button className="logout-button">Log out</button>
