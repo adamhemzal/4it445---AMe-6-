@@ -12,6 +12,9 @@ class WeatherWidget extends React.PureComponent {
     this.state = {
       weatherCities: [],
       isLoading: true,
+      offsets: [],
+      times: [],
+      dates: [],
       time: moment().format('LT'),
       date: moment().format('MMM D'),
     };
@@ -32,17 +35,23 @@ class WeatherWidget extends React.PureComponent {
     api('weather', {params: {dashboardId: this.state.dashboardId}})
     .then(response => {
       console.log("WETAHER", response);
-      const cities = response.data;
+      const { cities, offsets } = response.data;
+
       this.getWeatherFromCities(cities);
+      this.setState({ offsets: offsets });
+
+
+      this.setTime();
+
+      this.timerID = setInterval(
+        () => this.setTime(),
+        20000
+      );
+
     })
     .catch(error => {
       console.log(error);
     });
-
-    this.timerID = setInterval(
-      () => this.setTime(),
-      20000
-    );
   }
 
   componentWillUnmount() {
@@ -73,18 +82,29 @@ class WeatherWidget extends React.PureComponent {
         }
         weatherCitiesData.push(results[i]);
       }
+
       this.setState({
         weatherCities: weatherCitiesData,
         isLoading: false
       });
+
       console.log("Weather Cities Data",weatherCitiesData);
     }));
   }
 
   setTime() {
+    let times = []
+    let dates = []
+    let time = moment();
+
+    for (let i = 0; i < this.state.offsets.length; i++) {
+      times.push(time.utcOffset(this.state.offsets[i] / 60).format('HH:MM'));
+      dates.push(time.utcOffset(this.state.offsets[i] / 60).format('MMM D'));
+    };
+
     this.setState({
-      time: moment().format('LT'),
-      date: moment().format('MMM D'),
+      times: times,
+      dates: dates
     });
   }
 
@@ -111,6 +131,7 @@ class WeatherWidget extends React.PureComponent {
             { this.state.isLoading ? <MDSpinner className="md-spinner" /> : null }
             <ul className="weather__list">
               <Slider {...weatherSettings}>
+
                 {this.state.weatherCities.map((city, index) =>
                   <li key={index} className="weather__list-item">
 
@@ -133,8 +154,8 @@ class WeatherWidget extends React.PureComponent {
 
                       <div className="col-md-5 col-sm-6 col-xs-12">
                         <div className="weather__date">
-                          <h4 className="weather__day">{this.state.date}</h4>
-                          <h4 className="weather__time">{this.state.time}</h4>
+                          <h4 className="weather__day">{ this.state.dates[index] }</h4>
+                          <h4 className="weather__time">{ this.state.times[index] }</h4>
                         </div>
                       </div>
 

@@ -43,11 +43,15 @@ class WeatherEditForm extends Component {
   componentDidMount() {
     api('weather')
     .then(response => {
-      const cities = response.data;
+      const { cities } = response.data;
+
+      console.log(response.data);
+
       for (var i = 0; i < cities.length; i++) {
         let citiesInput = this.formatCitiesInput(cities[i]);
         this.setState({
             cityListInputValues: citiesInput,
+            offsets: [],
             address : "",
             });
 
@@ -60,10 +64,10 @@ class WeatherEditForm extends Component {
   }
 
 
-  handleFormSubmit = (event) => {
+  handleFormSubmit = async (event) => {
     event.preventDefault();
 
-    geocodeByAddress(this.state.address)
+    await geocodeByAddress(this.state.address)
       .then(results => getLatLng(results[0]))
       .then( ({ lat, lng }) => {
             this.setState({ lat: lat, lng: lng});
@@ -77,10 +81,20 @@ class WeatherEditForm extends Component {
                         const results = result.data.results;
                         const location = this.getLocation(results);
                         let citiesInput = this.formatCitiesInput(location.city);
-                        this.setState({
+
+                        axios.get('https://maps.googleapis.com/maps/api/timezone/json?language=en', {params: {location: lat+","+lng, timestamp: Math.floor(Date.now() / 1000), key: "AIzaSyBcWERvVwgoH27ILfRURoJTxOKhW7oKvIc"} })
+                          .then( (result) => {
+                              console.log(result.data.rawOffset);
+
+                              this.setState((prevState) => ({
+                                offsets: [...prevState.offsets, result.data.rawOffset]
+                              }));
+                        });
+
+                        this.setState((prevState) => ({
                             cityListInputValues: citiesInput,
                             address: "",
-                            });
+                          }));
                     }
                     );
           } )
@@ -119,7 +133,7 @@ class WeatherEditForm extends Component {
 
         const citiesArray = this.state.cityListInputValues.split(", ");
 
-        let settings = {cities: citiesArray};
+        let settings = {cities: citiesArray, offsets: this.state.offsets};
         let data = {
             "widgetType": widgetType,
             "widgetId": widgetId,
