@@ -32,7 +32,7 @@ export const getOutlookController = async (req, res) => {
 	//   new ews.DateTime(Number(toYear), Number(toMonth), Number(toDay))
 	// );
 
-	var cv = new ews.CalendarView(ews.DateTime.Now, ews.DateTime.Now.AddDays(40));
+	var cv = new ews.CalendarView(ews.DateTime.Now, ews.DateTime.Now.AddDays(20));
 
 	ews.EwsLogging.DebugLogEnabled = true;
 	var events = [];
@@ -44,6 +44,7 @@ export const getOutlookController = async (req, res) => {
 					summary: item.Subject.toString(),
 					start: item.Start.Format('DD.MM.Y HH:MM'),
 					date: item.Start.toString(),
+					location: item.Location.toString(),
 				});
 			});
 			res.json(events);

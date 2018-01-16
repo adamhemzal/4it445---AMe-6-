@@ -139,7 +139,7 @@ class WeatherWidget extends React.PureComponent {
 							<Slider {...weatherSettings}>
 								{this.state.weatherCities.map((city, index) => (
 									<li key={index} className="weather__list-item">
-										<div className="weather__slide">
+										<div className={city.data.list[0].weather[0].main.toLowerCase() + ' weather__slide'}>
 											<div className="weather__icon">
 												{displayWeatherIcon(city.data.list[0].weather[0].icon)}
 											</div>
@@ -186,8 +186,7 @@ const NextArrow = props => {
 			className={
 				'slick-arrow ' +
 				'slick-next ' +
-				'weather__slide--arrow-right ' +
-				'weather__slide--arrow-right::before'
+				'weather__slide--arrow-right '
 			}
 			style={{ ...style, display: 'block' }}
 			onClick={onClick}
@@ -204,8 +203,7 @@ const PrevArrow = props => {
 			className={
 				'slick-arrow ' +
 				'slick-prev ' +
-				'weather__slide--arrow-left ' +
-				'weather__slide--arrow-left::before'
+				'weather__slide--arrow-left '
 			}
 			style={{ ...style, display: 'block' }}
 			onClick={onClick}

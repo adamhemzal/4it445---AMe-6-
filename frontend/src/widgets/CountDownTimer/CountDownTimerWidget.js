@@ -23,9 +23,17 @@ class CountDownTimerWidget extends React.PureComponent {
 		api
 			.get('outlook')
 			.then(response => {
+
 				this.setState({ event: response.data[0], isLoading: false });
 
-				const eventDate = Date.parse(this.state.event.date);
+				let eventDate = Date.parse(this.state.event.date);
+				let current = new Date();
+
+				if(eventDate < current) {
+						this.setState({ event: response.data[1] });
+						eventDate = Date.parse(this.state.event.date);
+				}
+
 				this.setState({ stateEventDate: eventDate });
 			})
 			.catch(error => {
@@ -92,7 +100,7 @@ class CountDownTimerWidget extends React.PureComponent {
 						) : (
 							<div>
 								<div className="row timer__flex-center">
-									<div className="col-md-3 timer__center">
+									<div className="col-sm-3 timer__center">
 										<div className="timer__block">
 											<p>
 												{this.state.timer.day === ''
@@ -103,7 +111,7 @@ class CountDownTimerWidget extends React.PureComponent {
 										<p className="timer__block-date">days</p>
 									</div>
 
-									<div className="col-md-3 timer__center">
+									<div className="col-sm-3 timer__center">
 										<div className="timer__block">
 											<p>
 												{this.state.timer.hours === ''
@@ -114,7 +122,7 @@ class CountDownTimerWidget extends React.PureComponent {
 										<p className="timer__block-date">hours</p>
 									</div>
 
-									<div className="col-md-3 timer__center">
+									<div className="col-sm-3 timer__center">
 										<div className="timer__block">
 											<p>
 												{this.state.timer.minutes === ''
@@ -126,16 +134,18 @@ class CountDownTimerWidget extends React.PureComponent {
 									</div>
 								</div>
 
-								<div className="row timer__padding-both">
+								{/* <div className="row timer__padding-both">
 									<div className="col-md-12 timer__flex">
 										<p className="timer__to">to</p>
 									</div>
-								</div>
+								</div> */}
+
+								<div className="divider"></div>
 
 								<div className="row timer__padding-both timer__padding-bottom">
 									<div className="col-md-12 timer__flex">
 										<p className="timer__event-name">
-											{this.state.event.summary}
+											<i className="fa fa-calendar"></i> {this.state.event.summary}
 										</p>
 									</div>
 								</div>

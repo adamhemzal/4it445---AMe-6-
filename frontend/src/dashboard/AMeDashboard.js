@@ -177,8 +177,12 @@ class AMeDashboard extends Component {
 
 			this.closeModal();
 
-			this.props.history.push('/dashboard/' + response.data.newId);
-			window.location.reload();
+			setTimeout(function() {
+				this.props.history.push('/dashboard/' + response.data.newId);
+				window.location.reload();
+			}, 1500);
+
+
 		});
 	};
 
@@ -312,7 +316,7 @@ class AMeDashboard extends Component {
 					</div>
 				</header>
 
-				<div className="container">
+				<div className="container-fluid">
 					<div className="">
 						{isAuthenticated && <EditBar onEdit={this.toggleEdit} />}
 						<DashboardIdProvider
@@ -379,7 +383,8 @@ class AMeDashboard extends Component {
 											<button
 												type="button"
 												className="btn btn-default btn-delete float--left"
-												onClick={this.deleteDashboard}
+												//onClick={this.deleteDashboard}
+												onClick={() => { if (window.confirm('Are you sure you wish to delete this item?')) this.deleteDashboard() } }
 											>
 												Delete Dashboard
 											</button>
