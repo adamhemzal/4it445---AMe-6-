@@ -11,6 +11,7 @@ class CountDownTimerWidget extends React.PureComponent {
 			timer: {},
 			event: [],
 			stateEventDate: 0,
+			isLoading: true,
 			stateCurrentTime: 0,
 			dashboardId: this.props.dashboardId,
 		};
@@ -93,13 +94,14 @@ class CountDownTimerWidget extends React.PureComponent {
 					</div>
 
 					<div className="container widget__content">
+
 						{this.state.isLoading ? <MDSpinner className="md-spinner" /> : null}
 
-						{this.state.event.length === 0 && !this.state.isLoading ? (
+						{!this.state.event && !this.state.isLoading ? (
 							<p className="no_data">No events are planned</p>
 						) : (
-							<div>
-								<div className="row timer__flex-center">
+							<div style={this.state.isLoading ? { display: 'none', } : { display: 'block', } }>
+								<div className="row timer__flex-center" >
 									<div className="col-sm-3 timer__center">
 										<div className="timer__block">
 											<p>
@@ -150,7 +152,9 @@ class CountDownTimerWidget extends React.PureComponent {
 									</div>
 								</div>
 							</div>
+
 						)}
+
 					</div>
 				</div>
 			</div>
