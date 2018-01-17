@@ -25,7 +25,7 @@ export class AfterLoginMenu extends Component {
 
 		let dashboardId = id;
 
-		api.delete(`dashboard/delete/${this.state.dashboardId}`).then(response => {
+		api.delete(`dashboard/delete/${dashboardId}`).then(response => {
 			console.log(response);
 
 			Alert.error('Dashboard was deleted', {
