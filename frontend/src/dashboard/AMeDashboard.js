@@ -184,7 +184,15 @@ class AMeDashboard extends Component {
 		});
 	};
 
-	onRemove = layout => {
+	onRemove = (layout, widgetId) => {
+		api
+			.delete(`widget/${widgetId}`)
+			.then(response => {
+				console.log(response);
+			})
+			.catch(error => {
+				console.log(error);
+			});
 		this.setState(
 			{
 				layout,
@@ -233,14 +241,32 @@ class AMeDashboard extends Component {
 
 	widgetSelected = widgetName => {
 		const { layout, rowIndex, columnIndex } = this.state.addWidgetOptions;
-		this.setState(
-			{
-				layout: addWidget(layout, rowIndex, columnIndex, widgetName),
-			},
-			() => {
-				this.saveLayout();
-			},
-		);
+
+		api
+			.post('widget', {
+				dashboardId: this.state.dashboardId,
+				widgetName: widgetName,
+			})
+			.then(response => {
+				const { widgetId } = response.data;
+				this.setState(
+					{
+						layout: addWidget(
+							layout,
+							rowIndex,
+							columnIndex,
+							widgetName,
+							widgetId,
+						),
+					},
+					() => {
+						this.saveLayout();
+					},
+				);
+			})
+			.catch(error => {
+				console.log(error);
+			});
 		this.onRequestClose();
 	};
 

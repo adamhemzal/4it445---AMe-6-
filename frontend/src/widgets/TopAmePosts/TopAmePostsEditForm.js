@@ -5,8 +5,6 @@ import { connectDashboardId } from '../../dashboardIdProvider';
 
 import api from '../../api.js';
 let widgetType = 'TopAmePosts';
-let widgetId = 3;
-let dashboardId = 1;
 
 class TopAmePostsEditForm extends Component {
 	constructor(props) {
@@ -17,6 +15,8 @@ class TopAmePostsEditForm extends Component {
 		this.selectChange = this.selectChange.bind(this);
 
 		this.state = {
+			widgetId: this.props.widgetId,
+			dashboardId: this.props.dashboardId,
 			//channelIdValue: this.props.channelIdValue,
 			channelIdValue: 'C0BUA20S0',
 			resultText: '',
@@ -83,9 +83,8 @@ class TopAmePostsEditForm extends Component {
 
 		let settings = { channel: this.state.channelIdValue.id };
 		let data = {
-			widgetType: widgetType,
-			widgetId: widgetId,
-			dashboardId: dashboardId,
+			widgetId: this.state.widgetId,
+			dashboardId: this.state.dashboardId,
 			settings: settings,
 		};
 

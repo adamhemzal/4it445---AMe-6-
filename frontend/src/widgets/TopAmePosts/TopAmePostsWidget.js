@@ -14,11 +14,17 @@ class TopAmePostsWidget extends Component {
 			topAmePosts: [],
 			isLoading: true,
 			dashboardId: this.props.dashboardId,
+			widgetId: this.props.widgetId,
 		};
 	}
 
 	componentDidMount() {
-		api('top-ame-posts', { params: { dashboardId: this.state.dashboardId } })
+		api('top-ame-posts', {
+			params: {
+				dashboardId: this.state.dashboardId,
+				widgetId: this.state.widgetId,
+			},
+		})
 			.then(response => {
 				console.log('Top Ame Posts', response);
 				const topAmePosts = response.data.topAmePosts;

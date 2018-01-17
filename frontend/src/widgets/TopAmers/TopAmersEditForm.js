@@ -6,7 +6,6 @@ import { connectDashboardId } from '../../dashboardIdProvider';
 import getDisplayName from 'recompose/getDisplayName';
 
 let widgetType = 'TopAmers';
-let widgetId = 2;
 let dashboardId = 1;
 
 class TopAmersEditForm extends Component {
@@ -18,6 +17,8 @@ class TopAmersEditForm extends Component {
 		this.selectChange = this.selectChange.bind(this);
 
 		this.state = {
+			widgetId: this.props.widgetId,
+			dashboardId: this.props.dashboardId,
 			//channelIdValue: this.props.channelIdValue,
 			channelIdValue: 'C0BUA20S0',
 			resultText: '',
@@ -84,9 +85,8 @@ class TopAmersEditForm extends Component {
 
 		let settings = { channel: this.state.channelIdValue.id };
 		let data = {
-			widgetType: widgetType,
-			widgetId: widgetId,
-			dashboardId: dashboardId,
+			widgetId: this.state.widgetId,
+			dashboardId: this.state.dashboardId,
 			settings: settings,
 		};
 
