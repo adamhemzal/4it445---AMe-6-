@@ -9,4 +9,3 @@ router.get('/list', getList);
 router.get('/detail/:id', getDetail);
 
 export default router;
-
