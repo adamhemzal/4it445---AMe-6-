@@ -3,6 +3,7 @@ require('dotenv').config();
 
 let messagesWithAme;
 let globalRes = null;
+let globalResponses = [];
 const moment = require('moment');
 const topAmePostsMaxCount = 5;
 const objectValues = require('object-values');
@@ -66,7 +67,7 @@ const getWidgetSettingsFromDB = req => {
 
 export const topAmePostsController = async (req, res) => {
 	/*make res global so it is accessible from callback functions*/
-	globalRes = res;
+	globalResponses.push(res);
 
 	getWidgetSettingsFromDB(req);
 };
@@ -153,7 +154,8 @@ const getSlackUsersCallback = (error, response) => {
 		let responseObject = { topAmePosts: messagesWithAme, channel: channel };
 
 		/*output the topAmers, now into the console*/
-		globalRes.send(responseObject);
+		globalResponses[0].send(responseObject);
+		globalResponses.shift();
 	}
 };
 

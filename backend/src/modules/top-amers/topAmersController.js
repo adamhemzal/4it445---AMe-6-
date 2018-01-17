@@ -4,6 +4,7 @@ require('dotenv').config();
 const moment = require('moment');
 let sortedUsersWithAme;
 let globalRes = null;
+let globalResponses = [];
 const topAmersMaxCount = 5;
 const WebClient = require('@slack/client').WebClient;
 const token = process.env.SLACK_API_TOKEN || '';
@@ -62,7 +63,7 @@ const getWidgetSettingsFromDB = req => {
 
 export const topAmersController = async (req, res) => {
 	/*make res global so it is accessible from callback functions*/
-	globalRes = res;
+	globalResponses.push(res);
 
 	getWidgetSettingsFromDB(req);
 };
@@ -173,7 +174,8 @@ const getSlackUsersCallback = (error, response) => {
 	}
 
 	/*output the topAmers, now into the console*/
-	globalRes.send(topAmers);
+	globalResponses[0].send(topAmers);
+	globalResponses.shift();
 };
 
 const sortTopAmers = topAmers => {
