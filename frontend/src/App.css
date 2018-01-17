@@ -324,6 +324,14 @@ h6.list-group-item-heading {
 	margin-bottom: 15px;
 }
 
+.modal-body label {
+	font-weight: bold;
+	text-transform: uppercase;
+	color: #666;
+	font-size: 12px;
+	font-family: "Poppins";
+}
+
 /**
 *   Dashboard Intro
 */
@@ -567,6 +575,10 @@ h6.list-group-item-heading {
 }
 
 .top_amers__navigation {
+	display: inline-block;
+}
+
+.top_amers__navigation li {
 	display: inline-block;
 }
 

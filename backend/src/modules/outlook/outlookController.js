@@ -10,11 +10,11 @@ export const getOutlookController = async (req, res) => {
 	const toDay = timespanTo.substring(0, 2);
 	const fromMonth = timespanFrom.substring(2, 4);
 	const toMonth = timespanTo.substring(2, 4);
-	const fromYear = timespanFrom.substring(4, 8);
+	const fromYear = timespanFrom.substring	(4, 8);
 	const toYear = timespanTo.substring(4, 8);
 
 	//exch.Credentials = new ews.ExchangeCredentials(calendarId, req.body.pass);
-	//exch.Credentials = new ews.ExchangeCredentials('agileame@outlook.com', "4ef0deb28aef6b1a641");
+
 	exch.Credentials = new ews.ExchangeCredentials(
 		'team6ame@outlook.com',
 		'team6karkulka',
@@ -34,7 +34,7 @@ export const getOutlookController = async (req, res) => {
 
 	var cv = new ews.CalendarView(ews.DateTime.Now, ews.DateTime.Now.AddDays(20));
 
-	ews.EwsLogging.DebugLogEnabled = true;
+	ews.EwsLogging.DebugLogEnabled = false;
 	var events = [];
 
 	exch.FindAppointments(f, cv).then(

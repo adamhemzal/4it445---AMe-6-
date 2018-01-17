@@ -11,7 +11,7 @@ const token = process.env.SLACK_API_TOKEN || '';
 const web = new WebClient(token);
 
 const widgetName = 'PeopleDay';
-const dashboardId = 1; //TODO take current dashboard ID
+
 
 /*
 
