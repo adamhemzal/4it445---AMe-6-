@@ -18,7 +18,6 @@ export const getList = async (req, res) => {
 
 export const getDetail = async (req, res) => {
     const {id} = req.params;
-    console.log(id);
     web.users.list((error, response) => {
         if (error) {
             console.log('Error:', error);
