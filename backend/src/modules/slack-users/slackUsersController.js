@@ -11,19 +11,28 @@ export const getList = async (req, res) => {
         if (error) {
             console.log('Error:', error);
         } else {
-            const list = getOnlyNames(response.members);
+            const list = getNamesAndImages(response.members);
             res.send(list);
         }
     });
 };
 
-export const getDetails = async (req, res) => {
+export const getDetail = async (req, res) => {
+    const {id} = req.params;
+    console.log(id);
     web.users.list((error, response) => {
         if (error) {
             console.log('Error:', error);
         } else {
-            const list = getNamesAndImages(response.members);
-            res.send(list);
+            let userDetail = {};
+            response.members.forEach(member => {
+                if (member.id == id) {
+                    userDetail.id = member.id;
+                    userDetail.real_name = member.real_name;
+                    userDetail.image = member.profile.image_512;
+                }
+            });
+            res.send(userDetail);
         }
     });
 };
@@ -31,7 +40,7 @@ export const getDetails = async (req, res) => {
 const getOnlyNames = (members) => {
     let list = [];
     members.forEach(member => {
-        if(member.real_name){
+        if (member.real_name) {
             list.push(member.real_name);
         }
     });
@@ -41,7 +50,7 @@ const getOnlyNames = (members) => {
 const getNamesAndImages = (members) => {
     let list = [];
     members.forEach(member => {
-        if(member.real_name){
+        if (member.real_name) {
             let temp = {};
             temp.id = member.id;
             temp.real_name = member.real_name;
