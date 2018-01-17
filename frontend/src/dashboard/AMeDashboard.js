@@ -181,8 +181,6 @@ class AMeDashboard extends Component {
 				this.props.history.push('/dashboard/' + response.data.newId);
 				window.location.reload();
 			}, 1500);
-
-
 		});
 	};
 
@@ -267,10 +265,10 @@ class AMeDashboard extends Component {
 		const { user, cookies, autoLogin } = this.props;
 		let { isAuthenticated } = this.props;
 
-		const userCookie = cookies.get('user');
+		const userCookie = cookies.get('username');
 
 		if (isAuthenticated) {
-			cookies.set('user', user);
+			cookies.set('username', user, { path: '/' });
 		}
 
 		if (userCookie) {
@@ -384,7 +382,14 @@ class AMeDashboard extends Component {
 												type="button"
 												className="btn btn-default btn-delete float--left"
 												//onClick={this.deleteDashboard}
-												onClick={() => { if (window.confirm('Are you sure you wish to delete this item?')) this.deleteDashboard() } }
+												onClick={() => {
+													if (
+														window.confirm(
+															'Are you sure you wish to delete this item?',
+														)
+													)
+														this.deleteDashboard();
+												}}
 											>
 												Delete Dashboard
 											</button>

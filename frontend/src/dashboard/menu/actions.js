@@ -49,7 +49,6 @@ export const login = (username, password) => dispatch => {
 };
 
 export const logout = () => dispatch => {
-	console.log('logout');
 	api('logout').then(res => {
 		const { success } = res.data;
 		if (success) {

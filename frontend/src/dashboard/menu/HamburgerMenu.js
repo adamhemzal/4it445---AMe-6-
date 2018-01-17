@@ -31,7 +31,7 @@ class HamburgerMenu extends Component {
 
 	handleLogout() {
 		const { cookies, logout } = this.props;
-		cookies.remove('user');
+		cookies.remove('username', { path: '/' });
 		logout();
 	}
 
