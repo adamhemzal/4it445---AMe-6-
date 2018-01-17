@@ -9,7 +9,6 @@ const WebClient = require('@slack/client').WebClient;
 const token = process.env.SLACK_API_TOKEN || '';
 const web = new WebClient(token);
 const ameEmoticonIdentifier = 'ame';
-const widgetName = 'TopAmers';
 
 export const saveWidgetSettingsToDB = async (req, res) => {
 	let postData = req.body;
@@ -28,8 +27,7 @@ export const saveWidgetSettingsToDB = async (req, res) => {
 			{
 				where: {
 					dashboardId: dashboardId,
-					name: widgetName,
-					/*id: widgetId*/
+					id: widgetId,
 				},
 			},
 		)
@@ -42,12 +40,12 @@ export const saveWidgetSettingsToDB = async (req, res) => {
 };
 
 const getWidgetSettingsFromDB = req => {
-	const { dashboardId } = req.query;
+	const { dashboardId, widgetId } = req.query;
 	db.widget
 		.findOne({
 			where: {
+				id: widgetId,
 				dashboardId: dashboardId,
-				name: widgetName,
 			},
 		})
 		.then(widget => {

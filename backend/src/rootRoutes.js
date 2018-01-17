@@ -8,6 +8,7 @@ import adminRoutes from './modules/admin/routes';
 import dashboardRoutes from './modules/dashboard/routes';
 import slackChannelsController from './modules/slack-channels/routes';
 import outlookRoutes from './modules/outlook/routes';
+import widgetRoutes from './modules/widget/routes';
 
 const router = Router();
 
@@ -19,5 +20,6 @@ router.use('/admin', adminRoutes);
 router.use('/dashboard', dashboardRoutes);
 router.use('/outlook', outlookRoutes);
 router.use('/slack-channels', slackChannelsController);
+router.use('/widget', widgetRoutes);
 
 export default router;

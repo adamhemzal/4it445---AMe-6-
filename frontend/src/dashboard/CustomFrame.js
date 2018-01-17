@@ -16,6 +16,7 @@ class CustomFrame extends Component {
 
 		this.state = {
 			modalIsOpen: false,
+			widgetId: this.props.children.props.widgetId,
 		};
 
 		this.openModal = this.openModal.bind(this);
@@ -45,22 +46,22 @@ class CustomFrame extends Component {
 		let editForm = null;
 		switch (widgetTitle) {
 			case 'Top Ame Posts':
-				editForm = <TopAmePostsEditForm />;
+				editForm = <TopAmePostsEditForm widgetId={this.state.widgetId} />;
 				break;
 			case 'Top Amers':
-				editForm = <TopAmersEditForm />;
+				editForm = <TopAmersEditForm widgetId={this.state.widgetId} />;
 				break;
 			case 'Weather':
-				editForm = <WeatherEditForm />;
+				editForm = <WeatherEditForm widgetId={this.state.widgetId} />;
 				break;
 			case 'People of the Day':
-				editForm = <PeopleOfADayEditForm />;
+				editForm = <PeopleOfADayEditForm widgetId={this.state.widgetId} />;
 				break;
 			case 'Gif of a Day':
-				editForm = <GifOfADayEditForm />;
+				editForm = <GifOfADayEditForm widgetId={this.state.widgetId} />;
 				break;
 			case 'Upcoming Events':
-				editForm = <UpcomingEventsEditForm />;
+				editForm = <UpcomingEventsEditForm widgetId={this.state.widgetId} />;
 				break;
 			default:
 		}
