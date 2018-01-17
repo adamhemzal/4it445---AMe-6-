@@ -34,7 +34,7 @@ export const getOutlookController = async (req, res) => {
 
 	var cv = new ews.CalendarView(ews.DateTime.Now, ews.DateTime.Now.AddDays(20));
 
-	ews.EwsLogging.DebugLogEnabled = true;
+	ews.EwsLogging.DebugLogEnabled = false;
 	var events = [];
 
 	exch.FindAppointments(f, cv).then(

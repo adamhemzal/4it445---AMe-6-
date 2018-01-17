@@ -10,7 +10,6 @@ const ResponsiveEllipsis = responsiveHOC()(LinesEllipsis);
 class TopAmePostsWidget extends Component {
 	constructor(props) {
 		super(props);
-		console.log(this.props);
 		this.state = {
 			topAmePosts: [],
 			isLoading: true,

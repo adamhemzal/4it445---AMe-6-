@@ -9,7 +9,6 @@ import MDSpinner from 'react-md-spinner';
 
 class TopAmersWidget extends Component {
 	constructor(props) {
-		console.log(props);
 		super(props);
 		this.state = {
 			topAmers: [],
