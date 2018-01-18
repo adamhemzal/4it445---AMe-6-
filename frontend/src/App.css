@@ -605,6 +605,10 @@ h6.list-group-item-heading {
 	position: relative;
 }
 
+.top_amers__image img {
+	width: 100%;
+}
+
 .top_amers__badge {
 	position: absolute;
 	display: block;
