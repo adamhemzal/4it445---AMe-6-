@@ -57,7 +57,7 @@ class PeopleOfADayEditForm extends Component {
 		})
 			.then(response => {
 				console.log(response);
-				this.setState({ userIdValue: response.data.user, description: response.data.description });
+				this.setState({ userIdValue: response.data.settings.user, description: response.data.settings.description });
 			})
 			.catch(error => {
 				console.log(error);
