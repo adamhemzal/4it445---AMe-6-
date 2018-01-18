@@ -1,17 +1,9 @@
 import db from '../../models/';
 require('dotenv').config();
 
-const moment = require('moment');
-let sortedUsers;
 let globalRes = null;
-const peopleDayMaxCount = 5;
 
-const WebClient = require('@slack/client').WebClient;
-const token = process.env.SLACK_API_TOKEN || '';
-const web = new WebClient(token);
-
-const widgetName = 'PeopleDay';
-
+//const widgetName = 'PeopleDay';
 
 /*
 
@@ -19,7 +11,7 @@ const widgetName = 'PeopleDay';
 
 export const saveWidgetSettingsToDB = async (req, res) => {
     let postData = req.body;
-    let widgetType = postData.widgetType || "";
+    //let widgetType = postData.widgetType || "";
     let widgetId = postData.widgetId || "";
     let dashboardId = postData.dashboardId || "";
     let settings = postData.settings || "";
@@ -30,7 +22,8 @@ export const saveWidgetSettingsToDB = async (req, res) => {
         {settings:settings},
         {where: {
             dashboardId: dashboardId,
-            name: widgetName,}
+            id: widgetId
+          },
         })
         .then(result => {
             res.send(result);
@@ -44,9 +37,13 @@ const getWidgetSettingsFromDB = (req, res) => {
 
   	const { dashboardId, widgetId } = req.query;
 
-    db.widget.findOne({where: {
-            dashboardId: dashboardId,
-            name: widgetName}})
+    db.widget
+  		.findOne({
+  			where: {
+  				id: widgetId,
+  				dashboardId: dashboardId,
+  			},
+  		})
             .then(widget => {
                 if (widget) {
             				res.send({settings: widget.settings, success: true });
@@ -61,7 +58,7 @@ const getWidgetSettingsFromDB = (req, res) => {
 
 export const personDayController = async (req, res) => {
     /*make res global so it is accessible from callback functions*/
-    globalRes = res;
+    //globalRes = res;
 
     getWidgetSettingsFromDB(req, res);
 

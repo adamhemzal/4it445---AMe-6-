@@ -4,8 +4,8 @@ import Select from 'react-select';
 import 'react-select/dist/react-select.css';
 import api from '../../api.js';
 
-let widgetType = 'TopAmePosts';
-let widgetId = 8;
+let widgetType = 'PeopleDay';
+//let widgetId = 8;
 
 class PeopleOfADayEditForm extends Component {
 
@@ -92,15 +92,15 @@ class PeopleOfADayEditForm extends Component {
 
 		let dashboardId = this.props.dashboardId;
 
-		//this.setState(userIdValue: 'C0BUA20S0');
-
 		let settings = { user: this.state.userIdValue, description: this.state.description };
 		let data = {
 			widgetType: widgetType,
-			widgetId: widgetId,
-			dashboardId: dashboardId,
+			widgetId: this.state.widgetId,
+			dashboardId: this.state.dashboardId,
 			settings: settings,
 		};
+
+		console.log(data);
 
 		api
 			.post('person-day', data)

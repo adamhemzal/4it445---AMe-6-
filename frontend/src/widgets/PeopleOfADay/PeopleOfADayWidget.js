@@ -31,8 +31,6 @@ class PeopleOfADayWidget extends Component {
 					this.setState({ userData: user, description: description, isLoading: false, isWidgetSetUp: true });
 				}
 
-				console.log('Person of the day', response);
-
 			})
 			.catch(error => {
 				console.log(error);
@@ -43,7 +41,7 @@ class PeopleOfADayWidget extends Component {
 		const { userData, isLoading, isWidgetSetUp } = this.state;
 
 		let widgetMessage = '';
-		if (userData.length === 0 && isWidgetSetUp && !isLoading) {
+		if ((!userData || isWidgetSetUp) && !isLoading) {
 			widgetMessage = 'No person to display';
 		} else if (!isWidgetSetUp && !isLoading) {
 			widgetMessage = 'Please set the person first';
@@ -62,13 +60,13 @@ class PeopleOfADayWidget extends Component {
 
 						<ul className="top_amers__list">
 
-							{(userData.length === 0 || !isWidgetSetUp) && !isLoading ? (
+							{(!userData || !isWidgetSetUp) && !isLoading ? (
 								<p className="no_data">{widgetMessage}</p>
 							) : (
 
 							<li className="top_amers__list-item">
 								<div className="top_amers__image">
-									<img src={userData.image} alt={userData.real_name} className="gif__image"/>
+									<img src={userData.image} alt={userData.real_name} />
 									<span className="top_amers__badge">{userData.real_name}</span>
 								</div>
 
