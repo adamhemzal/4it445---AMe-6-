@@ -12,6 +12,7 @@ class TopAmePostsWidget extends Component {
 		super(props);
 		this.state = {
 			topAmePosts: [],
+			isWidgetSetUp: false,
 			isLoading: true,
 			dashboardId: this.props.dashboardId,
 			widgetId: this.props.widgetId,
@@ -27,13 +28,17 @@ class TopAmePostsWidget extends Component {
 		})
 			.then(response => {
 				console.log('Top Ame Posts', response);
-				const topAmePosts = response.data.topAmePosts;
-				const channel = response.data.channel;
-				this.setState({
-					topAmePosts: topAmePosts,
-					channel: channel,
-					isLoading: false,
-				});
+				const { topAmePosts, channel, success } = response.data;
+				if (!success) {
+					this.setState({ isLoading: false });
+				} else {
+					this.setState({
+						topAmePosts: topAmePosts,
+						channel: channel,
+						isLoading: false,
+						isWidgetSetUp: true,
+					});
+				}
 			})
 			.catch(error => {
 				console.log(error);
@@ -41,7 +46,14 @@ class TopAmePostsWidget extends Component {
 	}
 
 	render() {
-		const { topAmePosts, isLoading } = this.state;
+		const { topAmePosts, isLoading, isWidgetSetUp } = this.state;
+
+		let widgetMessage = '';
+		if (topAmePosts.length === 0 && isWidgetSetUp && !isLoading) {
+			widgetMessage = 'No AMe posts to display';
+		} else if (!isWidgetSetUp && !isLoading) {
+			widgetMessage = 'Please set the channel first';
+		}
 
 		return (
 			<div className="widget top_posts">
@@ -54,10 +66,10 @@ class TopAmePostsWidget extends Component {
 					</div>
 
 					<div className="widget__content widget__content--padding">
-						{this.state.isLoading ? <MDSpinner className="md-spinner" /> : null}
+						{isLoading ? <MDSpinner className="md-spinner" /> : null}
 
-						{topAmePosts.length === 0 && !this.state.isLoading ? (
-							<p className="no_data">No AMe posts to display</p>
+						{(topAmePosts.length === 0 || !isWidgetSetUp) && !isLoading ? (
+							<p className="no_data">{widgetMessage}</p>
 						) : (
 							<ul className="top_posts__list">
 								{topAmePosts.map((topAmePost, index) => (

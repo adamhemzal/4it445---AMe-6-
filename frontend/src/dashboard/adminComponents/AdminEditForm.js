@@ -219,27 +219,27 @@ const layoutTypes = [
 					columns: [
 						{
 							className: 'col-md-2 col-sm-4 col-xs-4',
-							widgets: [{ key: 'TopAmePosts' }],
+							widgets: [],
 						},
 						{
 							className: 'col-md-2 col-sm-4 col-xs-4',
-							widgets: [{ key: 'TopAmers' }],
+							widgets: [],
 						},
 						{
 							className: 'col-md-2 col-sm-4 col-xs-4',
-							widgets: [{ key: 'Weather' }],
+							widgets: [],
 						},
 						{
 							className: 'col-md-2 col-sm-4 col-xs-4',
-							widgets: [{ key: 'PeopleOfADay' }],
+							widgets: [],
 						},
 						{
 							className: 'col-md-2 col-sm-4 col-xs-4',
-							widgets: [{ key: 'GifOfADay' }],
+							widgets: [],
 						},
 						{
 							className: 'col-md-2 col-sm-4 col-xs-4',
-							widgets: [{ key: 'Weather' }],
+							widgets: [],
 						},
 					],
 				},
@@ -247,19 +247,19 @@ const layoutTypes = [
 					columns: [
 						{
 							className: 'col-md-3 col-sm-6 col-xs-6',
-							widgets: [{ key: 'PeopleOfADay' }],
+							widgets: [],
 						},
 						{
 							className: 'col-md-3 col-sm-6 col-xs-6',
-							widgets: [{ key: 'Weather' }],
+							widgets: [],
 						},
 						{
 							className: 'col-md-3 col-sm-6 col-xs-6',
-							widgets: [{ key: 'Weather' }],
+							widgets: [],
 						},
 						{
 							className: 'col-md-3 col-sm-6 col-xs-6',
-							widgets: [{ key: 'TopAmers' }],
+							widgets: [],
 						},
 					],
 				},
@@ -267,11 +267,11 @@ const layoutTypes = [
 					columns: [
 						{
 							className: 'col-md-6 col-sm-6 col-xs-6',
-							widgets: [{ key: 'GifOfADay' }],
+							widgets: [],
 						},
 						{
 							className: 'col-md-6 col-sm-6 col-xs-6',
-							widgets: [{ key: 'TopAmers' }],
+							widgets: [],
 						},
 					],
 				},
@@ -286,19 +286,19 @@ const layoutTypes = [
 					columns: [
 						{
 							className: 'col-md-3 col-sm-4 col-xs-4',
-							widgets: [{ key: 'PeopleOfADay' }],
+							widgets: [],
 						},
 						{
 							className: 'col-md-3 col-sm-4 col-xs-4',
-							widgets: [{ key: 'TopAmers' }],
+							widgets: [],
 						},
 						{
 							className: 'col-md-3 col-sm-4 col-xs-4',
-							widgets: [{ key: 'Weather' }],
+							widgets: [],
 						},
 						{
 							className: 'col-md-3 col-sm-4 col-xs-4',
-							widgets: [{ key: 'GifOfADay' }],
+							widgets: [],
 						},
 					],
 				},
@@ -306,19 +306,19 @@ const layoutTypes = [
 					columns: [
 						{
 							className: 'col-md-3 col-sm-4 col-xs-4',
-							widgets: [{ key: 'TopAmePosts' }],
+							widgets: [],
 						},
 						{
 							className: 'col-md-3 col-sm-4 col-xs-4',
-							widgets: [{ key: 'Weather' }],
+							widgets: [],
 						},
 						{
 							className: 'col-md-3 col-sm-4 col-xs-4',
-							widgets: [{ key: 'PeopleOfADay' }],
+							widgets: [],
 						},
 						{
 							className: 'col-md-3 col-sm-4 col-xs-4',
-							widgets: [{ key: 'GifOfADay' }],
+							widgets: [],
 						},
 					],
 				},
@@ -326,11 +326,11 @@ const layoutTypes = [
 					columns: [
 						{
 							className: 'col-md-6 col-sm-6 col-xs-6',
-							widgets: [{ key: 'GifOfADay' }],
+							widgets: [],
 						},
 						{
 							className: 'col-md-6 col-sm-6 col-xs-6',
-							widgets: [{ key: 'TopAmers' }],
+							widgets: [],
 						},
 					],
 				},
@@ -345,15 +345,15 @@ const layoutTypes = [
 					columns: [
 						{
 							className: 'col-md-4 col-sm-6 col-xs-12',
-							widgets: [{ key: 'GifOfADay' }],
+							widgets: [],
 						},
 						{
 							className: 'col-md-4 col-sm-6 col-xs-12',
-							widgets: [{ key: 'TopAmers' }],
+							widgets: [],
 						},
 						{
 							className: 'col-md-4 col-sm-6 col-xs-12',
-							widgets: [{ key: 'TopAmePosts' }],
+							widgets: [],
 						},
 					],
 				},
@@ -361,11 +361,11 @@ const layoutTypes = [
 					columns: [
 						{
 							className: 'col-md-6 col-sm-6 col-xs-12',
-							widgets: [{ key: 'Weather' }],
+							widgets: [],
 						},
 						{
 							className: 'col-md-6 col-sm-6 col-xs-12',
-							widgets: [{ key: 'PeopleOfADay' }],
+							widgets: [],
 						},
 					],
 				},
@@ -380,19 +380,19 @@ const layoutTypes = [
 					columns: [
 						{
 							className: 'col-md-3 col-sm-6 col-xs-12',
-							widgets: [{ key: 'PeopleOfADay' }],
+							widgets: [],
 						},
 						{
 							className: 'col-md-3 col-sm-6 col-xs-12',
-							widgets: [{ key: 'Weather' }],
+							widgets: [],
 						},
 						{
 							className: 'col-md-3 col-sm-6 col-xs-12',
-							widgets: [{ key: 'TopAmePosts' }],
+							widgets: [],
 						},
 						{
 							className: 'col-md-3 col-sm-6 col-xs-12',
-							widgets: [{ key: 'TopAmers' }],
+							widgets: [],
 						},
 					],
 				},
@@ -400,15 +400,15 @@ const layoutTypes = [
 					columns: [
 						{
 							className: 'col-md-4 col-sm-4 col-xs-4',
-							widgets: [{ key: 'GifOfADay' }],
+							widgets: [],
 						},
 						{
 							className: 'col-md-4 col-sm-4 col-xs-4',
-							widgets: [{ key: 'TopAmePosts' }],
+							widgets: [],
 						},
 						{
 							className: 'col-md-4 col-sm-4 col-xs-4',
-							widgets: [{ key: 'Weather' }],
+							widgets: [],
 						},
 					],
 				},
@@ -416,11 +416,11 @@ const layoutTypes = [
 					columns: [
 						{
 							className: 'col-md-6 col-sm-6 col-xs-12',
-							widgets: [{ key: 'TopAmePosts' }],
+							widgets: [],
 						},
 						{
 							className: 'col-md-6 col-sm-6 col-xs-12',
-							widgets: [{ key: 'Weather' }],
+							widgets: [],
 						},
 					],
 				},
@@ -435,27 +435,27 @@ const layoutTypes = [
 					columns: [
 						{
 							className: 'col-md-2 col-sm-4 col-xs-4',
-							widgets: [{ key: 'TopAmePosts' }],
+							widgets: [],
 						},
 						{
 							className: 'col-md-2 col-sm-4 col-xs-4',
-							widgets: [{ key: 'TopAmers' }],
+							widgets: [],
 						},
 						{
 							className: 'col-md-2 col-sm-4 col-xs-4',
-							widgets: [{ key: 'Weather' }],
+							widgets: [],
 						},
 						{
 							className: 'col-md-2 col-sm-4 col-xs-4',
-							widgets: [{ key: 'PeopleOfADay' }],
+							widgets: [],
 						},
 						{
 							className: 'col-md-2 col-sm-4 col-xs-4',
-							widgets: [{ key: 'GifOfADay' }],
+							widgets: [],
 						},
 						{
 							className: 'col-md-2 col-sm-4 col-xs-4',
-							widgets: [{ key: 'Weather' }],
+							widgets: [],
 						},
 					],
 				},
@@ -463,15 +463,15 @@ const layoutTypes = [
 					columns: [
 						{
 							className: 'col-md-4 col-sm-6 col-xs-12',
-							widgets: [{ key: 'GifOfADay' }],
+							widgets: [],
 						},
 						{
 							className: 'col-md-4 col-sm-6 col-xs-12',
-							widgets: [{ key: 'TopAmers' }],
+							widgets: [],
 						},
 						{
 							className: 'col-md-4 col-sm-6 col-xs-12',
-							widgets: [{ key: 'TopAmePosts' }],
+							widgets: [],
 						},
 					],
 				},
@@ -479,11 +479,11 @@ const layoutTypes = [
 					columns: [
 						{
 							className: 'col-md-6 col-sm-6 col-xs-12',
-							widgets: [{ key: 'TopAmePosts' }],
+							widgets: [],
 						},
 						{
 							className: 'col-md-6 col-sm-6 col-xs-12',
-							widgets: [{ key: 'Weather' }],
+							widgets: [],
 						},
 					],
 				},

@@ -12,6 +12,7 @@ class TopAmersWidget extends Component {
 		super(props);
 		this.state = {
 			topAmers: [],
+			isWidgetSetUp: false,
 			isLoading: true,
 			dashboardId: this.props.dashboardId,
 			widgetId: this.props.widgetId,
@@ -26,8 +27,12 @@ class TopAmersWidget extends Component {
 			},
 		})
 			.then(response => {
-				const { data: topAmers } = response;
-				this.setState({ topAmers, isLoading: false });
+				const { topAmers, success } = response.data;
+				if (!success) {
+					this.setState({ isLoading: false });
+				} else {
+					this.setState({ topAmers, isLoading: false, isWidgetSetUp: true });
+				}
 				console.log('AMERS', topAmers);
 			})
 			.catch(error => {
@@ -36,7 +41,7 @@ class TopAmersWidget extends Component {
 	}
 
 	render() {
-		const { topAmers } = this.state;
+		const { topAmers, isWidgetSetUp, isLoading } = this.state;
 
 		const settings = {
 			customPaging: i => {
@@ -58,7 +63,12 @@ class TopAmersWidget extends Component {
 			arrows: false,
 		};
 
-		const isLoading = this.state;
+		let widgetMessage = '';
+		if (topAmers.length === 0 && isWidgetSetUp && !isLoading) {
+			widgetMessage = 'No AMers to display';
+		} else if (!isWidgetSetUp && !isLoading) {
+			widgetMessage = 'Please set the channel first';
+		}
 
 		return (
 			<div className="widget top_amers">
@@ -68,11 +78,11 @@ class TopAmersWidget extends Component {
 					</div>
 
 					<div className="widget__content">
-						{this.state.isLoading ? <MDSpinner className="md-spinner" /> : null}
+						{isLoading ? <MDSpinner className="md-spinner" /> : null}
 
 						<ul className="top_amers__list">
-							{topAmers.length === 0 && !this.state.isLoading ? (
-								<p className="no_data">No AMers to display</p>
+							{(topAmers.length === 0 || !isWidgetSetUp) && !isLoading ? (
+								<p className="no_data">{widgetMessage}</p>
 							) : (
 								<Slider {...settings}>
 									{topAmers.map((topAmer, index) => (
