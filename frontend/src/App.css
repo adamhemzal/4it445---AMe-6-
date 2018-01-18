@@ -165,6 +165,7 @@ h1 {
 #visible {
 	visibility: visible;
 	opacity: 1;
+        z-index: 1;
 }
 
 .menu-hamburger ul {
