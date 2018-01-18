@@ -68,7 +68,7 @@ class PeopleOfADayWidget extends Component {
 
 							<li className="top_amers__list-item">
 								<div className="top_amers__image">
-									<img src={userData.image} alt={userData.real_name} />
+									<img src={userData.image} alt={userData.real_name} className="gif__image"/>
 									<span className="top_amers__badge">{userData.real_name}</span>
 								</div>
 
