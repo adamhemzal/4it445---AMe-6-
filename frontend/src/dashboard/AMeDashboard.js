@@ -382,7 +382,7 @@ class AMeDashboard extends Component {
 										<button
 											type="button"
 											className="close"
-											onClick={this.saveDashboard}
+											onClick={this.closeModal}
 										>
 											<span aria-hidden="true">&times;</span>
 											<span className="sr-only">Close</span>
@@ -423,7 +423,7 @@ class AMeDashboard extends Component {
 										<button
 											type="button"
 											className="btn btn-default btn-close float--right"
-											onClick={this.saveDashboard}
+											onClick={this.closeModal}
 										>
 											Close
 										</button>
