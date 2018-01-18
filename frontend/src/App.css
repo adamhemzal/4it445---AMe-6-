@@ -582,6 +582,21 @@ h6.list-group-item-heading {
 	display: inline-block;
 }
 
+@media only screen and (max-width: 1100px) {
+	.top_amers__navigation li {
+		display: block;
+	}
+
+	.top_amers__navigation-item {
+		width: 30px;
+	}
+
+	.top_amers__navigation li .col {
+		margin-bottom: 10px;
+		width: 40px;
+	}
+}
+
 .top_amers__value {
 	font-family: 'Poppins';
 	font-size: 16px;

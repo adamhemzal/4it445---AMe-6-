@@ -28,8 +28,9 @@ class UpcomingEventsEditForm extends Component {
 			<form>
 				<div className="form-group">
 					<p>
-						Please <a href={authHelper.getAuthUrl()}>sign in</a> with your
-						Office 365 or Outlook.com account.
+						{/* Please <a href={authHelper.getAuthUrl()}>sign in</a> with your
+						Office 365 or Outlook.com account. */}
+						Editation is not available at the moment :(.
 					</p>
 				</div>
 			</form>
