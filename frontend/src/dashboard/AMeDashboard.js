@@ -121,15 +121,15 @@ class AMeDashboard extends Component {
 									columns: [
 										{
 											className: 'col-md-4',
-											widgets: [{ key: 'TopAmePosts' }],
+											widgets: [],
 										},
 										{
 											className: 'col-md-4',
-											widgets: [{ key: 'TopAmers' }],
+											widgets: [],
 										},
 										{
 											className: 'col-md-4',
-											widgets: [{ key: 'Weather' }],
+											widgets: [],
 										},
 									],
 								},

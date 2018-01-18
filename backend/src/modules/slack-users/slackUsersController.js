@@ -52,7 +52,8 @@ const getNamesAndImages = (members) => {
             let temp = {};
             temp.id = member.id;
             temp.real_name = member.real_name;
-            temp.image = member.profile.image_48;
+            temp.avatar = member.profile.image_48;
+            temp.image = member.profile.image_512;
             list.push(temp);
         }
     });

@@ -144,7 +144,7 @@ export class AdminEditForm extends React.Component {
 						required
 					/>
 
-					<label htmlFor="dashboardUrl">Dashboard URL</label>
+					{/* <label htmlFor="dashboardUrl">Dashboard URL</label>
 					<input
 						onChange={this.handleInputChange}
 						type="text"
@@ -155,7 +155,7 @@ export class AdminEditForm extends React.Component {
 						aria-describedby="dashboardUrl"
 						placeholder="Enter Dashboard URL"
 						required
-					/>
+					/> */}
 
 					<label htmlFor="">Dashboard Layout</label>
 

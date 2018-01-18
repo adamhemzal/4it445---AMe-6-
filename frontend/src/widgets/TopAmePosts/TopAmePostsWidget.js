@@ -79,16 +79,19 @@ class TopAmePostsWidget extends Component {
 						)}
 					</div>
 
-					<div className="widget__footer text-center">
-						<a
-							className="btn btn--link"
-							target="_"
-							href={'https://4it445.slack.com/messages/' + this.state.channel}
-							role="button"
-						>
-							See All
-						</a>
-					</div>
+					{(topAmePosts.length === 0 || !isWidgetSetUp) && !isLoading ? ("") :
+						( <div className="widget__footer text-center">
+							<a
+								className="btn btn--link"
+								target="_"
+								href={'https://4it445.slack.com/messages/' + this.state.channel}
+								role="button"
+							>
+								See All
+							</a>
+						</div>
+					)}
+
 				</div>
 			</div>
 		);

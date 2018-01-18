@@ -9,6 +9,7 @@ import dashboardRoutes from './modules/dashboard/routes';
 import slackChannelsController from './modules/slack-channels/routes';
 import slackUsersController from './modules/slack-users/routes';
 import outlookRoutes from './modules/outlook/routes';
+import personDayRoutes from './modules/person-day/routes';
 import widgetRoutes from './modules/widget/routes';
 
 
@@ -24,5 +25,6 @@ router.use('/outlook', outlookRoutes);
 router.use('/slack-channels', slackChannelsController);
 router.use('/slack-users', slackUsersController);
 router.use('/widget', widgetRoutes);
+router.use('/person-day', personDayRoutes);
 
 export default router;

@@ -15,25 +15,49 @@ class PeopleOfADayEditForm extends Component {
 		this.handleChange = this.handleChange.bind(this);
 		this.setUser = this.setUser.bind(this);
 		this.selectChange = this.selectChange.bind(this);
+		this.handleInputChange = this.handleInputChange.bind(this);
+
 
 		this.state = {
 			userIdValue: 'C0BUA20S0',
 			resultText: '',
+			widgetId: this.props.widgetId,
+			dashboardId: this.props.dashboardId,
 			slackUsers: [],
 			description: '',
+			userDescription: ''
 		};
 	}
 
 	componentDidMount() {
 		 const availableUsers = this.getAvailableUsers();
+		 const currentUser = this.getWidgetSettings();
+
+		 console.log(currentUser);
 	}
 
 	getAvailableUsers() {
 		api
-			.get('slack-users')
+			.get('slack-users/list')
+			.then(response => {
+				console.log("users: " + response);
+				this.setState({ slackUsers: response.data });
+			})
+			.catch(error => {
+				console.log(error);
+			});
+	}
+
+	getWidgetSettings() {
+		api('person-day', {
+			params: {
+				dashboardId: this.state.dashboardId,
+				widgetId: this.state.widgetId,
+			},
+		})
 			.then(response => {
 				console.log(response);
-				this.setState({ slackUsers: response.data });
+				this.setState({ userIdValue: response.data.user, description: response.data.description });
 			})
 			.catch(error => {
 				console.log(error);
@@ -68,7 +92,9 @@ class PeopleOfADayEditForm extends Component {
 
 		let dashboardId = this.props.dashboardId;
 
-		let settings = { user: this.state.userIdValue.id };
+		//this.setState(userIdValue: 'C0BUA20S0');
+
+		let settings = { user: this.state.userIdValue, description: this.state.description };
 		let data = {
 			widgetType: widgetType,
 			widgetId: widgetId,
@@ -102,7 +128,7 @@ class PeopleOfADayEditForm extends Component {
 						onChange={this.handleChange}
 						options={this.state.slackUsers}
 						valueKey="id"
-						labelKey="name"
+						labelKey="real_name"
 					/>
 
 					<label htmlFor="userDescription">User description</label>
